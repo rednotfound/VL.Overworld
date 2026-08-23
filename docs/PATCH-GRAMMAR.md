@@ -57,6 +57,30 @@ Hard rules, in force across chapters 01–05:
 - **Readouts**: the number or bool that IS the lesson gets fontsize 14 and a label; WKT boxes are
   plain String IOBoxes wide enough to read.
 
+## The map act — the two sanctioned directions, and the rule that would have prevented Tutorial 08's first draft
+
+Written down 2026-08-23, after that draft rebuilt a recorded dead end. Act II chapters follow
+everything above, plus:
+
+1. **Before composing any node combination new to the family, search the owning libraries'
+   NOTES.md for the nodes involved.** CLAUDE.md and this file record what WORKS; NOTES.md records
+   what FAILED and why. Tutorial 08's first draft drew a Skia `Circle` positioned by
+   `WorldToScreen` through `WithinCommonSpace (PixelTopLeft)` — the exact overlay design
+   vl-mapsui's NOTES.md had recorded as drawing nothing on 2026-08-14, complete with a standing
+   "output disappeared downstream of `WithinCommonSpace`, not diagnosed" mystery. Every static
+   check passed; the failure log was the only place the answer existed, and it was not on the
+   pre-writing reading list. Now it is.
+2. **Geometry goes ONTO the map in WGS84, through `Feature` → `FeatureLayer`; the map projects.**
+   The patch never converts world coordinates to pixels for drawing. The pixel route has now
+   failed twice, identically and undiagnosed (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23).
+   The payoff phrase is already in `HowTo Draw your own shapes`: *the shape stays on ITS GROUND
+   rather than on the window*.
+3. **Data comes OUT of the map through `Pick` and `ScreenToWorld`** — into readouts, and into
+   geometry that may go back in through rule 2.
+4. **A wrapped node with no GUI consumer is unmeasured territory, not a green light.**
+   `WorldToScreen` was unit-tested (exact inverse of `ScreenToWorld`) and had never been consumed
+   on screen. "First consumer" should have been read as "first measurement".
+
 ## How a chapter is born, and what it is afterwards
 
 The first draft is **generated once by a PowerShell script** (family precedent: the old basemap
@@ -82,6 +106,7 @@ generated C#) during Act I. They are the difference between an afternoon and a w
 | **Skia's `Polygon` draws both polylines and fills**: `Closed=False` + `Stroke` paint is the multi-line; `Closed=True` + fill paint is the shape. Include `<PinReference Kind="InputPin" Name="Closed" />` in the node reference to materialise the pin | chapters 02–05 |
 | **A ForEach region is hand-authorable**: `StatefulRegion` + inner `Patch` with Create/Update/Dispose (all `ManuallySortedPins="true"`) + `ControlPoint`s on the top/bottom borders; ALL links live in the outer patch, referencing control-point ids | chapter 05 converts the buffer's variable-count Coordinates; it compiles to a native C# `foreach` |
 | **Attribute text stores line breaks as `&#xD;&#xA;` entities and must not contain a raw `"`** — a double quote ends the attribute and the XML | chapter 04's narrative broke on `"nearest"`; use apostrophes |
+| **A layer built FROM the map and drawn ON it is a genuine dataflow cycle** — `ScreenToWorld` → geometry → `FeatureLayer` → `Map.Layers` loops; break it with `FrameDelay` on the layer (one frame old, invisible to the eye) | chapter 08 failed rung 2 with `Cycle detected. Execution order undefined.` |
 | **`LastCategoryFullName`/`LastDependency` are hints, not resolution** — but keep them true anyway; a compile proves a node exists, only the NodeBrowser proves its category | negative-tested in vl-nettopologysuite, 2026-08-14 |
 
 The four verification rungs and the reasons they exist are in `CLAUDE.md`; the short form: exit 0

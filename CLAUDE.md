@@ -198,6 +198,11 @@ The ones that bite hardest here:
    2026-08-16; the XML still parsed, `vvvvc` still compiled it, and only the validator noticed.
 5. **Validate before committing, in a separate step.** A check whose result arrives after the push
    is not a gate.
+6. **NOTES.md is the failure log, and it is read BEFORE composing, not after failing.** This file
+   and PATCH-GRAMMAR.md record what works; the siblings' NOTES.md record what was tried and how it
+   died — and rungs 1–3 cannot catch a recorded dead end, because parse-and-resolve says nothing
+   about pixels. Tutorial 08's first draft rebuilt one (2026-08-23); the rule and the two
+   sanctioned map-act directions are in `docs/PATCH-GRAMMAR.md`, "The map act".
 
 ## Before adding a unit, read `docs/CURRICULUM.md`
 

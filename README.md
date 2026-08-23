@@ -45,7 +45,7 @@ under your cursor renders instantly, offline, with nothing to agree to.
 |---|---|---|
 | **Tutorial 06** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
 | **Tutorial 07** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind — Haneda, typed in as numbers |
-| **Tutorial 08** | The map is just giving you coordinates | the escape hatch: the map hands you an x and a y, and you draw whatever you like |
+| **Tutorial 08** | The map is just giving you coordinates | the loop closed: the map says which place is under your cursor, and geometry grown from that answer is drawn back onto the earth, live |
 | **Tutorial 09** | Real data | GeoJSON, from a file or straight off the network |
 
 **The prompts** are unordered, unnumbered and skippable. Pick one. Ignore the rest. There is no
@@ -54,18 +54,21 @@ prerequisite and no completion.
 > *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
 > *Places and their names*
 
-**The geometry act (01–05) is complete; 06, 07 and 09 of the map act exist** (the map act was
-numbered 01, 02 and 04 until 2026-08-22 — the geometry act took the front numbers; see
+**All nine spine chapters exist.** The geometry act (01–05) is verified end to end; 08 is the
+youngest, rebuilt 2026-08-23 onto the family's own rails after its first draft repeated a recorded
+mistake (the story is in vl-mapsui's NOTES.md). The map act was numbered 01, 02 and 04 until
+2026-08-22 — the geometry act took the front numbers; see
 [CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md)'s third
-correction for why).
+correction for why.
 
 ### Why 08 comes before 09
 
-Because that is the moment the map stops being a map. [Unfolding](http://unfoldingmaps.org/) — the
-Processing map library written for designers and artists — puts the same lesson before its GeoJSON
-tutorial, and says why: *"the easiest method to create a custom style is to draw the marker
-yourself."* The map becomes a coordinate provider and you are back in the visual language you
-already have. Making someone read a file format before they get there would be a strange choice.
+Because that is the moment the map stops being a picture and becomes a question you can ask every
+frame — *which place on the earth is under this pixel?* — with geometry grown live from the answer
+and drawn straight back onto the earth. [Unfolding](http://unfoldingmaps.org/) — the Processing map
+library written for designers and artists — teaches the same conversion before its GeoJSON
+tutorial, because interaction is what a live map is *for*. Making someone read a file format before
+they get there would be a strange choice.
 
 ---
 
