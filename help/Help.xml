@@ -31,5 +31,6 @@
 	</Topic>
 	<Topic title="Prompts">
 		<VLDocument link="Prompt A mountain.vl" tags="fuji,mountain,peak,crater,elevation,geojson,nts,coordinate,linestring,linearring,polygon,trail,osm,openstreetmap,label,prompt,japan" />
+		<VLDocument link="Prompt Live earthquakes.vl" tags="earthquake,quake,usgs,live,feed,http,httpGet,network,fetch,geojson,magnitude,styleByValue,gradient,graduated,symbol,reactive,holdLatest,map,mapsui,prompt" />
 	</Topic>
 </Pack>

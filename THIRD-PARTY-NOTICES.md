@@ -29,6 +29,12 @@ Not shipped here, but these are where real data comes from and the terms differ 
   [GSI Japan](https://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html) or
   [data.gov](https://data.gov/) — usually permissive, usually with an attribution clause, and
   usually specific about *how* the attribution must read.
+- **[USGS Earthquake Hazards Program feeds](https://earthquake.usgs.gov/earthquakes/feed/)** —
+  public domain (US government work); the USGS asks that data be credited
+  ["courtesy of the U.S. Geological Survey"](https://www.usgs.gov/information-policies-and-instructions/acknowledging-or-crediting-usgs).
+  `Prompt Live earthquakes` fetches the summary GeoJSON at runtime — nothing is shipped — one
+  request per press of its Fetch button, no key, no account. The feed updates about once a
+  minute, which is the polite ceiling for refreshing it.
 
 ## Tile services
 
