@@ -97,10 +97,10 @@ failure in this family got in:
 
 ### Known gaps in the libraries — do not rediscover these
 
-- **`GradientTheme` is not wrapped**, so a style cannot be chosen from an attribute *value*. No
-  choropleth, and no colouring points by elevation. It has now blocked two concrete things and is
-  first on both the GST 101 list and the #30DayMapChallenge one. **The most valuable next library
-  job.**
+- ~~`GradientTheme` is not wrapped~~ **closed 2026-08-23**: `StyleByValue [Mapsui.Styles]` maps a
+  numeric attribute onto the range between two styles — choropleth and graduated symbols both.
+  15 tests incl. pixel-level; `HowTo Style by a value` is its help patch (rung 4 owed). What
+  remains unwrapped there: `ColorBlend` multi-stop ramps. See vl-mapsui NOTES.md, 2026-08-23.
 - **Nothing reprojects.** `SphericalMercator` is used internally and never exposed, and no
   `VL.ProjNet` exists. Area and length in lon/lat come out in degrees.
 - **No image markers, no callouts, no layer opacity, no raster/DEM reading, no editing.**

@@ -188,7 +188,7 @@ it**, not **when**.
 | **1** GIS Application Paper | a writing assignment | **skipped** — academic assessment |
 | **2** Spatial Data Models | vector vs raster; open a shapefile and a Landsat scene; notice vector layers arrive in a random colour | spine 06 (raster, as *"change how the world looks"*) and 02/07 (vector) |
 | **3** Coordinate Systems and Map Projections | EPSG codes; shape and area **distortion** across world projections; UTM; datum | **not yet, and blocked** — no reprojection node exists in the family |
-| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; legend naming | spine 07 partly; **the categorised half is blocked** — see gaps |
+| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; legend naming | spine 07 partly; the categorised half unblocked 2026-08-23 (`StyleByValue`) — a unit for it is not yet written |
 | **5** Creating Geospatial Data | digitising | **out of scope** — `Mapsui.Nts.Editing` is not wrapped |
 | **6** Remote Sensing and Analysis | imagery interpretation | **out of scope** — another field |
 | **7** Basic Geospatial Analysis | buffers, overlays, selection | **belongs to VL.NetTopologySuite**, which has 9 of them — Act I chapters 03–05 will teach them |
@@ -268,7 +268,7 @@ people actually chose to make.
 
 | rank | missing | blocks |
 |---|---|---|
-| 1 | **`GradientTheme`** — colour driven by an attribute value | Polygons, Choropleth, Population, Heat, Urban, most thematic work. **Also first on the GST 101 list** (Lab 4 calls it core) — two independent sources agree, which is the strongest signal in this document |
+| 1 | ~~**`GradientTheme`**~~ — **closed 2026-08-23** as `StyleByValue` (vl-mapsui). Was: colour driven by an attribute value | unblocked: Polygons, Choropleth, Population, Heat, Urban, most thematic work — and GST 101 Lab 4's categorised half. Multi-stop `ColorBlend` ramps remain the follow-up |
 | 2 | **Reprojection** (`VL.ProjNet`) | Projections — a prompt in *every* year — plus *North is not always up* and *Antarctica*. Nothing in the four packages reprojects; `SphericalMercator` is used internally and never exposed |
 | 3 | **Image markers** (`SymbolType.Image`) | Icons. Needs `BitmapRegistry` |
 | 4 | **Layer opacity, basemap recolouring** | Vintage style, Black, most aesthetic prompts |
@@ -283,7 +283,7 @@ chapters. Where each stands, so nobody re-derives it:
 |---|---|---|
 | 1–4 geometry, data, questions, transforms | ✅ **built** | Act I, chapters 01–05. Feature construction unlocked by `NTS.Feature` (2026-08-22); `Touches/Overlaps/Crosses`, `ConvexHull/Simplify`, `Voronoi/Delaunay` arrive per vl-nettopologysuite's roadmap rule — when a chapter needs them |
 | 5 coordinates have meaning | ⛔ **blocked** | nothing in the family reprojects (gap rank 2). Future `VL.ProjNet`; full salvage material in retired `vvvv-gis` (`ProjectionNodes.cs`). Natural slot: the hinge between the acts, with chapter 08 |
-| 6 maps | ✅ **is Act II** | chapters 06–09. Its thematic half still blocked by `GradientTheme` (gap rank 1) |
+| 6 maps | ✅ **is Act II** | chapters 06–09. Its thematic half unblocked 2026-08-23 by `StyleByValue` (was gap rank 1) — a choropleth prompt or chapter is now buildable |
 | 7 raster as field | 📦 **new territory** | zero support: no GeoTIFF, no DEM, no sampling. Do not promise |
 | 8 find things fast | 🔧 **waiting** | `STRtree` sits in vl-nettopologysuite's roadmap "Later" with the ProcessNode caveat; the brief's 100k-points timing demo is that node's acceptance test — build both together |
 | 9 networks, 10 3D | 📦 **new territory** | `CoordinateZ` exists and nothing else does |
