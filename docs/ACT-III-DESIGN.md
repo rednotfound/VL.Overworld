@@ -167,6 +167,41 @@ count = Resolution², shown; a cell-size readout in canvas units.
 Buildable today.** Real raster IO is deliberately NOT this chapter and gets proposed only when the
 Walk-Across-a-Mountain prompt is genuinely wanted.
 
+### Built 2026-08-23 — what the patch actually does, and the one deviation
+
+All four rungs passed the same day. The build took the parenthetical option above:
+**VL.NetTopologySuite earns its place** with `Coordinate` → `Point` → `Write WKT` on the cursor, so
+the only object on screen sits on a field made of nothing but values. The validator would have
+failed a chapter declaring no family package at all, but that is not why the nodes are there.
+
+Two facts the build paid for, both cheap only because rung 2 is loud:
+
+- **`Vector (Join)` does not exist for `Int2`.** The node is `Int2 (Create) [Primitive.Int2]`
+  (pins X, Y, Output). `2D.Int2` is not a category. Costs one compile to find, so it is written
+  down here.
+- The grid is `GridSpread (2D) [Collections.Spread]` (Center, Width `1.8, 1.8`, **Alignment
+  `Block`**, Phase, Count) → one `ForEach` → `SimplexNoise` → `MapClamp` → `RGBA (Join)` → `Fill`
+  → `Rectangle` → `Group (Spectral)`. Reading the generated C# confirms the loop compiles to a
+  native `foreach` and that `Fill`/`Rectangle` keep **per-slice state**, so a 64×64 grid is 4096
+  persistent process nodes rather than 4096 allocations a frame.
+- **`Block` is not a detail — it is the raster.** The first rung-4 run showed hairline seams
+  between every pair of cells, because `Alignment` defaults to `Centered`, which puts the first and
+  last samples ON the edges (spacing `Width/(Count-1)`) while the cells were sized `Width/Count`.
+  `Block` cuts the width into Count equal blocks and samples each block's centre — spacing
+  `Width/Count` exactly, which is what a raster cell IS. Seams gone on the second run, grid still
+  centred. Both a rendering fix and the conceptually correct one, and no automated rung could have
+  raised it: the patch compiled, the counters were right, and only the picture was wrong.
+
+**Deviation from the design above: the snapped cursor readout and the cell highlight are not in
+v1.** The design called for the value under the cursor to step to cell centres. Doing that honestly
+needs `p → /cell → floor → *cell → +cell/2` in Vector2 arithmetic — five nodes whose names in
+`2D.Vector2` (`Floor (Float)` among them) are unverified, on a first draft that already had one
+unknown in it. The lesson survives without them: at Resolution 8 the **Field Here** number slides
+continuously while the block underneath it stays one flat grey, and that gap IS the sampling loss.
+The snap is now cheap to add and worth adding: rung 4 confirmed the grid tiles, and with `Block`
+the arithmetic is exactly `snapped = (floor(p / cell) + 0.5) * cell`. The orange highlight would
+then double as the instrument proving that arithmetic and `GridSpread`'s layout agree.
+
 ---
 
 ## Chapter 13 — Close Does Not Mean Reachable
