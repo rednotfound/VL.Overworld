@@ -308,6 +308,10 @@ the right contents.
 .\tools\Open-HelpPatch.ps1 -List
 .\tools\Open-HelpPatch.ps1 "Drawing GeoJSON"
 
+# or without a command line: double-click Open-Chapter.cmd in the repository root.
+# A window lists the chapters; Open goes through Open-HelpPatch.ps1 (same gate, same
+# refusals, printed in the log box), and a second button runs Normalize afterwards.
+
 # after any GUI session - vvvv repins dependency versions and saves Enabled=True
 .\tools\Normalize-HelpPatches.ps1
 ```
