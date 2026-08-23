@@ -28,7 +28,7 @@ chapter below adds one line to that ledger.
 | 10: arbitrary CRS / EPSG / UTM | **Possibly requires new library** | nothing in the family reprojects (gap rank 2). **Library Scope Proposal: VL.Proj, below — recommendation: DELAY**, chapter 10 v1 does not need it |
 | 11: 100,000 points | **Already available** | random spread, built once (`ParticipatingElements` idiom); NTS points via ForEach, cached |
 | 11: brute-force Contains per frame | **Already available** | `Contains` in a ForEach — being honestly slow is half the chapter |
-| 11: spatial index | **Available but awkward → missing small abstraction** | `NetTopologySuite.Index.Strtree.STRtree<T>` exists IN the NTS library, unwrapped. Category A: vl-nettopologysuite's ROADMAP already lists it under "Later" with the `[ProcessNode]` caveat, and names this very demo as its acceptance test. Belongs there; needs review before wrapping |
+| 11: spatial index | **Available but awkward → missing small abstraction** | `NetTopologySuite.Index.Strtree.STRtree<T>` exists IN the NTS library, unwrapped. Category A: vl-nettopologysuite's ROADMAP already claims it — *"`STRtree`, `Quadtree`. Same `[ProcessNode]` reasoning, more so — an index is a resource with a lifetime."* It does **not** name an acceptance test; that was an overstatement here, corrected 2026-08-23. Belongs there; needs review before wrapping |
 | 12: a field, a grid, a sampled value | **Already available** | `SimplexNoise` ships in VL.CoreLib; grid = spread arithmetic; rendering = Skia. Zero geospatial dependencies, fully offline |
 | 12: real DEM / GeoTIFF **file** | **Missing major capability** | still true, and still out of scope for chapter 12 ON PURPOSE — the field concept teaches without a file. A GeoTIFF reader would be its own scope proposal |
 | real DEM values as **raster tiles** | ~~Missing~~ → **Already available. Corrected 2026-08-23** | see "The correction" below: `HTTPGet`'s Body is already `Spread<Byte>`, `ImageDecoder` turns those bytes into an image, and `Pipet [Graphics.Skia.Imaging]` reads a pixel out of it. Zero new library capability. The row above was written thinking of files and wrongly closed the door on tiles |
@@ -240,7 +240,7 @@ mistake, and the counter would expose it).
 > review) — geometries in, built ONCE, rebuilt only when the set changes (ROADMAP's own caveat);
 > `Query (Envelope)` returning candidates + a `Candidates` count; `Indexes Built` readout pin.
 > Why the patch needs it: the entire right-hand pipeline. Belongs in VL.NetTopologySuite: its
-> ROADMAP already claims it and names this chapter as the acceptance test. **Not implemented —
+> ROADMAP already claims it, in one line and with the `[ProcessNode]` reasoning; it does NOT name an acceptance test (corrected 2026-08-23 — this document said it did). **Not implemented —
 > awaiting review.**
 
 The optional prompt **Ask the Same Polygon 100,000 Times** (`PreparedGeometry`, same package, same
