@@ -99,8 +99,11 @@ failure in this family got in:
 
 - ~~`GradientTheme` is not wrapped~~ **closed 2026-08-23**: `StyleByValue [Mapsui.Styles]` maps a
   numeric attribute onto the range between two styles — choropleth and graduated symbols both.
-  15 tests incl. pixel-level; `HowTo Style by a value` is its help patch (rung 4 owed). What
-  remains unwrapped there: `ColorBlend` multi-stop ramps. See vl-mapsui NOTES.md, 2026-08-23.
+  15 tests incl. pixel-level; `HowTo Style by a value` **passed rung 4 the same day** (gradient
+  seen, the attribute-less square absent by design) — and being the family's first tile-free map
+  it found defect six on its first open: `Initial Zoom Level` silently meant nothing without a
+  tile layer. Both are in vl-mapsui NOTES.md, 2026-08-23. Remaining there: `ColorBlend`
+  multi-stop ramps.
 - **Nothing reprojects.** `SphericalMercator` is used internally and never exposed, and no
   `VL.ProjNet` exists. Area and length in lon/lat come out in degrees.
 - **No image markers, no callouts, no layer opacity, no raster/DEM reading, no editing.**
