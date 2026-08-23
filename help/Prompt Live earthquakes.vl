@@ -25,7 +25,7 @@
       </p:NodeReference>
       <Patch Id="RLFyQj3Y3QhKMx6u7m7h16">
         <Canvas Id="Skob7IE1B7ndjJ9H42F6rW" CanvasType="Group">
-          <Pad Id="C448rLY2RvXYJLhCp7nXqd" Bounds="-780,-120,640,1400" ShowValueBox="true" isIOBox="true" Value="Prompt - Live earthquakes.&#xD;&#xA;&#xD;&#xA;Somewhere, right now, the ground is moving. The USGS publishes every earthquake of the last 24&#xD;&#xA;hours as GeoJSON - updated every minute, no key, no account - and this patch turns each one into&#xD;&#xA;a dot sized and coloured by its magnitude. Not sized by you: by StyleByValue, reading 'mag' off&#xD;&#xA;every feature the feed hands over.&#xD;&#xA;&#xD;&#xA;NOTHING IS FETCHED WHEN THIS OPENS. Two consents, two switches: FETCH asks earthquakes.usgs.gov&#xD;&#xA;once per press (watch In Progress while the answer is on its way), and Enabled lets the basemap&#xD;&#xA;tiles load. The quakes draw fine on a blank world - the basemap is context, not a requirement.&#xD;&#xA;&#xD;&#xA;Press FETCH, then FRAME THE DATA, and read the numbers on the way down: the feed arrives as&#xD;&#xA;bytes and becomes a string (asynchronously - the patch never waits), the string becomes&#xD;&#xA;features (Parses stays at 1: the same string is parsed once, not sixty times a second), and the&#xD;&#xA;features become dots.&#xD;&#xA;&#xD;&#xA;SOME QUAKES HAVE NO MAGNITUDE. Really - review takes time, and the freshest events sometimes&#xD;&#xA;carry null. StyleByValue refuses those rather than inventing a zero, and Layer Status counts&#xD;&#xA;them by name. A live feed is exactly where that honesty earns its keep: the count changes from&#xD;&#xA;fetch to fetch.&#xD;&#xA;&#xD;&#xA;MAKE IT YOURS - some of these, none of these, or something else entirely:&#xD;&#xA;  Attribute 'sig' with Max 600 colours by significance instead of magnitude.&#xD;&#xA;  A LabelStyle between StyleByValue and the layer names every dot - 'place' is a good column.&#xD;&#xA;  all_day in the URL becomes all_week: ten times the dots. significant_month: only the big ones.&#xD;&#xA;  Min 4, Max 8: the small quakes clamp pale and the big ones jump out.&#xD;&#xA;&#xD;&#xA;You don't have to follow the prompt exactly. Or even at all.&#xD;&#xA;&#xD;&#xA;Data: U.S. Geological Survey Earthquake Hazards Program - public domain, courtesy of the USGS.&#xD;&#xA;One request per press of FETCH; the feed itself updates once a minute, so pressing more often&#xD;&#xA;than that only reheats the same soup.">
+          <Pad Id="C448rLY2RvXYJLhCp7nXqd" Bounds="-780,-120,640,1400" ShowValueBox="true" isIOBox="true" Value="Prompt - Live earthquakes.&#xD;&#xA;&#xD;&#xA;Somewhere, right now, the ground is moving. The USGS publishes every earthquake of the last 24&#xD;&#xA;hours as GeoJSON - updated every minute, no key, no account - and this patch turns each one into&#xD;&#xA;a dot sized and coloured by its magnitude. Not sized by you: by StyleByValue, reading 'mag' off&#xD;&#xA;every feature the feed hands over.&#xD;&#xA;&#xD;&#xA;THE WINDOW IS A ROLLING DAY, not a calendar date: the 24 hours ending at the moment you pressed&#xD;&#xA;FETCH. Press again and the window slides - quakes fall out of the back as new ones arrive at the&#xD;&#xA;front, which is why the counts never quite agree between two presses.&#xD;&#xA;&#xD;&#xA;POINT AT A DOT and the row of boxes under WHAT YOU ARE POINTING AT fills in: Pick hands back the&#xD;&#xA;feature under the cursor with every property the USGS sent - 'title' says magnitude and place in&#xD;&#xA;one line, 'mag' is the number alone, and 'time' is milliseconds since 1970, which is a machine's&#xD;&#xA;idea of a date and left that way on purpose: converting it is a fine first exercise.&#xD;&#xA;&#xD;&#xA;NOTHING IS FETCHED WHEN THIS OPENS. Two consents, two switches: FETCH asks earthquakes.usgs.gov&#xD;&#xA;once per press (watch In Progress while the answer is on its way), and Enabled lets the basemap&#xD;&#xA;tiles load. The quakes draw fine on a blank world - the basemap is context, not a requirement.&#xD;&#xA;&#xD;&#xA;Press FETCH, then FRAME THE DATA, and read the numbers on the way down: the feed arrives as&#xD;&#xA;bytes and becomes a string (asynchronously - the patch never waits), the string becomes&#xD;&#xA;features (Parses stays at 1: the same string is parsed once, not sixty times a second), and the&#xD;&#xA;features become dots.&#xD;&#xA;&#xD;&#xA;SOME QUAKES HAVE NO MAGNITUDE. Really - review takes time, and the freshest events sometimes&#xD;&#xA;carry null. StyleByValue refuses those rather than inventing a zero, and Layer Status counts&#xD;&#xA;them by name. A live feed is exactly where that honesty earns its keep: the count changes from&#xD;&#xA;fetch to fetch.&#xD;&#xA;&#xD;&#xA;MAKE IT YOURS - some of these, none of these, or something else entirely:&#xD;&#xA;  Attribute 'sig' with Max 600 colours by significance instead of magnitude.&#xD;&#xA;  A LabelStyle between StyleByValue and the layer names every dot - 'place' is a good column.&#xD;&#xA;  all_day in the URL becomes all_week: ten times the dots. significant_month: only the big ones.&#xD;&#xA;  Min 4, Max 8: the small quakes clamp pale and the big ones jump out.&#xD;&#xA;&#xD;&#xA;You don't have to follow the prompt exactly. Or even at all.&#xD;&#xA;&#xD;&#xA;Data: U.S. Geological Survey Earthquake Hazards Program - public domain, courtesy of the USGS.&#xD;&#xA;One request per press of FETCH; the feed itself updates once a minute, so pressing more often&#xD;&#xA;than that only reheats the same soup.">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -416,6 +416,101 @@
             <Pin Id="J9tugQkxCTNTaDRnMgwqro" Name="Input 2" Kind="InputPin" />
             <Pin Id="RjZEYk5JzZtOBTSBqVLa60" Name="Output" Kind="OutputPin" />
           </Node>
+          <Pad Id="NVqMjj8hrpwPGNKmXe6WvS" Bounds="850,370,300,15" ShowValueBox="true" isIOBox="true" Value="point at a dot, feature or sea:">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">11</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="850,400,90,19" Id="QkYaHkkNeNJDn7eeOffCvQ">
+            <p:NodeReference LastCategoryFullName="Mapsui" LastDependency="VL.Mapsui.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Pick" />
+            </p:NodeReference>
+            <Pin Id="CH0JOwEjOI16nZzus50DeV" Name="Map" Kind="InputPin" />
+            <Pin Id="Go4DbgSUlmv1jY9PuxRcrP" Name="X" Kind="InputPin" />
+            <Pin Id="HnMxQ7L59KBLsNFwC7ShiA" Name="Y" Kind="InputPin" />
+            <Pin Id="UUDQX20MhBw06IMMYBEmez" Name="Result" Kind="OutputPin" />
+            <Pin Id="M2iN8ZxvpHiUdWyBopzJbQ" Name="Hit" Kind="OutputPin" />
+            <Pin Id="IPQvbyYUONxykCdXWmeI0t" Name="Layer" Kind="OutputPin" />
+          </Node>
+          <Pad Id="Us0I2TTq2AS9Q1SLL70HnR" Comment="Hit" Bounds="960,395,35,35" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="850,450,90,19" Id="CgRclpUaDMqYtaKj1AW31u">
+            <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Split" />
+            </p:NodeReference>
+            <Pin Id="MVZsv30OjIDCmmNsX9xUOh" Name="Feature" Kind="InputPin" />
+            <Pin Id="HGkrGdgNCQ77lltep00map" Name="Geometry" Kind="OutputPin" />
+            <Pin Id="EsdPpndH0up2BcNjO9DyTg" Name="Attributes" Kind="OutputPin" />
+          </Node>
+          <Pad Id="VFGGdjrCI1rvK42XH17CB2" Comment="" Bounds="1000,450,60,15" ShowValueBox="true" isIOBox="true" Value="title">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="850,500,71,26" Id="S2uu9qBklzMbYtkKJmjZYY">
+            <p:NodeReference LastCategoryFullName="Collections.Dictionary" LastDependency="VL.Collections.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="RecordType" Name="Dictionary" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="TryGetValue" />
+            </p:NodeReference>
+            <Pin Id="IAH5JmCvpFpLimG1TdyrUh" Name="Input" Kind="StateInputPin" />
+            <Pin Id="ROGFC7DVozVmVFXoAyOOAR" Name="Key" Kind="InputPin" />
+            <Pin Id="JTlBCn8M0TenEggj244LjH" Name="Result" Kind="OutputPin" />
+            <Pin Id="G0Mw7RR6WvYPuACWYRsNYg" Name="Value" Kind="OutputPin" />
+          </Node>
+          <Pad Id="IljHzCF6payUelInzp3QEF" Comment="WHAT YOU ARE POINTING AT" Bounds="850,545,420,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="GwRuBr2upo9o0yjvtGXSnD" Comment="" Bounds="1000,580,60,15" ShowValueBox="true" isIOBox="true" Value="mag">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="850,610,71,26" Id="ANzaF4j2fXqAbyLd26BkxH">
+            <p:NodeReference LastCategoryFullName="Collections.Dictionary" LastDependency="VL.Collections.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="RecordType" Name="Dictionary" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="TryGetValue" />
+            </p:NodeReference>
+            <Pin Id="UPNGpDgPudL85dXn2F5OuF" Name="Input" Kind="StateInputPin" />
+            <Pin Id="L6LFj8yrL8xYyooZ8pfCFL" Name="Key" Kind="InputPin" />
+            <Pin Id="QonqgX01Dd3Iubtiv8TmxE" Name="Result" Kind="OutputPin" />
+            <Pin Id="K77sNkmNtbW4W663y2mBbk" Name="Value" Kind="OutputPin" />
+          </Node>
+          <Pad Id="VEiuoVwxPyJfONvIYrompQ" Comment="Magnitude" Bounds="850,655,120,20" ShowValueBox="true" isIOBox="true">
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">14</p:fontsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="Lq0OWBK0H0P4Vj9TxCQrdM" Comment="" Bounds="1000,690,60,15" ShowValueBox="true" isIOBox="true" Value="time">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="850,720,71,26" Id="KyQNb44aL7EkHTzZFV8m4y">
+            <p:NodeReference LastCategoryFullName="Collections.Dictionary" LastDependency="VL.Collections.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="RecordType" Name="Dictionary" NeedsToBeDirectParent="true" />
+              <Choice Kind="OperationCallFlag" Name="TryGetValue" />
+            </p:NodeReference>
+            <Pin Id="KOUSmiyygbTtuXAqpo8U4S" Name="Input" Kind="StateInputPin" />
+            <Pin Id="GRG9BnxsMuT7Ls3OnYWN2p" Name="Key" Kind="InputPin" />
+            <Pin Id="Kc2DHRbFRpf2XuFBaCtsEa" Name="Result" Kind="OutputPin" />
+            <Pin Id="AnpaAj3LPvJZw3N5VDVOj7" Name="Value" Kind="OutputPin" />
+          </Node>
+          <Pad Id="OfsHFJ1drJuBJW2sB0SkMK" Comment="Time" Bounds="850,765,140,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="Ae5RrrleZG5LcIguaWnI6A" Bounds="1000,765,380,30" ShowValueBox="true" isIOBox="true" Value="&lt;- milliseconds since 1970, UTC - a machine's idea of a date. Converting it is a fine first exercise.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">11</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
           <Node Bounds="-50,1070,185,19" Id="QuQxr5au2mVuuRsa0d3BCm">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -488,6 +583,20 @@
         <Link Id="U4dOJBFg4c4wzluTOGEj94" Ids="N0haz60yxbtzK3lKGuNuDX,Ot9Qs73WpMSFAMhNHJkQkX" />
         <Link Id="P2WhwCk5H404z7RMwQ6cKK" Ids="IZRuyY4GecJcsOCrmueyxf,J9tugQkxCTNTaDRnMgwqro" />
         <Link Id="RpQfrFahmx6CqqesujlDih" Ids="RjZEYk5JzZtOBTSBqVLa60,LGrGaNZ2rdQ9P3jV4EqQXs" />
+        <Link Id="N5O91oeyBzQEaMhykYDiAm" Ids="I2EHixktOtEWSgGXVtJhKA,CH0JOwEjOI16nZzus50DeV" />
+        <Link Id="PUtRLQ8SpKSLcfk0q3wx5z" Ids="KeI6UlZGXEm0TK7tLM38p6,Go4DbgSUlmv1jY9PuxRcrP" />
+        <Link Id="G0C0P3HBr7MgCulbfgWG71" Ids="VP49f7lq9H62osNVwCj9HT,HnMxQ7L59KBLsNFwC7ShiA" />
+        <Link Id="H7IslZXoDh1E3V2PtW1YHW" Ids="M2iN8ZxvpHiUdWyBopzJbQ,Us0I2TTq2AS9Q1SLL70HnR" />
+        <Link Id="Ry9fRbQwhLOUaZJTmiEbFZ" Ids="UUDQX20MhBw06IMMYBEmez,MVZsv30OjIDCmmNsX9xUOh" />
+        <Link Id="Peg72gGTfB1pPbWLDk572A" Ids="EsdPpndH0up2BcNjO9DyTg,IAH5JmCvpFpLimG1TdyrUh" />
+        <Link Id="HYb5qVQUq2CSVDbyQlEqKA" Ids="VFGGdjrCI1rvK42XH17CB2,ROGFC7DVozVmVFXoAyOOAR" />
+        <Link Id="ARMssKbuwFnkwrzmBQittS" Ids="G0Mw7RR6WvYPuACWYRsNYg,IljHzCF6payUelInzp3QEF" />
+        <Link Id="DComjJ2Thi1GJxAVO4dAp2" Ids="EsdPpndH0up2BcNjO9DyTg,UPNGpDgPudL85dXn2F5OuF" />
+        <Link Id="VSRTyY87UdZrJIbS4OCqjY" Ids="GwRuBr2upo9o0yjvtGXSnD,L6LFj8yrL8xYyooZ8pfCFL" />
+        <Link Id="VmWvXOMafN2wIWX3obqYGO" Ids="K77sNkmNtbW4W663y2mBbk,VEiuoVwxPyJfONvIYrompQ" />
+        <Link Id="RWgANJ9WIwgbW0C9x33EUv" Ids="EsdPpndH0up2BcNjO9DyTg,KOUSmiyygbTtuXAqpo8U4S" />
+        <Link Id="Ry6Lg0CjJg0O8gRNYpR13p" Ids="Lq0OWBK0H0P4Vj9TxCQrdM,GRG9BnxsMuT7Ls3OnYWN2p" />
+        <Link Id="M5JwxCszjSNVnJAkrw1q7N" Ids="AnpaAj3LPvJZw3N5VDVOj7,OfsHFJ1drJuBJW2sB0SkMK" />
       </Patch>
     </Node>
   </Patch>
