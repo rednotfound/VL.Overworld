@@ -19,7 +19,24 @@ repository already records: a memory that drifts out of date is worse than no me
 family has been bitten by exactly that (a memory saying "Mapsui is blocked" survived months after
 VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked).
 
-### Where the work stands — 2026-08-22
+### Where the work stands — 2026-08-23
+
+**Act III is under way, and it is not a third act of maps.** 12 (a field becoming a raster) and 10
+(three projections, one knob) are built and rung-4 verified; the pack's first `Explanation` is built
+and awaits rung 4. Both chapters ended up **map-free on purpose** — 12 because a basemap would put
+an object under a field, 10 because a basemap can only draw ONE projection. The tiles that do belong
+in this topic went into the `Explanation`, which is the local, single-projection half of the same
+subject. Full reasoning, including two rejected designs of chapter 10, in `docs/ACT-III-DESIGN.md`.
+
+**Three things are waiting, and two of them are not mine to decide:**
+
+| waiting on | what it blocks |
+|---|---|
+| **review: STRtree wrap in VL.NetTopologySuite** (that repo's ROADMAP already claims it and names the demo as its acceptance test) | `Tutorial 11`, the 100,000-point chapter |
+| **review: a two-node `NTS.Network` surface** (`Network` + `ShortestPath`, long tail declared out of scope) | `Tutorial 13`, shortest path exists nowhere in the family |
+| **queued, no decision needed**: `Prompt Walk across a mountain` — real elevation from Terrarium tiles, **confirmed buildable with zero new capability** (`HTTPGet` → `ImageDecoder` → `Pipet`). Must come after 10, whose arithmetic it consumes | nothing; it is next in line |
+
+### Where the work stood — 2026-08-22
 
 **2026-08-22, evening: the spine now runs in two acts** — geometry (01–05: no basemap, no network,
 no files, VL.NetTopologySuite only) then maps (06–09). The map act's chapters kept their content
@@ -39,6 +56,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 | `Tutorial 09 Real data` | done (was 04, and 05 before that) |
 | `Tutorial 10 Same place, different numbers` | built 2026-08-23, **rung 4 passed the same day** (north up, world in frame, and Greenland changing size as the knob turns — watched by a person). **Rebuilt three times**, and the two discarded versions are the valuable part of the record: see `docs/ACT-III-DESIGN.md`, "the design above was wrong about the subject". No map — a basemap can draw only ONE projection. 17 parallels plus Natural Earth's coastlines, one `PROJECTION` knob, three cylindrical formulas differing only in what they do to a latitude. First chapter to read a GeoJSON file for its geometry rather than for a map layer |
 | `Tutorial 12 What if space is not an object` | built 2026-08-23, **rung 4 passed the same day** (cells tile seamlessly, grid centred, and at Resolution 8 the `Field Here` number slides while the block underfoot stays flat — the chapter's whole argument, watched by a person). Act III's first chapter, and the pack's first with NO map and no geospatial computation: `SimplexNoise` over a `GridSpread (2D)`, one ForEach making one Skia `Rectangle` per cell, one knob (`Resolution`). Three NTS nodes (`Coordinate`/`Point`/`Write WKT`) stand the object model beside a field that has none — that is the chapter, and the single-package exemption is spent on it. Layout machine-generated |
+| `Explanation The map is not to scale` | built 2026-08-23, **rungs 1–3 passed; rung 4 outstanding**. The pack's first `Explanation`, and the split half of Tutorial 10: local distortion on a **real OSM basemap**, which is the one place in this topic tiles belong. A cross follows the cursor, 200 km on the ground each way; hold the right mouse button and it becomes 2 degrees each way, arms visibly unequal. `STRETCH = 1/cos(latitude)`. Closes the loop Tutorial 08 left open about buffering in degrees. **Hand-edited in the GUI** for the text paint — see the `FontAndParagraph` row in PATCH-GRAMMAR.md — so it is edit-in-place only from here |
 | `Prompt A mountain` | done, layout still machine-generated |
 | `Prompt Live earthquakes` | built 2026-08-23, **rung 4 passed the same day** (dots sized/coloured by magnitude, hover-Pick reads title/mag/time, null-mag quakes counted by Status). The family's first network fetch — `HTTPGet` fires only on its Refresh pin, zero requests on open. First prompt consumer of `StyleByValue` and `Pick`. Layout machine-generated |
 
@@ -238,8 +256,21 @@ Four things from it that constrain the work:
 
 ```
 help\Tutorial 01 ….vl     the spine. Ordered, numbered, each adds exactly one capability
+help\Explanation ….vl     proves one fact. Unordered, skippable; the title IS the assertion
 help\Prompt ….vl          unordered, unnumbered, skippable, no prerequisites
 ```
+
+**Three genres now, still two tiers.** `Explanation` arrived 2026-08-23 with
+`Explanation The map is not to scale`, and the reason it is not a `Prompt` is the definition: a
+prompt is a **permission** ("two colours only", "out of this world"), and that patch is a
+**demonstration**. It is not a `Tutorial` either, because it adds no capability to the sequence —
+it splits one off a Tutorial that was carrying two lessons at once. `Help.xml` gained an
+`Explanations` topic; the validator already accepted the prefix.
+
+**How that split was decided, because the test is reusable:** two patches belong apart when they
+answer *different questions* and one of them can do something the other structurally cannot.
+Tutorial 10 asks *why are there different maps?* and therefore cannot have a basemap (tiles exist
+in exactly one projection). The Explanation asks *how wrong is THIS map, HERE?* and therefore can.
 
 **Numbering is a claim that order matters, so it is spent only on the spine.** Number everything and
 the numbers become noise, and a reader arriving at unit 05 feels late — when the entire point of the

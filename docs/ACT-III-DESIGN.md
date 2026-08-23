@@ -179,10 +179,27 @@ button) that redefines it as **2 degrees each way**. Held: the arms are visibly 
 Released: they are equal on screen and unequal in degrees. Plus `STRETCH = 1 / cos(latitude)`, which
 is the same number as the cross growing.
 
-**The file is gone and it is my fault**: the cross version was overwritten by a full-template
-rewrite before it was ever committed. Rebuilding it is cheap — the design is above and both later
-fixes are known (Skia `Text` `Size` is a Vector2, `0, 0.055`; the tiles toggle belongs in the first
-paragraph) — but the rule earned is: **stash a working uncommitted patch before replacing it.**
+**The file was gone and that was my fault**: the cross version was overwritten by a full-template
+rewrite before it was ever committed. The rule earned: **stash a working uncommitted patch before
+replacing it.**
+
+#### Built 2026-08-23 — rungs 1–3 passed on the first compile; rung 4 outstanding
+
+Rebuilt from the design above, smaller than the version it replaces: the eight mercator-formula
+nodes are gone (the stretch needs only `Cos`, not the projection), and the two-line readout became
+one line, because the coordinate-pair-in-two-spellings half of it belongs to Tutorial 10 now.
+
+- **`Explanation`**, not `HowTo`: the patch proves a fact rather than handing over a recipe, and its
+  title is the assertion. `Help.xml` gained an `Explanations` topic.
+- Two family packages (VL.Mapsui + VL.NetTopologySuite), so **no exemption paragraph needed**.
+- The one instrument that is also the lesson: `STRETCH = 1 / cos(latitude)`, live at the cursor,
+  which is the same number as the cross growing.
+
+**Then the user fixed it in the GUI**, and the fix is the durable finding: text is painted by
+`FontAndParagraph [Graphics.Skia.Text]` — font `Size`, `Color`, family, alignment all live there —
+not by `Fill`, and Skia `Text`'s own `Size` is a Vector2 layout box, not a font size. The `Text`
+node's own Remarks said so. Recorded in PATCH-GRAMMAR.md; the generator template for this patch is
+retired, and the `.vl` is now the source of truth.
 
 ---
 

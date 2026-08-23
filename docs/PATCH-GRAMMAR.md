@@ -117,6 +117,48 @@ only**, each change anchored on a match asserted to occur exactly once (see CLAU
 
 Ids come from `tools\New-VLId.ps1`, never derived by editing. Files are UTF-8 **with BOM**, CRLF.
 
+## How to find out, instead of guessing — written down 2026-08-23 after a day of both
+
+Chapters 10 and 12 and the first `Explanation` were built in one day, and most of the elapsed time
+went on questions that had cheap answers. In order of cost:
+
+1. **Read the node's own `Summary` and `Remarks` first.** `Text`'s definition says
+   *"Use FontAndParagraph [Graphics.Skia.Paint] to adjust various parameters"*. That sentence was
+   grepped, printed, and ignored, and the font size was then set twice on the wrong pin — on two
+   different patches, both fixed by the user in the GUI. `grep -n -A3 '<Node Name="X"' <pack>.vl`
+   costs one command.
+2. **Probe-compile instead of guessing a category.** vvvvc's error *names the real one*:
+   `Not found: Vector (Join) … category: 2D.Int2` and, better,
+   ``1. Control.Switch`1  In: Index: Integer32  Out: Output: T``. So a throwaway
+   `help\Tutorial 99 probe.vl` holding ten candidate nodes, compiled with
+   `-Patch "Tutorial 99*"`, answers ten questions in a handful of runs — and it is how
+   `Primitive.Float64`, `Primitive.String`, `Control.Switch`, `Primitive.Boolean.OR` and
+   `Int2 (Create)` were all settled. **Delete the probe before validating**: it has no genre and
+   no family package, and rule 1 and rule 6 will both fail it.
+3. **A link-type error produces no C# at all, so rung 3 cannot help — bisect by subtraction.**
+   `types dont match: Float32, Float64` names neither node nor pin. Strip the patch to halves,
+   compile, repeat. Four runs found it: `LinearSpread`'s `Center`/`Width` are Float32 and my
+   Float64 annotation was the whole problem.
+4. **Multi-step `.vl` edits go in a script FILE, not an inline command block** — CLAUDE.md rule 4,
+   violated twice in one day. A PowerShell here-string followed by `-replace` on the same line
+   parses as a culture argument and fails silently enough to waste a round trip. Writing the same
+   edit to a `.ps1` and running it worked first time, every time.
+
+## Two failures of judgement from the same day, because they will recur
+
+- **Iterating on a symptom the reader named, instead of questioning the premise.** Tutorial 10 was
+  built three times. The first two versions each fixed exactly what the reader complained about —
+  "the numbers don't mean anything", then "put them on the map" — and both left the subject
+  untouched. What actually had to break was an assumption nobody had stated: *we only have one
+  projection, because the family has no reprojection engine.* False: an engine solves arbitrary
+  CRS by EPSG code, while a forward cylindrical projection is a line of arithmetic. **When the
+  second fix also fails to land, stop fixing and go looking for the premise.**
+- **Replacing an uncommitted patch that worked.** The cross version of Tutorial 10 was overwritten
+  by a full-template rewrite before it was ever committed, and had to be rebuilt from scratch to
+  become `Explanation The map is not to scale`. **Copy an uncommitted `.vl` aside before replacing
+  it**, and retire the generator template the moment a human edits the patch — rename it
+  `…RETIRED-do-not-expand.vl` so that re-expanding is not one keystroke away.
+
 ## Patch-engineering facts, each paid for once
 
 Every one of these was caught loudly by rung 2 (the compile harness) or rung 3 (reading the
@@ -134,7 +176,7 @@ generated C#) during Act I. They are the difference between an afternoon and a w
 | **A layer built FROM the map and drawn ON it is a genuine dataflow cycle** — `ScreenToWorld` → geometry → `FeatureLayer` → `Map.Layers` loops; break it with `FrameDelay` on the layer (one frame old, invisible to the eye) | chapter 08 failed rung 2 with `Cycle detected. Execution order undefined.` |
 | **`LinearSpread`'s `Center` and `Width` are Float32, not generic**, so annotating them Float64 is a type error and the loop needs a `ToFloat64` on the item. `GridSpread (2D)` takes Vector2 there, which is the same fact wearing a vector | chapter 10 failed rung 2 with `types dont match: Float32, Float64`, four probe compiles from the answer |
 | **`Switch` (by index) lives in `Control`, not `Primitive`**; `Switch (Boolean)` (condition, two inputs) lives in `Primitive`. Boolean `OR` is uppercase, in `Primitive.Boolean`. Scalar maths for Float64 — `Sin Cos Tan Asin Acos Atan Sqrt Ln Log Exp Pow Floor PI` — is all in **`Primitive.Float64`**, not `Math`; only the operators (`+ - * /`) are in `Math` | chapter 10; vvvvc names the real category in its error, so one compile answers one question |
-| **Skia `Text`'s `Size` is a Vector2, not a font size**, defaulting to `0, 1` — one whole scene unit tall, which on a ~2-unit-high renderer is half the screen. `0, 0.055` is readable; width 0 means auto | chapter 10's first on-map readout covered the map with three words |
+| **Text is painted by `FontAndParagraph [Graphics.Skia.Text]`, not by `Fill`.** Font `Size` (a single float, ~0.04), `Color`, family, style, line height and alignment all live on that node; its `Output` goes to `Text`'s `Paint`. Skia `Text`'s own `Size` is a Vector2 **layout box** (default `0, 1`, width 0 = auto), which is not a font size at all | set twice as if it were a font size, on two different patches; **the `Text` node's own Remarks say `Use FontAndParagraph [Graphics.Skia.Paint] to adjust various parameters`** and it was read and ignored. The user fixed it in the GUI both times |
 | **`GeometryCollection [NTS.Geometry]` is the flattener.** `Coordinates` on a collection walks it and returns every vertex, so a spread of geometries becomes one flat coordinate list and a loop-inside-a-loop is avoided | chapter 10 draws 134 coastlines from one flat ForEach |
 | **`Int2` is not a vector category.** There is no `Vector (Join)` for it; the node is `Int2 (Create) [Primitive.Int2]` with pins X, Y, Output — and `2D.Int2` does not exist at all | chapter 12 failed rung 2 with `Not found: Vector (Join) … category: 2D.Int2` |
 | **`GridSpread`/`LinearSpread` default to `Centered`, which is NOT tiling.** Centered puts the outer samples on the edges — spacing `Width/(Count-1)`. `Block` cuts the width into Count equal blocks and samples each block's centre, spacing `Width/Count`. A raster cell is a block | chapter 12's first rung-4 run: hairline seams between every cell. Compile clean, counters right, only the picture wrong |
