@@ -254,7 +254,7 @@ First set, chosen so that every one is buildable with nodes that exist today:
 |---|---|---|
 | **Two colours only** | 2024 day 22 | nothing new |
 | **Minimal map** | 2025 day 11 | nothing new |
-| **Live earthquakes** | *Fire* / *Time and space* | `HTTP Get` (ships with vvvv) + USGS GeoJSON, no key |
+| **Live earthquakes** | *Fire* / *Time and space* | **built 2026-08-23, rung 4 passed** — `HTTPGet` (ships with vvvv) + USGS GeoJSON, no key; magnitude drives `StyleByValue`, hover-`Pick` reads the properties |
 | **Out of this world** | 2025 day 18 | procedural NTS geometry; **no basemap, no network** |
 | **Places and their names** | 2025 day 24 | `LabelStyle` |
 

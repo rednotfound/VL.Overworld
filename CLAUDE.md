@@ -38,6 +38,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 | `Tutorial 08 The map is just giving you coordinates` | **rebuilt 2026-08-23** after the first draft reproduced the recorded `WithinCommonSpace` disappearance (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23): now `ScreenToWorld` → live Buffer circle → `Feature`/`FeatureLayer`, with a `FrameDelay` breaking the map↔geometry cycle. **Rung 4 passed 2026-08-23** — circle renders and follows, interaction normal, no flicker (a per-frame layer rebuild would flicker, per the 2026-08-14 measurement). Layout machine-generated |
 | `Tutorial 09 Real data` | done (was 04, and 05 before that) |
 | `Prompt A mountain` | done, layout still machine-generated |
+| `Prompt Live earthquakes` | built 2026-08-23, **rung 4 passed the same day** (dots sized/coloured by magnitude, hover-Pick reads title/mag/time, null-mag quakes counted by Status). The family's first network fetch — `HTTPGet` fires only on its Refresh pin, zero requests on open. First prompt consumer of `StyleByValue` and `Pick`. Layout machine-generated |
 
 Nothing is published anywhere. Everything runs off the siblings' `dist\` folders on disk.
 
