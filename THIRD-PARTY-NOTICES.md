@@ -149,3 +149,19 @@ loaded, which does not change whose measurement they are.
 
 *(Elevations, for anyone checking the patch text against the file: 剣ヶ峰 3776, 白山岳 3756,
 伊豆岳 3749, 成就岳 3734, 三島岳 3734, 朝日岳 3733, 久須志岳 3725, 浅間岳 3722, 駒ヶ岳 3718.)*
+
+## `help/Assets/ne_110m_coastline.geojson` — the world's coastlines
+
+**Natural Earth**, 1:110m physical coastline, downloaded 2026-08-23 from
+`nvkelso/natural-earth-vector`, `geojson/ne_110m_coastline.geojson`. 134 LineString features,
+5128 coordinates, 140 KB — the smallest scale Natural Earth publishes, and the right one for a
+whole-world drawing where every vertex is projected sixty times a second.
+
+**Public domain.** The terms of use state it outright: *"All versions of Natural Earth raster +
+vector map data found on this website are in the public domain"*, and *"No permission is needed to
+use Natural Earth. Crediting the authors is unnecessary."* There is no attribution obligation and
+no restriction on redistribution — which is why `Tutorial 10` carries no attribution widget, and
+why that absence is a decision rather than an oversight.
+
+It is recorded here anyway, because this file records what every asset IS and where it came from,
+not only what its licence demands.

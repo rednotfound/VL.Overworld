@@ -91,6 +91,99 @@ test of `SphericalMercator`'s arithmetic against first principles).
 
 **Dependencies: VL.Mapsui + VL.NetTopologySuite. Nothing missing. Buildable today.**
 
+### Built 2026-08-23 — and the design above was wrong about the subject
+
+The chapter above got built, looked at by a person, and rejected — three times — before the actual
+subject surfaced. The record matters more than the result, because the failure was a thinking
+failure, not a patch failure.
+
+**What was wrong.** The design put a *proof* on screen, not a *phenomenon*: a live cursor, ten
+readouts, and an instrument (patch-mercator ≈ 1/cos φ, agreeing to four digits) that is evidence
+for the author and nothing at all for the reader. Every Act I chapter that worked has one cause
+you control and one thing in the picture that changes; this had a still picture and ten numbers
+moving at once. Two intermediate rebuilds — a ground-distance cross, then that cross plus a
+cursor-following Skia readout — each fixed a symptom the reader had named, and each left the
+subject alone.
+
+**The premise that had to break.** Every version assumed *we only have one projection, because the
+family has no reprojection engine*. That is false, and the falseness is the chapter:
+
+> A reprojection engine solves **arbitrary CRS by EPSG code**. A **forward** cylindrical
+> projection is a line of arithmetic. Three of them differ only in what they do to a latitude:
+>
+> ```
+> x = R · λ            ← all three identical
+> y = R · φ                             equirectangular / plate carrée
+> y = R · ln(tan(π/4 + φ/2))            Web Mercator
+> y = R · sin(φ)                        Lambert cylindrical equal-area
+> ```
+>
+> The third one is a single `Sin` node. "We need a library" was never true for this.
+
+**What chapter 10 actually is now.** No map — a basemap can only draw ONE projection, and the
+chapter is about there being more than one. On screen: 17 parallels and the world's coastlines.
+One knob, `PROJECTION`, 0/1/2. Turn it and the world changes shape while every number in the file
+stays put. Greenland is Africa-sized on 1 and shrinks to its real self on 2.
+
+Setting 0 carries the sharpest line: **plate carrée is what you get by accident.** Feeding lon and
+lat straight into a drawing — which Act I does for five chapters — is already a projection, with
+real distortion, chosen without knowing a choice was being made.
+
+**Data: Natural Earth 1:110m coastline** (134 LineStrings, 5128 coordinates, 140 KB, public domain,
+recorded in THIRD-PARTY-NOTICES.md). The read path has no nested loops because
+`GeometryCollection` flattens: features → `ForEach {Split}` → `GeometryCollection` → `Coordinates`
+→ one flat spread → `ForEach {project, Circle}`. Drawing dots rather than polylines follows from
+that flattening — joining the last vertex of one island to the first of the next would draw a line
+across the Atlantic.
+
+### Why the OSM basemap cannot come, and what that is worth teaching
+
+Asked directly whether tiles could be combined with this. The answer is no, twice over, and both
+halves are content:
+
+- **A raster tile is already projected.** The XYZ scheme is *defined on* the Web Mercator square;
+  there is no such thing as an equal-area OSM tile. Making one means resampling every pixel, which
+  is what a WMS server or GDAL does offline. (WMTS permits other TileMatrixSets and EPSG:4326 tile
+  sets exist — but the tiles anyone can reach for free are Mercator.)
+- **Even "show the basemap in mode 1 only" is blocked**, by a gap already on record: the Mapsui
+  layer draws in its own pixel space, `PixelSpace.Draw` resets the matrix, and it cannot be brought
+  into the renderer space the graticule lives in (CLAUDE.md, known gaps). The only way to align is
+  to hand the geometry to the map and let it project — which is the one projection again.
+
+**The line that answers it properly, and which is now in the chapter:** *vectors reproject, rasters
+do not — at least not for free.* Reprojecting a point is a line of arithmetic; reprojecting a
+picture is moving every pixel and re-guessing the colours in between. That is why your basemap has
+exactly one projection and your data can have as many as you like.
+
+### The cross gets its own unit: `Explanation The map is not to scale`
+
+Decided 2026-08-23 with the user, on the observation that the two patches teach different things
+and that **nothing later in the course covers the second one** (11 is spatial indexing, 12 raster,
+13 networks, and VL.Proj is delayed):
+
+| | Tutorial 10 | the cross |
+|---|---|---|
+| question | why are there different maps? | how wrong is THIS map, HERE? |
+| scale | global, three projections compared | local, one projection, at the cursor |
+| distortion is | a property of the map | a number that moves as you move |
+| basemap | impossible | **possible, and this is where it belongs** |
+
+`Explanation` rather than `HowTo`: the patch proves a fact rather than handing over a recipe, and
+the title is the assertion it proves. It also closes a loop chapter 08 left open — *"your circle is
+really a slightly tall ellipse … nothing in this family reprojects yet"* — which no unit has picked
+up since.
+
+Shape, from the version that was built and then overwritten: an OSM basemap, a cross that follows
+the cursor and is **200 km on the ground each way**, and a momentary switch (hold the right mouse
+button) that redefines it as **2 degrees each way**. Held: the arms are visibly unequal on screen.
+Released: they are equal on screen and unequal in degrees. Plus `STRETCH = 1 / cos(latitude)`, which
+is the same number as the cross growing.
+
+**The file is gone and it is my fault**: the cross version was overwritten by a full-template
+rewrite before it was ever committed. Rebuilding it is cheap — the design is above and both later
+fixes are known (Skia `Text` `Size` is a Vector2, `0, 0.055`; the tiles toggle belongs in the first
+paragraph) — but the rule earned is: **stash a working uncommitted patch before replacing it.**
+
 ---
 
 ## Chapter 11 — Do You Really Want to Ask 100,000 Points One by One?

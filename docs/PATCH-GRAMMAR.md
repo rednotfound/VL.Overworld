@@ -70,11 +70,36 @@ everything above, plus:
    "output disappeared downstream of `WithinCommonSpace`, not diagnosed" mystery. Every static
    check passed; the failure log was the only place the answer existed, and it was not on the
    pre-writing reading list. Now it is.
-2. **Geometry goes ONTO the map in WGS84, through `Feature` → `FeatureLayer`; the map projects.**
-   The patch never converts world coordinates to pixels for drawing. The pixel route has now
-   failed twice, identically and undiagnosed (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23).
-   The payoff phrase is already in `HowTo Draw your own shapes`: *the shape stays on ITS GROUND
-   rather than on the window*.
+2. **Ask what the thing is anchored to. There are two legitimate answers and one failed one.**
+   *(Corrected 2026-08-23 — the earlier wording of this rule said "the patch never draws over the
+   map", which is both wrong and, taken seriously, would forbid this course every readout, button
+   and scale bar it will ever need.)*
+
+   | anchored to | route | example |
+   |---|---|---|
+   | **the ground** — it must stay on its place when you pan | WGS84 → `Feature` → `FeatureLayer`. **The map projects; the patch never computes pixels.** | a marker, a shape, chapter 10's cross |
+   | **the window or the cursor** — furniture, not geography | screen space, drawn OVER the map: a Mapsui **widget**, or a Skia layer in the `Group` above `ToSkiaLayer` | a coordinate readout, a button, a scale bar |
+   | ~~the ground, drawn by converting to pixels in the patch~~ | **failed twice, undiagnosed** — `WorldToScreen` → `WithinCommonSpace (PixelTopLeft)` → a Skia layer (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23) | — |
+
+   The payoff phrase for the first row is already in `HowTo Draw your own shapes`: *the shape stays
+   on ITS GROUND rather than on the window*. The second row is not a loophole — **it is how every
+   map library in the field is built**, and how this family is already built:
+
+   - Mapsui keeps `Map.Widgets` as a collection entirely separate from `Map.Layers`, and VL.Mapsui
+     already wraps three of them — `ScaleBar`, `Attribution`, `ZoomButtons` — **confirmed on screen
+     2026-08-14, buttons included**. Nine widget renderers are registered, `TextBox` and
+     `MouseCoordinatesWidget` among them.
+   - OpenLayers puts the cursor readout in `ol/control/MousePosition`, a **control** in the map's
+     overlay container; `ol/Overlay` is the separate thing you use when something must stay pinned
+     to a coordinate. Leaflet ships scale bar, layer switcher, zoom buttons and attribution as
+     `Control`s. No library in the field models its scale bar as a layer.
+   - **Every chapter in this pack already draws Skia over the map**: the render `Group` takes
+     `ToSkiaLayer`'s output *and* `Console`'s, and the console draws on top. That route is shipped
+     and rung-4 verified; it is simply not the same route as the one that failed.
+
+   What actually failed, in both incidents, was a **space conversion of a georeferenced thing**.
+   A readout that follows `Mouse [Graphics.Skia.IO]`'s `Position In World` never touches the map's
+   projection at all, and is Act I's oldest idiom.
 3. **Data comes OUT of the map through `Pick` and `ScreenToWorld`** — into readouts, and into
    geometry that may go back in through rule 2.
 4. **A wrapped node with no GUI consumer is unmeasured territory, not a green light.**
@@ -107,6 +132,10 @@ generated C#) during Act I. They are the difference between an afternoon and a w
 | **A ForEach region is hand-authorable**: `StatefulRegion` + inner `Patch` with Create/Update/Dispose (all `ManuallySortedPins="true"`) + `ControlPoint`s on the top/bottom borders; ALL links live in the outer patch, referencing control-point ids | chapter 05 converts the buffer's variable-count Coordinates; it compiles to a native C# `foreach` |
 | **Attribute text stores line breaks as `&#xD;&#xA;` entities and must not contain a raw `"`** — a double quote ends the attribute and the XML | chapter 04's narrative broke on `"nearest"`; use apostrophes |
 | **A layer built FROM the map and drawn ON it is a genuine dataflow cycle** — `ScreenToWorld` → geometry → `FeatureLayer` → `Map.Layers` loops; break it with `FrameDelay` on the layer (one frame old, invisible to the eye) | chapter 08 failed rung 2 with `Cycle detected. Execution order undefined.` |
+| **`LinearSpread`'s `Center` and `Width` are Float32, not generic**, so annotating them Float64 is a type error and the loop needs a `ToFloat64` on the item. `GridSpread (2D)` takes Vector2 there, which is the same fact wearing a vector | chapter 10 failed rung 2 with `types dont match: Float32, Float64`, four probe compiles from the answer |
+| **`Switch` (by index) lives in `Control`, not `Primitive`**; `Switch (Boolean)` (condition, two inputs) lives in `Primitive`. Boolean `OR` is uppercase, in `Primitive.Boolean`. Scalar maths for Float64 — `Sin Cos Tan Asin Acos Atan Sqrt Ln Log Exp Pow Floor PI` — is all in **`Primitive.Float64`**, not `Math`; only the operators (`+ - * /`) are in `Math` | chapter 10; vvvvc names the real category in its error, so one compile answers one question |
+| **Skia `Text`'s `Size` is a Vector2, not a font size**, defaulting to `0, 1` — one whole scene unit tall, which on a ~2-unit-high renderer is half the screen. `0, 0.055` is readable; width 0 means auto | chapter 10's first on-map readout covered the map with three words |
+| **`GeometryCollection [NTS.Geometry]` is the flattener.** `Coordinates` on a collection walks it and returns every vertex, so a spread of geometries becomes one flat coordinate list and a loop-inside-a-loop is avoided | chapter 10 draws 134 coastlines from one flat ForEach |
 | **`Int2` is not a vector category.** There is no `Vector (Join)` for it; the node is `Int2 (Create) [Primitive.Int2]` with pins X, Y, Output — and `2D.Int2` does not exist at all | chapter 12 failed rung 2 with `Not found: Vector (Join) … category: 2D.Int2` |
 | **`GridSpread`/`LinearSpread` default to `Centered`, which is NOT tiling.** Centered puts the outer samples on the edges — spacing `Width/(Count-1)`. `Block` cuts the width into Count equal blocks and samples each block's centre, spacing `Width/Count`. A raster cell is a block | chapter 12's first rung-4 run: hairline seams between every cell. Compile clean, counters right, only the picture wrong |
 | **A spread of Skia layers is `GridSpread (2D)` (or any spread) → `ForEach` → the layer node → `Group (Spectral)`.** `Group (Spectral)` is the one that takes a Spread; plain `Group` takes numbered pins. Layer process nodes inside the region get **per-slice state**, so N cells are N persistent nodes, not N allocations a frame | chapter 12; the idiom is copied from VL.Skia's own `Example Looking at Rectangles.vl` |
