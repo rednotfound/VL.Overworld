@@ -22,8 +22,8 @@ VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked
 ### Where the work stands — 2026-08-23
 
 **Act III is under way, and it is not a third act of maps.** 12 (a field becoming a raster) and 10
-(three projections, one knob) are built and rung-4 verified; the pack's first `Explanation` is built
-and awaits rung 4. Both chapters ended up **map-free on purpose** — 12 because a basemap would put
+(three projections, one knob) are built and rung-4 verified, and so is the pack's first
+`Explanation`. Both spine chapters ended up **map-free on purpose** — 12 because a basemap would put
 an object under a field, 10 because a basemap can only draw ONE projection. The tiles that do belong
 in this topic went into the `Explanation`, which is the local, single-projection half of the same
 subject. Full reasoning, including two rejected designs of chapter 10, in `docs/ACT-III-DESIGN.md`.
@@ -32,7 +32,7 @@ subject. Full reasoning, including two rejected designs of chapter 10, in `docs/
 
 | waiting on | what it blocks |
 |---|---|
-| **review: STRtree wrap in VL.NetTopologySuite** (that repo's ROADMAP already claims it and names the demo as its acceptance test) | `Tutorial 11`, the 100,000-point chapter |
+| **STRtree wrap in VL.NetTopologySuite** — approved 2026-08-23, not yet built. That repo's ROADMAP claims it in one line (*"an index is a resource with a lifetime"*) and does NOT name an acceptance test. **It would be that package's FIRST `[ProcessNode]`** — six source files, all static today — so it is an architecture decision as much as a wrapper | `Tutorial 11`, the 100,000-point chapter |
 | **review: a two-node `NTS.Network` surface** (`Network` + `ShortestPath`, long tail declared out of scope) | `Tutorial 13`, shortest path exists nowhere in the family |
 | **queued, no decision needed**: `Prompt Walk across a mountain` — real elevation from Terrarium tiles, **confirmed buildable with zero new capability** (`HTTPGet` → `ImageDecoder` → `Pipet`). Must come after 10, whose arithmetic it consumes | nothing; it is next in line |
 
@@ -56,7 +56,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 | `Tutorial 09 Real data` | done (was 04, and 05 before that) |
 | `Tutorial 10 Same place, different numbers` | built 2026-08-23, **rung 4 passed the same day** (north up, world in frame, and Greenland changing size as the knob turns — watched by a person). **Rebuilt three times**, and the two discarded versions are the valuable part of the record: see `docs/ACT-III-DESIGN.md`, "the design above was wrong about the subject". No map — a basemap can draw only ONE projection. 17 parallels plus Natural Earth's coastlines, one `PROJECTION` knob, three cylindrical formulas differing only in what they do to a latitude. First chapter to read a GeoJSON file for its geometry rather than for a map layer |
 | `Tutorial 12 What if space is not an object` | built 2026-08-23, **rung 4 passed the same day** (cells tile seamlessly, grid centred, and at Resolution 8 the `Field Here` number slides while the block underfoot stays flat — the chapter's whole argument, watched by a person). Act III's first chapter, and the pack's first with NO map and no geospatial computation: `SimplexNoise` over a `GridSpread (2D)`, one ForEach making one Skia `Rectangle` per cell, one knob (`Resolution`). Three NTS nodes (`Coordinate`/`Point`/`Write WKT`) stand the object model beside a field that has none — that is the chapter, and the single-package exemption is spent on it. Layout machine-generated |
-| `Explanation The map is not to scale` | built 2026-08-23, **rungs 1–3 passed; rung 4 outstanding**. The pack's first `Explanation`, and the split half of Tutorial 10: local distortion on a **real OSM basemap**, which is the one place in this topic tiles belong. A cross follows the cursor, 200 km on the ground each way; hold the right mouse button and it becomes 2 degrees each way, arms visibly unequal. `STRETCH = 1/cos(latitude)`. Closes the loop Tutorial 08 left open about buffering in degrees. **Hand-edited in the GUI** for the text paint — see the `FontAndParagraph` row in PATCH-GRAMMAR.md — so it is edit-in-place only from here |
+| `Explanation The map is not to scale` | built 2026-08-23, **rung 4 passed the same day**, after the user fixed the text paint in the GUI. The pack's first `Explanation`, and the split half of Tutorial 10: local distortion on a **real OSM basemap**, which is the one place in this topic tiles belong. A cross follows the cursor, 200 km on the ground each way; hold the right mouse button and it becomes 2 degrees each way, arms visibly unequal. `STRETCH = 1/cos(latitude)`. Closes the loop Tutorial 08 left open about buffering in degrees. **Hand-edited in the GUI** for the text paint — see the `FontAndParagraph` row in PATCH-GRAMMAR.md — so it is edit-in-place only from here |
 | `Prompt A mountain` | done, layout still machine-generated |
 | `Prompt Live earthquakes` | built 2026-08-23, **rung 4 passed the same day** (dots sized/coloured by magnitude, hover-Pick reads title/mag/time, null-mag quakes counted by Status). The family's first network fetch — `HTTPGet` fires only on its Refresh pin, zero requests on open. First prompt consumer of `StyleByValue` and `Pick`. Layout machine-generated |
 

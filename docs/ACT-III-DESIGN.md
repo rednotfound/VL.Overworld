@@ -183,7 +183,7 @@ is the same number as the cross growing.
 rewrite before it was ever committed. The rule earned: **stash a working uncommitted patch before
 replacing it.**
 
-#### Built 2026-08-23 — rungs 1–3 passed on the first compile; rung 4 outstanding
+#### Built 2026-08-23 — all four rungs passed, the last one after a GUI fix
 
 Rebuilt from the design above, smaller than the version it replaces: the eight mercator-formula
 nodes are gone (the stretch needs only `Cos`, not the projection), and the two-line readout became
