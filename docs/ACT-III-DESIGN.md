@@ -30,7 +30,8 @@ chapter below adds one line to that ledger.
 | 11: brute-force Contains per frame | **Already available** | `Contains` in a ForEach — being honestly slow is half the chapter |
 | 11: spatial index | **Available but awkward → missing small abstraction** | `NetTopologySuite.Index.Strtree.STRtree<T>` exists IN the NTS library, unwrapped. Category A: vl-nettopologysuite's ROADMAP already lists it under "Later" with the `[ProcessNode]` caveat, and names this very demo as its acceptance test. Belongs there; needs review before wrapping |
 | 12: a field, a grid, a sampled value | **Already available** | `SimplexNoise` ships in VL.CoreLib; grid = spread arithmetic; rendering = Skia. Zero geospatial dependencies, fully offline |
-| 12: real DEM / GeoTIFF | **Missing major capability** | out of scope for the chapter ON PURPOSE — the field concept teaches without a file. Real raster IO waits for a real need (the Walk-Across-a-Mountain prompt) and would be its own scope proposal then |
+| 12: real DEM / GeoTIFF **file** | **Missing major capability** | still true, and still out of scope for chapter 12 ON PURPOSE — the field concept teaches without a file. A GeoTIFF reader would be its own scope proposal |
+| real DEM values as **raster tiles** | ~~Missing~~ → **Already available. Corrected 2026-08-23** | see "The correction" below: `HTTPGet`'s Body is already `Spread<Byte>`, `ImageDecoder` turns those bytes into an image, and `Pipet [Graphics.Skia.Imaging]` reads a pixel out of it. Zero new library capability. The row above was written thinking of files and wrongly closed the door on tiles |
 | 13: hand-typed street network | **Already available** | LineStrings from WKT, chapter-07 style |
 | 13: shortest path over it | **Missing major capability** | NTS has `PlanarGraph` (used internally by Polygonizer) but **no shortest-path algorithm anywhere in the family**. Category C boundary — options and mini-proposal below; stops for review |
 
@@ -44,6 +45,7 @@ Prompt-frontier readiness, same scale:
 | The file disappears (bbox queries) | Mostly available: `HTTPGet` + a URL built from the viewport (`VisibleRange` exists in VL.Mapsui); needs a server worth querying |
 | GPS painting | Needs a GPS/GPX source — unclassified until a source is chosen |
 | Sun and shadow | Category C/D: solar-position mathematics is a new domain. Delay |
+| **Walk across a mountain** (real elevation under the cursor) | **Already available** — promoted out of "future" 2026-08-23. Designed below; must come AFTER chapter 10, whose tile/projection arithmetic it consumes |
 
 ---
 
@@ -201,6 +203,92 @@ continuously while the block underneath it stays one flat grey, and that gap IS 
 The snap is now cheap to add and worth adding: rung 4 confirmed the grid tiles, and with `Block`
 the arithmetic is exactly `snapped = (floor(p / cell) + 0.5) * cell`. The orange highlight would
 then double as the instrument proving that arithmetic and `GridSpread`'s layout agree.
+
+---
+
+## The correction — real raster arrives as TILES, and the family can already read them
+
+Written 2026-08-23, immediately after chapter 12 passed rung 4, prompted by the right question:
+*having explained the idea, shouldn't we now look at some real data — raster tiles?*
+
+**The capability inventory above was wrong, and wrong in a specific way: it reasoned about raster
+IO as a FILE problem.** Read as files, "nothing in this family can open a GeoTIFF" is still true.
+But a DEM does not have to arrive as a file. It arrives every day as ordinary XYZ PNG tiles, and
+every piece of that path already ships:
+
+| step | node | note |
+|---|---|---|
+| fetch the tile | `HTTPGet` | its `Body` is **`Spread<Byte>`**, not a string — the raw PNG is already in hand. `Prompt Live earthquakes` proved the fetch-only-on-Refresh discipline |
+| bytes → image | `ImageDecoder [Graphics.Skia.Imaging]` | wraps `SKImage.FromEncodedData`; takes a `Byte[]`, so one `ToArray` sits in between |
+| read a pixel | **`Pipet [Graphics.Skia.Imaging]`** (and `Pipet (Spread)`) | internally `SKBitmap.GetPixel` → `SKColor`. This is the node the inventory did not know about |
+
+**No new library, no new node, no scope proposal.** The door the inventory closed was never shut.
+
+### The data: Terrarium tiles
+
+`https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png` — AWS Open Data,
+**no token and no signup**, which is what makes it usable in a chapter at all. (Mapbox Terrain-RGB
+encodes the same idea with a different offset and is disqualified by its API key: a chapter that
+cannot run on a fresh install is not a chapter.)
+
+Elevation is a 24-bit fixed-point number split across the channels:
+
+```
+elevation_metres = (R * 256 + G + B / 256) - 32768
+```
+
+R is the 256s place, G the ones, B the 1/256 fraction. Range −11000 … 8900 m. Tiles are
+256×256 in EPSG:3857 — the same Web Mercator chapter 10 computes by hand.
+
+**Licence and attribution.** The tiles are a mosaic of national open datasets — USGS 3DEP / SRTM /
+GMTED2010, Copernicus EU-DEM, Geoscience Australia, LINZ, Kartverket, INEGI, ArcticDEM and more —
+under a mix of CC-BY, public domain and open government licences. Attribution is required, and
+tilezen's own `attribution.md` **does not distinguish display from analysis**: reading a value out
+counts. That row goes in `THIRD-PARTY-NOTICES.md` and the credit goes on the patch, which is
+exactly the lesson chapter 09 already teaches.
+
+### Why this is the right follow-up, and where it goes
+
+Chapter 12 SAYS *a value means nothing without its metadata*. A terrarium tile MAKES that true:
+opened on its own the PNG is meaningless pink-green noise, and becomes terrain only once you know
+the decode formula, where the tile sits in EPSG:3857, and that a pixel is an area. The four-part
+contract stops being a line of narrative and becomes something the reader performs.
+
+It also has a hard prerequisite. lon/lat → tile z/x/y → pixel-within-tile IS chapter 10's
+WebMercator arithmetic with two more steps on the end. **So: after 10, not before.** Filed as
+`Prompt Walk across a mountain` (name provisional) rather than a spine chapter, because it adds no
+new capability to the sequence — it spends chapters 10 and 12 together.
+
+### Precedent — this is the industry's normal move, not our invention
+
+deck.gl's `TerrainLayer` decodes terrarium with exactly these constants
+(`rScaler 256, gScaler 1, bScaler 1/256, offset −32768`); MapLibre's `raster-dem` source takes
+`encoding: "terrarium" | "mapbox"`; reading terrain-RGB as an ordinary texture is routine in
+three.js work. `watergis/terrain-rgb` is a small library doing precisely our task — elevation from
+a terrain-RGB/terrarium tileset by longitude and latitude — and is the closest reference
+implementation. `reearth/reearth-terrain` (terrain.reearth.land) is an open terrain-tile service in
+the same shape; AWS Terrarium is the chosen source for now.
+
+### Not yet verified — these are rung 2/3/4 questions, not facts
+
+- **`Pipet`'s `Position` semantics**: normalised 0–1 or pixel coordinates, and how it clamps at the
+  edges. Not read; the node's internals were only grepped far enough to prove `GetPixel` is there.
+- **`Spread<Byte>` → `Byte[]`**: needs a `ToArray`; untried.
+- **The endpoint**: no request has been made from here. Live-ness is assumed, not measured.
+- **Politeness**: one tile per click, never per frame. `HTTPGet` fires only on its Refresh pin —
+  the discipline exists and must be kept.
+- **Where a cached tile lands.** `Test-VLPackage.ps1`'s rule 10 fails the pack if any file shaped
+  `\<z>\<x>\<y>.png` appears anywhere in the repository — a tile cache wrote into a sibling repo
+  once already (vl-mapsui NOTES.md, 2026-08-14). A URL template in a string is fine and trips
+  nothing; a cache folder inside the repo is not. Keep any cache out of the working tree, as
+  chapter 06 already does.
+
+### Knock-on: chapter 12's honesty clause is now slightly misleading
+
+It reads *nothing in this family can read a GeoTIFF or a DEM yet*. The GeoTIFF half is still true;
+the DEM half is not, now that a DEM delivered as tiles is readable. Amended in the patch to say so
+and to point forward — an honesty clause that has quietly gone stale is worse than none, because
+the reader has no way to tell.
 
 ---
 
