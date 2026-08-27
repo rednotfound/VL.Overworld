@@ -67,7 +67,7 @@ Nothing is published anywhere. Everything runs off the siblings' `dist\` folders
 | repository | owns | tests | source files |
 |---|---|---|---|
 | `D:\2026_Projects\vl-mapsui` | drawing maps: tiles, layers, styles, picking, widgets | **225** xunit | 30 |
-| `D:\2026_Projects\vl-nettopologysuite` | geometry **and the feature model**: create, inspect, operate. Category `NTS` | **85** xunit | 10 |
+| `D:\2026_Projects\vl-nettopologysuite` | geometry **and the feature model**: create, inspect, operate — and since 2026-08-23 **index** (`NTS.Index`, its first `[ProcessNode]`). Category `NTS` | **105** xunit | 11 |
 | `D:\2026_Projects\vl-geojson` | reading and writing GeoJSON. Category `GeoJSON` | **69** (+4 skipped) | 9 |
 | **here** | the course. **No nodes, no assembly, no `src\`** | none, and none is wanted | 0 |
 
