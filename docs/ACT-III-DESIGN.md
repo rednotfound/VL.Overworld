@@ -246,6 +246,38 @@ mistake, and the counter would expose it).
 The optional prompt **Ask the Same Polygon 100,000 Times** (`PreparedGeometry`, same package, same
 `[ProcessNode]` reasoning) stays a prompt unless review says otherwise.
 
+### Built 2026-08-23 — all four rungs the same day, and it is NTS.Index's rung 4 too
+
+`NTS.Index` was reviewed and built in vl-nettopologysuite that afternoon (decisions: STRtree only,
+`Query` takes a geometry not four floats, output named `Candidates`, element-wise reference change
+detection, explicit `Build()`), and this chapter is its first consumer — so this rung 4 was also the
+node's: **`Indexes Built` reached 1 and stayed there while the mouse moved**, which is the contract
+observed live.
+
+The patch is the design, with three engineering facts paid for and recorded in PATCH-GRAMMAR.md:
+
+- **The points are made once inside a `Cache` region** that wraps the `ForEach {Vector (Split) →
+  Coordinate → Point}`. `RandomSpread (2d)` already hands out the same `Spread<Vector2>` every frame;
+  without the Cache the loop would hand `SpatialIndex` a hundred thousand *new* Point objects every
+  frame and the index would rebuild every frame — exactly the failure the `Indexes Built` pin exists
+  to expose. First Cache region in the pack, and the first ForEach nested in one.
+- **Both pipelines are `Keep`-filtered ForEach loops** over the *same* `Contains`; the query polygon
+  crosses the region border by a direct link, not a control point (a top control point is a
+  splicer — the first compile said `Polygon is no Sequence<Geometry>!`).
+- **Drawing costs nothing extra**: the grey field is `RandomSpread`'s own Vector2s through one
+  `Points` layer, no conversion; only the accepted few (~hundreds) are turned back into Vector2s,
+  via `Bounds` → Min X / Min Y.
+
+**Measured: 8 frames a second with 100,000 points.** That is the brute-force loop — a hundred
+thousand `Contains` per frame — and it is left in on purpose, because the chapter's argument is
+made of the comparison, not of the fast half alone. The number is now in the narrative as an honest
+instrument rather than hidden. Anyone who wants the fast half alone can disable one region.
+
+The two rows read as designed — `Tested 100,000` never moving, `Candidates` hugging `Accepted` from
+above, the two `Accepted` equal — and the reason candidates and accepted are *close* here is that
+points have degenerate envelopes; with real shapes the gap widens, which the narrative says and
+`IndexTests.A_candidate_is_not_a_result` proves with a diagonal line.
+
 ---
 
 ## Chapter 12 — What If Space Is Not an Object?
