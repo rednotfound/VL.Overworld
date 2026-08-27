@@ -484,6 +484,42 @@ arrive as data (OSM) and bring a dozen contracts of their own — recorded as fu
 
 ---
 
+### Decided and built 2026-08-23 — chapter approved, public API not
+
+The review came back with a distinction the design above had not drawn: **STRtree and this are not
+the same kind of change.** NTS owns STRtree, so `SpatialIndex` exposes NetTopologySuite. NTS ships
+*no* shortest path (its `PlanarGraph` is a framework for algorithm authors), so a Dijkstra is an
+algorithm of ours — and publishing an algorithm of ours on the permanent surface of a package named
+after a library is a scope decision a chapter cannot settle. Hence: built as
+**`NTS.Experimental.Network`** (`BuildNetwork` + `ShortestPath`, 18 tests), no new package, no
+`NTS.Network`, and a Network Package Scope Proposal only after the chapter, the abstraction that
+emerged, and two more genuine consumers exist. That evidence is filed in
+`vl-nettopologysuite/docs/NETWORK-SCOPE-EVIDENCE.md`, not here.
+
+Decisions that changed the design above, all from the review:
+
+- **Strict connectivity** — exact shared endpoints, no tolerance, no automatic noding, **only a
+  LineString's first and last coordinates are nodes**. A crossing is a bridge or an overpass until
+  the data says otherwise; the chapter's own river-and-bridge is the illustration, and `Union` is
+  offered as a PLAY item with the annotation that noding a crossing is *a claim about the world*.
+- **`From`/`To` are Points**, snapped to the nearest node with **snap distances as pins**.
+- **`Paths Computed` was dropped.** Dijkstra over a hand-typed town is microseconds; counting it
+  would teach that path queries need retaining. `Networks Built` stays — topology is the thing
+  worth keeping, and closing the bridge is honestly a new town (1 → 2 → 3).
+- **Local Cartesian, one unit = one metre, by declaration.** Not WGS84, not a basemap. Chapter 10
+  said a number has no spatial meaning without its system; this is the positive form — declare the
+  space as metres and `Length` legitimately *is* metres.
+- **The path keeps the original edge geometry**, reversed where walked backwards.
+
+**Rung 4 the same evening**: 200 m straight against 800 m by the streets; `Bridge Closed` makes
+`Found` False and the teal path vanish while the grey line does not move a pixel; `Networks Built`
+ticks 1 → 2 → 3; `To Snap Distance` reads 0 on a corner. Two engineering facts paid for and in
+PATCH-GRAMMAR.md: a ForEach nests inside a ForEach with every link in the outer patch, and
+`Switch (Boolean)` switches a whole `Geometry` (two WKT boxes, one toggle — the "bridge closed" town
+is simply the same MultiLineString without its last line).
+
+---
+
 ## Library Scope Proposal — VL.Proj (recommendation: DELAY)
 
 Filed because chapter 10 walks up to the boundary; filed WITH a delay recommendation because

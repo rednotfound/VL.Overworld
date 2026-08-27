@@ -31,6 +31,7 @@
 		<VLDocument link="Tutorial 10 Same place, different numbers.vl" tags="crs,coordinateSystem,projection,graticule,parallel,latitude,longitude,webMercator,mercator,equirectangular,plateCarree,lambert,equalArea,conformal,distortion,greenland,africa,epsg,3857,4326,wgs84,wkt,readWkt,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
 		<VLDocument link="Tutorial 11 Do you really want to ask 100,000 points one by one.vl" tags="index,spatialIndex,strtree,rtree,query,candidates,candidate,envelope,boundingBox,broadPhase,narrowPhase,contains,bruteForce,performance,cache,keep,foreach,randomSpread,points,skia,offline,nts,netTopologySuite,tutorial,spine" />
 		<VLDocument link="Tutorial 12 What if space is not an object.vl" tags="field,raster,grid,cell,pixel,resolution,sampling,noise,simplexNoise,gridSpread,dem,elevation,georeferencing,nodata,vector,object,foreach,skia,offline,nts,netTopologySuite,point,wkt,tutorial,spine" />
+		<VLDocument link="Tutorial 13 Close does not mean reachable.vl" tags="network,graph,node,edge,connectivity,topology,shortestPath,dijkstra,routing,distance,networkDistance,bridge,river,noding,union,experimental,buildNetwork,wkt,multiLineString,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
 	</Topic>
 	<!--
 		A third genre, and the second tier gains a second shape. `Explanation` is vvvv's own
