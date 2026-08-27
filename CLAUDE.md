@@ -32,7 +32,7 @@ subject. Full reasoning, including two rejected designs of chapter 10, in `docs/
 
 | waiting on | what it blocks |
 |---|---|
-| **STRtree wrap in VL.NetTopologySuite** — approved 2026-08-23, not yet built. That repo's ROADMAP claims it in one line (*"an index is a resource with a lifetime"*) and does NOT name an acceptance test. **It would be that package's FIRST `[ProcessNode]`** — six source files, all static today — so it is an architecture decision as much as a wrapper | `Tutorial 11`, the 100,000-point chapter |
+| ~~STRtree wrap~~ **built 2026-08-23** as `NTS.Index` — `SpatialIndex` (that package's first `[ProcessNode]`) + `Query`, 16 tests, packed to `dist\`, resolves under `vvvvc` with the node constructed once in `Create`. **Not yet seen in the GUI**: Tutorial 11 is its first consumer and therefore its rung 4. Decisions (STRtree only, geometry in not four floats, `Candidates` not results, element-wise reference change detection) in that repo's `ARCHITECTURE.md` | **nothing any more** — `Tutorial 11` is unblocked and next |
 | **review: a two-node `NTS.Network` surface** (`Network` + `ShortestPath`, long tail declared out of scope) | `Tutorial 13`, shortest path exists nowhere in the family |
 | **queued, no decision needed**: `Prompt Walk across a mountain` — real elevation from Terrarium tiles, **confirmed buildable with zero new capability** (`HTTPGet` → `ImageDecoder` → `Pipet`). Must come after 10, whose arithmetic it consumes | nothing; it is next in line |
 
