@@ -666,3 +666,53 @@ degrees — the same lie as `which-door.geojson`, and the prompt should make the
 without the dots moving; `Networks Built` equal to the number of presses; the saved file on disk
 with the right feature count. **Do not build the first draft in a session that already carries
 another chapter** — `Which door` took four probe compiles and ~650 ids; this one is bigger.
+
+### Built 2026-08-28 — rungs 1–3 passed; rung 4 pending
+
+Built in a fresh session as instructed, generated once by a script (now gone with its scratchpad; the
+`.vl` is the source of truth from here). 1138 ids, 281 links, four compiles to green, and **two
+places where the design above was wrong about what it would see** — both found before vvvv was
+opened, which is the point of writing down what rung 4 *must* see.
+
+**1. `Found` could never have flipped with the seed the design named.** "Two crossing streets" is one
+connected component, and `ShortestPath` snaps `From` and `To` to the nearest node with **no maximum
+snap distance** (read the source: `network.Nearest` is a plain argmin). A connected town gives
+`Found = true` from the first frame, whatever the dots do. So the seed is **two separate 60 m stubs,
+one under each dot**, and `Found` flips when the two towns touch. This is a fact about the node, not
+the chapter — note it for the scope proposal: a *snap tolerance* is the first pin either consumer has
+wanted, and neither needed it badly enough to add.
+
+**2. The route does not keep shrinking, and the reason is the lesson.** The rule was simulated in
+Python (same hash, same thirds, same grid) before composing, because a guess costs an afternoon and
+a script costs a minute. Prediction: `Found` flips on the **9th** press at **1080 m**, drops to
+**960 m** on the **11th**, and never moves again; growth stalls at **167 streets** by the 17th press,
+short of the 200 cap. 960 = 600 + 360 is the **Manhattan distance** between the dots — on an
+axis-aligned grid every non-backtracking route has the same length, so the only "shrink" available is
+the removal of one 60 m detour. Sixteen parameter combinations (turn thirds 1/3–0.7, branch odds
+0.3–0.6, step 60/40/30, seeds towards or away) confirmed it: a grid town cannot beat its Manhattan
+floor. The narrative now teaches that instead of promising a fall it cannot deliver; the crow's
+700 m is named as unreachable.
+
+**Snapping became the grid.** Rather than argmin-snap a new tip to existing ends within Step/2, each
+child's end is rounded onto the 60 m lattice (`Round(v/60)*60`, in Float64, so the coordinates are
+*exactly* equal and `BuildNetwork`'s `(X, Y)` dictionary joins them). Equal-length axis-aligned
+segments on a lattice means every crossing is at a node, so "streets join only at ends" and "streets
+join wherever they cross" coincide — Tutorial 13's limit stops mattering, and the text says why.
+The hash is guarded: `Frac` of a negative may be negative in VL, which would put k in −4…1 and turn
+a tip through 180° onto its parent; `+ 50000` before `Frac` keeps it in [0, 1).
+
+**Shape of the patch.** `FrameDelay<Spread<LineString>>` holds the town (Initial Value = seed);
+one `Cache` region with **two outputs** (the grown town and the GeoJSON string) does all the work
+once per change; inside it: E (ends, a ForEach in a ForEach), D (dead ends, a `Keep` loop with a
+`Keep` loop inside), A and B (children; B is the branch), L (pairs → LineStrings), F (streets →
+Features → `Write GeoJSON`). Two `Switch (Boolean)` pick next frame's town (GROW ∧ count < 200;
+RESET → seed). `FileWriter (String)` writes on SAVE. Right column: `BuildNetwork` → `ShortestPath`
+with readouts, streets in grey, route in teal, two orange dots; metres / 400 = scene units.
+
+**Rung 4 must see** (unchanged in kind, now with numbers): `FOUND` False for eight presses and True
+on the ninth; `ROUTE (m)` 1080 then 960 on the eleventh, the dots still; `NETWORKS BUILT` = presses
++ 1; `STREETS` 10, 19, 31, 45, 57, 71, 89, 107, 123, 137, 147 … 167; RESET restores 2; SAVE writes
+`help\grow-a-town.geojson` (gitignored) with `STREETS` features and Which door's reader opens it.
+If the press count differs by one or two, .NET's `Math.Sin` disagreed with Python's in a last bit
+near a third — note it and move on; if `FOUND` is True on open, the seed is joined and something in
+E/D is wrong.
