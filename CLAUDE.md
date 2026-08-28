@@ -141,7 +141,7 @@ failure in this family got in:
    picture did not change. **Never leave vvvv running unattended, and launch only through
    `tools\Open-HelpPatch.ps1`.** After any GUI session run `tools\Normalize-HelpPatches.ps1`.
    When the picture is the control, the numbers can be fetched without a person at the mouse —
-   PowerShell clicks on the renderer and `CopyFromScreen` (recipe in PATCH-GRAMMAR); the judgement
+   `tools\Capture-Renderer.ps1` clicks on the renderer and saves it as a PNG to read back; the judgement
    still belongs to the person, and the seventh defect above was reported by one before any
    screenshot was taken.
 
@@ -378,6 +378,12 @@ the right contents.
 # or without a command line: double-click Open-Chapter.cmd in the repository root.
 # A window lists the chapters; Open goes through Open-HelpPatch.ps1 (same gate, same
 # refusals, printed in the log box), and a second button runs Normalize afterwards.
+
+# rung 4's camera: photograph the running renderer, optionally clicking in it first (a click is the
+# GROW bang in Grow a town). Refuses to click if another window covers the renderer. Never launches
+# or closes vvvv.
+.\tools\Capture-Renderer.ps1 -RightClicks 1 -Clicks 11 -Out grow11.png
+.\tools\Capture-Renderer.ps1 -Clicks 20 -EachClick -Out seq\p.png   # one PNG per click
 
 # after any GUI session - vvvv repins dependency versions and saves Enabled=True
 .\tools\Normalize-HelpPatches.ps1
