@@ -26,6 +26,10 @@ param(
 
     [switch]$List,
 
+    # Also pass --log: vvvv writes Documentsvvv\gammavvv_<timestamp>.log, the only place a
+    # runtime exception inside a subpatch shows up as text (2026-08-28).
+    [switch]$Log,
+
     # Any .vl, chapter or not - scratchpad probes take this route.
     [string]$Path
 )
@@ -90,9 +94,9 @@ Write-Host "`nopening $(Split-Path $target -Leaf)"
 $paths.Repositories | ForEach-Object { Write-Host "  repo  $_" }
 Write-Host ''
 
-Start-Process -FilePath $Vvvv -ArgumentList @(
-    "`"$target`"", '--package-repositories', "`"$($paths.Repositories -join ';')`""
-)
+$vvvvArgs = @("`"$target`"", '--package-repositories', "`"$($paths.Repositories -join ';')`"")
+if ($Log) { $vvvvArgs += '--log'; Write-Host ('  logging to ' + $env:USERPROFILE + '\Documents\vvvv\gamma\vvvv_<timestamp>.log') }
+Start-Process -FilePath $Vvvv -ArgumentList $vvvvArgs
 
 Write-Host "READ IT AND CLOSE IT. Opening a document in vvvv is running it." -ForegroundColor Yellow
 Write-Host "  the overlay's first line goes red on a rebuild across two frames - close immediately if it does`n" -ForegroundColor Yellow

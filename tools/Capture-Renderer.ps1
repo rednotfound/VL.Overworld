@@ -80,6 +80,22 @@ public static class CaptureRendererNative {
     [DllImport("user32.dll")] public static extern bool SetCursorPos(int x, int y);
     [DllImport("user32.dll")] public static extern void mouse_event(uint flags, uint dx, uint dy, uint data, UIntPtr extra);
     [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr h, out Rect r);
+    public delegate bool EnumProc(IntPtr h, IntPtr l);
+    [DllImport("user32.dll")] public static extern bool EnumWindows(EnumProc p, IntPtr l);
+    [DllImport("user32.dll")] public static extern uint GetWindowThreadProcessId(IntPtr h, out uint pid);
+    [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr h);
+    [DllImport("user32.dll", CharSet = CharSet.Unicode)] public static extern int GetWindowText(IntPtr h, System.Text.StringBuilder s, int n);
+    public static IntPtr FindTitled(uint[] pids, string title) {
+        IntPtr found = IntPtr.Zero;
+        EnumWindows((h, l) => {
+            uint pid; GetWindowThreadProcessId(h, out pid);
+            if (Array.IndexOf(pids, pid) < 0 || !IsWindowVisible(h)) return true;
+            var sb = new System.Text.StringBuilder(256); GetWindowText(h, sb, 256);
+            if (sb.ToString() == title) { found = h; return false; }
+            return true;
+        }, IntPtr.Zero);
+        return found;
+    }
     [DllImport("user32.dll")] public static extern IntPtr WindowFromPoint(Point p);
     [DllImport("user32.dll")] public static extern IntPtr GetAncestor(IntPtr h, uint flags);
     public struct Point { public int X, Y; public Point(int x, int y) { X = x; Y = y; } }
@@ -101,13 +117,16 @@ public static class CaptureRendererNative {
 $handle = [IntPtr]::Zero
 $deadline = (Get-Date).AddSeconds($TimeoutSec)
 while ($handle -eq [IntPtr]::Zero -and (Get-Date) -lt $deadline) {
-    $proc = Get-Process vvvv -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -eq $Title } | Select-Object -First 1
-    if ($proc) { $handle = $proc.MainWindowHandle } else { Start-Sleep -Milliseconds 500 }
+    # not MainWindowTitle: that is whichever window Windows calls main (often the editor, title empty).
+    # Enumerate every visible top-level window of every vvvv process and match the title.
+    $pids = [uint32[]]@(Get-Process vvvv -ErrorAction SilentlyContinue | ForEach-Object { [uint32]$_.Id })
+    if ($pids.Count -gt 0) { $handle = [CaptureRendererNative]::FindTitled($pids, $Title) }
+    if ($handle -eq [IntPtr]::Zero) { Start-Sleep -Milliseconds 500 }
 }
 if ($handle -eq [IntPtr]::Zero) {
     $running = @(Get-Process vvvv -ErrorAction SilentlyContinue)
     if ($running.Count -eq 0) { throw "vvvv is not running. Launch a chapter with tools\Open-HelpPatch.ps1 first." }
-    throw "vvvv is running but no window titled '$Title' appeared within $TimeoutSec s (titles seen: $(($running | ForEach-Object MainWindowTitle) -join ', '))."
+    throw "vvvv is running but no visible window titled '$Title' appeared within $TimeoutSec s."
 }
 
 $rect = New-Object CaptureRendererNative+Rect

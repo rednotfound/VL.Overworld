@@ -3,7 +3,8 @@
 The user asked why, twenty chapters in, no patch in this pack has ever been split into a subpatch,
 and pointed at `Prompt Grow a town` — 204 nodes, 317 links, a loop three regions deep — as the
 place to start. This file is the survey of how shipped vvvv patches do it, the XML that a
-generator or a hand needs, and a concrete cut for that chapter. **Nothing here is built yet.**
+generator or a hand needs, and a concrete cut for that chapter — **built the same evening; see
+"Built" at the end for what the survey got wrong.**
 
 ## What vvvv calls it, and how often shipped help uses it
 
@@ -136,11 +137,43 @@ read top to bottom and a node the reader must open is a node the reader must tru
 Which door (89) and How high is here (92) sit under the line and are edited in place only; they
 stay flat. The rule is for what comes next, and for `Grow a town` now.
 
-## Decision 2026-08-28
+## Built 2026-08-28, late evening — by the generator after all, and four things the survey missed
 
-The user will do this refactor **by hand in the GUI** — the generator is gone with its session, and
-the user knows the editor's split-into-node gesture. From that moment the chapter is edit-in-place
-only. Keep the pin names above so the narrative's "THE MACHINERY" paragraph can name the nodes.
+The user asked for it to be done rather than described. The generator was still in the session, so the
+cut above was built as written: eight definitions (`HashOf`, `StreetEnds`, `DeadEnds`, `GrowTip`,
+`PairsToStreets`, `GrowTown`, `DrawLines`, `Readouts`), 175 nodes in the document against 204 before,
+`Application` down to ~45, `GrowTip` once with a `Branch` pin instead of two 30-node copies,
+`DrawLines` used twice. Rung 4 (driven by `Capture-Renderer.ps1`): 11 presses → FOUND True, 960 m, 129
+streets, NETWORKS BUILT 13 — identical to the flat build. Four compiles and three relaunches to get
+there, and every one of the four faults was in the *definition* mechanics, not the chapter:
+
+1. **Definitions live INSIDE the root `<Canvas>` element**, which must therefore not be self-closed;
+   `Application` sits after `</Canvas>`. The XML block above had them as siblings of the canvas and
+   vvvvc said `Not found: HashOf` — for a definition sitting right there in the file. A two-node
+   probe (`Twice`, then `Quad` using `Twice`) settled it in one compile.
+2. **Every pin of a definition must carry a type annotation.** An untyped pin is inferred from its
+   inner use, and when that is generic (`ToString`, a `ForEach`) it becomes `object`; the caller's
+   link is then **dropped in silence** and the C# reads `Debug_1_In: default(object)`. `Spread<T>`
+   is written as `Spread` with `<p:TypeArguments><TypeReference …>` (syntax from shipped patches);
+   NTS types resolve with `LastCategoryFullName="NetTopologySuite.Geometries"`.
+3. **An input and an output must not share a name.** `DeadEnds` had `From`/`To` on both sides; a
+   name-keyed pin dictionary silently pointed the *caller's* links at the outputs and the inputs
+   stayed empty — no dead ends, no children, a town that never grew, no exception anywhere. Found by
+   drawing stage counts on the picture (`ends 2, dead 0`). Outputs are now `Dead From`/`Dead To` and
+   the generator asserts the two name sets are disjoint. FrameDelay gets away with `Value`/`Value`;
+   a generator does not.
+4. **The signature's pin order is not the `Bounds` x order** (`From, All Ends, To` came out of
+   `60, 180, 300`); irrelevant to the compiled code, visible in the node's tooltip. Unresolved.
+
+And one that was not the mechanism: a **vvvv instance from an hour earlier had survived every
+`taskkill` issued from Git Bash**, `Open-HelpPatch.ps1` refused to start a second (correctly) while the
+calling script only counted output lines, and vvvv **hot-reloaded** each regenerated file into the old
+process. Two rounds of "still nothing" were measured against that. `Stop-Process -Force` from
+PowerShell, then confirm the count is 0, then launch, then confirm the start time is seconds ago.
+
+The chapter is now edit-in-place only, like every other. Rung 3 gains a line: **grep the C# for
+`default(` at every definition call site** — a dropped link looks exactly like a wired one from the
+canvas.
 
 ## Cost, honestly
 
