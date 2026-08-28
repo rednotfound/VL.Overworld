@@ -31,7 +31,10 @@ opened (a connected seed could never have shown `Found = false`; a grid town can
 Manhattan floor) and are written up with the press-by-press prediction in `docs/ACT-III-DESIGN.md`,
 "Built 2026-08-28". §4b is marked built in `vl-nettopologysuite/docs/NETWORK-SCOPE-EVIDENCE.md`. **Next: the Network Package Scope
 Proposal** — both consumers exist; the one pin either has wanted is a snap tolerance on `ShortestPath`.
-Everything else open is unchanged from the 08-23 entry below.
+Open besides that: `docs/SUBPATCHES.md` — a surveyed proposal for splitting `Grow a town` into
+Process definitions (`GrowTown`, `GrowTip`, `DrawLines`, `Readouts`); **the user will do that refactor by
+hand in the GUI**, after which the chapter is edit-in-place only like every other. Everything else
+open is unchanged from the 08-23 entry below.
 
 ### Where the work stands — 2026-08-23
 
@@ -129,11 +132,18 @@ failure in this family got in:
    resolved either: an unimported type is dropped in silence.
 3. **Read the generated C#.** This is the rung people skip. A pin fed by nothing compiles as a
    literal (`string Cache_Folder_11 = @"";`) and looks identical to a wired one from the outside.
-   Check that values arrive from `__pad_…` and that process nodes are constructed in `__Create__`.
+   Check that values arrive from `__pad_…`, that process nodes are constructed in `__Create__` — **and
+   that their `.Update(` calls sit inside `Update()`, not inside `__Create__`** (2026-08-28: a computed
+   chain on FrameDelay's `Initial Value` put an entire chapter into `__Create__`; it ran once, every
+   readout stayed 0, and three green compiles said nothing).
 4. **Open it in vvvv and look.** Two of the five defects below were invisible to every automated
    signal — the layer rebuilt, the counters advanced, the status pins named real folders, and the
    picture did not change. **Never leave vvvv running unattended, and launch only through
    `tools\Open-HelpPatch.ps1`.** After any GUI session run `tools\Normalize-HelpPatches.ps1`.
+   When the picture is the control, the numbers can be fetched without a person at the mouse —
+   PowerShell clicks on the renderer and `CopyFromScreen` (recipe in PATCH-GRAMMAR); the judgement
+   still belongs to the person, and the seventh defect above was reported by one before any
+   screenshot was taken.
 
 ### Known gaps in the libraries — do not rediscover these
 

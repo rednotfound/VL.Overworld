@@ -136,6 +136,12 @@ read top to bottom and a node the reader must open is a node the reader must tru
 Which door (89) and How high is here (92) sit under the line and are edited in place only; they
 stay flat. The rule is for what comes next, and for `Grow a town` now.
 
+## Decision 2026-08-28
+
+The user will do this refactor **by hand in the GUI** — the generator is gone with its session, and
+the user knows the editor's split-into-node gesture. From that moment the chapter is edit-in-place
+only. Keep the pin names above so the narrative's "THE MACHINERY" paragraph can name the nodes.
+
 ## Cost, honestly
 
 One generator extension, one regeneration (the patch has not been arranged by hand — it is the
