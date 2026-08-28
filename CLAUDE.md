@@ -19,6 +19,16 @@ repository already records: a memory that drifts out of date is worse than no me
 family has been bitten by exactly that (a memory saying "Mapsui is blocked" survived months after
 VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked).
 
+### Where the work stands — 2026-08-28
+
+**Everything listed below is built, rung-4 verified and committed; the working tree is clean.** Today added
+`Prompt How high is here` (Terrarium elevation, renamed from `Walk across a mountain`) and
+`Prompt Which door` (the first of the two consumers `NTS.Experimental.Network` needs before a scope
+proposal — it wanted the surface unchanged, and `Nearest Node` was not needed). **Next: `Prompt Grow a
+town`**, fully designed at the end of `docs/ACT-III-DESIGN.md` — the second network consumer and
+`Write GeoJSON`’s first; build it in a fresh session. After it: the Network Package Scope Proposal.
+Everything else open is unchanged from the 08-23 entry below.
+
 ### Where the work stands — 2026-08-23
 
 **Act III is under way, and it is not a third act of maps.** 12 (a field becoming a raster) and 10
