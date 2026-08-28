@@ -45,7 +45,7 @@ Prompt-frontier readiness, same scale:
 | The file disappears (bbox queries) | Mostly available: `HTTPGet` + a URL built from the viewport (`VisibleRange` exists in VL.Mapsui); needs a server worth querying |
 | GPS painting | Needs a GPS/GPX source — unclassified until a source is chosen |
 | Sun and shadow | Category C/D: solar-position mathematics is a new domain. Delay |
-| **Walk across a mountain** (real elevation under the cursor) | **Already available** — promoted out of "future" 2026-08-23. Designed below; must come AFTER chapter 10, whose tile/projection arithmetic it consumes |
+| **Walk across a mountain** (real elevation under the cursor; shipped 2026-08-28 as `Prompt How high is here`) | **Already available** — promoted out of "future" 2026-08-23. Designed below; must come AFTER chapter 10, whose tile/projection arithmetic it consumes |
 
 ---
 
