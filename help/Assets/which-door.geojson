@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    { "type": "Feature", "properties": { "kind": "street", "name": "North Street (east half)", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[0, 150], [350, 150]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "South Street (west half)", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[-350, -150], [0, -150]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "South Street (east half)", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[0, -150], [350, -150]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "West Avenue - a dead end going north", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[-350, -150], [-350, 150]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "East Avenue (south half)", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[350, -150], [350, 0]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "East Avenue (north half)", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[350, 0], [350, 150]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "North Lane - ends 20 m from the north door", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[0, 150], [0, 100]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "East Lane - ends 40 m from the east door", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[350, 0], [160, 0]] } },
+    { "type": "Feature", "properties": { "kind": "street", "name": "South Lane - ends 30 m from the south door", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "LineString", "coordinates": [[0, -150], [0, -110]] } },
+
+    { "type": "Feature", "properties": { "kind": "building", "name": "The building", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-120, -80], [120, -80], [120, 80], [-120, 80], [-120, -80]]] } },
+
+    { "type": "Feature", "properties": { "kind": "door", "name": "North door", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "Point", "coordinates": [0, 80] } },
+    { "type": "Feature", "properties": { "kind": "door", "name": "East door", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "Point", "coordinates": [120, 0] } },
+    { "type": "Feature", "properties": { "kind": "door", "name": "South door", "units": "metres, local sketch, not WGS84" },
+      "geometry": { "type": "Point", "coordinates": [0, -80] } }
+  ]
+}

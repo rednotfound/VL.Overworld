@@ -534,6 +534,42 @@ PATCH-GRAMMAR.md: a ForEach nests inside a ForEach with every link in the outer 
 `Switch (Boolean)` switches a whole `Geometry` (two WKT boxes, one toggle — the "bridge closed" town
 is simply the same MultiLineString without its last line).
 
+### Second consumer, built 2026-08-28 — `Prompt Which door`
+
+The evidence file asked for two more genuine consumers wanting the experimental surface **unchanged**;
+this is the first. A building from a GeoJSON file, three doors, a hand-drawn street grid with one
+deliberate asymmetry (North Street has no west half), and the cursor as destination. One ForEach
+asks `ShortestPath` once per door; `Length + From Snap Distance` is each door's total; `Min` →
+`IndexOf` → `GetSlice` picks the winner and pulls its name, path, snap and position out of the
+loop's five output spreads. **Rung 4 the same day**: cursor top-left, North door nearest as the crow
+flies, patch says South door — 720 m by the streets, 30 m door-to-street; `Networks Built` 1 and
+still.
+
+What it tells the scope decision:
+
+- **The surface held without change.** `BuildNetwork` + `ShortestPath` exactly as shipped; nothing
+  was worked around.
+- **`Nearest Node` (the one addition §3 of the evidence file proposed) was NOT needed.** The
+  winning path's first vertex IS the door's snapped node and its last vertex IS the cursor's, so
+  the two snap stubs are `GetSlice 0` and `GetSlice (Count-1)` of the drawn path. The one case
+  that route cannot show is the empty path (door and cursor snapping to the same node) — gated
+  off with `Count > 0`. That is the precise, small hole a `Nearest Node` would fill; one consumer
+  is not enough to say it must.
+- **Streets from a FILE work as-is**: a `Spread<Geometry>` filtered out of `Read GeoJSON`'s
+  features is the same reference every frame, so `Networks Built` stays at 1 without a `Cache`.
+  The element-wise reference rule survives a second producer.
+- **Snapping to ENDS shows its limit honestly.** A door beside a long block would snap to the
+  block's far corner; the stub would draw the mistake and the number would measure it. Edge
+  splitting stays on the non-scope list, and the prompt says so.
+
+Two things about the data, both deliberate: the file **abuses GeoJSON** (RFC 7946 fixes the
+coordinates as WGS84; these are metres in a sketch, and every feature's `units` property says
+so — the honest form of chapter 13's *one unit is one metre, by declaration*), and features
+are sorted by **`GeometryType`, not by a `kind` property** — because VL has no Object equality
+node, so comparing `TryGetValue`'s `Object` against a string has no clean form, while
+`GeometryType` is a `String` and `= [Primitive.String]` is one node. The `name` property is
+still read, as `Object`, and `ToString`ed only for the winner.
+
 ---
 
 ## Library Scope Proposal — VL.Proj (recommendation: DELAY)

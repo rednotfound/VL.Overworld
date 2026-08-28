@@ -10,6 +10,7 @@ is why chapter 09 treats it as part of the lesson.
 | file | source | licence | what it asks of you |
 |---|---|---|---|
 | `cities.geojson` | hand-written for this package | MIT, same as the patches | nothing |
+| `which-door.geojson` | hand-drawn for `Prompt Which door`: nine streets, one building, three doors in a **local metre sketch, not WGS84** — every feature's `units` property says so, because GeoJSON (RFC 7946) has no way to declare a projected CRS | MIT, same as the patches | nothing |
 
 *(Grows as chapters are added. Every asset gets a row before it is committed — an unattributed
 file in a shipped package is a licensing defect, not an oversight to fix later.)*

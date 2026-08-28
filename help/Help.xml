@@ -45,6 +45,7 @@
 	<Topic title="Prompts">
 		<VLDocument link="Prompt A mountain.vl" tags="fuji,mountain,peak,crater,elevation,geojson,nts,coordinate,linestring,linearring,polygon,trail,osm,openstreetmap,label,prompt,japan" />
 		<VLDocument link="Prompt How high is here.vl" tags="elevation,dem,terrain,terrarium,raster,tile,pixel,pipet,imageDecoder,httpGet,http,network,fetch,contract,encoding,metadata,fuji,mountain,mercator,zoom,map,mapsui,osm,screenToWorld,skia,text,prompt" />
+		<VLDocument link="Prompt Which door.vl" tags="network,graph,shortestPath,routing,networkDistance,snap,snapping,entrance,door,building,accessibility,pedestrian,geojson,readGeoJSON,feature,attribute,property,tryGetValue,geometryType,keep,filter,foreach,min,indexOf,getSlice,experimental,buildNetwork,skia,offline,nts,netTopologySuite,prompt" />
 		<VLDocument link="Prompt Live earthquakes.vl" tags="earthquake,quake,usgs,live,feed,http,httpGet,network,fetch,geojson,magnitude,styleByValue,gradient,graduated,symbol,reactive,holdLatest,map,mapsui,prompt" />
 	</Topic>
 </Pack>
