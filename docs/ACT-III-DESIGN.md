@@ -398,7 +398,7 @@ contract stops being a line of narrative and becomes something the reader perfor
 
 It also has a hard prerequisite. lon/lat → tile z/x/y → pixel-within-tile IS chapter 10's
 WebMercator arithmetic with two more steps on the end. **So: after 10, not before.** Filed as
-`Prompt Walk across a mountain` (name provisional) rather than a spine chapter, because it adds no
+`Prompt How high is here` (name provisional) rather than a spine chapter, because it adds no
 new capability to the sequence — it spends chapters 10 and 12 together.
 
 ### Precedent — this is the industry's normal move, not our invention

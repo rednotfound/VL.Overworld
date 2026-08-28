@@ -166,7 +166,7 @@ why that absence is a decision rather than an oversight.
 It is recorded here anyway, because this file records what every asset IS and where it came from,
 not only what its licence demands.
 
-## Terrarium terrain tiles — fetched live by `Prompt Walk across a mountain`, not stored here
+## Terrarium terrain tiles — fetched live by `Prompt How high is here`, not stored here
 
 **No file in this repository.** The prompt fetches `https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png`
 at run time, one tile per tile change, only after the reader switches `Elevation` on. Nothing is
