@@ -411,19 +411,35 @@ a terrain-RGB/terrarium tileset by longitude and latitude — and is the closest
 implementation. `reearth/reearth-terrain` (terrain.reearth.land) is an open terrain-tile service in
 the same shape; AWS Terrarium is the chosen source for now.
 
-### Not yet verified — these are rung 2/3/4 questions, not facts
+### Built 2026-08-28 — the questions above, answered by rungs 2–4
 
-- **`Pipet`'s `Position` semantics**: normalised 0–1 or pixel coordinates, and how it clamps at the
-  edges. Not read; the node's internals were only grepped far enough to prove `GetPixel` is there.
-- **`Spread<Byte>` → `Byte[]`**: needs a `ToArray`; untried.
-- **The endpoint**: no request has been made from here. Live-ness is assumed, not measured.
-- **Politeness**: one tile per click, never per frame. `HTTPGet` fires only on its Refresh pin —
-  the discipline exists and must be kept.
-- **Where a cached tile lands.** `Test-VLPackage.ps1`'s rule 10 fails the pack if any file shaped
-  `\<z>\<x>\<y>.png` appears anywhere in the repository — a tile cache wrote into a sibling repo
-  once already (vl-mapsui NOTES.md, 2026-08-14). A URL template in a string is fine and trips
-  nothing; a cache folder inside the repo is not. Keep any cache out of the working tree, as
-  chapter 06 already does.
+- **`Pipet`'s `Position` is in PIXELS** of the decoded image (`GetPixel`), so the tile arithmetic's
+  fractional remainder × 256 goes straight in. Out of range reads as zeros — which the formula turns
+  into exactly `-32768`, a number worth recognising: it means *no pixel*, not *very deep*.
+- **`Spread<Byte>` → `Byte[]`** is `GetInternalArray [Collections.Spread]`; `ToArray` does not exist
+  under that name for this case.
+- **The endpoint is live**, no key, and one tile arrives in well under a second. Verified from
+  PowerShell first (z11/1813/808, summit pixel (52,178) → 3744 m) and then in the GUI.
+- **The first frame has no body.** `HTTPGet` has not returned yet, `Body` is an empty spread, and
+  `ImageDecoder` on zero bytes throws `ArgumentException: The data buffer was empty` — a Critical
+  that stops the whole patch, which is what the user saw on the first open. `Count(Body) > 0` now
+  gates an `If` region around the decoder, and the same bool drives `Pipet`, `DrawImage`, the marker
+  and the elevation label's `Enabled`. Rungs 1–3 could not have caught this: the code is correct
+  for every frame except the ones before the network answers.
+- **The data must be SHOWN, or the reader cannot tell what they are reading.** The first GUI round's
+  verdict was *"I don't see any terrain, and I don't know what data you used or how it got in"* —
+  correct on both counts: the tile was fetched and read but never drawn. It is now drawn bottom-right
+  exactly as it arrived (a 256×256 of red-orange noise, because colour here is encoding, not
+  picture) with an orange dot on the one pixel being read. The lesson is the same as chapter 06's:
+  every automated signal said it worked, and only a person at the GUI could say it taught nothing.
+- **The Skia scene over a Mapsui map counts y DOWNWARD** (observed: a label at y = -0.92 drew at the
+  top). The marker's y was written with a flip and landed above the tile; the flip was wrong.
+- **Politeness held**: fetch only on `Changed(tile URL) OR Changed(Elevation toggle)`, `AND`ed with the
+  toggle, so an open patch makes zero requests and a moving cursor makes one per tile boundary.
+- **Honest about what it is not.** Nearest pixel, no interpolation: the summit reads 3744 m against
+  3776 m surveyed, because a ~60 m cell averages the peak away. 3DEP covers only the United States;
+  the tile under Fuji comes from the SRTM/GMTED layer of the mosaic, which is why the credit names
+  every source. Real analysis (slope, watershed, profile) wants a GeoTIFF and GDAL, not this.
 
 ### Knock-on: chapter 12's honesty clause is now slightly misleading
 

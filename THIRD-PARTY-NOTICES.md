@@ -165,3 +165,24 @@ why that absence is a decision rather than an oversight.
 
 It is recorded here anyway, because this file records what every asset IS and where it came from,
 not only what its licence demands.
+
+## Terrarium terrain tiles — fetched live by `Prompt Walk across a mountain`, not stored here
+
+**No file in this repository.** The prompt fetches `https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png`
+at run time, one tile per tile change, only after the reader switches `Elevation` on. Nothing is
+cached to disk. It is recorded here because the data is SHOWN — a height under the cursor — and the
+terms require attribution for analysis as well as display.
+
+**Source**: Terrain Tiles on the AWS Registry of Open Data (originally Mapzen / tilezen `joerd`).
+The tiles are a mosaic of national and global open datasets: USGS 3DEP, GMTED2010 and SRTM (public
+domain), NOAA ETOPO1 (public domain), Copernicus EU-DEM, Geoscience Australia, LINZ, Kartverket,
+INEGI, ArcticDEM and others, under a mix of public-domain, CC-BY and open-government licences.
+
+**Obligation**: tilezen's `attribution.md` requires credit "in a place that is reasonable to the
+medium" and does not distinguish display from analysis. The prompt therefore carries a credit line on
+screen (bottom left of the renderer) and this section. The encoding contract the prompt applies —
+`height = (R × 256 + G + B / 256) − 32768` — is from tilezen's `formats.md` and was verified against
+a fetched tile on 2026-08-23 (Fuji summit pixel at z11 → 3744 m).
+
+**Chosen over Mapbox Terrain-RGB** because it needs no API key: a patch that cannot run on a fresh
+install is not a chapter.
