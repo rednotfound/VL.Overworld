@@ -716,3 +716,45 @@ on the ninth; `ROUTE (m)` 1080 then 960 on the eleventh, the dots still; `NETWOR
 If the press count differs by one or two, .NET's `Math.Sin` disagreed with Python's in a last bit
 near a third — note it and move on; if `FOUND` is True on open, the seed is joined and something in
 E/D is wrong.
+
+### First open, 2026-08-28 evening — the fourth rung found what three green compiles could not
+
+The user opened it and reported: STREETS 0, NODE COUNT 0, NETWORKS BUILT 0, GROW does nothing, no
+text on the picture, two dots and two stubs drawn. Everything that reads a value said 0; the one
+thing that had run once — the renderer — showed a correct first frame.
+
+**Cause: the entire patch had been compiled into `__Create__`.** `FrameDelay`'s `Initial Value` is a
+Create-operation pin, and it was fed from the seed chain (`Coordinate` → `Cons` → `LineString` →
+`Cons`). The compiler placed that chain in Create, FrameDelay with it, and then everything downstream
+of FrameDelay's output — the Cache, BuildNetwork, ShortestPath, the drawing loops, the Renderer.
+`Update()` contained the FileWriter and nothing else. Proved by a one-link probe: drop the Initial
+Value link and the same patch compiles with everything in `Update()` (lines 110–1078). Rung 3 as
+practised — "values arrive from `__pad_…`, process nodes constructed in `__Create__`" — was
+satisfied and did not look at which METHOD the `.Update(` calls were in. It does now (PATCH-GRAMMAR).
+
+**Fix:** Initial Value unconnected (default: empty spread), and `Count < 1` OR'd into the RESET
+condition, so the first frame injects the seed the same way RESET does. Second finding the same
+evening: VL.Skia's y points DOWN (the dots said so — A at y = −0.45 drew top-left — and I still placed
+the readouts at +0.95, then "fixed" them by assuming y-up). Two rounds for one sign; the readouts
+now sit at negative y, top-left. `NETWORKS BUILT` reads 2 on open — an empty first frame, then the
+seed — so the expected count is presses + 2, not + 1.
+
+**Observed after the fix, driven from PowerShell** (clicks on the renderer, `CopyFromScreen`): 3 presses
+→ STREETS 35, NETWORKS BUILT 4, two towns growing as T-junctions and crossroads on the grid, FOUND
+False, ROUTE 0. The simulation said 31 after three presses; the difference is real and not yet
+explained (Float32 `Distance < 1` on the dead-end test, or `Math.Sin`'s last bit — the towns
+diverge only where a hash sits within 1e-16 of a third, so it is more likely the former; unresolved).
+Then the rest, driven the same way with one capture per press and a pixel signature on the readout
+region to find the frames that changed: **FOUND flips on the 11th press, ROUTE reads 960 at once
+and never changes; STREETS 106 at 9, 129 at 11, 164 at 19; NETWORKS BUILT = presses + 2; a right-click
+RESET followed by 11 presses reproduced the identical town.** So the prediction was wrong in two
+details — 11th not 9th, and no 1080 step — and right in the one that matters: the Manhattan floor.
+The narrative now says what the patch does and names the script's miss. The user pressed SAVE at 129 streets:
+`help\grow-a-town.geojson`, a FeatureCollection of 129 LineStrings, first coordinate `[-300, -180]`, `properties`
+`{}` — the file says nothing about metres, exactly as the narrative tells the reader. **Rung 4 passed.**
+
+**Also learned about the reader, from the reader:** "我连 Found 在哪里都找不到" — a machine-generated
+canvas with the readouts a thousand units from the button fails PATCH-GRAMMAR rule 2 even when
+every node is right. The patch now has a cockpit row (three buttons, four numbers) at the top, the
+picture is the control (left-click GROW, right-click RESET) and the four numbers are drawn on it, so
+nobody has to look at the canvas at all.
