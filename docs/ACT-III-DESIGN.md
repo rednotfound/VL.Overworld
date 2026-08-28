@@ -622,3 +622,47 @@ chapter 10 as designed does not cross it.
 
 Success for this stage is the four designs above surviving review with the boundaries intact —
 not any of them being built.
+
+## Prompt Grow a town — design, written 2026-08-28, NOT built
+
+The second of the two consumers `NETWORK-SCOPE-EVIDENCE.md` §4b asks for, and the one that
+stresses the *lifecycle* half of the contract: `Networks Built` is meant to climb here, once per
+generation. Designed after `Prompt Which door` shipped; a fresh session builds it.
+
+**Two packages, honestly.** VL.NetTopologySuite for the network and VL.GeoJSON for `Write GeoJSON`
+— **its first consumer anywhere in the pack** (grep: no help patch writes a file yet). SAVE writes
+the grown town to a file the reader chooses; that is a real reason for the second package, not a
+rule-satisfying one, and it gives rung 4 something a person can verify outside vvvv: the file
+exists and `Prompt Which door`'s reader can open it.
+
+**The rule (one knob: GROW, a bang; one number: Step = 60 m).** State is a `Spread<LineString>`,
+seeded with two crossing streets. On GROW, for every **dead end** (an endpoint that occurs exactly
+once among all endpoints) add one segment of length Step, turning 0°, +90° or −90° from the
+street's own direction, chosen by `Random` seeded from generation × index so a run is repeatable.
+**If the new end lands within Step/2 of an existing endpoint, snap to it** — that join is what
+creates loops, and loops are what make the route between the two fixed points shorten. Cap at
+~200 streets so the O(n²) endpoint scans stay trivial.
+
+**What the reader watches.** Two fixed orange dots at opposite corners; `ShortestPath` between
+them every frame. `Found` is False for the first generations, then a route appears and its
+`Length` *shrinks* as the town closes loops — the emergent behaviour IS the prompt. `Networks
+Built` reads the generation number, by design (the town really is new each press), which is the
+counter doing its job rather than reporting a fault — say so on the canvas.
+
+**Idioms already paid for:** dead-end detection is the argmin shape inverted — endpoints via
+`Bounds`/`Coordinates`→ForEach, occurrence count by a nested ForEach with `Distance = 0` (there is
+no `=` for `Coordinate`; do not look for one), `Keep` where count is 1. Snapping is
+`Min`→`IndexOf`→`GetSlice` over distances to existing endpoints. State across presses needs
+`FrameDelay` on the spread (Tutorial 08's cycle-breaker) or an `S+H`; probe which VL offers for a
+`Spread<LineString>` before composing — a probe compile costs one run, a guess costs an afternoon.
+
+**Honesty clauses to write in:** this is a toy generator, not a planner; real growth models
+(space colonisation, tensor fields, Parish–Müller) are cited, not implemented. Snapping goes to
+ENDS only (same limit as Which door). `Write GeoJSON` writes metres into a format that means
+degrees — the same lie as `which-door.geojson`, and the prompt should make the reader write the
+`units` property themselves.
+
+**Rung 4 must see:** `Found` flip False→True at some generation; `Length` fall on a later press
+without the dots moving; `Networks Built` equal to the number of presses; the saved file on disk
+with the right feature count. **Do not build the first draft in a session that already carries
+another chapter** — `Which door` took four probe compiles and ~650 ids; this one is bigger.
