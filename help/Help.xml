@@ -18,20 +18,24 @@
 		tools\Test-VLPackage.ps1 checks the prefix, and checks this file against the disk in both
 		directions.
 	-->
-	<Topic title="The course">
+	<Topic title="The course, Act I - space as computation">
 		<VLDocument link="Tutorial 01 Your cursor is now data.vl" tags="nts,netTopologySuite,geometry,coordinate,point,wkt,mouse,cursor,vector2,skia,offline,tutorial,spine,start,first" />
 		<VLDocument link="Tutorial 02 A dot, a path, a plot of ground.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,vertex,length,area,wkt,vector2,skia,offline,tutorial,spine" />
 		<VLDocument link="Tutorial 03 In or out.vl" tags="nts,netTopologySuite,geometry,polygon,point,contains,within,predicate,spatial,relation,hittest,collision,mouse,concave,boundary,skia,offline,tutorial,spine" />
 		<VLDocument link="Tutorial 04 The shortest line between.vl" tags="nts,netTopologySuite,geometry,polygon,point,distance,nearest,nearestPoints,proximity,sdf,distancefield,line,mouse,skia,offline,tutorial,spine" />
 		<VLDocument link="Tutorial 05 Grow a shape.vl" tags="nts,netTopologySuite,geometry,buffer,dilate,erode,offset,negative,segments,generative,foreach,loop,isempty,skia,offline,tutorial,spine" />
+	</Topic>
+	<Topic title="The course, Act II - the earth arrives">
 		<VLDocument link="Tutorial 06 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine" />
 		<VLDocument link="Tutorial 07 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,airport,haneda,runway,tutorial,spine" />
 		<VLDocument link="Tutorial 08 The map is just giving you coordinates.vl" tags="map,mapsui,nts,netTopologySuite,screenToWorld,worldToScreen,project,projection,mercator,wgs84,epsg,longitude,latitude,pixel,screen,overlay,marker,draw,skia,pixelspace,withinCommonSpace,cursor,wkt,tutorial,spine" />
 		<VLDocument link="Tutorial 09 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
+	</Topic>
+	<Topic title="The course, Act III - beyond the basemap">
 		<VLDocument link="Tutorial 10 Same place, different numbers.vl" tags="crs,coordinateSystem,projection,graticule,parallel,latitude,longitude,webMercator,mercator,equirectangular,plateCarree,lambert,equalArea,conformal,distortion,greenland,africa,epsg,3857,4326,wgs84,wkt,readWkt,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
 		<VLDocument link="Tutorial 11 Do you really want to ask 100,000 points one by one.vl" tags="index,spatialIndex,strtree,rtree,query,candidates,candidate,envelope,boundingBox,broadPhase,narrowPhase,contains,bruteForce,performance,cache,keep,foreach,randomSpread,points,skia,offline,nts,netTopologySuite,tutorial,spine" />
 		<VLDocument link="Tutorial 12 What if space is not an object.vl" tags="field,raster,grid,cell,pixel,resolution,sampling,noise,simplexNoise,gridSpread,dem,elevation,georeferencing,nodata,vector,object,foreach,skia,offline,nts,netTopologySuite,point,wkt,tutorial,spine" />
-		<VLDocument link="Tutorial 13 Close does not mean reachable.vl" tags="network,graph,node,edge,connectivity,topology,shortestPath,dijkstra,routing,distance,networkDistance,bridge,river,noding,union,experimental,buildNetwork,wkt,multiLineString,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
+		<VLDocument link="Tutorial 13 Close does not mean reachable.vl" tags="network,graph,node,edge,connectivity,topology,shortestPath,dijkstra,routing,distance,networkDistance,bridge,river,noding,union,ntsNetwork,wkt,multiLineString,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
 	</Topic>
 	<!--
 		A third genre, and the second tier gains a second shape. `Explanation` is vvvv's own
@@ -45,8 +49,8 @@
 	<Topic title="Prompts">
 		<VLDocument link="Prompt A mountain.vl" tags="fuji,mountain,peak,crater,elevation,geojson,nts,coordinate,linestring,linearring,polygon,trail,osm,openstreetmap,label,prompt,japan" />
 		<VLDocument link="Prompt How high is here.vl" tags="elevation,dem,terrain,terrarium,raster,tile,pixel,pipet,imageDecoder,httpGet,http,network,fetch,contract,encoding,metadata,fuji,mountain,mercator,zoom,map,mapsui,osm,screenToWorld,skia,text,prompt" />
-		<VLDocument link="Prompt Which door.vl" tags="network,graph,shortestPath,routing,networkDistance,snap,snapping,entrance,door,building,accessibility,pedestrian,geojson,readGeoJSON,feature,attribute,property,tryGetValue,geometryType,keep,filter,foreach,min,indexOf,getSlice,experimental,buildNetwork,skia,offline,nts,netTopologySuite,prompt" />
-		<VLDocument link="Prompt Grow a town.vl" tags="network,graph,procedural,generative,growth,lsystem,grid,deadEnd,snap,snapping,loop,shortestPath,routing,buildNetwork,experimental,frameDelay,cache,foreach,keep,hash,random,reproducible,writeGeoJSON,geojson,fileWriter,save,feature,units,skia,offline,nts,netTopologySuite,prompt" />
+		<VLDocument link="Prompt Which door.vl" tags="network,graph,shortestPath,routing,networkDistance,snap,snapping,entrance,door,building,accessibility,pedestrian,geojson,readGeoJSON,feature,attribute,property,tryGetValue,geometryType,keep,filter,foreach,min,indexOf,getSlice,ntsNetwork,skia,offline,nts,netTopologySuite,prompt" />
+		<VLDocument link="Prompt Grow a town.vl" tags="network,graph,procedural,generative,growth,lsystem,grid,deadEnd,snap,snapping,loop,shortestPath,routing,ntsNetwork,frameDelay,cache,foreach,keep,hash,random,reproducible,writeGeoJSON,geojson,fileWriter,save,feature,units,skia,offline,nts,netTopologySuite,prompt" />
 		<VLDocument link="Prompt Paint by numbers.vl" tags="choropleth,thematic,population,attribute,classification,linear,log,logarithm,scale,ramp,gradient,styleByValue,featureLayer,pick,hover,tryGetValue,naturalEarth,countries,geojson,readGeoJSON,offline,tileless,map,mapsui,normalisation,density,prompt" />
 		<VLDocument link="Prompt Live earthquakes.vl" tags="earthquake,quake,usgs,live,feed,http,httpGet,network,fetch,geojson,magnitude,styleByValue,gradient,graduated,symbol,reactive,holdLatest,map,mapsui,prompt" />
 	</Topic>

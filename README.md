@@ -48,16 +48,39 @@ under your cursor renders instantly, offline, with nothing to agree to.
 | **Tutorial 08** | The map is just giving you coordinates | the loop closed: the map says which place is under your cursor, and geometry grown from that answer is drawn back onto the earth, live |
 | **Tutorial 09** | Real data | GeoJSON, from a file or straight off the network |
 
+**Act III — beyond the basemap.** Projections, indexes, fields, networks. Two of these chapters
+are map-free on purpose — a basemap can only draw one projection, and it would put an object
+underneath a field.
+
+| | | you end up with |
+|---|---|---|
+| **Tutorial 10** | Same place, different numbers | three projections on one knob — and the discovery that your lon/lat scatterplots were already projected maps |
+| **Tutorial 11** | Do you really want to ask 100,000 points one by one | a spatial index — and the contract that a candidate is not a result |
+| **Tutorial 12** | What if space is not an object | the field worldview: every place has a value, and a raster is a field that was sampled |
+| **Tutorial 13** | Close does not mean reachable | a street network where distance, topology and routing come apart — close the bridge and watch |
+
+**One Explanation** — proves a fact on screen; skippable; the title is the assertion:
+*The map is not to scale* — the cross under your cursor is 200 km each way, and it swells as you
+pan north.
+
 **The prompts** are unordered, unnumbered and skippable. Pick one. Ignore the rest. There is no
 prerequisite and no completion.
 
-> *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
-> *Places and their names*
+| | | network? |
+|---|---|---|
+| *A mountain* | Fuji from the top — nine crater peaks typed by hand, four trails from a file | file only |
+| *Live earthquakes* | the last 24 hours of the ground moving, every dot sized by magnitude | asks first |
+| *How high is here* | real elevation under your cursor, decoded from a terrain tile's pixels | asks first |
+| *Which door* | the quickest door by the streets is not the nearest as the crow flies | offline |
+| *Grow a town* | click, and a street network grows until two towns touch | offline |
+| *Paint by numbers* | 177 countries painted by population — and the two lies every choropleth tells | offline |
 
-**All nine spine chapters exist.** The geometry act (01–05) is verified end to end; 08 is the
-youngest, rebuilt 2026-08-23 onto the family's own rails after its first draft repeated a recorded
-mistake (the story is in vl-mapsui's NOTES.md). The map act was numbered 01, 02 and 04 until
-2026-08-22 — the geometry act took the front numbers; see
+Anything that can fetch (basemap tiles in 06, 08, 09 and the Explanation; the two prompts marked
+*asks first*) starts with its switch **off**: opening a patch is not agreeing to network traffic.
+
+**All thirteen spine chapters, the Explanation and all six prompts exist and pass all four
+verification rungs.** The map act was numbered 01, 02 and 04 until 2026-08-22 — the geometry act
+took the front numbers; see
 [CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md)'s third
 correction for why.
 
