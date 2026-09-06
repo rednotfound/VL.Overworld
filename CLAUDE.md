@@ -35,6 +35,20 @@ stays a wait-for-consumer gap; any new permanent capability goes through a scope
 
 ### Where the work stands — 2026-09-06
 
+**2026-09-06, later: the lab produced its first shipped unit.** The user answered the unit
+proposal with a pipeline diagram (question → where/how much/how detailed → decides what to read →
+data access → answer; recorded in ACT-IV-LAB) and chose **B + experiment 4**: two Explanations,
+then the Range reconnaissance; Chapter 14 neither promised nor scheduled. The first Explanation is
+**built: `Explanation You do not have to read everything`** (21 units now) — the layouts
+experiment shipped, plus the full 8×8 grid, the small file's features as teal centroid dots that
+cannot leave the orange cell, readouts and the ODbL credit on the picture. Tiles moved to
+`help\Assets\haneda-tiles` with the cut recorded and verified reproducible (`lab\cut-tiles.py`);
+rungs 1–3 green; rung 4's camera ran (`Capture-Renderer`: cell 3,4 → 306,984/754/6 vs 2,447/6/6,
+every number matching the file on disk) — **the human half of rung 4 is still owed**. Found on the
+way and recorded in PATCH-GRAMMAR: **vvvvc crashes on a document filename containing an
+apostrophe** (hence "You do not", not "You don't"). Still queued: the second Explanation
+(`Sharper is a different question`, cursor-driven ladder), then experiment 4.
+
 **2026-09-06, evening: the Act IV laboratory opened** — `docs/ACT-IV-LAB.md` (rules: contradiction
 first, no new surface, consent as everywhere, results as numbers) and its first two experiments.
 **Experiment 1, the tile ledger**, measured without a patch: all of this course's sessions ever

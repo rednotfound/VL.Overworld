@@ -245,6 +245,17 @@ nowhere else.
 
 ### Decision — 2026-09-06
 
+**Built 2026-09-06, the same evening** — `help\Explanation You do not have to read everything.vl`,
+rungs 1–3 green on the first generated try (one content try; two filename tries — see the title
+note below). Over the prototype it adds the full 8×8 grid (16 strip rectangles whose edges
+coincide), the small file's features as teal centroid dots (`Split → Centroid → Bounds` per
+feature — `Bounds` on a Point is its X/Y, no coordinate lists needed), readouts and the ODbL
+credit drawn on the picture. Rung 4's camera: cursor at the renderer's centre landed in cell 3,4 —
+screen said ONE FILE 306,984 read / 754 parsed / 6 in cell, MANY FILES 2,447 / 6 / 6, file
+`tile_3_4.geojson`; every number matches the disk (that cell's gap is 125×, wider than the runway
+cell's 26×). The dots sat inside the orange cell. The human half of rung 4 — a person moving the
+mouse, watching the file change, trying PLAY — is still owed.
+
 *(Title amended during the build: the proposed `You don't have to read everything` was the pack's
 first filename with an apostrophe, and vvvvc CRASHES on it — unhandled exception 0xE0434352 in
 `ProjectBuilder.BuildAsync`, no diagnostic; the identical content compiled green under a
