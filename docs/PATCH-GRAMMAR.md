@@ -57,6 +57,15 @@ Hard rules, in force across chapters 01–05:
 - **Readouts**: the number or bool that IS the lesson gets fontsize 14 and a label; WKT boxes are
   plain String IOBoxes wide enough to read.
 
+## A document filename must not contain an apostrophe
+
+vvvvc crashes on it — unhandled exception `0xE0434352` in `ProjectBuilder.BuildAsync`, with a bare
+stack trace and no diagnostic naming the file. Measured 2026-09-06: `Explanation You don't have to
+read everything.vl` crashed the compiler; byte-identical content under a no-apostrophe name
+compiled green. Rung 2 is mandatory, so a unit title simply cannot carry one; spell the
+contraction out (`You do not have to read everything` — which the pack's title voice already
+prefers: `Close does not mean reachable`).
+
 ## The map act — the two sanctioned directions, and the rule that would have prevented Tutorial 08's first draft
 
 Written down 2026-08-23, after that draft rebuilt a recorded dead end. Act II chapters follow

@@ -213,7 +213,7 @@ capabilities, not permissions:
 
 | unit | from | the assertion it proves | packages |
 |---|---|---|---|
-| `Explanation You don't have to read everything` | exp 3 (+ exp 1's ledger as its opening numbers) | same data, same question, same answer — 26x less read, because the LAYOUT matched the question | GeoJSON + NTS (already true of the prototype) |
+| `Explanation You do not have to read everything` | exp 3 (+ exp 1's ledger as its opening numbers) | same data, same question, same answer — 26x less read, because the LAYOUT matched the question | GeoJSON + NTS (already true of the prototype) |
 | `Explanation Sharper is a different question` | exp 2 | the same place answers at every sharpness; each level is one fetch; truth arrives by degrees and is priced in tiles, not bytes | Mapsui + NTS — the shipped form is cursor-driven on a real map (any summit, not just Fuji), which the prototype's fixed-place form is not; the fixed form has NO legitimate home (zero family packages, and Explanations get no single-package exemption) |
 | *(the ledger)* | exp 1 | folded into the first Explanation's text as measured numbers — no patch of its own yet | — |
 
@@ -244,6 +244,12 @@ CONNECTION; format names belong in a single honest sentence each ("this idea is 
 nowhere else.
 
 ### Decision — 2026-09-06
+
+*(Title amended during the build: the proposed `You don't have to read everything` was the pack's
+first filename with an apostrophe, and vvvvc CRASHES on it — unhandled exception 0xE0434352 in
+`ProjectBuilder.BuildAsync`, no diagnostic; the identical content compiled green under a
+no-apostrophe probe name. So: `You do not have to read everything`, which also matches the pack's
+existing title voice — `Close does not mean reachable`. Recorded in PATCH-GRAMMAR.)*
 
 **B, then experiment 4** — chosen by the user after drawing the pipeline diagram above. The two
 Explanations each prove one interrogative of that diagram; experiment 4 then goes after the one

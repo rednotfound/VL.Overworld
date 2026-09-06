@@ -44,6 +44,7 @@
 		the assertion it proves.
 	-->
 	<Topic title="Explanations">
+		<VLDocument link="Explanation You do not have to read everything.vl" tags="partition,tiling,tilingScheme,spatialSubsetting,fullScan,layout,file,fileReader,geojson,readGeoJSON,feature,centroid,contains,grid,cell,bytes,read,parse,cost,query,cloudNative,cloudOptimized,geoparquet,pmtiles,cog,haneda,osm,openstreetmap,foreach,keep,skia,offline,nts,netTopologySuite,explanation" />
 		<VLDocument link="Explanation The map is not to scale.vl" tags="scale,scaleFactor,distortion,conformal,mercator,webMercator,projection,cos,latitude,distance,trueDistance,metres,degrees,buffer,cross,map,mapsui,osm,openstreetmap,tiles,screenToWorld,skia,widget,control,nts,netTopologySuite,explanation" />
 	</Topic>
 	<Topic title="Prompts">

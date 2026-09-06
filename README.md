@@ -59,9 +59,10 @@ underneath a field.
 | **Tutorial 12** | What if space is not an object | the field worldview: every place has a value, and a raster is a field that was sampled |
 | **Tutorial 13** | Close does not mean reachable | a street network where distance, topology and routing come apart — close the bridge and watch |
 
-**One Explanation** — proves a fact on screen; skippable; the title is the assertion:
+**Two Explanations** — each proves a fact on screen; skippable; the title is the assertion:
 *The map is not to scale* — the cross under your cursor is 200 km each way, and it swells as you
-pan north.
+pan north. *You do not have to read everything* — the same 754 features twice on disk, and the
+side that partitioned them reads ~26× less to give the identical answer.
 
 **The prompts** are unordered, unnumbered and skippable. Pick one. Ignore the rest. There is no
 prerequisite and no completion.
@@ -75,11 +76,14 @@ prerequisite and no completion.
 | *Grow a town* | click, and a street network grows until two towns touch | offline |
 | *Paint by numbers* | 177 countries painted by population — and the two lies every choropleth tells | offline |
 
-Anything that can fetch (basemap tiles in 06, 08, 09 and the Explanation; the two prompts marked
+Anything that can fetch (basemap tiles in 06, 08, 09 and *The map is not to scale*; the two
+prompts marked
 *asks first*) starts with its switch **off**: opening a patch is not agreeing to network traffic.
 
-**All thirteen spine chapters, the Explanation and all six prompts exist and pass all four
-verification rungs.** The map act was numbered 01, 02 and 04 until 2026-08-22 — the geometry act
+**All thirteen spine chapters, both Explanations and all six prompts exist.** Everything has
+passed all four verification rungs except the newest Explanation (*You do not have to read
+everything*), which has passed the three automated rungs and still owes rung 4 — a person
+watching it run. The map act was numbered 01, 02 and 04 until 2026-08-22 — the geometry act
 took the front numbers; see
 [CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md)'s third
 correction for why.

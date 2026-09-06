@@ -134,6 +134,18 @@ this vector data, since they are the same source.
 features, kept because a 40 KB file can be embedded in a patch as a string where a 307 KB one
 cannot. Same terms.)*
 
+## `help/Assets/haneda-tiles/` — the same airport, cut into 32 files
+
+**A derived database of `haneda.geojson`**: the identical 754 features, partitioned into an 8 × 8
+grid by NTS-definition centroid — each feature in exactly one file, 32 files, median about 9 KB.
+The cut is recorded and reproducible: `lab/cut-tiles.py` (run on 2026-09-06 for Act IV lab
+experiment 3; verified to reproduce all 32 files feature-for-feature). It ships because
+`Explanation You do not have to read everything` is the comparison of the two layouts.
+
+**ODbL, same terms** — and being a *derived database*, share-alike applies to it exactly as to its
+source. The Explanation shows the data (teal centroid dots), so the credit is drawn on the
+picture: `© OpenStreetMap contributors`.
+
 ## `help/Assets/fuji.geojson` — Mount Fuji
 
 **65 features from OpenStreetMap**, fetched through Overpass on 2026-08-22 for
