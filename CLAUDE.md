@@ -43,10 +43,15 @@ then the Range reconnaissance; Chapter 14 neither promised nor scheduled. The fi
 experiment shipped, plus the full 8×8 grid, the small file's features as teal centroid dots that
 cannot leave the orange cell, readouts and the ODbL credit on the picture. Tiles moved to
 `help\Assets\haneda-tiles` with the cut recorded and verified reproducible (`lab\cut-tiles.py`);
-rungs 1–3 green; rung 4's camera ran (`Capture-Renderer`: cell 3,4 → 306,984/754/6 vs 2,447/6/6,
-every number matching the file on disk) — **the human half of rung 4 is still owed**. Found on the
-way and recorded in PATCH-GRAMMAR: **vvvvc crashes on a document filename containing an
-apostrophe** (hence "You do not", not "You don't"). Still queued: the second Explanation
+**all four rungs
+passed the same evening** — the camera first (`Capture-Renderer`: cell 3,4 → 306,984/754/6 vs
+2,447/6/6, every number matching the file on disk), then the person, who caught the unit's one
+defect before signing off: the tile FileReader flashed purple on every empty cell, because the
+patch was using the reader's exception as its absence signal. Absence is the lesson, so it is now
+data: `Exists` gates the Read, a `Switch (Boolean)` feeds the parser '' when there is nothing to
+read (and `AND`'s output pin is `Output`, not `Result`). Found on the way and recorded in
+PATCH-GRAMMAR: **vvvvc crashes on a document filename containing an apostrophe** (hence "You do
+not", not "You don't"). Still queued: the second Explanation
 (`Sharper is a different question`, cursor-driven ladder), then experiment 4.
 
 **2026-09-06, evening: the Act IV laboratory opened** — `docs/ACT-IV-LAB.md` (rules: contradiction

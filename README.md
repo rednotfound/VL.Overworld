@@ -80,10 +80,8 @@ Anything that can fetch (basemap tiles in 06, 08, 09 and *The map is not to scal
 prompts marked
 *asks first*) starts with its switch **off**: opening a patch is not agreeing to network traffic.
 
-**All thirteen spine chapters, both Explanations and all six prompts exist.** Everything has
-passed all four verification rungs except the newest Explanation (*You do not have to read
-everything*), which has passed the three automated rungs and still owes rung 4 — a person
-watching it run. The map act was numbered 01, 02 and 04 until 2026-08-22 — the geometry act
+**All thirteen spine chapters, both Explanations and all six prompts exist and pass all four
+verification rungs.** The map act was numbered 01, 02 and 04 until 2026-08-22 — the geometry act
 took the front numbers; see
 [CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md)'s third
 correction for why.

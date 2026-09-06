@@ -262,7 +262,10 @@ its absence signal. Absence is the lesson, so it must be data, not an error: `Ex
 now gates the Read (`Changed AND Exists`) and a `Switch (Boolean)` feeds the parser '' when there
 is nothing to read - same zeros on screen, no exception as control flow. One compile fault on the
 way: **`AND`'s output pin is `Output`, not `Result`** (OR's is Result; the compiler names the
-missing pin). Re-verified through rungs 1-3.
+missing pin). Re-verified through rungs 1-3, then **rung 4's human half passed the
+same evening**: the person moved the mouse across the grid - filename following the cell, the two
+in-cell numbers equal, empty cells reading 0, and the reader quiet throughout ("seems much
+better"). All four rungs discharged.
 
 *(Title amended during the build: the proposed `You don't have to read everything` was the pack's
 first filename with an apostrophe, and vvvvc CRASHES on it — unhandled exception 0xE0434352 in
