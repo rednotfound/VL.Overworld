@@ -256,6 +256,14 @@ screen said ONE FILE 306,984 read / 754 parsed / 6 in cell, MANY FILES 2,447 / 6
 cell's 26×). The dots sat inside the orange cell. The human half of rung 4 — a person moving the
 mouse, watching the file change, trying PLAY — is still owed.
 
+**Rung 4's person found the first defect (2026-09-06):** moving the mouse made the tile FileReader
+flash purple - half the 64 cells have no file, and the patch was using the reader's EXCEPTION as
+its absence signal. Absence is the lesson, so it must be data, not an error: `Exists [IO.Path]`
+now gates the Read (`Changed AND Exists`) and a `Switch (Boolean)` feeds the parser '' when there
+is nothing to read - same zeros on screen, no exception as control flow. One compile fault on the
+way: **`AND`'s output pin is `Output`, not `Result`** (OR's is Result; the compiler names the
+missing pin). Re-verified through rungs 1-3.
+
 *(Title amended during the build: the proposed `You don't have to read everything` was the pack's
 first filename with an apostrophe, and vvvvc CRASHES on it — unhandled exception 0xE0434352 in
 `ProjectBuilder.BuildAsync`, no diagnostic; the identical content compiled green under a
