@@ -224,9 +224,9 @@
             <ControlPoint Id="MtWK5xbCgza4IXYNZoOG7U" Bounds="610,313" Alignment="Bottom" />
           </Node>
           <Node Bounds="60,340,120,19" Id="L6yq1YjzPxpwpsi63fpIOa">
-            <p:NodeReference LastCategoryFullName="NTS.Experimental.Network" LastDependency="VL.NetTopologySuite.vl">
+            <p:NodeReference LastCategoryFullName="NTS.Network" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="BuildNetwork" />
+              <Choice Kind="ProcessAppFlag" Name="Network" />
             </p:NodeReference>
             <Pin Id="KVaZlhzfOjjWpbWoH5E2Vf" Name="Line Strings" Kind="InputPin" />
             <Pin Id="JedujTkWjxC2mVHCfokyAS" Name="Result" Kind="OutputPin" />
@@ -401,7 +401,7 @@
                 <Pin Id="QF7D2mEKc9xPITANhy9G8y" Name="Result" Kind="OutputPin" />
               </Node>
               <Node Bounds="250,510,100,19" Id="Neeq1DEDdz0PAs2fT2yTNY">
-                <p:NodeReference LastCategoryFullName="NTS.Experimental.Network" LastDependency="VL.NetTopologySuite.vl">
+                <p:NodeReference LastCategoryFullName="NTS.Network" LastDependency="VL.NetTopologySuite.vl">
                   <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                   <Choice Kind="OperationCallFlag" Name="ShortestPath" />
                 </p:NodeReference>

@@ -96,6 +96,10 @@ public static class CaptureRendererNative {
         }, IntPtr.Zero);
         return found;
     }
+    [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr h, IntPtr after, int x, int y, int cx, int cy, uint flags);
+    public static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
+    public static readonly IntPtr HWND_NOTOPMOST = new IntPtr(-2);
+    public const uint SWP_NOMOVE_NOSIZE_NOACTIVATE = 0x0001 | 0x0002 | 0x0010;
     [DllImport("user32.dll")] public static extern IntPtr WindowFromPoint(Point p);
     [DllImport("user32.dll")] public static extern IntPtr GetAncestor(IntPtr h, uint flags);
     public struct Point { public int X, Y; public Point(int x, int y) { X = x; Y = y; } }
@@ -143,6 +147,14 @@ Start-Sleep -Milliseconds $SettleMs
 # Windows may refuse to bring a window forward for a process the user is not interacting with, and
 # a click then lands in whatever covers the renderer - a browser, on the first test run. Refuse.
 $onTop = [CaptureRendererNative]::TopLevelWindowAt($cx, $cy)
+if ($onTop -ne $handle) {
+    # SetForegroundWindow is refused when this process is not the foreground one, and vvvv's own
+    # Help Browser opens over the renderer. SetWindowPos TOPMOST needs no foreground permission.
+    [void][CaptureRendererNative]::SetWindowPos($handle, [CaptureRendererNative]::HWND_TOPMOST, 0, 0, 0, 0, [CaptureRendererNative]::SWP_NOMOVE_NOSIZE_NOACTIVATE)
+    Start-Sleep -Milliseconds 300
+    [void][CaptureRendererNative]::SetWindowPos($handle, [CaptureRendererNative]::HWND_NOTOPMOST, 0, 0, 0, 0, [CaptureRendererNative]::SWP_NOMOVE_NOSIZE_NOACTIVATE)
+    $onTop = [CaptureRendererNative]::TopLevelWindowAt($cx, $cy)
+}
 if ($onTop -ne $handle) {
     throw "another window covers the renderer's centre ($cx,$cy); nothing was clicked or captured. Move it aside (or minimise it) and run again."
 }
