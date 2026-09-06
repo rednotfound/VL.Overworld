@@ -19,7 +19,29 @@ repository already records: a memory that drifts out of date is worse than no me
 family has been bitten by exactly that (a memory saying "Mapsui is blocked" survived months after
 VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked).
 
+### The current phase — set 2026-09-06
+
+**The first volume (Tutorials 01–13) is frozen as a coherent whole.** The project now runs on three
+tracks instead of adding numbered chapters: **A** — review and polish the first volume from the
+learner's perspective (the honesty/navigation sweep below was its first pass; hand-arranging the
+18 machine-generated layouts is its long tail, and the user's); **B** — keep expanding Prompts as
+the research frontier (next candidates assessed: Voronoi, sun-and-shadow, time-window quakes, GPS
+painting, audio-driven buffer — Voronoi and Simplify would trigger the small NTS wraps the roadmap
+already reserves); **C** — an unnumbered Act IV laboratory around *"what if the world doesn't fit
+in memory?"*: experiments first (tile-request counter, resolution ladder, same-data-two-layouts,
+a range-request reconnaissance), technologies (COG/PMTiles/GeoParquet/STAC) only as answers, and
+**no Chapter 14 until several prototypes show the same recurring mental-model shift**. Reprojection
+stays a wait-for-consumer gap; any new permanent capability goes through a scope proposal first.
+
 ### Where the work stands — 2026-09-06
+
+**2026-09-06, later: the honesty and navigation sweep** — the first volume's words caught up with
+its libraries (see commit 9875323): no course text calls the network experimental any more,
+A mountain no longer claims StyleByValue's wall exists, five "(planned)" markers and two dead NEXT
+pointers are gone, Tutorials 07/09 gained their missing exits (09 → 10 is the Act II → III hinge),
+the Explanation gained inbound paths from 08 and 10, README finally lists Act III + the six real
+prompts with a network-consent column, and Help.xml presents the course as its three acts.
+
 
 **`Prompt Paint by numbers` — built and rung-4 verified the same day.** The choropleth unit GST 101
 Lab 4's coverage row had waited for since `StyleByValue` (2026-08-23): Natural Earth's 177 countries
