@@ -147,7 +147,7 @@ by offset, draw it, and show the request log. Medium risk; everything stays prot
 
 ---
 
-## Unit proposal — 2026-09-06 (the lab's first output; decision is the user's)
+## Unit proposal — 2026-09-06 (the lab's first output; **decided the same day: B + experiment 4**)
 
 Two experiments confirmed the same mental-model shift, which is the lab's own threshold for
 proposing units. This section is the proposal. **Nothing below is built until the ⊙ points are
@@ -242,6 +242,16 @@ No PMTiles/COG/GeoParquet reading, no Range requests, no new nodes, no async/str
 no "cloud" in any title. The word *pyramid* may appear; the word *mipmap* belongs in CREATIVE
 CONNECTION; format names belong in a single honest sentence each ("this idea is why X exists"),
 nowhere else.
+
+### Decision — 2026-09-06
+
+**B, then experiment 4** — chosen by the user after drawing the pipeline diagram above. The two
+Explanations each prove one interrogative of that diagram; experiment 4 then goes after the one
+box with no evidence (`data access`, remote). Chapter 14 is neither promised nor scheduled: it
+becomes proposable only when all four boxes have evidence, and it would be the diagram taught top
+to bottom. Build order: `You don't have to read everything` first (machinery 90% proven in the
+prototype), `Sharper is a different question` second (needs the cursor-driven rebuild), then the
+Range reconnaissance. The non-scope list above binds both units.
 
 ### Recommendation
 
