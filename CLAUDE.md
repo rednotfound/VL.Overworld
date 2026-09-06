@@ -35,6 +35,17 @@ stays a wait-for-consumer gap; any new permanent capability goes through a scope
 
 ### Where the work stands — 2026-09-06
 
+**2026-09-06, evening: the Act IV laboratory opened** — `docs/ACT-IV-LAB.md` (rules: contradiction
+first, no new surface, consent as everywhere, results as numbers) and its first two experiments.
+**Experiment 1, the tile ledger**, measured without a patch: all of this course's sessions ever
+have fetched 3,422 tiles ≈ 73 MB, against ~366 billion in a full pyramid — the maps always felt
+complete at 0.0000004%. **Experiment 2, the resolution ladder**, built as `lab\Experiment
+resolution ladder.vl` (outside help\, unpacked, unvalidated, on purpose): Fuji's summit asked its
+height at zooms 8–13 — 3705 → 3753 m toward the true 3776 as pixels shrink 499 → 16 m — and the
+unexpected finding that per-tile bytes FALL with zoom (121 → 40 KB); sharpness costs tile count,
+not tile size. "Resolution is part of access" currently reads as the strongest Act IV candidate;
+per the lab rule it waits for a second experiment pointing the same way.
+
 **2026-09-06, later: the honesty and navigation sweep** — the first volume's words caught up with
 its libraries (see commit 9875323): no course text calls the network experimental any more,
 A mountain no longer claims StyleByValue's wall exists, five "(planned)" markers and two dead NEXT
