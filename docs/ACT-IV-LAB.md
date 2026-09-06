@@ -147,6 +147,74 @@ by offset, draw it, and show the request log. Medium risk; everything stays prot
 
 ---
 
+## Unit proposal — 2026-09-06 (the lab's first output; decision is the user's)
+
+Two experiments confirmed the same mental-model shift, which is the lab's own threshold for
+proposing units. This section is the proposal. **Nothing below is built until the ⊙ points are
+decided.**
+
+### The evidence, in one paragraph
+
+The ledger (exp 1) showed that weeks of map use cost 73 MB of a 366-billion-tile world; the ladder
+(exp 2) showed the same summit at six sharpnesses, each one fetch away, truth arriving by degrees;
+the layouts (exp 3) showed the same 754 features answering the same question for 26x fewer bytes
+when the disk arrangement matched the question. One sentence covers all three: **how much you read,
+and how sharp, is part of the query — and the dataset's organisation decides what a small question
+costs.** That is the entire conceptual payload of cloud-native GIS, reached without naming a
+single format.
+
+### ⊙ The shape: three options
+
+**A. Chapter 14 now** — a conceptual spine chapter (*"What if the world doesn't fit in memory?"*)
+whose interactive heart is the layouts experiment, opened by the ledger's numbers, with the ladder
+as its second half. Honest cost: it carries two capabilities (partition + pyramid), breaking the
+one-capability rule that shaped 01–13; it opens a Volume 2 whose other chapters do not exist; and
+the lab has run for one day. The phase brief allows proposing it, and also says a chapter must be
+EARNED — three prototypes in one day is the minimum imaginable earning.
+
+**B. Two Explanations now, the chapter stays unearned** *(recommended)* — the pack already has the
+precedent: `The map is not to scale` is the split-off half of chapter 10, an assertion proved on
+screen, unordered, skippable. Both experiments are exactly that shape — demonstrations, not
+capabilities, not permissions:
+
+| unit | from | the assertion it proves | packages |
+|---|---|---|---|
+| `Explanation You don't have to read everything` | exp 3 (+ exp 1's ledger as its opening numbers) | same data, same question, same answer — 26x less read, because the LAYOUT matched the question | GeoJSON + NTS (already true of the prototype) |
+| `Explanation Sharper is a different question` | exp 2 | the same place answers at every sharpness; each level is one fetch; truth arrives by degrees and is priced in tiles, not bytes | Mapsui + NTS — the shipped form is cursor-driven on a real map (any summit, not just Fuji), which the prototype's fixed-place form is not; the fixed form has NO legitimate home (zero family packages, and Explanations get no single-package exemption) |
+| *(the ledger)* | exp 1 | folded into the first Explanation's text as measured numbers — no patch of its own yet | — |
+
+Chapter 14 then waits for what it actually lacks: the ANSWERS half (a real remote read — exp 4's
+Range reconnaissance, a real cloud format touched once), and a second volume with more than one
+chapter in it.
+
+**C. Wait entirely** — keep both as lab prototypes, run exp 4 first. Costs nothing, but the two
+confirmed lessons stay invisible to every learner, and the lab exists to feed the course.
+
+### What B would touch (if decided)
+
+Both units go through the full pipeline: design entry here → generator → four rungs → Help.xml
+(`Explanations` topic — which stops being a one-entry topic) → README (the Explanation line
+becomes a table of two) → THIRD-PARTY-NOTICES (the tiles folder becomes a help asset with its
+derivation script recorded; Terrarium attribution as in How high). The layouts Explanation
+inherits the prototype's machinery plus: the grid drawn fully, the selected cell's features drawn,
+the ledger paragraph, PLAY (delete a tile file and point at its cell; recut with a different N),
+GIS WORDS (partition, tiling scheme, hot/cold read, the centroid-contract lesson), and exits to
+11, 09 and the ladder. The ladder Explanation is a rebuild on the How-high chassis (cursor →
+lon/lat → six tile fetches), not a copy of the fixed-place prototype.
+
+### ⊙ Non-scope, stated now so the units cannot creep
+
+No PMTiles/COG/GeoParquet reading, no Range requests, no new nodes, no async/streaming machinery,
+no "cloud" in any title. The word *pyramid* may appear; the word *mipmap* belongs in CREATIVE
+CONNECTION; format names belong in a single honest sentence each ("this idea is why X exists"),
+nowhere else.
+
+### Recommendation
+
+**B**, ladder second: build `You don't have to read everything` first (its machinery is 90%
+proven in the prototype), then `Sharper is a different question` (needs the cursor-driven
+rebuild). Two sessions. Chapter 14 remains a question the lab has not finished asking.
+
 ## Ledger of lab findings that already changed the course
 
 - Experiment 2's finding 3 (bytes fall with zoom) is worth a sentence in `Prompt How high is here`
