@@ -188,7 +188,7 @@ it**, not **when**.
 | **1** GIS Application Paper | a writing assignment | **skipped** — academic assessment |
 | **2** Spatial Data Models | vector vs raster; open a shapefile and a Landsat scene; notice vector layers arrive in a random colour | spine 06 (raster, as *"change how the world looks"*) and 02/07 (vector) |
 | **3** Coordinate Systems and Map Projections | EPSG codes; shape and area **distortion** across world projections; UTM; datum | **not yet, and blocked** — no reprojection node exists in the family |
-| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; legend naming | spine 07 partly; the categorised half unblocked 2026-08-23 (`StyleByValue`) — a unit for it is not yet written |
+| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; legend naming | spine 07 partly; the categorised half **covered 2026-09-06 by `Prompt Paint by numbers`** (choropleth, linear-vs-log, the counts-on-areas lie named) |
 | **5** Creating Geospatial Data | digitising | **out of scope** — `Mapsui.Nts.Editing` is not wrapped |
 | **6** Remote Sensing and Analysis | imagery interpretation | **out of scope** — another field |
 | **7** Basic Geospatial Analysis | buffers, overlays, selection | **belongs to VL.NetTopologySuite**, which has 9 of them — Act I chapters 03–05 will teach them |

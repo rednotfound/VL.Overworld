@@ -187,3 +187,17 @@ a fetched tile on 2026-08-23 (Fuji summit pixel at z11 → 3744 m).
 
 **Chosen over Mapbox Terrain-RGB** because it needs no API key: a patch that cannot run on a fresh
 install is not a chapter.
+
+## help/Assets/countries-population.geojson
+
+**Natural Earth**, 1:110m Admin 0 countries, downloaded 2026-09-06 from
+`https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson`
+and thinned for `Prompt Paint by numbers`: geometry coordinates rounded to three decimals, all
+attributes dropped except a lowercase `name` (from NAME_EN, falling back to NAME) and `pop` (from
+POP_EST), plus a computed `log10_pop = round(log10(pop), 3)` — a mapping decision carried in the
+data on purpose, and admitted in the chapter text. 177 features, 193 KB.
+
+Natural Earth is **public domain** (their terms: "No permission is needed to use Natural Earth.
+Crediting the authors is unnecessary."). Credited anyway, in the chapter text and here. POP_EST is
+Natural Earth's own population estimate; treat it as illustrative, not authoritative.
+

@@ -758,3 +758,40 @@ canvas with the readouts a thousand units from the button fails PATCH-GRAMMAR ru
 every node is right. The patch now has a cockpit row (three buttons, four numbers) at the top, the
 picture is the control (left-click GROW, right-click RESET) and the four numbers are drawn on it, so
 nobody has to look at the canvas at all.
+
+## Prompt Paint by numbers — designed and built 2026-09-06
+
+The unit GST 101 Lab 4's coverage row had been waiting for since `StyleByValue` closed gap rank 1
+on 2026-08-23: the categorised-by-value half, as a choropleth. A `Prompt`, not a spine chapter — it
+adds no capability to the sequence; it is a permission to paint regions with a number and to watch
+the two classic ways that lies.
+
+**The design, in one breath.** Natural Earth's 110m countries (177 features, thinned to `name`,
+`pop`, and a precomputed `log10_pop` — a mapping decision carried in the data, admitted in the
+text), read from `Assets\countries-population.geojson`; `StyleByValue` between a pale and a deep
+teal `VectorStyle`; **no tiles** — the countries are the map (the 08-23 `Initial Zoom Level` fix is
+what makes that view openable). One toggle, LOG, switches three things at once — attribute name,
+MIN, MAX — because a scale is all three or it is nonsense. `Pick` → `Split [NTS.Feature]` →
+`TryGetValue` reads name and value under the cursor, the value through the SAME switched string that
+drives the paint. MIN/MAX pads are exposed as the smallest possible classification exercise.
+
+**The two lessons are the two lies.** Linear × heavy tail: China and India hold the deep end and 175
+countries crowd the pale bottom — visible in the first frame, confirmed by the first capture. Log:
+structure appears everywhere, and nothing about the data changed. The second lie — raw counts on
+areas, Russia shouting, Singapore whispering — is *named and deliberately not fixed*: density or a
+cartogram would hide that the sin exists. Third lie left as a pointer to chapter 12 (a choropleth is
+a field forced into polygons).
+
+**What it took (rungs 1–3, four compiles).** Flat patch, 51 nodes/pads, no regions — the
+interaction cluster (Console→MouseState→Drag/ZoomByWheel, Pick→Split→TryGetValue) copied edge-for-
+edge from `Prompt Live earthquakes`. The three compile faults, each a fact worth keeping:
+`VectorStyle`'s `Line Width` is **Float32** and `Map`'s `Initial Zoom Level` is **Integer32** (both
+were annotated Float64 by habit — read the wrapper source, not the habit); `OnOpen`'s output pin is
+`Output`; and **`Split [NTS.Feature]` is ambiguous unless `VL.NetTopologySuite` is a declared
+dependency of the document** — transitive reachability through VL.Mapsui is not enough for vvvvc's
+candidate list here, though `Prompt Live earthquakes` (same dep list, same node) resolves; not
+diagnosed further, the explicit dependency is correct anyway and the validator wants it.
+
+**Rung 4 must see:** linear open = pale world, two deep countries (seen, first capture); LOG flip =
+graduated world; hover = name + the number the paint uses; MAX (linear) narrowed to 1e8 = Europe
+gains structure and everything above saturates silently; drag and wheel as in every map chapter.

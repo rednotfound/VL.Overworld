@@ -19,6 +19,23 @@ repository already records: a memory that drifts out of date is worse than no me
 family has been bitten by exactly that (a memory saying "Mapsui is blocked" survived months after
 VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked).
 
+### Where the work stands — 2026-09-06
+
+**`Prompt Paint by numbers` — built and rung-4 verified the same day.** The choropleth unit GST 101
+Lab 4's coverage row had waited for since `StyleByValue` (2026-08-23): Natural Earth's 177 countries
+painted by population between two teals, **no tiles — the countries are the map**; one LOG toggle
+switches attribute + MIN + MAX together (a scale is all three or it is nonsense); hover reads name
+and the very number the paint uses; MIN/MAX pads are the smallest possible classification exercise.
+The two classic lies are the lesson: linear × heavy tail (China and India hold the deep end — the
+first capture shows it), and raw counts on areas — **named and deliberately not fixed**. Design
+record and the three compile faults (`Line Width` is Float32, `Initial Zoom Level` is Integer32,
+`Split [NTS.Feature]` needs `VL.NetTopologySuite` declared even though it reaches transitively) in
+`docs/ACT-III-DESIGN.md`, "Prompt Paint by numbers". Asset: `Assets\countries-population.geojson`
+(public domain, row in THIRD-PARTY-NOTICES.md). **Next: nothing queued** — candidates: more Act III
+prompts (`Two colours only`, `Minimal map`, `Places and their names` still unbuilt from the first
+set), or the publish-readiness question (the node surface must go a week without moving; it last
+moved 2026-08-28).
+
 ### Where the work stands — 2026-08-28
 
 **Everything listed below is built, rung-4 verified and committed.** Today added
@@ -33,8 +50,7 @@ Manhattan floor) and are written up with the press-by-press prediction in `docs/
 Package Scope Proposal was written, decided and implemented** (`vl-nettopologysuite/docs/NETWORK-SCOPE-PROPOSAL.md`):
 the network is **promoted in place to `NTS.Network`**, the process node is now **`Network`** (was `BuildNetwork`), and
 `ShortestPath` gained **`Max Snap Distance`** (default ∞, refusal still reported; 126 tests). The three consumer
-chapters are repointed and re-verified through all four rungs. **Next: nothing queued** — candidates are more Act III
-chapters, or the publish-readiness question (the node surface has to go a week without moving first, and it moved today).
+chapters are repointed and re-verified through all four rungs. Next was more Act III — `Prompt Paint by numbers` followed on 2026-09-06 (entry above).
 `docs/SUBPATCHES.md` holds the survey of how vvvv's own help uses Process definitions, the XML,
 and — since the same evening — **the first subpatched chapter in the pack** (`Grow a town`, eight
 definitions) with the four mechanics faults that cost four compiles. Everything else open is
@@ -84,6 +100,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 | `Prompt Live earthquakes` | built 2026-08-23, **rung 4 passed the same day** (dots sized/coloured by magnitude, hover-Pick reads title/mag/time, null-mag quakes counted by Status). The family's first network fetch — `HTTPGet` fires only on its Refresh pin, zero requests on open. First prompt consumer of `StyleByValue` and `Pick`. Layout machine-generated |
 | `Prompt How high is here` | built 2026-08-28, **renamed the same day from `Walk across a mountain`**: the patch does not make anyone walk — the cursor goes anywhere — and a prompt title is a permission, not a promise of an action the patch cannot ask for; **rung 4 passed the same day** (39 m on Tokyo Bay's shore, the fetched Terrarium tile drawn bottom-right with an orange dot on the pixel being read). Real elevation under the cursor from **Terrarium PNG tiles** (AWS Open Data, Mapzen encoding `(R*256+G+B/256)-32768`) at fixed z=11 — reads a **pixel colour** and translates it to metres by a published convention; the field of chapter 12, with real data. Fetches only when the tile number or the `Elevation` toggle changes; **first-frame empty body guarded by an `If` region**, the pack's first. Not a raster library: nearest pixel, no interpolation, ~60 m cells at this latitude. Layout machine-generated |
 | `Prompt Which door` | built 2026-08-28, **rung 4 passed the same day** (cursor top-left by West Avenue's dead end: the nearest door as the crow flies is North, the patch says South â 720 m by the streets, 30 m door-to-street â and `Networks Built` holds at 1). **The first of the two consumers the network's promotion waited for** (promoted to `NTS.Network` 2026-08-28), and it wanted the surface unchanged: one ForEach asks `ShortestPath` once per door, `Length + From Snap Distance` is the total, `Min` â `IndexOf` â `GetSlice` picks the winner. The town comes from `Assets\which-door.geojson`, sorted by `GeometryType` through three `Keep` loops â and the file **lies about its units on purpose** (RFC 7946 has no way to say metres; every feature's `units` property admits it). `Nearest Node` was NOT needed: the winning path's first vertex is the snapped node, gated by `Count > 0`. Layout machine-generated |
+| `Prompt Paint by numbers` | built 2026-09-06, **rung 4 passed the same day** (linear: pale world, China and India deep — the heavy-tail lesson in one frame; LOG: structure everywhere; hover reads name + the switched attribute; drag/wheel normal). The choropleth unit for GST 101 Lab 4's categorised half; first tile-free WORLD map in the pack, first unit whose knob switches attribute/MIN/MAX as one scale. Data: Natural Earth 110m countries thinned to name/pop/log10_pop (the log column precomputed on purpose — a mapping decision carried in the data). The counts-on-areas lie is named and left unfixed; density and cartograms are pointers, not features. Layout machine-generated |
 | `Prompt Grow a town` | built 2026-08-28, **rung 4 passed the same evening — after it found the pack's seventh defect: the whole patch had compiled into `__Create__`** (a computed chain on FrameDelay's `Initial Value` — see ACT-III-DESIGN, "First open"). Fixed; then watched through screenshots driven from PowerShell: FOUND flips on the 11th press, ROUTE 960 at once (the Manhattan floor; the simulation's 9th-press/1080 prediction was wrong in detail), 164 streets at 19, `NETWORKS BUILT` = presses + 2, RESET reproduces the town; SAVE pressed by the user → `help\grow-a-town.geojson`, 129 LineString features at 129 streets, empty `properties` as the text says. **Late evening: rebuilt from eight Process definitions** (`GrowTown` + five steps, `DrawLines`, `Readouts`; 175 nodes, `Application` ~45) — the pack's first subpatched chapter, same rung-4 numbers; the four definition-mechanics faults it took are in `docs/SUBPATCHES.md`, "Built". The second consumer the network's promotion waited for (promoted to `NTS.Network` 2026-08-28), and **`Write GeoJSON`'s first consumer in the pack** (SAVE → `FileWriter (String)` → `help\grow-a-town.geojson`, gitignored). Two seed stubs under two dots; GROW extends every dead end by one 60 m grid step (a hash of the tip's own coordinates picks straight/left/right, and branches 4 in 10), so the same presses give the same town. State is a `FrameDelay<Spread<LineString>>`; the growth step is one `Cache` region with two outputs; dead ends are a `Keep` loop inside a `Keep` loop. Predicted by simulation: `FOUND` flips on the 9th press at 1080 m, 960 m from the 11th — the Manhattan floor, which the text teaches instead of a fall it cannot deliver. `Nearest Node` still not needed; a *snap tolerance* is the first pin a consumer has wanted. Layout machine-generated |
 
 Nothing is published anywhere. Everything runs off the siblings' `dist\` folders on disk.
