@@ -163,6 +163,40 @@ and how sharp, is part of the query — and the dataset's organisation decides w
 costs.** That is the entire conceptual payload of cloud-native GIS, reached without naming a
 single format.
 
+### The model, as the user drew it — 2026-09-06
+
+Shown the proposal, the user answered first not with a choice but with a diagram:
+
+```
+question
+   |
+where?  how much?  how detailed?
+   |
+decides what to read
+   |
+data access
+   |
+answer
+```
+
+This is sharper than the lab's own sentence, and sharper in the place that matters: it states the
+shift as an INVERSION OF ORDER. The pipeline every earlier chapter (and every desktop GIS) lives
+in is `data access -> question -> answer` — load the whole file, then ask. The diagram moves the
+question in front of the read, and inserts a stage the old pipeline does not have: *deciding what
+to read*. The three interrogatives are exactly the three experiments:
+
+| interrogative | experiment | what it proved |
+|---|---|---|
+| **where?** | exp 3, two layouts | partition by location -> read one cell, 26x less |
+| **how detailed?** | exp 2, resolution ladder | the pyramid -> read one sharpness, truth by degrees |
+| **how much?** | exp 1, the ledger | the measured consequence: 0.0000004% was ever needed |
+| *(data access)* | **exp 4 — not yet run** | the only box in the diagram with no evidence behind it |
+
+Two consequences for the options below. It gives each Explanation in option B its exact assertion
+(one interrogative each). And it makes Chapter 14 concrete for the first time — the chapter, when
+earned, is this diagram, taught top to bottom — while showing precisely why it is not earned yet:
+its `data access` box is empty until experiment 4 runs against something genuinely remote.
+
 ### ⊙ The shape: three options
 
 **A. Chapter 14 now** — a conceptual spine chapter (*"What if the world doesn't fit in memory?"*)
