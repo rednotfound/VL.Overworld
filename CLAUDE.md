@@ -45,6 +45,14 @@ height at zooms 8–13 — 3705 → 3753 m toward the true 3776 as pixels shrink
 unexpected finding that per-tile bytes FALL with zoom (121 → 40 KB); sharpness costs tile count,
 not tile size. "Resolution is part of access" currently reads as the strongest Act IV candidate;
 per the lab rule it waits for a second experiment pointing the same way.
+**Later the same day, experiment 3 delivered that second experiment** — `lab\Experiment two
+layouts.vl`: the 754 Haneda features as one 307 KB file vs 32 centroid-grid files; the same
+in-cell answer (31 = 31) for 26x fewer bytes and 24x fewer features parsed. The lab's candidate
+model ("how much and how sharp you read is part of the query") now has two independent
+confirmations — the threshold for PROPOSING a conceptual unit, next session's question. Three
+building findings are in ACT-IV-LAB.md, including: a Path IOBox resolves against the document but
+a runtime-computed Path against the process CWD (folder pad + Combine is the fix), and two
+'identical' centroid rules disagreeing until they were literally the same formula.
 
 **2026-09-06, later: the honesty and navigation sweep** — the first volume's words caught up with
 its libraries (see commit 9875323): no course text calls the network experimental any more,

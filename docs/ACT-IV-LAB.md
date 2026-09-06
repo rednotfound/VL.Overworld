@@ -92,17 +92,49 @@ grow into a concept unit — per the lab rule, **after** at least one more exper
 same shift. Candidate framings if it ever ships: the fixed-place ladder as an `Explanation`
 ("Sharper is a different question"), or folded into a future conceptual chapter with Experiment 1.
 
-## Experiment 3 — same data, two files (designed, not built)
+## Experiment 3 — same data, two layouts (built and measured 2026-09-06)
 
-**Contradiction:** two files hold byte-for-byte equivalent features; finding what is in the
-viewport reads all of one and a sliver of the other.
+**Prototype:** `lab\Experiment two layouts.vl` + `lab\Assets\haneda-tiles\` (the 754 Haneda
+features recut into an 8 x 8 centroid grid: 32 files, median ~9 KB, derived from
+`help/Assets/haneda.geojson`, same ODbL terms). Point at a cell; two pipelines answer *how many
+features have their centre here* — the monolith re-reads and re-parses everything per query (on
+purpose: that is what a fresh question against a remote file costs), the partitioned side reads
+exactly one small file whose NAME the question's location computed.
 
-**Design:** derive from an existing asset (`haneda.geojson`, 754 features) two on-disk layouts:
-one monolithic GeoJSON, and a folder of per-tile GeoJSONs (a poor man's spatial partition). One
-patch, two timed readouts: "features in view", via read-everything vs read-two-tiles. All existing
-nodes (FileReader, Read GeoJSON, the chapter-11 index for the honest comparison). **Concept
-underneath:** file ≠ access pattern — internal organisation decides network usefulness, which is
-the reason GeoParquet/COG exist. Zero new surface; one preprocessing script.
+**Result (cell 4,4 — the runway cluster):**
+
+| | bytes read | features parsed | in cell |
+|---|---|---|---|
+| one file | 306,984 | 754 | **31** |
+| many files | 11,659 | 31 | **31** |
+
+Equal answers, **26x fewer bytes, 24x fewer features parsed** — and nothing about the data
+changed, only its arrangement on disk. Chapter 11 one storey down: the index there pruned who gets
+*asked*; the layout here prunes what gets *read*. Empty cell = no file = the reader fails and says
+so: absence you can read off a directory.
+
+**Three findings from the building, each a contract lesson in miniature:**
+
+1. **"The same rule" must be literally the same rule.** First run: mono said 31 in-cell, tiles said
+   33 — the preprocessing had used a vertex-average centroid while the patch's `Centroid` (NTS) is
+   the area/length-weighted one, and two features near cell edges changed allegiance. The tiles
+   were recut with NTS's definitions (shoelace for polygons, length-weighted for lines). A
+   partition is a claim about the data, and the claim has to name its formula.
+2. **A `Path` IOBox resolves against the document; a Path computed at runtime does not.** `ToPath`
+   on a relative string resolved against the process working directory and silently read nothing —
+   the fix is a Path *pad* for the folder (document-resolved at load) plus `Combine` with the
+   computed filename (`Combine` takes Path + Path; the filename string goes through `ToPath`).
+   Worth remembering anywhere a patch computes file names.
+3. **vvvvc wants an absolute document path for documents outside `help\`** — a relative one dies
+   in deserialisation with `The base path must be absolute` before compiling anything.
+
+**Verdict:** second experiment, same recurring shift. Experiment 2 said *how sharp you read is part
+of the query*; experiment 3 says *how much you read is part of the query, and the layout decides
+it*. The lab's candidate mental model now has two independent confirmations — by the lab's own
+rule, that is the threshold for proposing (not yet writing) a conceptual unit. The proposal
+question for the next session: one unit or two, and which genre — the ladder wants to be an
+`Explanation`, the layouts experiment might be the interactive heart of an eventual
+*"What if the world doesn't fit in memory?"* chapter. **No number is claimed yet.**
 
 ## Experiment 4 — read only what you need (reconnaissance, not built)
 
