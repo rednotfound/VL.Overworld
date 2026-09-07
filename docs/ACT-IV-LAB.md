@@ -278,6 +278,34 @@ Estimated: one session.
 pack's grammar says a number means. Volume 2 having one chapter is a true cost; the lab exists
 to earn the next ones the same way.
 
+### Chapter 14: decided 2026-09-07 — build it, with the user's design brief binding
+
+The user chose **Tutorial 14**, on the argument that experiment 4 crossed from explanation to
+capability: the learner can now DO something new — decide what is needed before reading, then
+fetch only that. The brief that binds the build:
+
+- **Exactly one capability:** *the question determines what gets read.* Flow: point somewhere →
+  which piece answers? → locate it → request only those bytes → draw. Numbers are the main proof
+  (remote file 18,588,472 B / this answer ~13 KB / read ~0.07%).
+- **Vocabulary comes AFTER the experience** — no PMTiles/Range/cloud-native framing up front; the
+  reveal names byte range, 206 Partial Content, and the format at the end.
+- **The GeoJSON index's role stated honestly:** a simplified index for THIS lesson; real archives
+  carry their own directory inside the file. If the simplification starts teaching a false model
+  of PMTiles, stop and reconsider.
+- **No new library surface**, no Range-specific node. **Zero requests on open.** **Failure states
+  legible** (no piece found / request failed / not 206 / bad bytes — never silent empty success).
+  Avoid exposing offset arithmetic prominently; the result that matters is the percentage.
+- **Act IV opens with 14 as its only numbered chapter, and that is acceptable** — no Chapter 15
+  invented for balance; future numbers must earn themselves.
+
+Build notes fixed before generating: the index ships as `Assets\watercolor-directory.geojson` —
+the archive's **z6 layer: a full 5×5 grid, 25 tiles, lon 0–28.1° lat 41.0–58.8°, 7,309–15,006 B
+each** (chosen over z4's four tiles for a grid worth pointing at); drawn in plain lon/lat, so the
+rows come out unequal on screen — chapter 10's lesson, visible again; the ask gesture is the
+course's own (the cursor is the question, as in 01 and both Explanations); the matched piece's
+ready-made `Range:` string and its share-of-archive live in the index as attributes, derived and
+recorded by the probe script, so the patch does no offset arithmetic on screen.
+
 ## Unit proposal — 2026-09-06 (the lab's first output; **decided the same day: B + experiment 4**)
 
 Two experiments confirmed the same mental-model shift, which is the lab's own threshold for
