@@ -206,7 +206,7 @@ Two observations from the original reading, both still load bearing:
 
 ## The chapters
 
-### The spine — two acts, ordered, each unit adding exactly one capability
+### The spine — ordered, each unit adding exactly one capability (two acts at first; Act III arrived 2026-08-23, Act IV 2026-09-07)
 
 **Act I — space as computation.** No basemap, no network, no files. Geometry lives in a small
 local space and is rendered directly; every chapter runs offline the moment it opens. Renumbered
