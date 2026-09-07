@@ -303,6 +303,19 @@ inert — 763 px with and without).
 
 ---
 
+## Act IV — added 2026-09-07, one chapter, earned differently
+
+The first volume (01–13) was frozen 2026-09-06; Act IV chapters are not designed from a syllabus
+but **earned by the laboratory** (`docs/ACT-IV-LAB.md`): a numbered chapter requires several
+independent experiments converging on one recurring mental-model shift, plus a decided proposal.
+`Tutorial 14 What if the world does not fit in memory` is the first — four experiments (the tile
+ledger, the resolution ladder, the two layouts, the ranged read), two shipped Explanations, and
+the user's pipeline diagram (question → where/how much/how detailed → decides what to read → data
+access → answer) stand behind it; its design brief and decision record are in ACT-IV-LAB. There is
+deliberately no Chapter 15: the next number must earn itself the same way. Coverage-wise this is
+the course's first step past GST 101's desktop worldview — cloud-optimized access — taken only
+after the concept was measured locally from three directions.
+
 ## Using this document
 
 Before adding a unit: decide whether it is **spine** or **prompt**, and say what it is based on. A

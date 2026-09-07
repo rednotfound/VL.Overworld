@@ -1,0 +1,981 @@
+{
+ "type": "FeatureCollection",
+ "description": "A simplified index for Tutorial 14: where each z6 piece lives inside https://raw.githubusercontent.com/maplibre/demotiles/gh-pages/pmtiles/raster/watercolor.pmtiles (18588472 bytes). Real PMTiles archives carry their own directory inside the file; this one was read from it and rewritten as GeoJSON by lab/probe-pmtiles.py so the lesson can stay about the question, not varint parsing. Tiles (c) Stamen Design, CC BY 3.0.",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 36,
+    "y": 20,
+    "offset": 243897,
+    "length": 7309,
+    "range": "Range: bytes=243897-251205",
+    "share": "0.039% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       22.5,
+       52.48278
+      ],
+      [
+       28.125,
+       52.48278
+      ],
+      [
+       28.125,
+       55.776573
+      ],
+      [
+       22.5,
+       55.776573
+      ],
+      [
+       22.5,
+       52.48278
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 36,
+    "y": 21,
+    "offset": 251206,
+    "length": 7759,
+    "range": "Range: bytes=251206-258964",
+    "share": "0.042% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       22.5,
+       48.922499
+      ],
+      [
+       28.125,
+       48.922499
+      ],
+      [
+       28.125,
+       52.48278
+      ],
+      [
+       22.5,
+       52.48278
+      ],
+      [
+       22.5,
+       48.922499
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 36,
+    "y": 22,
+    "offset": 258965,
+    "length": 7766,
+    "range": "Range: bytes=258965-266730",
+    "share": "0.042% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       22.5,
+       45.089036
+      ],
+      [
+       28.125,
+       45.089036
+      ],
+      [
+       28.125,
+       48.922499
+      ],
+      [
+       22.5,
+       48.922499
+      ],
+      [
+       22.5,
+       45.089036
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 36,
+    "y": 23,
+    "offset": 266731,
+    "length": 8491,
+    "range": "Range: bytes=266731-275221",
+    "share": "0.046% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       22.5,
+       40.979898
+      ],
+      [
+       28.125,
+       40.979898
+      ],
+      [
+       28.125,
+       45.089036
+      ],
+      [
+       22.5,
+       45.089036
+      ],
+      [
+       22.5,
+       40.979898
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 35,
+    "y": 23,
+    "offset": 275222,
+    "length": 10674,
+    "range": "Range: bytes=275222-285895",
+    "share": "0.057% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       16.875,
+       40.979898
+      ],
+      [
+       22.5,
+       40.979898
+      ],
+      [
+       22.5,
+       45.089036
+      ],
+      [
+       16.875,
+       45.089036
+      ],
+      [
+       16.875,
+       40.979898
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 35,
+    "y": 22,
+    "offset": 285896,
+    "length": 8382,
+    "range": "Range: bytes=285896-294277",
+    "share": "0.045% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       16.875,
+       45.089036
+      ],
+      [
+       22.5,
+       45.089036
+      ],
+      [
+       22.5,
+       48.922499
+      ],
+      [
+       16.875,
+       48.922499
+      ],
+      [
+       16.875,
+       45.089036
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 34,
+    "y": 22,
+    "offset": 294278,
+    "length": 10083,
+    "range": "Range: bytes=294278-304360",
+    "share": "0.054% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       11.25,
+       45.089036
+      ],
+      [
+       16.875,
+       45.089036
+      ],
+      [
+       16.875,
+       48.922499
+      ],
+      [
+       11.25,
+       48.922499
+      ],
+      [
+       11.25,
+       45.089036
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 34,
+    "y": 23,
+    "offset": 304361,
+    "length": 14004,
+    "range": "Range: bytes=304361-318364",
+    "share": "0.075% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       11.25,
+       40.979898
+      ],
+      [
+       16.875,
+       40.979898
+      ],
+      [
+       16.875,
+       45.089036
+      ],
+      [
+       11.25,
+       45.089036
+      ],
+      [
+       11.25,
+       40.979898
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 33,
+    "y": 23,
+    "offset": 318365,
+    "length": 12666,
+    "range": "Range: bytes=318365-331030",
+    "share": "0.068% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5.625,
+       40.979898
+      ],
+      [
+       11.25,
+       40.979898
+      ],
+      [
+       11.25,
+       45.089036
+      ],
+      [
+       5.625,
+       45.089036
+      ],
+      [
+       5.625,
+       40.979898
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 32,
+    "y": 23,
+    "offset": 331031,
+    "length": 10194,
+    "range": "Range: bytes=331031-341224",
+    "share": "0.055% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       0.0,
+       40.979898
+      ],
+      [
+       5.625,
+       40.979898
+      ],
+      [
+       5.625,
+       45.089036
+      ],
+      [
+       0.0,
+       45.089036
+      ],
+      [
+       0.0,
+       40.979898
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 32,
+    "y": 22,
+    "offset": 341225,
+    "length": 8126,
+    "range": "Range: bytes=341225-349350",
+    "share": "0.044% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       0.0,
+       45.089036
+      ],
+      [
+       5.625,
+       45.089036
+      ],
+      [
+       5.625,
+       48.922499
+      ],
+      [
+       0.0,
+       48.922499
+      ],
+      [
+       0.0,
+       45.089036
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 33,
+    "y": 22,
+    "offset": 349351,
+    "length": 9339,
+    "range": "Range: bytes=349351-358689",
+    "share": "0.050% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5.625,
+       45.089036
+      ],
+      [
+       11.25,
+       45.089036
+      ],
+      [
+       11.25,
+       48.922499
+      ],
+      [
+       5.625,
+       48.922499
+      ],
+      [
+       5.625,
+       45.089036
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 33,
+    "y": 21,
+    "offset": 358690,
+    "length": 8709,
+    "range": "Range: bytes=358690-367398",
+    "share": "0.047% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5.625,
+       48.922499
+      ],
+      [
+       11.25,
+       48.922499
+      ],
+      [
+       11.25,
+       52.48278
+      ],
+      [
+       5.625,
+       52.48278
+      ],
+      [
+       5.625,
+       48.922499
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 32,
+    "y": 21,
+    "offset": 367399,
+    "length": 11520,
+    "range": "Range: bytes=367399-378918",
+    "share": "0.062% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       0.0,
+       48.922499
+      ],
+      [
+       5.625,
+       48.922499
+      ],
+      [
+       5.625,
+       52.48278
+      ],
+      [
+       0.0,
+       52.48278
+      ],
+      [
+       0.0,
+       48.922499
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 32,
+    "y": 20,
+    "offset": 378919,
+    "length": 12178,
+    "range": "Range: bytes=378919-391096",
+    "share": "0.066% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       0.0,
+       52.48278
+      ],
+      [
+       5.625,
+       52.48278
+      ],
+      [
+       5.625,
+       55.776573
+      ],
+      [
+       0.0,
+       55.776573
+      ],
+      [
+       0.0,
+       52.48278
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 33,
+    "y": 20,
+    "offset": 391097,
+    "length": 12727,
+    "range": "Range: bytes=391097-403823",
+    "share": "0.068% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5.625,
+       52.48278
+      ],
+      [
+       11.25,
+       52.48278
+      ],
+      [
+       11.25,
+       55.776573
+      ],
+      [
+       5.625,
+       55.776573
+      ],
+      [
+       5.625,
+       52.48278
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 34,
+    "y": 20,
+    "offset": 403824,
+    "length": 12022,
+    "range": "Range: bytes=403824-415845",
+    "share": "0.065% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       11.25,
+       52.48278
+      ],
+      [
+       16.875,
+       52.48278
+      ],
+      [
+       16.875,
+       55.776573
+      ],
+      [
+       11.25,
+       55.776573
+      ],
+      [
+       11.25,
+       52.48278
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 34,
+    "y": 21,
+    "offset": 415846,
+    "length": 9600,
+    "range": "Range: bytes=415846-425445",
+    "share": "0.052% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       11.25,
+       48.922499
+      ],
+      [
+       16.875,
+       48.922499
+      ],
+      [
+       16.875,
+       52.48278
+      ],
+      [
+       11.25,
+       52.48278
+      ],
+      [
+       11.25,
+       48.922499
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 35,
+    "y": 21,
+    "offset": 425446,
+    "length": 8381,
+    "range": "Range: bytes=425446-433826",
+    "share": "0.045% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       16.875,
+       48.922499
+      ],
+      [
+       22.5,
+       48.922499
+      ],
+      [
+       22.5,
+       52.48278
+      ],
+      [
+       16.875,
+       52.48278
+      ],
+      [
+       16.875,
+       48.922499
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 35,
+    "y": 20,
+    "offset": 433827,
+    "length": 9919,
+    "range": "Range: bytes=433827-443745",
+    "share": "0.053% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       16.875,
+       52.48278
+      ],
+      [
+       22.5,
+       52.48278
+      ],
+      [
+       22.5,
+       55.776573
+      ],
+      [
+       16.875,
+       55.776573
+      ],
+      [
+       16.875,
+       52.48278
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 35,
+    "y": 19,
+    "offset": 443746,
+    "length": 14055,
+    "range": "Range: bytes=443746-457800",
+    "share": "0.076% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       16.875,
+       55.776573
+      ],
+      [
+       22.5,
+       55.776573
+      ],
+      [
+       22.5,
+       58.813742
+      ],
+      [
+       16.875,
+       58.813742
+      ],
+      [
+       16.875,
+       55.776573
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 34,
+    "y": 19,
+    "offset": 457801,
+    "length": 15006,
+    "range": "Range: bytes=457801-472806",
+    "share": "0.081% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       11.25,
+       55.776573
+      ],
+      [
+       16.875,
+       55.776573
+      ],
+      [
+       16.875,
+       58.813742
+      ],
+      [
+       11.25,
+       58.813742
+      ],
+      [
+       11.25,
+       55.776573
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 33,
+    "y": 19,
+    "offset": 472807,
+    "length": 13688,
+    "range": "Range: bytes=472807-486494",
+    "share": "0.074% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       5.625,
+       55.776573
+      ],
+      [
+       11.25,
+       55.776573
+      ],
+      [
+       11.25,
+       58.813742
+      ],
+      [
+       5.625,
+       58.813742
+      ],
+      [
+       5.625,
+       55.776573
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 32,
+    "y": 19,
+    "offset": 486495,
+    "length": 11613,
+    "range": "Range: bytes=486495-498107",
+    "share": "0.062% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       0.0,
+       55.776573
+      ],
+      [
+       5.625,
+       55.776573
+      ],
+      [
+       5.625,
+       58.813742
+      ],
+      [
+       0.0,
+       58.813742
+      ],
+      [
+       0.0,
+       55.776573
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "z": 6,
+    "x": 36,
+    "y": 19,
+    "offset": 498108,
+    "length": 10953,
+    "range": "Range: bytes=498108-509060",
+    "share": "0.059% of the archive"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       22.5,
+       55.776573
+      ],
+      [
+       28.125,
+       55.776573
+      ],
+      [
+       28.125,
+       58.813742
+      ],
+      [
+       22.5,
+       58.813742
+      ],
+      [
+       22.5,
+       55.776573
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

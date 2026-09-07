@@ -200,6 +200,21 @@ a fetched tile on 2026-08-23 (Fuji summit pixel at z11 → 3744 m).
 **Chosen over Mapbox Terrain-RGB** because it needs no API key: a patch that cannot run on a fresh
 install is not a chapter.
 
+## `help/Assets/watercolor-directory.geojson` — Tutorial 14's index
+
+**Derived from the PMTiles header and root directory of maplibre demotiles' watercolor archive**
+(`https://raw.githubusercontent.com/maplibre/demotiles/gh-pages/pmtiles/raster/watercolor.pmtiles`,
+18,588,472 bytes) by `lab/probe-pmtiles.py --emit-directory 6` on 2026-09-07: 25 features, one per
+z6 tile — its lon/lat bounding box, its z/x/y, and its byte address (`offset`, `length`, plus the
+ready-made `range` header string and `share` percentage the chapter displays). The file's own
+`description` member states the simplification: real PMTiles archives carry this directory inside
+the file.
+
+**The underlying tiles are Map tiles by Stamen Design, CC BY 3.0**, archived by Cooper Hewitt /
+the watercolor maps cooperative and republished in maplibre demotiles; the chapter fetches them
+piecewise from that archive at runtime (consent toggle, off by default) and draws the credit on
+the picture. This index file is a derived description of that archive's layout, same credit.
+
 ## help/Assets/countries-population.geojson
 
 **Natural Earth**, 1:110m Admin 0 countries, downloaded 2026-09-06 from

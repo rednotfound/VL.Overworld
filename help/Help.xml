@@ -43,6 +43,13 @@
 		handing over a permission (Prompt). Unordered and skippable like a Prompt; its title is
 		the assertion it proves.
 	-->
+	<!--
+		Act IV - the world as something you address. One chapter so far, and that is
+		deliberate: the lab (docs/ACT-IV-LAB.md) earns numbered chapters one at a time.
+	-->
+	<Topic title="Act IV - Ask, then read">
+		<VLDocument link="Tutorial 14 What if the world does not fit in memory.vl" tags="range,byteRange,partialContent,206,httpGet,headers,http,network,fetch,remote,archive,pmtiles,cloudOptimized,cog,geoparquet,index,directory,offset,address,partition,contains,keep,tryGetValue,feature,attribute,geojson,readGeoJSON,bbox,grid,watercolor,stamen,imageDecoder,drawImage,skia,consent,nts,netTopologySuite,tutorial" />
+	</Topic>
 	<Topic title="Explanations">
 		<VLDocument link="Explanation Sharper is a different question.vl" tags="resolution,pyramid,overview,zoom,sharpness,levelOfDetail,mipmap,ladder,terrarium,elevation,dem,terrain,raster,tile,pixel,pipet,imageDecoder,httpGet,http,network,fetch,bytes,cost,query,mercator,fuji,map,mapsui,osm,screenToWorld,wkt,point,coordinate,skia,nts,netTopologySuite,explanation" />
 		<VLDocument link="Explanation You do not have to read everything.vl" tags="partition,tiling,tilingScheme,spatialSubsetting,fullScan,layout,file,fileReader,geojson,readGeoJSON,feature,centroid,contains,grid,cell,bytes,read,parse,cost,query,cloudNative,cloudOptimized,geoparquet,pmtiles,cog,haneda,osm,openstreetmap,foreach,keep,skia,offline,nts,netTopologySuite,explanation" />

@@ -18,11 +18,23 @@
 #   tile ids: cumulative per zoom, Hilbert-ordered within each zoom.
 #
 # Usage: python -X utf8 lab/probe-pmtiles.py [url] [zoom]
-import sys, urllib.request, struct, gzip, json
+#        python -X utf8 lab/probe-pmtiles.py --emit-directory <zoom> <out.geojson>
+#   emit-directory writes Tutorial 14's index: one feature per tile at that zoom - its lon/lat
+#   bounding box as the geometry; z/x/y, offset and length for the audit; and two ready-made
+#   strings the patch uses verbatim ('range', the HTTP header, and 'share', the percentage of the
+#   archive) so the chapter can show results instead of offset arithmetic. The index is a
+#   SIMPLIFIED stand-in for the directory a real PMTiles archive carries inside itself - the
+#   chapter's text says so, and this script is the recorded derivation.
+import sys, math, urllib.request, struct, gzip, json
+
+EMIT_Z, EMIT_OUT = None, None
+if len(sys.argv) > 1 and sys.argv[1] == '--emit-directory':
+    EMIT_Z, EMIT_OUT = int(sys.argv[2]), sys.argv[3]
+    sys.argv = [sys.argv[0]]
 
 URL = sys.argv[1] if len(sys.argv) > 1 else \
     'https://raw.githubusercontent.com/maplibre/demotiles/gh-pages/pmtiles/raster/watercolor.pmtiles'
-WANT_Z = int(sys.argv[2]) if len(sys.argv) > 2 else 4
+WANT_Z = EMIT_Z if EMIT_Z is not None else (int(sys.argv[2]) if len(sys.argv) > 2 else 4)
 
 
 def rng(start, length):
@@ -104,3 +116,32 @@ for i in range(n):
         break
 else:
     raise SystemExit(f'no leaf entry at z{WANT_Z} in the root directory')
+
+if EMIT_Z is not None:
+    def lon_of(x): return x / (1 << EMIT_Z) * 360 - 180
+    def lat_of(y): return math.degrees(math.atan(math.sinh(math.pi - 2 * math.pi * y / (1 << EMIT_Z))))
+    feats = []
+    for i in range(n):
+        z, x, y = id_to_zxy(ids[i])
+        if z != EMIT_Z or runl[i] != 1:
+            continue
+        start = td_off + abs_off[i]
+        w, e_, s_, nn = lon_of(x), lon_of(x + 1), lat_of(y + 1), lat_of(y)
+        ring = [[round(w, 6), round(s_, 6)], [round(e_, 6), round(s_, 6)],
+                [round(e_, 6), round(nn, 6)], [round(w, 6), round(nn, 6)],
+                [round(w, 6), round(s_, 6)]]
+        feats.append({'type': 'Feature',
+                      'properties': {'z': z, 'x': x, 'y': y, 'offset': start, 'length': lens[i],
+                                     'range': f'Range: bytes={start}-{start + lens[i] - 1}',
+                                     'share': f'{lens[i] / total * 100:.3f}% of the archive'},
+                      'geometry': {'type': 'Polygon', 'coordinates': [ring]}})
+    fc = {'type': 'FeatureCollection',
+          'description': (f'A simplified index for Tutorial 14: where each z{EMIT_Z} piece lives '
+                          f'inside {URL} ({total} bytes). Real PMTiles archives carry their own '
+                          'directory inside the file; this one was read from it and rewritten as '
+                          'GeoJSON by lab/probe-pmtiles.py so the lesson can stay about the '
+                          'question, not varint parsing. Tiles (c) Stamen Design, CC BY 3.0.'),
+          'features': feats}
+    with open(EMIT_OUT, 'w', encoding='utf-8', newline='') as fh:
+        json.dump(fc, fh, ensure_ascii=False, indent=1)
+    print(f'emitted {len(feats)} features at z{EMIT_Z} -> {EMIT_OUT}')
