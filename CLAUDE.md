@@ -65,7 +65,7 @@ data: `Exists` gates the Read, a `Switch (Boolean)` feeds the parser '' when the
 read (and `AND`'s output pin is `Output`, not `Result`). Found on the way and recorded in
 PATCH-GRAMMAR: **vvvvc crashes on a document filename containing an apostrophe** (hence "You do
 not", not "You don't"). The second Explanation followed on
-2026-09-07 (entry below); the lab's queue is down to experiment 4.
+2026-09-07 (entry above); the lab's queue is down to experiment 4.
 
 **2026-09-06, evening: the Act IV laboratory opened** — `docs/ACT-IV-LAB.md` (rules: contradiction
 first, no new surface, consent as everywhere, results as numbers) and its first two experiments.
