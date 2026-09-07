@@ -35,6 +35,18 @@ stays a wait-for-consumer gap; any new permanent capability goes through a scope
 
 ### Where the work stands — 2026-09-07
 
+**2026-09-07, later: experiment 4 ran the same day — the lab's queue is empty and the pipeline
+diagram is fully evidenced.** `HTTPGet` turned out to have had a `Headers` pin all along
+(`"Name: Value"` strings; .NET 8 no longer restricts `Range`). `lab\Experiment read only what you
+need.vl` + `lab\probe-pmtiles.py`: two ranged requests against Stamen's public watercolor PMTiles
+archive (18,588,472 B, CC BY, never downloaded whole) — 127 header bytes, then one z4 tile,
+**13,431 bytes = 0.07%, drawn**; both 206 PartialContent; person-verified. Findings: PMTiles
+offsets are stored +1 (one wrong byte cost a JPEG its leading `ff`); `ToString` on a String is
+ambiguous to vvvvc. All four boxes of the user's pipeline diagram now have evidence, so **Chapter
+14 is proposable for the first time — proposing it is the next session's decision, not a
+default.** Alternatives standing: Track B prompts (Voronoi), the publish-readiness question, the
+18 machine-generated layouts (the user's).
+
 **`Explanation Sharper is a different question` — built and rung-4 verified the same day** (22
 units; three Explanations now). Experiment 2's ladder, cursor-driven on the How-high chassis: OSM
 map (Basemap toggle, off) + the place under the cursor asked its height at all six Terrarium zooms

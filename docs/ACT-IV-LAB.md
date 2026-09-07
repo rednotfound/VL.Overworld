@@ -156,14 +156,44 @@ flipped both toggles and watched the ladder answer ("似乎正常" — behaves a
 
 The lab's queue is now exactly one item: experiment 4, the Range reconnaissance.
 
-## Experiment 4 — read only what you need (reconnaissance, not built)
+## Experiment 4 — read only what you need (built and measured 2026-09-07)
 
-**Contradiction:** a 50 GB file of which we read 30 KB.
+**Contradiction:** a big remote file, of which a question needs a sliver.
 
-**First question, before any design:** can vvvv's `HTTPGet` send a `Range` header at all? If not,
-this experiment stops there and the finding is recorded here (a gap noted for a future scope
-discussion — NOT implemented on the spot). If yes: fetch one tile out of a public PMTiles archive
-by offset, draw it, and show the request log. Medium risk; everything stays prototype-only.
+**The first question answered itself at the desk:** `HTTPGet` has had a `Headers` pin all along —
+`IEnumerable<string>`, one `"Name: Value"` string per header, implemented by
+`Webrequest.AddHeaders` on .NET's `HttpWebRequest` — and .NET 8 (vvvv's runtime) no longer
+restricts the `Range` header the way .NET Framework did. Nobody in this course had ever wired it.
+Ground truth first, in PowerShell on the identical .NET path: S3 answered `206 PartialContent,
+content-range: bytes 0-99/134302, 100 bytes received`.
+
+**Prototype:** `lab\Experiment read only what you need.vl` + `lab\probe-pmtiles.py`. The target:
+Stamen's watercolor world map as a public PMTiles archive (maplibre demotiles, CC BY 3.0),
+**18,588,472 bytes, never downloaded whole**. The probe script reads the archive's 127-byte header
+and 3 KB root directory over Range requests and prints one tile's byte address — the directory
+parsing lives in the script ON PURPOSE: the patch's claim is *a remote file can be read by
+address*, not *vvvv can parse varints*, and saying which half is whose is part of the honesty.
+The patch sends exactly two ranged requests on one FETCH toggle:
+
+| request | asks for | receives | status |
+|---|---|---|---|
+| the header | bytes 0–126 | **127 bytes** | 206 PartialContent |
+| one tile | bytes 66,585–80,015 | **13,431 bytes = 0.07%** | 206 PartialContent |
+
+— and **draws the tile** (a z4 watercolor JPEG of the Alps; the archive stores tiles uncompressed,
+so `ImageDecoder` eats the ranged bytes directly). Verified by the person the same day ("似乎是对
+的" — the numbers and the picture as described).
+
+**One finding from the building:** PMTiles stores directory offsets **as offset+1** (zero meaning
+"immediately after the previous tile"); decoding the first entry without the −1 fetched a JPEG
+missing its leading `ff` — one wrong byte, found because the probe checks the magic. Recorded in
+the script's header. Also: `ToString` on a `String` is ambiguous to vvvvc (`Collections.Sequence`
+vs `Primitive.Object`) — `Split`'s `Status` is already a String; wire it straight to `Text`.
+
+**Verdict:** the pipeline diagram's last box has evidence. All four now do — *where?* (exp 3),
+*how detailed?* (exp 2), *how much?* (exp 1), *data access* (this) — which by the decision of
+2026-09-06 makes Chapter 14 **proposable for the first time**: the diagram taught top to bottom,
+with a shipped unit behind every box. Proposing it is a separate decision, not a consequence.
 
 ---
 
