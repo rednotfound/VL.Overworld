@@ -136,6 +136,26 @@ question for the next session: one unit or two, and which genre — the ladder w
 `Explanation`, the layouts experiment might be the interactive heart of an eventual
 *"What if the world doesn't fit in memory?"* chapter. **No number is claimed yet.**
 
+## The second unit shipped — `Explanation Sharper is a different question` (2026-09-07)
+
+Experiment 2's ladder, rebuilt cursor-driven on the How-high chassis, **all four rungs the same
+day**. What shipped beyond the prototype: an OSM map (Basemap toggle, off) with drag/wheel; the
+place under the cursor asked at all six Terrarium zooms at once (Elevation toggle, off), each
+column re-fetching only when ITS OWN tile number changes — so gliding the cursor makes the
+pyramid's cost structure visible live (the sharp columns ask every ~4 km of ground, the coarse
+ones every ~130); live m/px per column (`C_z · cos(latitude)`); the bytes-fall finding on the
+picture and in the narrative; the asked place spoken as WKT (`Coordinate → Point → Write WKT` —
+NTS's honest job here). The shared Mercator head is computed once; each column differs from its
+neighbours by exactly one constant, 2^zoom — which is the chapter's argument made of wire.
+
+Rung 4 in two halves again: **the camera caught the unit's one defect before any person** — with
+`FontAndParagraph`'s Color unwired the default paint is WHITE, and on the consent-off white ground
+every text vanished; How high wires an `Ink` pad (0.1, 0.1, 0.1) for exactly this reason (now a
+PATCH-GRAMMAR row). Ink wired, labels shortened, credit moved off the bottom edge; then the person
+flipped both toggles and watched the ladder answer ("似乎正常" — behaves as described).
+
+The lab's queue is now exactly one item: experiment 4, the Range reconnaissance.
+
 ## Experiment 4 — read only what you need (reconnaissance, not built)
 
 **Contradiction:** a 50 GB file of which we read 30 KB.

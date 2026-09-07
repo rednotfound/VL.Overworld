@@ -33,6 +33,19 @@ a range-request reconnaissance), technologies (COG/PMTiles/GeoParquet/STAC) only
 **no Chapter 14 until several prototypes show the same recurring mental-model shift**. Reprojection
 stays a wait-for-consumer gap; any new permanent capability goes through a scope proposal first.
 
+### Where the work stands — 2026-09-07
+
+**`Explanation Sharper is a different question` — built and rung-4 verified the same day** (22
+units; three Explanations now). Experiment 2's ladder, cursor-driven on the How-high chassis: OSM
+map (Basemap toggle, off) + the place under the cursor asked its height at all six Terrarium zooms
+at once (Elevation toggle, off); each column re-fetches only when ITS OWN tile number changes, so
+gliding shows the pyramid's cost live; bytes-fall on the picture; the asked place spoken as WKT
+(NTS). Its one defect was caught by the camera before any person: **`FontAndParagraph`'s default
+text paint is WHITE** — every readout invisible on the consent-off white ground; the fix (a wired
+dark ink, as How high's `Ink` pad) is a PATCH-GRAMMAR row. Full record in ACT-IV-LAB. **Next
+queued: experiment 4** — the Range reconnaissance (first question: can `HTTPGet` send a Range
+header? if not, that gap is the finding).
+
 ### Where the work stands — 2026-09-06
 
 **2026-09-06, later: the lab produced its first shipped unit.** The user answered the unit
@@ -51,8 +64,8 @@ patch was using the reader's exception as its absence signal. Absence is the les
 data: `Exists` gates the Read, a `Switch (Boolean)` feeds the parser '' when there is nothing to
 read (and `AND`'s output pin is `Output`, not `Result`). Found on the way and recorded in
 PATCH-GRAMMAR: **vvvvc crashes on a document filename containing an apostrophe** (hence "You do
-not", not "You don't"). Still queued: the second Explanation
-(`Sharper is a different question`, cursor-driven ladder), then experiment 4.
+not", not "You don't"). The second Explanation followed on
+2026-09-07 (entry below); the lab's queue is down to experiment 4.
 
 **2026-09-06, evening: the Act IV laboratory opened** — `docs/ACT-IV-LAB.md` (rules: contradiction
 first, no new surface, consent as everywhere, results as numbers) and its first two experiments.
