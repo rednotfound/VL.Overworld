@@ -278,6 +278,29 @@ Estimated: one session.
 pack's grammar says a number means. Volume 2 having one chapter is a true cost; the lab exists
 to earn the next ones the same way.
 
+### Chapter 14: built 2026-09-07, all four rungs the same day
+
+`Tutorial 14 What if the world does not fit in memory` (24 documents, 23 units, 14 in the spine).
+The brief was executed as written: point at the 5×5 index grid (local, 25 z6 pieces, drawn from
+`Assets\watercolor-directory.geojson`); `Contains` picks the piece; its attributes carry the
+ready-made address; one gated ranged fetch; the watercolor drawn beside the numbers — asked-for =
+received (~7–15 KB), ~0.05% share, 206. Zero requests on open, camera-verified; outside the grid
+the patch says 'no piece covers this point'. The person then flipped FETCH and watched the pieces
+answer ("似乎是对的").
+
+**Rung 4's camera caught three defects before any person — two black windows' worth:**
+
+1. **`Console`'s output layer paints an opaque ground**: placed at the TOP of the render `Group`
+   it blacked out everything; it belongs at the bottom, where How high has always had it.
+2. **A constant path never Changes**: the index `FileReader`'s `Read` pin relied on a `Changed`
+   that could never fire; `OnOpen` now reads it once.
+3. **The open state was an every-frame exception**: with the cursor outside the grid, `GetSlice`
+   on the empty match spread handed a **null Feature** to `TryGetValue`, and the per-frame throw
+   cut `Update()` short of the Renderer — a fully black window that rungs 1–3 called green. The
+   pattern that fixes it for good: **everything that reads a Keep loop's match lives INSIDE the
+   loop** (no match = the body never runs), results leave through bottom control points, and the
+   outer `GetSlice`s carry `Default Value`s. 'Not found' stays a number (Count 0), never a null.
+
 ### Chapter 14: decided 2026-09-07 — build it, with the user's design brief binding
 
 The user chose **Tutorial 14**, on the argument that experiment 4 crossed from explanation to

@@ -35,6 +35,22 @@ stays a wait-for-consumer gap; any new permanent capability goes through a scope
 
 ### Where the work stands — 2026-09-07
 
+**2026-09-07, latest: `Tutorial 14 What if the world does not fit in memory` — built and all four
+rungs passed the same day.** Act IV's first numbered chapter (23 units, 14 in the spine), decided
+by the user with a binding design brief (in ACT-IV-LAB): ONE capability — the question determines
+what gets read. Point at a local 5×5 index grid (`Assets\watercolor-directory.geojson`, derived by
+`lab\probe-pmtiles.py --emit-directory`, THIRD-PARTY row); `Contains` picks the piece; one gated
+ranged fetch pulls ~7–15 KB (~0.05%) out of the remote 18.6 MB watercolor archive and draws it;
+asked = received, 206, vocabulary only at the end of the text; 'no piece covers this point' is an
+answer. Rung 4's camera caught three defects first (two black windows): Console's layer belongs at
+the BOTTOM of the group; a constant path needs `OnOpen`, not `Changed`; and an empty-match
+`GetSlice` fed `TryGetValue` a null every frame — the fix pattern (read INSIDE the Keep loop,
+bottom CPs out, GetSlice defaults) is in PATCH-GRAMMAR. **Nothing queued.** Candidates: Track B
+prompts (Voronoi), publish-readiness (the node surface last moved 2026-08-28 — over a week now),
+the 18 machine-generated layouts (the user's), more lab experiments toward Act IV's next earned
+chapter.
+
+
 **2026-09-07, later: experiment 4 ran the same day — the lab's queue is empty and the pipeline
 diagram is fully evidenced.** `HTTPGet` turned out to have had a `Headers` pin all along
 (`"Name: Value"` strings; .NET 8 no longer restricts `Range`). `lab\Experiment read only what you
