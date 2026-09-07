@@ -197,6 +197,87 @@ with a shipped unit behind every box. Proposing it is a separate decision, not a
 
 ---
 
+## Chapter 14 proposal — 2026-09-07 (the lab's second output; decision is the user's)
+
+The 2026-09-06 decision set the bar: Chapter 14 becomes proposable when every box of the pipeline
+diagram has evidence. As of experiment 4, every box does — *where?* shipped as an Explanation,
+*how detailed?* shipped as an Explanation, *how much?* measured, *data access* measured and
+person-verified. This is the proposal. **Nothing below is built until the ⊙ points are decided.**
+
+### ⊙ Title
+
+**`Tutorial 14 What if the world doesn't fit in memory`** — the same voice as Tutorial 12
+(*What if space is not an object*), and the question the whole lab was opened on. The subtitle
+carries the concept: *a remote file, read by address*.
+
+### What the reader ends up with (the one new capability)
+
+A patch that answers a spatial question about an **18.6 MB file it never downloads**: click a
+place on a small world outline; the patch finds which watercolor tile covers that place, reads
+that tile's BYTE ADDRESS out of a directory, sends one HTTP Range request, and draws the tile —
+13,431 bytes, 0.07% of the archive, 206 PartialContent on screen. The chapter's single new
+capability is the ranged read (`HTTPGet`'s Headers pin — shipped all along, taught for the first
+time). Everything else is reuse, which is the point: the reader already owns every other step.
+
+### The design that makes it a real chapter and not a demo
+
+**The archive's directory ships as a GeoJSON asset** (`Assets\watercolor-directory.geojson`,
+derived by extending `lab\probe-pmtiles.py`, derivation recorded like `cut-tiles.py`): one feature
+per z4 tile — its bounding box as the geometry, its `offset` and `length` as attributes. Then the
+question-to-address step is SPATIAL, and made of chapters the reader has passed:
+
+    click (Tutorial 01)  →  Contains: which tile's bbox holds the point? (Tutorial 03)
+    →  that feature's offset/length attributes (Tutorial 07 / Which door's TryGetValue)
+    →  Concat a Range header  →  HTTPGet  →  ImageDecoder  →  the tile, drawn (How high)
+
+A directory stops being an abstraction: it is a FeatureCollection you can open in a text editor,
+draw as a grid (the first Explanation's picture, one storey up), and ask with `Contains`. The
+honest edge is stated on the patch: real clients read this directory out of the archive's own
+bytes (127-byte header → 3 KB root dir); ours was extracted by a recorded script because varint
+parsing is bookkeeping, not the lesson — same numbers, auditable, reproducible.
+
+**Packages:** VL.GeoJSON + VL.NetTopologySuite (+ CoreLib/Skia) — a genuine two-package spine
+chapter, no exemption needed. **Consent:** one FETCH toggle, off; two requests per question.
+**Numbers on the picture:** archive total, bytes asked, bytes received, status, percentage.
+
+### Why a numbered chapter, and the cost said out loud
+
+For: the lab's own bar is met, twice over — four experiments, two shipped units, every box
+evidenced; the capability is exactly ONE (a ranged read); and the chapter closes the arc the
+course has been walking since 09 — files arrive (09), asked in memory (11), partitioned on disk
+(Explanation), laddered by sharpness (Explanation), and now **addressed over the wire**.
+
+Against, honestly: **14 opens a second volume that would have one chapter.** The first volume
+(01–13) stays frozen; 14 starts something. If a Volume 2 with one chapter reads as a broken
+promise, the alternative shape is a third Explanation (*"You can read a file you never
+download"*) — same patch, no number, no volume opened. The counter-argument: an Explanation
+demonstrates a fact, and this unit hands the reader a CAPABILITY they compose themselves, which
+is the definition of a Tutorial in this pack's own grammar.
+
+### ⊙ Non-scope, stated now so the chapter cannot creep
+
+No format parsing in the patch (no varints, no gzip, no new nodes anywhere); no PMTiles/COG/
+GeoParquet reading beyond this one ranged fetch; no streaming or async machinery; no reprojection;
+format names appear as one honest sentence each, as in both Explanations. The external dependency
+is named as a risk in the chapter's own text: the archive is someone else's public file
+(maplibre demotiles, CC BY 3.0); if it moves, the chapter breaks honestly and says where the
+probe script points next.
+
+### What it would touch
+
+Design entry (this section) → extend probe-pmtiles.py to emit the directory GeoJSON →
+THIRD-PARTY-NOTICES row (Stamen CC BY 3.0, directory as derived data) → generator → four rungs →
+Help.xml (new spine entry — the first numbered chapter since the freeze; CURRICULUM.md gains the
+Volume 2 note) → README (the spine table grows a row; the consent list grows one item).
+Estimated: one session.
+
+### Recommendation
+
+**Build it as `Tutorial 14`.** The number is the honest claim here: this unit has prerequisites
+(03, 07, 09, and both Explanations feed it) and hands over a capability — the two things the
+pack's grammar says a number means. Volume 2 having one chapter is a true cost; the lab exists
+to earn the next ones the same way.
+
 ## Unit proposal — 2026-09-06 (the lab's first output; **decided the same day: B + experiment 4**)
 
 Two experiments confirmed the same mental-model shift, which is the lab's own threshold for
