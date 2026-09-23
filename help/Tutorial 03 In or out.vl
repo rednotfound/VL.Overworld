@@ -18,15 +18,6 @@
       </p:NodeReference>
       <Patch Id="TgAfRAACOeTNqccDsrryyI">
         <Canvas Id="Lp1otwi6CIxtk7M9EzY24w" CanvasType="Group">
-          <Pad Id="J7HxtD0kguAsarrfxpq2pH" Bounds="23,-233,420,23" ShowValueBox="true" isIOBox="true" Value="THE SHAPE - six corners, and the notch is the lesson">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
           <Node Bounds="364,509,90,19" Id="IHj1WlhhHsU20VKirgEywr">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -104,7 +95,7 @@
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="L62UJcLaATtoWUp9A9qLcU" Bounds="45,728,297,23" ShowValueBox="true" isIOBox="true" Value="watch this flip as you cross the edge -&gt;">
+          <Pad Id="L62UJcLaATtoWUp9A9qLcU" Bounds="38,722,297,23" ShowValueBox="true" isIOBox="true" Value="watch this flip as you cross the edge -&gt;">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -212,7 +203,7 @@
             <Pin Id="TJMVq5T7Hg7MaEmy6IuUkZ" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="BV2HdTFUKIdNhOkNxFCuoY" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Pad Id="OwxVPvm46RRDVgEJkuoW2M" Bounds="-593,156,540,1100" ShowValueBox="true" isIOBox="true" Value="03 - In or out.&#xD;&#xA;&#xD;&#xA;Move the mouse across the shape: inside, the fill appears and CONTAINS flips. A yes/no&#xD;&#xA;question about space, answered every frame. You have built this a hundred times as a&#xD;&#xA;hit test - GIS calls it a SPATIAL PREDICATE, and gives it a definition sharp enough to&#xD;&#xA;disagree with your eyes.&#xD;&#xA;&#xD;&#xA;The notch is the lesson: the cursor can be nearly surrounded and still OUTSIDE. Near is&#xD;&#xA;a feeling; inside is a fact. The exact boundary counts as outside too - Covers is the&#xD;&#xA;predicate that includes it.&#xD;&#xA;&#xD;&#xA;Contains (A, B) and Within (A, B) are the same question named from either end, polygon&#xD;&#xA;first or point first, so a patch reads left to right whichever way its data flows.&#xD;&#xA;&#xD;&#xA;PLAY: reshape the polygon - it is one spread of vertices, feeding NTS and the drawing&#xD;&#xA;alike. Wire CONTAINS somewhere else: a radius, a sound. More predicates (Intersects&#xD;&#xA;ships; Touches, Overlaps, Crosses) arrive as chapters need them.&#xD;&#xA;&#xD;&#xA;This patch uses ONE package, VL.NetTopologySuite - the geometry act's exemption: a&#xD;&#xA;course with a hole in its opening act is worse than a node appearing in two places.&#xD;&#xA;&#xD;&#xA;NEXT - three directions, no order:&#xD;&#xA;  Tutorial 04   how far, exactly - distance as a drawable line&#xD;&#xA;  Tutorial 02   where these shapes came from&#xD;&#xA;  Tutorial 06   the earth, when you are ready for it">
+          <Pad Id="OwxVPvm46RRDVgEJkuoW2M" Bounds="-630,124,573,818" ShowValueBox="true" isIOBox="true" Value="03 - In or out.&#xD;&#xA;&#xD;&#xA;Move the mouse across the shape: inside, the fill appears and CONTAINS flips. A yes/no&#xD;&#xA;question about space, answered every frame. You have built this a hundred times as a&#xD;&#xA;hit test - GIS calls it a SPATIAL PREDICATE, and gives it a definition sharp enough to&#xD;&#xA;disagree with your eyes.&#xD;&#xA;&#xD;&#xA;The notch is the lesson: the cursor can be nearly surrounded and still OUTSIDE. Near is&#xD;&#xA;a feeling; inside is a fact. The exact boundary counts as outside too - Covers is the&#xD;&#xA;predicate that includes it.&#xD;&#xA;&#xD;&#xA;Contains (A, B) and Within (A, B) are the same question named from either end, polygon&#xD;&#xA;first or point first, so a patch reads left to right whichever way its data flows.&#xD;&#xA;&#xD;&#xA;PLAY: reshape the polygon - it is one spread of vertices, feeding NTS and the drawing&#xD;&#xA;alike. Wire CONTAINS somewhere else: a radius, a sound. More predicates (Intersects&#xD;&#xA;ships; Touches, Overlaps, Crosses) arrive as chapters need them.&#xD;&#xA;&#xD;&#xA;This patch uses ONE package, VL.NetTopologySuite - the geometry act's exemption: a&#xD;&#xA;course with a hole in its opening act is worse than a node appearing in two places.&#xD;&#xA;&#xD;&#xA;NEXT - three directions, no order:&#xD;&#xA;  Tutorial 04   how far, exactly - distance as a drawable line&#xD;&#xA;  Tutorial 02   where these shapes came from&#xD;&#xA;  Tutorial 06   the earth, when you are ready for it">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -271,28 +262,6 @@
               <Choice Kind="TypeFlag" Name="RGBA" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="LyQCRQRkbXeMu3FrPxh447" Comment="vertex" Bounds="150,150,184,136" ShowValueBox="true" isIOBox="true">
-            <p:TypeAnnotation LastCategoryFullName="Collections" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="Spread" />
-              <p:TypeArguments>
-                <TypeReference LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
-                  <Choice Kind="TypeFlag" Name="Vector2" />
-                </TypeReference>
-              </p:TypeArguments>
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:maxvisibleentries p:Type="Int32">6</p:maxvisibleentries>
-              <p:showentryindex p:Type="Boolean">true</p:showentryindex>
-            </p:ValueBoxSettings>
-            <p:Value>
-              <Item>-0.6, -0.5</Item>
-              <Item>0.5, -0.5</Item>
-              <Item>0.5, 0</Item>
-              <Item>0, 0</Item>
-              <Item>0, 0.5</Item>
-              <Item>-0.6, 0.5</Item>
-            </p:Value>
-          </Pad>
           <Node Bounds="342,329,114,109" Id="IWhXCfk5AG8LLaixnvAVLK">
             <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
               <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
@@ -327,6 +296,89 @@
             <ControlPoint Id="LC3IFpuzuNEMWyYzUBQyLL" Bounds="356,335" Alignment="Top" />
             <ControlPoint Id="R8C8gOl9MaiNQHVMeUcgu6" Bounds="366,432" Alignment="Bottom" />
           </Node>
+          <Node Bounds="634,168,88,86" Id="JjiiCDyAHH9Lr4XLfU5bCF">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+              <Choice Kind="ApplicationStatefulRegion" Name="ForEach" />
+            </p:NodeReference>
+            <Pin Id="OBJDr73zYh1LYpFAFIuk4M" Name="Break" Kind="OutputPin" />
+            <Patch Id="Dj8SR07XGvWN3w4Jyd7ilf" ManuallySortedPins="true">
+              <Patch Id="JgewyfI4vZcMFEUdENXi4D" Name="Create" ManuallySortedPins="true" />
+              <Patch Id="FYJRA20gksNPUyYUvoom7b" Name="Update" ManuallySortedPins="true" />
+              <Patch Id="CvaPMwe69PjOERTS6CmGEz" Name="Dispose" ManuallySortedPins="true" />
+              <Node Bounds="646,200,62,19" Id="JpOyp4z7XmiMiM72zEFBzN">
+                <p:NodeReference LastCategoryFullName="2D" LastDependency="VL.CoreLib.vl">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <Choice Kind="OperationCallFlag" Name="FromPolar" />
+                </p:NodeReference>
+                <Pin Id="K3UTbdEGr5hQamCCmRxe4e" Name="Angle" Kind="InputPin" />
+                <Pin Id="VYP185SCM0UPIjUQHNVdW7" Name="Radius" Kind="InputPin" DefaultValue="1" />
+                <Pin Id="IWJximJr2UgMlP4tXjbzoj" Name="Output" Kind="OutputPin" />
+              </Node>
+            </Patch>
+            <ControlPoint Id="OT2njqakT72Mh8n2vAvgJZ" Bounds="648,174" Alignment="Top" />
+            <ControlPoint Id="S6j8FJr5zB2Ok2Q2UUlSaw" Bounds="648,248" Alignment="Bottom" />
+            <ControlPoint Id="BvaEXQ6wqX0PtB4XCdTpjd" Bounds="705,174" Alignment="Top" />
+          </Node>
+          <Node Bounds="612,90,85,19" Id="EmQB0NjaqJqLncg1vIr5ze">
+            <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="LinearSpread" />
+            </p:NodeReference>
+            <Pin Id="QApITponNuJM9lWWiDuSOT" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="AoiVLHyU5azQCnBOfqvQO5" Name="Center" Kind="InputPin" />
+            <Pin Id="UZqkZcJZzguMDlBUoslOyV" Name="Width" Kind="InputPin" DefaultValue="1" />
+            <Pin Id="J5OVmFQGnvVOFeWlvx5FbU" Name="Alignment" Kind="InputPin" />
+            <Pin Id="PB5TpgWlAiWNV3d3XDfrqT" Name="Phase" Kind="InputPin" />
+            <Pin Id="QTruXyWYcTYMgoYP9gcAtd" Name="Count" Kind="InputPin" />
+            <Pin Id="NnYyYCj3BANNtdzy5TAKxm" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="CpAwRJeWObzNY2rbNMSfwk" Comment="Count" Bounds="741,-40,35,15" ShowValueBox="true" isIOBox="true" Value="12">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="725,90,85,19" Id="VaGaqPoX9tDNDUFbnlum2i">
+            <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="RandomSpread" />
+            </p:NodeReference>
+            <Pin Id="AxchDrzQJ36MI6Gh4zbJnk" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="CP7U8j5puGxLa0Ge8dnnuA" Name="Center" Kind="InputPin" />
+            <Pin Id="Nyd0ytNpE5FOlor0qjqr7y" Name="Width" Kind="InputPin" />
+            <Pin Id="IzfHpdkA7YuPJGubmZt0F9" Name="Seed" Kind="InputPin" DefaultValue="4" />
+            <Pin Id="JzsG50OKwViO4at1P8ZpPQ" Name="Count" Kind="InputPin" />
+            <Pin Id="N54H4s59V28LbZT34n95fl" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="BUoe4fzvsoNM6k630u3a2T" Comment="Width" Bounds="758,31,35,15" ShowValueBox="true" isIOBox="true" Value="1">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="725,60,25,19" Id="PlmeWD9qNWYL4rIa2MvTUz">
+            <p:NodeReference LastCategoryFullName="Math" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="/" />
+            </p:NodeReference>
+            <Pin Id="GLuJQepHdwVOTzFu6cUjs8" Name="Input" Kind="InputPin" />
+            <Pin Id="Ln4MzU92BUFOc2WdMkctil" Name="Input 2" Kind="InputPin" DefaultValue="2" />
+            <Pin Id="Sy9kD84sVbMMklXicqEnks" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Pad Id="CFSZZlGVzKyP79F0fQddX9" Comment="Seed" Bounds="837,-39,35,15" ShowValueBox="true" isIOBox="true" Value="6">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="DO3Ij7b5rFcO0NyR9pY8qZ" Bounds="913,-44,243,19" ShowValueBox="true" isIOBox="true" Value="&lt;- Change to to a random shape to test">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">9</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
         </Canvas>
         <Patch Id="NBtq1PLjKBnuQ59kwS5FJh" Name="Create" />
         <Patch Id="IsvncovRmlgvNtsYy22DKC" Name="Update" />
@@ -356,13 +408,24 @@
         <Link Id="HgCXog78t6zMRiagTNppKI" Ids="ONIlJ0RioixMbdkKW0ruLy,Q53NGA6SMY6NP8268LrPtL" />
         <Link Id="Ff5vlfIrBd0LpQPHfA0k4x" Ids="OOouBvpqRODPCfHbCQ9sY4,LaSxnFeiCywWNtkIKrJAzU" />
         <Link Id="R0rOlRuRkJYMOsYTpcowxX" Ids="CdQ4k1B0a6QapP7cH050P0,CAVrIp19XjzmBszHd3m5am" />
-        <Link Id="HNH7rWMQVJNMqIVLRhtb8p" Ids="LyQCRQRkbXeMu3FrPxh447,LC3IFpuzuNEMWyYzUBQyLL" />
         <Link Id="BD2eoBlZpVfLyIl7RlSkdF" Ids="LC3IFpuzuNEMWyYzUBQyLL,Ui4jXE0KSJiLlTUWVGVrCf" />
         <Link Id="DCOFCVuvYdTOkM98MAdt5S" Ids="Bqh4bqZqQVxMBCNjLtXZiN,MCBrH0loMyrN7dTD2bMmV9" />
         <Link Id="G8TK1KgvttgLFtSbZLIf8z" Ids="GGc2deNFsapM0rAFq81pBP,INHtpfsj55VMjssC3sXG1o" />
         <Link Id="PraUlgByDzjP3eq8osdADA" Ids="Eye0DwLubxAQIWIkKjyPE3,R8C8gOl9MaiNQHVMeUcgu6" />
         <Link Id="KxQB7bFZKPXOmaa3FpsRUh" Ids="R8C8gOl9MaiNQHVMeUcgu6,DAZfgB5LnzyLDkwGHCVp0D" />
-        <Link Id="VLQA2joGquSNy8woPrXwdd" Ids="LyQCRQRkbXeMu3FrPxh447,HttAIjwv3jG0lfFB7JaWsh" />
+        <Link Id="TgsbPeV5wCIOV7zqEIxVd6" Ids="NnYyYCj3BANNtdzy5TAKxm,OT2njqakT72Mh8n2vAvgJZ" />
+        <Link Id="CxG7hGTUALQOTYhh6QCRfX" Ids="OT2njqakT72Mh8n2vAvgJZ,K3UTbdEGr5hQamCCmRxe4e" />
+        <Link Id="Mu5L1YKNuCWNJA6oZlCVmP" Ids="CpAwRJeWObzNY2rbNMSfwk,QTruXyWYcTYMgoYP9gcAtd" />
+        <Link Id="RgUF2sDUZspLo5Wg6NCWAK" Ids="IWJximJr2UgMlP4tXjbzoj,S6j8FJr5zB2Ok2Q2UUlSaw" />
+        <Link Id="HIeTwyptpqJNReWZRkTB2O" Ids="S6j8FJr5zB2Ok2Q2UUlSaw,LC3IFpuzuNEMWyYzUBQyLL" />
+        <Link Id="Q7TuVGu8s6SNuRVfzGUSIm" Ids="S6j8FJr5zB2Ok2Q2UUlSaw,HttAIjwv3jG0lfFB7JaWsh" />
+        <Link Id="NONsAaQOqJnO96AD0Opabb" Ids="BvaEXQ6wqX0PtB4XCdTpjd,VYP185SCM0UPIjUQHNVdW7" />
+        <Link Id="IhpaRXZSDowQdjd5X651oM" Ids="CpAwRJeWObzNY2rbNMSfwk,JzsG50OKwViO4at1P8ZpPQ" />
+        <Link Id="I11kFoKZVkhPcgWtW7p3cS" Ids="N54H4s59V28LbZT34n95fl,BvaEXQ6wqX0PtB4XCdTpjd" />
+        <Link Id="QkRtwE9rquLQFeWRITNSPq" Ids="BUoe4fzvsoNM6k630u3a2T,Nyd0ytNpE5FOlor0qjqr7y" />
+        <Link Id="VbcUQxMuL9jO6I8g9AXrFu" Ids="BUoe4fzvsoNM6k630u3a2T,GLuJQepHdwVOTzFu6cUjs8" />
+        <Link Id="UjEfQHEA2z9NdR6iqPsyfE" Ids="Sy9kD84sVbMMklXicqEnks,CP7U8j5puGxLa0Ge8dnnuA" />
+        <Link Id="CU5PoPAzOEPMXGcAbNaz8R" Ids="CFSZZlGVzKyP79F0fQddX9,IzfHpdkA7YuPJGubmZt0F9" />
       </Patch>
     </Node>
   </Patch>
