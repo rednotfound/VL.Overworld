@@ -18,7 +18,7 @@
       </p:NodeReference>
       <Patch Id="A9VxtIWIi6CLaqGT3YTKHo">
         <Canvas Id="T9w8alvHq6b5KSmj6tpF8J" CanvasType="Group">
-          <Pad Id="HDbR3HCv6XfUlwAWwNwFYp" Bounds="-788,58,620,1274" ShowValueBox="true" isIOBox="true" Value="01 - Your cursor is now data.&#xD;&#xA;&#xD;&#xA;Two windows. Move the mouse over the LEFT one: the dot follows, and WRITE WKT spells your&#xD;&#xA;position as a VALUE - POINT (0.42 0.77) - in the renderer's own canvas units. Move it over&#xD;&#xA;the RIGHT one: the same cursor becomes POINT (139.7 35.6) - longitude and latitude - because&#xD;&#xA;that window is a MAP looking at Tokyo. No tiles, no internet: a map is an agreement about&#xD;&#xA;coordinates before it is a picture.&#xD;&#xA;&#xD;&#xA;SAME CURSOR, TWO COORDINATE SYSTEMS, TWO NUMBERS - and neither is more true. The window's&#xD;&#xA;PIXELS are the parent both are computed from: Skia turns pixels into canvas units (Mouse),&#xD;&#xA;the map turns pixels into degrees (Console -&gt; MouseState -&gt; ScreenToWorld). A position is&#xD;&#xA;two numbers PLUS the agreement about what they mean. Hold on to that - chapters 08 and 10&#xD;&#xA;are built on it.&#xD;&#xA;&#xD;&#xA;  Coordinate / Point   geometry's raw material - and geometry does not care whose numbers&#xD;&#xA;                       it holds. The SAME nodes carry canvas units on the left and degrees&#xD;&#xA;                       on the right.&#xD;&#xA;  WKT                  the spelling every GIS tool reads. Both sides speak it.&#xD;&#xA;&#xD;&#xA;PLAY&#xD;&#xA;  Copy either WKT text into a chat or a file. Your dot travels as text.&#xD;&#xA;  Move the mouse straight down: canvas Y GROWS, latitude SHRINKS - the two systems even&#xD;&#xA;  disagree about which way is up.&#xD;&#xA;  Change the Map's Initial pins and reopen the patch: Initial means once, at first sight.&#xD;&#xA;&#xD;&#xA;GIS WORDS&#xD;&#xA;  coordinate system   the agreement that turns two numbers into a position&#xD;&#xA;  WGS84               the lon/lat agreement the map side speaks&#xD;&#xA;  X first             GIS says east before north - the opposite of spoken 'lat, long',&#xD;&#xA;                      and the most common bug in the whole domain&#xD;&#xA;  WKT                  Well-Known Text, the spelling every tool reads and writes&#xD;&#xA;&#xD;&#xA;NEXT - three directions, no order:&#xD;&#xA;  Tutorial 02   dots become paths and plots of ground&#xD;&#xA;  Tutorial 08   the map starts answering back - this chapter's right half, grown up&#xD;&#xA;  Tutorial 10   same place, different numbers - why neither side is more true">
+          <Pad Id="HDbR3HCv6XfUlwAWwNwFYp" Bounds="-769,-73,620,1068" ShowValueBox="true" isIOBox="true" Value="01 - Your cursor is now data.&#xD;&#xA;&#xD;&#xA;Two windows. Move the mouse over the LEFT one: the dot follows, and WRITE WKT spells your&#xD;&#xA;position as a VALUE - POINT (0.42 0.77) - in the renderer's own canvas units. Move it over&#xD;&#xA;the RIGHT one: the same cursor becomes POINT (139.7 35.6) - longitude and latitude - because&#xD;&#xA;that window is a MAP looking at Tokyo. No tiles, no internet: a map is an agreement about&#xD;&#xA;coordinates before it is a picture.&#xD;&#xA;&#xD;&#xA;SAME CURSOR, TWO COORDINATE SYSTEMS, TWO NUMBERS - and neither is more true. The window's&#xD;&#xA;PIXELS are the parent both are computed from: Skia turns pixels into canvas units (Mouse),&#xD;&#xA;the map turns pixels into degrees (Console -&gt; MouseState -&gt; ScreenToWorld). A position is&#xD;&#xA;two numbers PLUS the agreement about what they mean. Hold on to that - chapters 08 and 10&#xD;&#xA;are built on it.&#xD;&#xA;&#xD;&#xA;  Coordinate / Point   geometry's raw material - and geometry does not care whose numbers&#xD;&#xA;                       it holds. The SAME nodes carry canvas units on the left and degrees&#xD;&#xA;                       on the right.&#xD;&#xA;  WKT                  the spelling every GIS tool reads. Both sides speak it.&#xD;&#xA;&#xD;&#xA;PLAY&#xD;&#xA;  Copy either WKT text into a chat or a file. Your dot travels as text.&#xD;&#xA;  Move the mouse straight down: canvas Y GROWS, latitude SHRINKS - the two systems even&#xD;&#xA;  disagree about which way is up.&#xD;&#xA;  Change the Map's Initial pins and reopen the patch: Initial means once, at first sight.&#xD;&#xA;&#xD;&#xA;GIS WORDS&#xD;&#xA;  coordinate system   the agreement that turns two numbers into a position&#xD;&#xA;  WGS84               the lon/lat agreement the map side speaks&#xD;&#xA;  X first             GIS says east before north - the opposite of spoken 'lat, long',&#xD;&#xA;                      and the most common bug in the whole domain&#xD;&#xA;  WKT                  Well-Known Text, the spelling every tool reads and writes&#xD;&#xA;&#xD;&#xA;NEXT - three directions, no order:&#xD;&#xA;  Tutorial 02   dots become paths and plots of ground&#xD;&#xA;  Tutorial 08   the map starts answering back - this chapter's right half, grown up&#xD;&#xA;  Tutorial 10   same place, different numbers - why neither side is more true">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -43,15 +43,6 @@
             <Pin Id="CkAeIYwfD2cPFDrmc2J6yK" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="SKrQCT5PVkIN7MAEkBeExi" Name="Wheel State" Kind="OutputPin" />
           </Node>
-          <Pad Id="SJT7yRgsAlB60xbps57iZr" Bounds="388,180,217,23" ShowValueBox="true" isIOBox="true" Value="the same position, drawn:">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
           <Node Bounds="60,140,80,19" Id="Q4TGtIrZeJE72FysTHMjGC">
             <p:NodeReference LastCategoryFullName="2D.Vector2" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -97,15 +88,6 @@
               <p:fontsize p:Type="Int32">14</p:fontsize>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="Q6gNDHqoXtNTXcWOxFy7en" Bounds="410,458,354,27" ShowValueBox="true" isIOBox="true" Value="&lt;- the dot, spelled as text. Copy it - it travels.">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
           <Node Bounds="388,220,85,19" Id="D1GPit6enSSIukFIsBh36t">
             <p:NodeReference LastCategoryFullName="Graphics.Skia.Layers" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
@@ -119,7 +101,7 @@
             <Pin Id="IEjedNTqAQwJkl4fdjZCG1" Name="Enabled" Kind="InputPin" />
             <Pin Id="ORbMxOVJIAcGpSmNPWv1ij" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="368,520,65,19" Id="A3DGm83Leevw3qn4sKyn4W">
+          <Node Bounds="368,520,85,19" Id="A3DGm83Leevw3qn4sKyn4W">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Group" />
@@ -127,6 +109,7 @@
             <Pin Id="Btdp4T9FIecNUQswUUxzvM" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="MLZTHPKuN9dt8iOYPfBfgH" Name="Input" Kind="InputPin" />
             <Pin Id="AkIpqirs5N1k6fmqQac62h" Name="Input 2" Kind="InputPin" />
+            <Pin Id="KXgwv0YTu3UMF9sYKNFO8a" Name="Input 3" Kind="InputPin" />
             <Pin Id="LFdimxoHTP1cUPI5r7DCHu" Name="Debug" Kind="InputPin" />
             <Pin Id="ESDRWTvkVAKrzChaPsbSKa" Name="Enabled" Kind="InputPin" />
             <Pin Id="JVQJnBThJRqXCuThdtBknu" Name="Output" Kind="OutputPin" />
@@ -167,7 +150,7 @@
             <Pin Id="Ml5QUwxk7zZO0J4Nzyc36U" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="Gaoj58ryyVKLhWHBNuCcyA" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Node Bounds="918,500,65,19" Id="K1fSD7nc3vSMfuLFy44moz">
+          <Node Bounds="677,430,65,19" Id="K1fSD7nc3vSMfuLFy44moz">
             <p:NodeReference LastCategoryFullName="Mapsui" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Mapsui" />
@@ -179,7 +162,7 @@
             <Pin Id="TVFkcB2c5lRMTYV6RF1zsB" Name="Initial Zoom Level" Kind="InputPin" />
             <Pin Id="L0cfRH06SwXP4eAjMy2LnN" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="918,550,70,19" Id="RkOotfmuFMCQN5Qf9QbsbV">
+          <Node Bounds="677,480,70,19" Id="RkOotfmuFMCQN5Qf9QbsbV">
             <p:NodeReference LastCategoryFullName="Mapsui.Skia" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="ToSkiaLayer" />
@@ -188,22 +171,22 @@
             <Pin Id="T3YcG2VwsxkOBT5onzWQVi" Name="Diagnostics" Kind="InputPin" />
             <Pin Id="PakmV4349WXMywUEMcaTWD" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="EnosoLXroUZMvIdDk3bWgv" Comment="Initial Center Longitude" Bounds="940,430,41,15" ShowValueBox="true" isIOBox="true" Value="139.7">
+          <Pad Id="EnosoLXroUZMvIdDk3bWgv" Comment="Initial Center Longitude" Bounds="699,360,41,15" ShowValueBox="true" isIOBox="true" Value="139.7">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="My8Xj985uD5M3EOirYZSt1" Comment="Initial Center Latitude" Bounds="960,451,35,15" ShowValueBox="true" isIOBox="true" Value="35.68">
+          <Pad Id="My8Xj985uD5M3EOirYZSt1" Comment="Initial Center Latitude" Bounds="719,381,35,15" ShowValueBox="true" isIOBox="true" Value="35.68">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="BCMJnjHcNTKNbc47yQFvFC" Comment="Initial Zoom Level" Bounds="980,481,35,15" ShowValueBox="true" isIOBox="true" Value="5">
+          <Pad Id="BCMJnjHcNTKNbc47yQFvFC" Comment="Initial Zoom Level" Bounds="739,411,35,15" ShowValueBox="true" isIOBox="true" Value="5">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="886,330,74,19" Id="RTN7q4X1TqLNH5JaKXWcAi">
+          <Node Bounds="941,160,74,19" Id="RTN7q4X1TqLNH5JaKXWcAi">
             <p:NodeReference LastCategoryFullName="Mapsui.Layers" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FeatureLayer" />
@@ -216,7 +199,7 @@
             <Pin Id="JmlaDJY3gq4P3mnQChIVSz" Name="Layers Built" Kind="OutputPin" />
             <Pin Id="EwubRg19CloOYcx6DSGfUs" Name="Status" Kind="OutputPin" />
           </Node>
-          <Node Bounds="886,430,39,19" Id="VsIBffkVCqbPEMdz7R5PKA">
+          <Node Bounds="677,300,147,19" Id="VsIBffkVCqbPEMdz7R5PKA">
             <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="RecordType" Name="Spread" NeedsToBeDirectParent="true" />
@@ -226,7 +209,7 @@
             <Pin Id="ViDsMlPWfZcMJsLdsEsQVy" Name="Input 2" Kind="InputPin" />
             <Pin Id="UwA1AOrDxEtLiXYBOBhs18" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="886,250,50,19" Id="RDHu2LslFCAMxAJEUk441E">
+          <Node Bounds="941,80,50,19" Id="RDHu2LslFCAMxAJEUk441E">
             <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
@@ -235,7 +218,7 @@
             <Pin Id="KiJLn9CEqYxP4vkLJ2ue8H" Name="Attributes" Kind="InputPin" />
             <Pin Id="Kxq3F6r0Uu8NqtNBer8bHS" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="886,290,39,19" Id="BC18T6i5pX5MixBQhpo28U">
+          <Node Bounds="941,120,39,19" Id="BC18T6i5pX5MixBQhpo28U">
             <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="RecordType" Name="Spread" NeedsToBeDirectParent="true" />
@@ -245,7 +228,7 @@
             <Pin Id="DcCZqkVJlJCMfEZFF0njs9" Name="Input 2" Kind="InputPin" />
             <Pin Id="McpOVe3FGm3QKiT67hNGa8" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="886,210,39,19" Id="LEXH6DB5jDgNsSfLYaPbW4">
+          <Node Bounds="941,40,39,19" Id="LEXH6DB5jDgNsSfLYaPbW4">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Geometry" NeedsToBeDirectParent="true">
@@ -257,7 +240,7 @@
             <Pin Id="GuWS538BWUDMkxv5QTPdd9" Name="Factory" Kind="InputPin" />
             <Pin Id="Qgyrz2fGhnVQPPuotMhVIQ" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1159,80,84,19" Id="FzpjZ6soQlqHEmrb6wGOZd">
+          <Node Bounds="996,470,84,19" Id="FzpjZ6soQlqHEmrb6wGOZd">
             <p:NodeReference LastCategoryFullName="Mapsui.Project" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="ScreenToWorld" />
@@ -268,17 +251,7 @@
             <Pin Id="SNkbDM83XOIizyv4kqPbnB" Name="Longitude" Kind="OutputPin" />
             <Pin Id="Hp5MczBSSwlQffsiKzMvwU" Name="Latitude" Kind="OutputPin" />
           </Node>
-          <Pad Id="G6M1vZGuhU8eYhUjGD679e" Comment="Longitude under cursor" Bounds="1287,170,120,20" ShowValueBox="true" isIOBox="true">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="Float64" />
-            </p:TypeAnnotation>
-          </Pad>
-          <Pad Id="Fqa3ESPxc7Vyhb65fJ4Kwf" Comment="Latitude under cursor" Bounds="1286,130,120,20" ShowValueBox="true" isIOBox="true">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="Float64" />
-            </p:TypeAnnotation>
-          </Pad>
-          <Node Bounds="918,600,85,19" Id="ClZlgeOcZXBBVpOPu7R4ko">
+          <Node Bounds="677,530,85,19" Id="ClZlgeOcZXBBVpOPu7R4ko">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Skia" NeedsToBeDirectParent="true" />
@@ -292,7 +265,7 @@
             <Pin Id="Se5HsX5FxN156Sk5Ot5hGh" Name="Enabled" Kind="InputPin" />
             <Pin Id="QhwOcZWzR6MQ9PL1JXeZ8W" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1199,40,46,19" Id="BugnmWppnddNGo8yUq35zZ">
+          <Node Bounds="1034,400,46,19" Id="BugnmWppnddNGo8yUq35zZ">
             <p:NodeReference LastCategoryFullName="2D.Vector2" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Vector2Type" Name="Vector2" NeedsToBeDirectParent="true" />
@@ -302,7 +275,7 @@
             <Pin Id="AXvkpKBCLdWNvZPUswCCuZ" Name="X" Kind="OutputPin" />
             <Pin Id="UwO0vog5X1cLjbjWUNBpIa" Name="Y" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1159,200,66,19" Id="CkX74hlC1orL7xf6QKcePm">
+          <Node Bounds="996,510,66,19" Id="CkX74hlC1orL7xf6QKcePm">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <CategoryReference Kind="Category" Name="Geometry" NeedsToBeDirectParent="true">
@@ -314,7 +287,7 @@
             <Pin Id="AmKSYcMcxlxOW1kj2HCxGJ" Name="Y" Kind="InputPin" />
             <Pin Id="SUmSnglQTSLPpCyTgXDNbO" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1159,240,69,19" Id="MkNgWyg7FDYMl8Lm3oG4JO">
+          <Node Bounds="996,550,69,19" Id="MkNgWyg7FDYMl8Lm3oG4JO">
             <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FrameDelay" />
@@ -324,7 +297,7 @@
             <Pin Id="ITUJ5WgKv1JQYAxaleRD5S" Name="Value" Kind="InputPin" />
             <Pin Id="DVWt0eUkeUUL8CtkNeHRt5" Name="Value" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1138,-50,90,19" Id="R1t3vS2anFmrarIsJHpMw9">
+          <Node Bounds="973,310,90,19" Id="R1t3vS2anFmrarIsJHpMw9">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Console" />
@@ -337,7 +310,7 @@
             <Pin Id="CMqhUplHMVzx4lLWaRwGo3" Name="Notifications" Kind="OutputPin" />
             <Pin Id="PW4h5kJWqOePJ5jsTUpQas" Name="Node Context" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="1159,-10,185,19" Id="VFXklBW8bgVGGtq50krz44">
+          <Node Bounds="994,350,185,19" Id="VFXklBW8bgVGGtq50krz44">
             <p:NodeReference LastCategoryFullName="IO.Mouse" LastDependency="CoreLibBasics.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="MouseState" />
@@ -355,27 +328,13 @@
             <Pin Id="AajQbpkm20hNOx3EZ7LXjx" Name="Client Area" Kind="OutputPin" />
             <Pin Id="OiqgIDzkcRQNh8EQupgFda" Name="Sender" Kind="OutputPin" />
           </Node>
-          <Node Bounds="1054,550,85,19" Id="J9ip3Y5eKVsLbvoBVegppI">
-            <p:NodeReference LastCategoryFullName="Mapsui" LastDependency="VL.Mapsui.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="OperationCallFlag" Name="ViewportInfo" />
-            </p:NodeReference>
-            <Pin Id="P97h4pGJ4o4O1ZFIxewJxy" Name="Map" Kind="InputPin" />
-            <Pin Id="KHrtfbf7U1sLBiescattqY" Name="Center Longitude" Kind="OutputPin" />
-            <Pin Id="E73hG7K98UqLph1WZ7eUAk" Name="Center Latitude" Kind="OutputPin" />
-            <Pin Id="D04UWo2PryTLH0ESDUEBZ4" Name="Resolution" Kind="OutputPin" />
-            <Pin Id="LdlUQNeheOyNjO3bWpMObZ" Name="Width" Kind="OutputPin" />
-            <Pin Id="E35BWJU4jy8PvkSPf05Dvp" Name="Height" Kind="OutputPin" />
-          </Node>
-          <Pad Id="JpjwSHsPMl7QVzaLa2j0zb" Comment="Center Longitude" Bounds="1026,611,35,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="DIEYiGpegq4Qc3QCEBEyDR" Comment="Center Latitude" Bounds="1024,641,35,15" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="878,670,185,19" Id="FJcjgjn2ncJMbG3YGO9gbn">
+          <Node Bounds="637,600,185,19" Id="FJcjgjn2ncJMbG3YGO9gbn">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
             <Pin Id="T5qP8sITRM7OY94UtUcpVE" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="SEMb1pr6C0qLr8h1m1XwmR" Name="Bounds" Kind="InputPin" DefaultValue="1309, 579, 616, 439">
+            <Pin Id="SEMb1pr6C0qLr8h1m1XwmR" Name="Bounds" Kind="InputPin" DefaultValue="1255, 575, 651, 439">
               <p:TypeAnnotation LastCategoryFullName="System.Drawing" LastDependency="System.Drawing.dll">
                 <Choice Kind="TypeFlag" Name="Rectangle" />
               </p:TypeAnnotation>
@@ -405,7 +364,7 @@
             <Pin Id="QPuwHYbPNM7NBI0qQC20o2" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="CYczMqPK6OiNm8k2Yn6aRw" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Pad Id="P83wtnq8lKkNTp76TN2I1H" Comment="iobox" Bounds="1229,441,369,68" ShowValueBox="true" isIOBox="true">
+          <Pad Id="P83wtnq8lKkNTp76TN2I1H" Comment="iobox" Bounds="1078,200,369,68" ShowValueBox="true" isIOBox="true">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -413,7 +372,7 @@
               <p:fontsize p:Type="Int32">14</p:fontsize>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="953,250,80,19" Id="H8GD8Q3yYOrOwkg7RTbSEf">
+          <Node Bounds="1076,130,80,19" Id="H8GD8Q3yYOrOwkg7RTbSEf">
             <p:NodeReference LastCategoryFullName="NTS.IO" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Write WKT" />
@@ -422,79 +381,7 @@
             <Pin Id="V6pcKavdhi8LX2x2kEiclx" Name="Include Z" Kind="InputPin" />
             <Pin Id="LFMAKHhaE3JPv0WsP2pmia" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="N6zDMahYUNOfoQWFP2tQwQ" Bounds="62,515,340,30" ShowValueBox="true" isIOBox="true" Value="Vector2 -&gt; Coordinate -&gt; Point: a position becomes geometry. The right side runs THESE EXACT nodes on degrees instead - geometry does not care whose numbers it holds.">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="MAaeUhdIdndYYK3mJHFaPQ" Bounds="1229,520,370,45" ShowValueBox="true" isIOBox="true" Value="if the right side ever reads 0,0 - three questions, in order: is the window OPEN (Bound to Document = True, or it never opens on load)? has the map DRAWN once (Initial pins apply at first sight of a sized viewport, never again)? is ScreenToWorld eating PIXELS (MouseState), not canvas units? ViewportInfo's Width answers the first two: 0 means never drawn.">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="HtohNOB4YZjLDlf7kymRHW" Bounds="1159,18,300,23" ShowValueBox="true" isIOBox="true" Value="pixels: the parent coordinate system both windows compute from">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="KdtMAq9kUmVR3uvZEJOm8j" Bounds="1290,84,260,23" ShowValueBox="true" isIOBox="true" Value="&lt;- pixels in, degrees out - the map's own translator">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="JdfXs0HjTslQQWmK0cTbKx" Bounds="1250,240,300,30" ShowValueBox="true" isIOBox="true" Value="&lt;- one frame old, ON PURPOSE: the dot is built FROM the map and drawn ON it - a true cycle. Chapter 08 owns this lesson.">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="E5oHGkSZ3uSKl9TmiiQDhB" Bounds="1020,250,230,23" ShowValueBox="true" isIOBox="true" Value="&lt;- the same cursor, spelled in degrees">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="SagnsE3AODDRSPktIJ4Cfo" Bounds="1100,550,260,23" ShowValueBox="true" isIOBox="true" Value="ask the viewport itself: centre, resolution, size">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Pad Id="GNYDhtfc4mFqKzzctstBtg" Bounds="1030,670,300,23" ShowValueBox="true" isIOBox="true" Value="Bound to Document = True, or this window never opens on load">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
-          <Node Bounds="646,370,110,19" Id="ULJQthco8NKpDtsOGYLu1U">
+          <Node Bounds="677,240,110,19" Id="ULJQthco8NKpDtsOGYLu1U">
             <p:NodeReference LastCategoryFullName="Mapsui.Layers" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Graticule" />
@@ -504,25 +391,33 @@
                 <Choice Kind="TypeFlag" Name="Float64" />
               </p:TypeAnnotation>
             </Pin>
+            <Pin Id="KT3bZcyXpxdPZKJrF8jMVH" Name="Show Labels" Kind="InputPin" DefaultValue="True" />
             <Pin Id="GhqZ5bNH6QI7AHP5S688Va" Name="Line Color" Kind="InputPin" />
             <Pin Id="B5PcLsG6iN4i0YvHIjYRxh" Name="Line Width" Kind="InputPin" />
             <Pin Id="R6DksWw9vhomXGtk1z72fB" Name="Result" Kind="OutputPin" />
             <Pin Id="DHWCgRVdMZJP4xquV1qsYD" Name="Lines Built" Kind="OutputPin" />
           </Node>
-          <Pad Id="OXu8eNB1OfzZb0zDSwyrVB" Comment="Degrees Spacing" Bounds="646,335,70,20" ShowValueBox="true" isIOBox="true" Value="10">
+          <Pad Id="OXu8eNB1OfzZb0zDSwyrVB" Comment="Degrees Spacing" Bounds="677,205,70,20" ShowValueBox="true" isIOBox="true" Value="5">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="A943uFWfbEwCbwSQ3gdms6" Bounds="646,400,290,30" ShowValueBox="true" isIOBox="true" Value="&lt;- the coordinate system, drawn: a GRATICULE, the grid every atlas carries. No tiles needed - the blank map has bearings now.">
-            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
-              <Choice Kind="TypeFlag" Name="String" />
-            </p:TypeAnnotation>
-            <p:ValueBoxSettings>
-              <p:fontsize p:Type="Int32">11</p:fontsize>
-              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
-            </p:ValueBoxSettings>
-          </Pad>
+          <Node Bounds="414,470,105,19" Id="T3ARXJqsqJSNejIkxxvWuX">
+            <p:NodeReference LastCategoryFullName="Graphics.Skia.Layers" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Grid" />
+            </p:NodeReference>
+            <Pin Id="Gvg9NSxUTMkPUsTgrevwyk" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="Qftm3MdL30XN6Zepzw3CnU" Name="Cell Size" Kind="InputPin" DefaultValue="0.5" />
+            <Pin Id="T3GY2o4diPEMQz1KtUnwNV" Name="Radius" Kind="InputPin" DefaultValue="10" />
+            <Pin Id="IVnC6GBgONSLRLBHaD9kPf" Name="Stroke Width" Kind="InputPin" />
+            <Pin Id="KsK5729vbpWOABa5v9NNdP" Name="Color" Kind="InputPin" />
+            <Pin Id="IY8vXf4wwdlOiFSdyropkE" Name="Paint" Kind="InputPin" />
+            <Pin Id="BayC1SJ5BB5N7ZL9sqIhay" Name="Enabled" Kind="InputPin" />
+            <Pin Id="QnMQClfB8reNgvrIR8hlCW" Name="Output" Kind="OutputPin" />
+          </Node>
+          <ControlPoint Id="SOTqkPJhTWDPW1whYWXnV0" Bounds="894,36" />
+          <ControlPoint Id="Fbw7qjiDX65Mz0fLwz7gP3" Bounds="903,577" />
         </Canvas>
         <Patch Id="H4hhMszdF1v1TTq2sQXNUK" Name="Create" />
         <Patch Id="Q6gZgX4SjN1Sb2drFgB4TX" Name="Update" ParticipatingElements="K1fSD7nc3vSMfuLFy44moz,RkOotfmuFMCQN5Qf9QbsbV,RTN7q4X1TqLNH5JaKXWcAi,VsIBffkVCqbPEMdz7R5PKA,RDHu2LslFCAMxAJEUk441E,BC18T6i5pX5MixBQhpo28U,LEXH6DB5jDgNsSfLYaPbW4,FzpjZ6soQlqHEmrb6wGOZd,ClZlgeOcZXBBVpOPu7R4ko" />
@@ -549,8 +444,6 @@
         <Link Id="EmgDxuaJhSSNyfjYslBuq4" Ids="McpOVe3FGm3QKiT67hNGa8,J4KKaiVgxILLI36AmmFCMs" />
         <Link Id="ODms02zOzziPfMpyGpjVke" Ids="Qgyrz2fGhnVQPPuotMhVIQ,H2DwVU415TrN14zfGiJkQz" />
         <Link Id="P9iMOnx5mKBvb0kjsnJtFO" Ids="L0cfRH06SwXP4eAjMy2LnN,KXQoMSQ2Z09802BkosEKfA" />
-        <Link Id="SxhSMd1oASzjz73m3pnxG3" Ids="SNkbDM83XOIizyv4kqPbnB,G6M1vZGuhU8eYhUjGD679e" />
-        <Link Id="LUvPtipGjLdDYOSR8yMxrW" Ids="Hp5MczBSSwlQffsiKzMvwU,Fqa3ESPxc7Vyhb65fJ4Kwf" />
         <Link Id="ClfXkGuC8WZSbGYStXHI9s" Ids="PakmV4349WXMywUEMcaTWD,DeE06TAEb3qkgvCJnkdjzk" />
         <Link Id="Pdc7tesJD0mNCX69wNaPyj" Ids="GVvEkkLP0oLMI38hdu3paS,ViDsMlPWfZcMJsLdsEsQVy" />
         <Link Id="NKvDS1S7Q7YNRvLL26avp4" Ids="AXvkpKBCLdWNvZPUswCCuZ,VVlsj7dM841RyeVkqYwH97" />
@@ -558,18 +451,16 @@
         <Link Id="ThDZQExSALdOOfBwaShf7I" Ids="SNkbDM83XOIizyv4kqPbnB,PXrYLDitJlQLf5OWz1ynpm" />
         <Link Id="UlF4isFtP6QOGai1I9ykB5" Ids="Hp5MczBSSwlQffsiKzMvwU,AmKSYcMcxlxOW1kj2HCxGJ" />
         <Link Id="UAHZRd5E8b5L4qU8KCxAIO" Ids="SUmSnglQTSLPpCyTgXDNbO,ITUJ5WgKv1JQYAxaleRD5S" />
-        <Link Id="FLWpO8uDh3kLj52M5wmitp" Ids="DVWt0eUkeUUL8CtkNeHRt5,KA7DR1UfhBYL2OaUaorQNg" />
+        <Link Id="FLWpO8uDh3kLj52M5wmitp" Ids="DVWt0eUkeUUL8CtkNeHRt5,Fbw7qjiDX65Mz0fLwz7gP3,SOTqkPJhTWDPW1whYWXnV0,KA7DR1UfhBYL2OaUaorQNg" />
         <Link Id="M8nxafAB4AHDPO4xMnaT6u" Ids="TozO55LwCwFCfCdlju0Tfs,DxzGmyAPNLkWIZkllvVsfH" />
         <Link Id="FrpeUUxxaWQ6VBSU8mzQTu" Ids="NfZ5ZhO0rDFTwjLiNfLmcD,VmYgKefwibHLX4pFGNh6Kt" />
         <Link Id="KU4YFIS2NI0H56Jhe1KgWx" Ids="U48lqebASZjfmbt8FA0345,O5XUpnAJnWyknN2NBv27OW" />
-        <Link Id="JOd84mxx9fMQV2IxxbQ33L" Ids="L0cfRH06SwXP4eAjMy2LnN,P97h4pGJ4o4O1ZFIxewJxy" />
-        <Link Id="ICk5LgOgNEDO1PI4wFhxrl" Ids="KHrtfbf7U1sLBiescattqY,JpjwSHsPMl7QVzaLa2j0zb" />
-        <Link Id="QOVTs0b7GqsPFjghlSP3Nx" Ids="E73hG7K98UqLph1WZ7eUAk,DIEYiGpegq4Qc3QCEBEyDR" />
         <Link Id="UMh5ZLsfmfIPjCoXzXxCpS" Ids="QhwOcZWzR6MQ9PL1JXeZ8W,NtWMLgEmI7TPhS9H46Iye7" />
         <Link Id="Tx5pER0x8RbOl7DU5Er0mR" Ids="Qgyrz2fGhnVQPPuotMhVIQ,B8paOYJ7ClVMKgHCIJ6JA3" />
         <Link Id="Rh669HBJymgPtYEYdbSFcr" Ids="LFMAKHhaE3JPv0WsP2pmia,P83wtnq8lKkNTp76TN2I1H" />
         <Link Id="DDM66nWCMpMZNfNOrds5Wy" Ids="OXu8eNB1OfzZb0zDSwyrVB,TR4A3QeSBSqMoqzCbCXkeX" />
         <Link Id="NdPvYm8OFcnp8lA7lEsayh" Ids="R6DksWw9vhomXGtk1z72fB,FvjIRzHrqPAN8CN1zOpy6g" />
+        <Link Id="QcHKwIqCg6rMbb6mThMpvC" Ids="QnMQClfB8reNgvrIR8hlCW,KXgwv0YTu3UMF9sYKNFO8a" />
       </Patch>
     </Node>
   </Patch>
