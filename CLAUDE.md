@@ -183,8 +183,8 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 
 | unit | state |
 |---|---|
-| `Tutorial 01 Your cursor is now data` (geometry act) | done — **rung 4 passed 2026-08-22**: circle follows the mouse, WKT updates live. Layout still machine-generated |
-| `Tutorial 02 A dot, a path, a plot of ground` (geometry act) | done — **rung 4 passed 2026-08-22**. Layout still machine-generated |
+| `Tutorial 01 Your cursor is now data` (geometry act) | done — **rung 4 passed 2026-08-22**: circle follows the mouse, WKT updates live. **Layout hand-arranged by the user 2026-09-23** — edit in place only from here |
+| `Tutorial 02 A dot, a path, a plot of ground` (geometry act) | done — **rung 4 passed 2026-08-22**. **Layout hand-arranged by the user 2026-09-23** — edit in place only from here |
 | `Tutorial 03 In or out` (geometry act) | done — **rung 4 passed 2026-08-22**. Layout still machine-generated |
 | `Tutorial 04 The shortest line between` (geometry act) | done — **rung 4 passed 2026-08-22**. First consumer of `Nearest Points`. Layout still machine-generated |
 | `Tutorial 05 Grow a shape` (geometry act) | done — **rung 4 passed 2026-08-22**. First ForEach region in the pack. Layout still machine-generated |
