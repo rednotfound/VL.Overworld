@@ -198,7 +198,7 @@
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="BCMJnjHcNTKNbc47yQFvFC" Comment="Initial Zoom Level" Bounds="980,481,35,15" ShowValueBox="true" isIOBox="true" Value="12">
+          <Pad Id="BCMJnjHcNTKNbc47yQFvFC" Comment="Initial Zoom Level" Bounds="980,481,35,15" ShowValueBox="true" isIOBox="true" Value="5">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
@@ -440,7 +440,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="HtohNOB4YZjLDlf7kymRHW" Bounds="1159,18,300,15" ShowValueBox="true" isIOBox="true" Value="pixels: the parent coordinate system both windows compute from">
+          <Pad Id="HtohNOB4YZjLDlf7kymRHW" Bounds="1159,18,300,23" ShowValueBox="true" isIOBox="true" Value="pixels: the parent coordinate system both windows compute from">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -449,7 +449,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="KdtMAq9kUmVR3uvZEJOm8j" Bounds="1290,84,260,15" ShowValueBox="true" isIOBox="true" Value="&lt;- pixels in, degrees out - the map's own translator">
+          <Pad Id="KdtMAq9kUmVR3uvZEJOm8j" Bounds="1290,84,260,23" ShowValueBox="true" isIOBox="true" Value="&lt;- pixels in, degrees out - the map's own translator">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -467,7 +467,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="E5oHGkSZ3uSKl9TmiiQDhB" Bounds="1020,250,230,15" ShowValueBox="true" isIOBox="true" Value="&lt;- the same cursor, spelled in degrees">
+          <Pad Id="E5oHGkSZ3uSKl9TmiiQDhB" Bounds="1020,250,230,23" ShowValueBox="true" isIOBox="true" Value="&lt;- the same cursor, spelled in degrees">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -476,7 +476,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="SagnsE3AODDRSPktIJ4Cfo" Bounds="1100,550,260,15" ShowValueBox="true" isIOBox="true" Value="ask the viewport itself: centre, resolution, size">
+          <Pad Id="SagnsE3AODDRSPktIJ4Cfo" Bounds="1100,550,260,23" ShowValueBox="true" isIOBox="true" Value="ask the viewport itself: centre, resolution, size">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -485,7 +485,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="GNYDhtfc4mFqKzzctstBtg" Bounds="1030,670,300,15" ShowValueBox="true" isIOBox="true" Value="Bound to Document = True, or this window never opens on load">
+          <Pad Id="GNYDhtfc4mFqKzzctstBtg" Bounds="1030,670,300,23" ShowValueBox="true" isIOBox="true" Value="Bound to Document = True, or this window never opens on load">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>

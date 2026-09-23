@@ -48,8 +48,15 @@ eight** (vl-mapsui NOTES.md 2026-09-23): `Home`'s `CenterOn` silently clamped to
 extent on feature-only maps — fixed with `OverridePanBounds` = world, failing-first regression,
 242 tests green — plus three patch-side traps now in PATCH-GRAMMAR (hand-placed Renderer's
 valueless `Bound to Document`; hot-editing misses the Initial pins' one-shot; `ScreenToWorld`
-eats pixels, and the 0,0-readout triage that tells the diseases apart). The narrative rewrite of
-01 awaits the user's read (their rung 4).
+eats pixels, and the 0,0-readout triage that tells the diseases apart). T01's blank map then asked for bearings, and the answer became
+**vl-mapsui's `Graticule [Mapsui.Layers]`** (2026-09-23, user-approved scope): the lat/lon grid
+Mapsui itself never shipped — meridians/parallels at a `Degrees Spacing`, `Show Labels` putting
+each crossing's own coordinates beside it (point features through `StyleByGeometry` → `LabelStyle`
+— the defect-three fix reused), composed from FeatureLayerNode + VectorStyleNode; 249 tests incl.
+two PIXEL tests (line pixels at world view; labels-on > labels-off), `HowTo Draw a graticule`
+(offline on purpose), first consumer T01. Its one usage trap is a PATCH-GRAMMAR row: a
+fixed-degree grid is invisible at the wrong zoom — pure arithmetic, no error anywhere. The
+narrative rewrite of 01 awaits the user's read (their rung 4).
 
 ### Where the work stands — 2026-09-07
 
