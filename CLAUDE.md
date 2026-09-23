@@ -33,6 +33,24 @@ a range-request reconnaissance), technologies (COG/PMTiles/GeoParquet/STAC) only
 **no Chapter 14 until several prototypes show the same recurring mental-model shift**. Reprojection
 stays a wait-for-consumer gap; any new permanent capability goes through a scope proposal first.
 
+### Where the work stands — 2026-09-23
+
+**The hand-arranging campaign is under way, and it changed more than layouts.** Tutorials 01/02
+arranged (pure moves); **03 reworked twice by the user** (one vertex-spread IOBox feeding NTS and
+Skia alike; `Contains`' bool driving a `Switch` between paints; then the shape made GENERATIVE —
+LinearSpread + seeded RandomSpread zipped through FromPolar); **04 reworked from point-to-shape to
+SHAPE-to-shape** (a point-cloud polygon riding the cursor); **07 in progress (the user's)**.
+Narratives condensed to the new voice as each lands. **01 was redesigned by the user into the
+course's new opening statement: two windows, two coordinate systems, one cursor** — left the Skia
+canvas, right a tile-less map (zero network, the geometry-act promise holds), the same
+Coordinate/Point/WKT chain carrying canvas units and degrees. Its debugging found **library defect
+eight** (vl-mapsui NOTES.md 2026-09-23): `Home`'s `CenterOn` silently clamped to the layers'
+extent on feature-only maps — fixed with `OverridePanBounds` = world, failing-first regression,
+242 tests green — plus three patch-side traps now in PATCH-GRAMMAR (hand-placed Renderer's
+valueless `Bound to Document`; hot-editing misses the Initial pins' one-shot; `ScreenToWorld`
+eats pixels, and the 0,0-readout triage that tells the diseases apart). The narrative rewrite of
+01 awaits the user's read (their rung 4).
+
 ### Where the work stands — 2026-09-07
 
 **2026-09-07, latest: `Tutorial 14 What if the world does not fit in memory` — built and all four
@@ -183,7 +201,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 
 | unit | state |
 |---|---|
-| `Tutorial 01 Your cursor is now data` (geometry act) | done — **rung 4 passed 2026-08-22**: circle follows the mouse, WKT updates live. **Layout hand-arranged by the user 2026-09-23** — edit in place only from here |
+| `Tutorial 01 Your cursor is now data` (geometry act) | **redesigned by the user 2026-09-23: two windows, two coordinate systems, one cursor** — left the Skia canvas (original chain), right a tile-less map (Mapsui + NTS, zero network) where the cursor's lon/lat point draws on the map it was read from (FrameDelay on the data). Behaviour user-verified the same day; the rewritten narrative still awaits their read. Edit in place only |
 | `Tutorial 02 A dot, a path, a plot of ground` (geometry act) | done — **rung 4 passed 2026-08-22**. **Layout hand-arranged by the user 2026-09-23** — edit in place only from here |
 | `Tutorial 03 In or out` (geometry act) | done — **rung 4 passed 2026-08-22**. **Hand-reworked by the user 2026-09-23** (335 lines removed: one vertex-spread IOBox feeds NTS and Skia alike; `Contains`' bool drives a `Switch` between two paints; narrative condensed by half) — edit in place only from here |
 | `Tutorial 04 The shortest line between` (geometry act) | done — **rung 4 passed 2026-08-22**. First consumer of `Nearest Points`. **Hand-reworked by the user 2026-09-23: point-to-shape became SHAPE-to-shape** — a seeded generative polygon vs a `RandomSpread (2d)` point-cloud polygon riding the cursor, both anchors of the shortest line sliding; one Count pad drives both shapes; narrative/labels rewritten to match — edit in place only from here |
