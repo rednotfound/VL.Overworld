@@ -3,19 +3,7 @@
   <NugetDependency Id="SIMDywDLwNbQ5UdOPHQxYD" Location="VL.CoreLib" Version="2025.7.4" />
   <NugetDependency Id="Sm17wEPgUJCVB75op3gzPF" Location="VL.Skia" Version="2025.7.4" />
   <NugetDependency Id="CCoTJSCcdlnfZwmjUnPFVB" Location="VL.Mapsui" Version="0.0.0" />
-  <!--
-    NetTopologySuite is declared HERE, by this document, and that is not the same as VL.Mapsui
-    declaring it. VL.Mapsui's own declaration is what lets its node signatures name NTS types; a
-    patch that wants to use NTS nodes itself needs its own dependency on it. Measured: without this
-    line the node below is "Not found"; with it, it resolves.
-  -->
   <NugetDependency Id="KkbVvAgR3UtmSGnGV4pAoR" Location="NetTopologySuite" Version="2.6.0" />
-  <!--
-    VL.NetTopologySuite is the package that MAKES geometry; this one draws it. VL.Mapsui's nuspec
-    depends on it so that opening this patch does not greet you with red nodes - vvvv does not
-    fetch a missing document dependency by itself, it shows it red and offers to install on
-    rightclick.
-  -->
   <NugetDependency Id="QVnZMbPyNO4lv6YFocyiqT" Location="VL.NetTopologySuite" Version="0.0.0" />
   <NugetDependency Id="OmKdN4h8Wf8DyjQ7sUrSMR" Location="VL.GeoJSON" Version="0.0.0" />
   <Patch Id="FJzZkKqVfW12i9kQk6L0hz">
@@ -32,7 +20,7 @@
       </p:NodeReference>
       <Patch Id="T1yChjTcVpcQLJ4rxMEL44">
         <Canvas Id="VxYLn5bECvkjhyGerEE3sc" CanvasType="Group">
-          <Pad Id="VaZNqihOnpwz6dORWEdpu0" Bounds="-1560,-40,860,1180" ShowValueBox="true" isIOBox="true" Value="07 - Your own points, lines and polygons.&#xD;&#xA;&#xD;&#xA;Tokyo Haneda. Everything on this map was typed in as numbers - no file is read anywhere.&#xD;&#xA;&#xD;&#xA;THREE KINDS, AND THEY ARE NOT INTERCHANGEABLE:&#xD;&#xA;  Point        where something IS          the three terminals&#xD;&#xA;  LineString   the shape of a way          runway 16L/34R&#xD;&#xA;  Polygon      how much ground             a box somebody drew&#xD;&#xA;&#xD;&#xA;  Coordinate ------------------------------------&gt; Point&#xD;&#xA;  Coordinate x2 -&gt; Cons -------------------------&gt; LineString&#xD;&#xA;  Coordinate x4 -&gt; Cons -&gt; LinearRing -----------&gt; Polygon&#xD;&#xA;&#xD;&#xA;A line is an ordered list of coordinates. An area is a ring, and a ring is a list that comes back&#xD;&#xA;to where it started. LINEARRING CLOSES ITSELF - you gave it four corners and it made a ring of&#xD;&#xA;five, the last the same as the first. That is what makes a ring a ring, and NTS does it so you&#xD;&#xA;cannot forget to.&#xD;&#xA;&#xD;&#xA;CHECK YOUR OWN WORK, AGAINST THE MAP. The runway is real published aviation data, and&#xD;&#xA;OpenStreetMap draws Haneda&apos;s runways too - so your line should lie exactly along the grey strip&#xD;&#xA;underneath it. Change one digit and watch it slide off. Coordinates typed by hand usually have&#xD;&#xA;nothing to be wrong against; here they do, and that is worth more than any assurance from me.&#xD;&#xA;&#xD;&#xA;PULL A WIRE OUT. Disconnect StyleByGeometry&apos;s Polygon pin. The box vanishes - and Layer Status&#xD;&#xA;names the pin you unplugged. The style is chosen by each feature&apos;s TYPE, not by the order you&#xD;&#xA;built things in, and not by anything you say. That is the whole idea of the node.&#xD;&#xA;&#xD;&#xA;TWO OF THESE ARE REAL AND ONE IS NOT, on purpose:&#xD;&#xA;  the terminals   Wikidata, CC0&#xD;&#xA;  the runway      OurAirports, public domain&#xD;&#xA;  the box         I drew it. It is not the boundary of anything.&#xD;&#xA;&#xD;&#xA;A real airport boundary has hundreds of vertices and arrives in a file - that is chapter 09.&#xD;&#xA;Building geometry by hand is for the other case: a rough area, a sketch, a thing you are inventing&#xD;&#xA;because no one has measured it yet. KNOWING WHICH CASE YOU ARE IN is most of what this chapter is&#xD;&#xA;for.&#xD;&#xA;&#xD;&#xA;NOW SWITCH ON &quot;SHOW THE REAL AIRPORT&quot;, which is the other half of this chapter.&#xD;&#xA;&#xD;&#xA;Underneath your five features drops the actual thing: 754 features out of OpenStreetMap - 712&#xD;&#xA;taxiways, 14 aprons, 9 runways, 9 terminals, 6 hangars, 4 helipads. Your runway lands on theirs.&#xD;&#xA;Your three points sit on their three terminal buildings.&#xD;&#xA;&#xD;&#xA;THAT GAP IS THE LESSON, and it is why chapter 09 exists. Nobody types 754 features. You type five&#xD;&#xA;when five is what you have: a sketch, an area nobody has surveyed, a thing you are inventing. You&#xD;&#xA;load a file when the world has already been measured by somebody else.&#xD;&#xA;&#xD;&#xA;Notice how the file gets read. FileReader is fired by ONOPEN, not every frame - without that, 307&#xD;&#xA;KB comes off the disk sixty times a second. And File Path says Assets\haneda.geojson, RELATIVE to&#xD;&#xA;this document, which is the only reason it still works on your machine. It must never be left&#xD;&#xA;EMPTY: an empty Path is not &quot;no path&quot;, it means this document&apos;s own folder, and that mistake once&#xD;&#xA;wrote 444 map tiles next to two git repositories while every check reported success.&#xD;&#xA;&#xD;&#xA;ADD MORE - the layer takes as many features as you hand it, and StyleByGeometry sorts them by type.&#xD;&#xA;Haneda&apos;s other three runways, same source:&#xD;&#xA;  16R/34L   139.768734 35.560452  -&gt;  139.785672 35.536591&#xD;&#xA;  04/22     139.761274 35.549015  -&gt;  139.777114 35.567459&#xD;&#xA;  05/23     139.803469 35.524001  -&gt;  139.822125 35.540598&#xD;&#xA;&#xD;&#xA;OSM&apos;s own copy of 04/22 begins at 139.761264 35.549002. Ours, typed from a different source, says&#xD;&#xA;139.761274 35.549015 - about a metre apart. Two independent measurements of the same concrete.&#xD;&#xA;&#xD;&#xA;DEGREES ARE NOT METRES. Ask NTS for that polygon&apos;s Area and you get a number in square degrees,&#xD;&#xA;which is not a unit anybody wants. Nothing in this family reprojects yet; that is a known gap, not&#xD;&#xA;an oversight you have found.&#xD;&#xA;&#xD;&#xA;WHAT TO WATCH:&#xD;&#xA;  Layers Built   should reach 1 and stay. Moving the map must never change it.&#xD;&#xA;  Layer Status   how many features arrived, and which style pin is missing for them.&#xD;&#xA;&#xD;&#xA;NEXT - three directions, no order:&#xD;&#xA;  Tutorial 08          the map starts answering back: your cursor becomes a place&#xD;&#xA;  Prompt A mountain    the same craft on a mountain - nine peaks, typed by hand&#xD;&#xA;  Tutorial 02          these three kinds of geometry, before the earth arrived">
+          <Pad Id="VaZNqihOnpwz6dORWEdpu0" Bounds="-2515,-66,860,1180" ShowValueBox="true" isIOBox="true" Value="07 - Your own points, lines and polygons.&#xD;&#xA;&#xD;&#xA;Tokyo Haneda. Everything on this map was typed in as numbers - no file is read anywhere.&#xD;&#xA;&#xD;&#xA;THREE KINDS, AND THEY ARE NOT INTERCHANGEABLE:&#xD;&#xA;  Point        where something IS          the three terminals&#xD;&#xA;  LineString   the shape of a way          runway 16L/34R&#xD;&#xA;  Polygon      how much ground             a box somebody drew&#xD;&#xA;&#xD;&#xA;  Coordinate ------------------------------------&gt; Point&#xD;&#xA;  Coordinate x2 -&gt; Cons -------------------------&gt; LineString&#xD;&#xA;  Coordinate x4 -&gt; Cons -&gt; LinearRing -----------&gt; Polygon&#xD;&#xA;&#xD;&#xA;A line is an ordered list of coordinates. An area is a ring, and a ring is a list that comes back&#xD;&#xA;to where it started. LINEARRING CLOSES ITSELF - you gave it four corners and it made a ring of&#xD;&#xA;five, the last the same as the first. That is what makes a ring a ring, and NTS does it so you&#xD;&#xA;cannot forget to.&#xD;&#xA;&#xD;&#xA;CHECK YOUR OWN WORK, AGAINST THE MAP. The runway is real published aviation data, and&#xD;&#xA;OpenStreetMap draws Haneda's runways too - so your line should lie exactly along the grey strip&#xD;&#xA;underneath it. Change one digit and watch it slide off. Coordinates typed by hand usually have&#xD;&#xA;nothing to be wrong against; here they do, and that is worth more than any assurance from me.&#xD;&#xA;&#xD;&#xA;PULL A WIRE OUT. Disconnect StyleByGeometry's Polygon pin. The box vanishes - and Layer Status&#xD;&#xA;names the pin you unplugged. The style is chosen by each feature's TYPE, not by the order you&#xD;&#xA;built things in, and not by anything you say. That is the whole idea of the node.&#xD;&#xA;&#xD;&#xA;TWO OF THESE ARE REAL AND ONE IS NOT, on purpose:&#xD;&#xA;  the terminals   Wikidata, CC0&#xD;&#xA;  the runway      OurAirports, public domain&#xD;&#xA;  the box         I drew it. It is not the boundary of anything.&#xD;&#xA;&#xD;&#xA;A real airport boundary has hundreds of vertices and arrives in a file - that is chapter 09.&#xD;&#xA;Building geometry by hand is for the other case: a rough area, a sketch, a thing you are inventing&#xD;&#xA;because no one has measured it yet. KNOWING WHICH CASE YOU ARE IN is most of what this chapter is&#xD;&#xA;for.&#xD;&#xA;&#xD;&#xA;NOW SWITCH ON &quot;SHOW THE REAL AIRPORT&quot;, which is the other half of this chapter.&#xD;&#xA;&#xD;&#xA;Underneath your five features drops the actual thing: 754 features out of OpenStreetMap - 712&#xD;&#xA;taxiways, 14 aprons, 9 runways, 9 terminals, 6 hangars, 4 helipads. Your runway lands on theirs.&#xD;&#xA;Your three points sit on their three terminal buildings.&#xD;&#xA;&#xD;&#xA;THAT GAP IS THE LESSON, and it is why chapter 09 exists. Nobody types 754 features. You type five&#xD;&#xA;when five is what you have: a sketch, an area nobody has surveyed, a thing you are inventing. You&#xD;&#xA;load a file when the world has already been measured by somebody else.&#xD;&#xA;&#xD;&#xA;Notice how the file gets read. FileReader is fired by ONOPEN, not every frame - without that, 307&#xD;&#xA;KB comes off the disk sixty times a second. And File Path says Assets\haneda.geojson, RELATIVE to&#xD;&#xA;this document, which is the only reason it still works on your machine. It must never be left&#xD;&#xA;EMPTY: an empty Path is not &quot;no path&quot;, it means this document's own folder, and that mistake once&#xD;&#xA;wrote 444 map tiles next to two git repositories while every check reported success.&#xD;&#xA;&#xD;&#xA;ADD MORE - the layer takes as many features as you hand it, and StyleByGeometry sorts them by type.&#xD;&#xA;Haneda's other three runways, same source:&#xD;&#xA;  16R/34L   139.768734 35.560452  -&gt;  139.785672 35.536591&#xD;&#xA;  04/22     139.761274 35.549015  -&gt;  139.777114 35.567459&#xD;&#xA;  05/23     139.803469 35.524001  -&gt;  139.822125 35.540598&#xD;&#xA;&#xD;&#xA;OSM's own copy of 04/22 begins at 139.761264 35.549002. Ours, typed from a different source, says&#xD;&#xA;139.761274 35.549015 - about a metre apart. Two independent measurements of the same concrete.&#xD;&#xA;&#xD;&#xA;DEGREES ARE NOT METRES. Ask NTS for that polygon's Area and you get a number in square degrees,&#xD;&#xA;which is not a unit anybody wants. Nothing in this family reprojects yet; that is a known gap, not&#xD;&#xA;an oversight you have found.&#xD;&#xA;&#xD;&#xA;WHAT TO WATCH:&#xD;&#xA;  Layers Built   should reach 1 and stay. Moving the map must never change it.&#xD;&#xA;  Layer Status   how many features arrived, and which style pin is missing for them.&#xD;&#xA;&#xD;&#xA;NEXT - three directions, no order:&#xD;&#xA;  Tutorial 08          the map starts answering back: your cursor becomes a place&#xD;&#xA;  Prompt A mountain    the same craft on a mountain - nine peaks, typed by hand&#xD;&#xA;  Tutorial 02          these three kinds of geometry, before the earth arrived">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -41,7 +29,7 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="UnaIkq8cPr0a4UZQVn7ji7" Comment="Enabled" Bounds="79,280,35,35" ShowValueBox="true" isIOBox="true" Value="false">
+          <Pad Id="UnaIkq8cPr0a4UZQVn7ji7" Comment="Enabled" Bounds="-40,170,35,35" ShowValueBox="true" isIOBox="true" Value="False">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
@@ -49,7 +37,7 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="CNYLiTg3BUtmCJlFwHyUjv" Comment="Cache To Disk" Bounds="207,280,35,35" ShowValueBox="true" isIOBox="true" Value="true">
+          <Pad Id="CNYLiTg3BUtmCJlFwHyUjv" Comment="Cache To Disk" Bounds="102,133,35,35" ShowValueBox="true" isIOBox="true" Value="true">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
@@ -57,7 +45,7 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="79,340,150,19" Id="JqwwJBWIvaSJq4DTAz8vuN">
+          <Node Bounds="-40,230,150,19" Id="JqwwJBWIvaSJq4DTAz8vuN">
             <p:NodeReference LastCategoryFullName="Mapsui.Layers" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="OpenStreetMap" />
@@ -68,8 +56,8 @@
             <Pin Id="MVGJGduk0mPWJznoGv9YVX" Name="Layers Built" Kind="OutputPin" />
             <Pin Id="HwRnfleRlGfpKEI7pXlafv" Name="Cache Status" Kind="OutputPin" />
           </Node>
-          <Pad Id="RgIIgaq8NiTBppqeaxZgPe" Comment="Layers Built" Bounds="153,391,80,15" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="87,523,39,19" Id="IuHPlniMpFcdUZg9WNt7Xp">
+          <Pad Id="RgIIgaq8NiTBppqeaxZgPe" Comment="Layers Built" Bounds="34,281,80,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="62,860,313,19" Id="IuHPlniMpFcdUZg9WNt7Xp">
             <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Cons" />
@@ -80,35 +68,23 @@
             <Pin Id="BmQx3qCB4mkhfEatPr5QlX" Name="Input 3" Kind="InputPin" />
             <Pin Id="Obo0KlAOX8uJTLEhkSgG4Y" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="QTNlTyezfmbasb8gEcPG61" Comment="Initial Longitude" Bounds="140,583,62,15" ShowValueBox="true" isIOBox="true" Value="139.787">
+          <Pad Id="QTNlTyezfmbasb8gEcPG61" Comment="Initial Longitude" Bounds="99,950,62,15" ShowValueBox="true" isIOBox="true" Value="139.787">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="I8MAlGEJKxag8SUuQTLx71" Comment="Initial Latitude" Bounds="229,544,62,15" ShowValueBox="true" isIOBox="true" Value="35.550">
+          <Pad Id="I8MAlGEJKxag8SUuQTLx71" Comment="Initial Latitude" Bounds="134,910,62,15" ShowValueBox="true" isIOBox="true" Value="35.550">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="MU5GcscWwFrk45xrCPm07u" Comment="Initial Zoom Level" Bounds="329,583,50,15" ShowValueBox="true" isIOBox="true" Value="13">
+          <Pad Id="MU5GcscWwFrk45xrCPm07u" Comment="Initial Zoom Level" Bounds="284,950,50,15" ShowValueBox="true" isIOBox="true" Value="13">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Integer32" />
             </p:TypeAnnotation>
           </Pad>
-          <!--
-            ***** your own shapes, from here down *****
-
-            The shape has to come from somewhere, and that somewhere is NOT VL.Mapsui: this package
-            draws geometry, it does not create it. In a real patch the geometry comes from VL.NetTopologySuite,
-            from a file, or from a service. Here it is a fixture so the example stands on its own.
-
-            Read WKT is one way in and the shortest one to read on a page. VL.NetTopologySuite also
-            builds geometry coordinate by coordinate - Coordinate, LinearRing, Polygon - and its own
-            HowTo Create a polygon shows that. Either way what arrives here is the same type, which
-            is the point: geometry is a TYPE, not a format.
-          -->
-          <Pad Id="VpQK4wm9zJ4rIVcw56Y1Kc" Comment="Layer Status - what will NOT be drawn" Bounds="300,760,440,15" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="300,610,110,19" Id="KjIpQa4pEu72nwqUqUXoqT">
+          <Pad Id="VpQK4wm9zJ4rIVcw56Y1Kc" Comment="Layer Status - what will NOT be drawn" Bounds="670,740,90,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="997,-446,110,19" Id="KjIpQa4pEu72nwqUqUXoqT">
             <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
@@ -117,7 +93,7 @@
             <Pin Id="BF6JDuUAqnKJe6LGjt4p4J" Name="Attributes" Kind="InputPin" />
             <Pin Id="RK2xebiQ2tGJHhTLuKJ4y8" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="300,690,110,19" Id="Ukf8SSszU7nia2slky6CjD">
+          <Node Bounds="997,-396,110,19" Id="Ukf8SSszU7nia2slky6CjD">
             <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
@@ -126,8 +102,7 @@
             <Pin Id="NMxP2QUCq5SCATf8ULdG8D" Name="Attributes" Kind="InputPin" />
             <Pin Id="NeMD0awnyEgF670kEbygzt" Name="Result" Kind="OutputPin" />
           </Node>
-
-          <Node Bounds="300,510,110,19" Id="LKlHCGkEW27uDksjQ03tsc">
+          <Node Bounds="1004,-336,110,19" Id="LKlHCGkEW27uDksjQ03tsc">
             <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
@@ -136,17 +111,17 @@
             <Pin Id="T4DyhbpJF7z3MVEDGgU1l4" Name="Attributes" Kind="InputPin" />
             <Pin Id="T3xaP10ssIBu1W84JenuLS" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="L5ECxjKr4lAmsv1TYNCDrv" Comment="Terminal 1 lon" Bounds="-1500,0,80,15" ShowValueBox="true" isIOBox="true" Value="139.78375">
+          <Pad Id="L5ECxjKr4lAmsv1TYNCDrv" Comment="Terminal 1 lon" Bounds="966,-550,80,15" ShowValueBox="true" isIOBox="true" Value="139.78375">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="Mell4j175EPwdCACrfEqWJ" Comment="Terminal 1 lat" Bounds="-1500,18,80,15" ShowValueBox="true" isIOBox="true" Value="35.548722">
+          <Pad Id="Mell4j175EPwdCACrfEqWJ" Comment="Terminal 1 lat" Bounds="1054,-589,80,15" ShowValueBox="true" isIOBox="true" Value="35.548722">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,0,80,19" Id="BNXCyFbK3rKF0qn4XW1Nav">
+          <Node Bounds="997,-516,80,19" Id="BNXCyFbK3rKF0qn4XW1Nav">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -155,7 +130,7 @@
             <Pin Id="FdSYCBKBG6JXM8FWHPmYlQ" Name="Y" Kind="InputPin" />
             <Pin Id="DDYSyLm9HPgFOVhZpnx9BV" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1240,0,80,19" Id="Di8MLXZ3HsKfMQmRyzBCe6">
+          <Node Bounds="997,-476,80,19" Id="Di8MLXZ3HsKfMQmRyzBCe6">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Point" />
@@ -164,17 +139,17 @@
             <Pin Id="ToeFd88xurrsmQ9NIN3ev4" Name="Factory" Kind="InputPin" />
             <Pin Id="JBrtjGncBdB1j5bpGRB3Yp" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="IeFxbH6YokD8WTVdYjjK78" Comment="Terminal 2 lon" Bounds="-1500,46,80,15" ShowValueBox="true" isIOBox="true" Value="139.788556">
+          <Pad Id="IeFxbH6YokD8WTVdYjjK78" Comment="Terminal 2 lon" Bounds="569,-390,80,15" ShowValueBox="true" isIOBox="true" Value="139.788556">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="OwxZ4naubpCEIPlY6kvMi3" Comment="Terminal 2 lat" Bounds="-1500,64,80,15" ShowValueBox="true" isIOBox="true" Value="35.550972">
+          <Pad Id="OwxZ4naubpCEIPlY6kvMi3" Comment="Terminal 2 lat" Bounds="569,-372,80,15" ShowValueBox="true" isIOBox="true" Value="35.550972">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,46,80,19" Id="Vo6vGaz1M93oUQYwkhJDOe">
+          <Node Bounds="759,-390,80,19" Id="Vo6vGaz1M93oUQYwkhJDOe">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -183,7 +158,7 @@
             <Pin Id="Ie0S8iPWGzYglQzK9ZE0TS" Name="Y" Kind="InputPin" />
             <Pin Id="JtUtdPl1gYDYo8jN8F1M6z" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1240,46,80,19" Id="UO5yziPeK9SAa81pAbU4O4">
+          <Node Bounds="829,-390,80,19" Id="UO5yziPeK9SAa81pAbU4O4">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Point" />
@@ -192,17 +167,17 @@
             <Pin Id="UvFmCJPqovFMOy0TrFHzVC" Name="Factory" Kind="InputPin" />
             <Pin Id="U7yBd2Pp6mRsshr3NO1xem" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="Bow8aH8J1PjWSKjb8Wq4nX" Comment="Terminal 3 lon" Bounds="-1500,92,80,15" ShowValueBox="true" isIOBox="true" Value="139.7685">
+          <Pad Id="Bow8aH8J1PjWSKjb8Wq4nX" Comment="Terminal 3 lon" Bounds="569,-344,80,15" ShowValueBox="true" isIOBox="true" Value="139.7685">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="JI6HJMOtkVabnni0bR2fiF" Comment="Terminal 3 lat" Bounds="-1500,110,80,15" ShowValueBox="true" isIOBox="true" Value="35.545">
+          <Pad Id="JI6HJMOtkVabnni0bR2fiF" Comment="Terminal 3 lat" Bounds="569,-326,80,15" ShowValueBox="true" isIOBox="true" Value="35.545">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,92,80,19" Id="NSmM5iD6ODtlIEXxQu1AMs">
+          <Node Bounds="759,-344,80,19" Id="NSmM5iD6ODtlIEXxQu1AMs">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -211,7 +186,7 @@
             <Pin Id="HivLZSrsOg8KXO2rQr6GuT" Name="Y" Kind="InputPin" />
             <Pin Id="S3nLnHXIBAKuXh9CgG6IvE" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1240,92,80,19" Id="P7MCzC9RPRbz8BPglPCH6U">
+          <Node Bounds="829,-344,80,19" Id="P7MCzC9RPRbz8BPglPCH6U">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Point" />
@@ -220,17 +195,17 @@
             <Pin Id="JGMBAYUphQPxpavlOBqYph" Name="Factory" Kind="InputPin" />
             <Pin Id="S3VgKSgwIy7KBkgSsiXbVn" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="HDzVvJ93DiZgteI0wmrD63" Comment="Runway 16L lon" Bounds="-1500,178,80,15" ShowValueBox="true" isIOBox="true" Value="139.78655">
+          <Pad Id="HDzVvJ93DiZgteI0wmrD63" Comment="Runway 16L lon" Bounds="569,-258,80,15" ShowValueBox="true" isIOBox="true" Value="139.78655">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="AuDZsNNcxiYwuJAoHJL4Bb" Comment="Runway 16L lat" Bounds="-1500,196,80,15" ShowValueBox="true" isIOBox="true" Value="35.565897">
+          <Pad Id="AuDZsNNcxiYwuJAoHJL4Bb" Comment="Runway 16L lat" Bounds="569,-240,80,15" ShowValueBox="true" isIOBox="true" Value="35.565897">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,178,80,19" Id="Qt0mMA7ghfYehel7I0BSCl">
+          <Node Bounds="759,-258,80,19" Id="Qt0mMA7ghfYehel7I0BSCl">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -239,17 +214,17 @@
             <Pin Id="DRkqZid4N93ZJgpYEKagt2" Name="Y" Kind="InputPin" />
             <Pin Id="EYThxoKDacwAEuxQLP4VKT" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="ANIhYyj38gH3sHagpjACHk" Comment="Runway 34R lon" Bounds="-1500,224,80,15" ShowValueBox="true" isIOBox="true" Value="139.805142">
+          <Pad Id="ANIhYyj38gH3sHagpjACHk" Comment="Runway 34R lon" Bounds="569,-212,80,15" ShowValueBox="true" isIOBox="true" Value="139.805142">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="VZH6oV9iw5rfHx9nKB57HN" Comment="Runway 34R lat" Bounds="-1500,242,80,15" ShowValueBox="true" isIOBox="true" Value="35.53969">
+          <Pad Id="VZH6oV9iw5rfHx9nKB57HN" Comment="Runway 34R lat" Bounds="569,-194,80,15" ShowValueBox="true" isIOBox="true" Value="35.53969">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,224,80,19" Id="GllElByG3VyxvP8rahSnYy">
+          <Node Bounds="759,-212,80,19" Id="GllElByG3VyxvP8rahSnYy">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -258,7 +233,7 @@
             <Pin Id="JKf2stadNInPTY5zZk1tLL" Name="Y" Kind="InputPin" />
             <Pin Id="VJCHvo4u39FmbObkJREMtZ" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1240,210,39,19" Id="Bd44LzYN7Ssjbdb9DLSNT2">
+          <Node Bounds="829,-226,39,19" Id="Bd44LzYN7Ssjbdb9DLSNT2">
             <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Cons" />
@@ -268,7 +243,7 @@
             <Pin Id="NtAQ2lKbbMDgK3ivBGBwgz" Name="Input 2" Kind="InputPin" />
             <Pin Id="Qzh2CmyDQAsYm5voguYtJn" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1150,210,80,19" Id="C03EkBkhnvOj48m4CeuxYc">
+          <Node Bounds="919,-226,80,19" Id="C03EkBkhnvOj48m4CeuxYc">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="LineString" />
@@ -277,17 +252,17 @@
             <Pin Id="TxBIvibdtTDm4rVadhXlz5" Name="Factory" Kind="InputPin" />
             <Pin Id="NMp2TqHFsL2aw3J1XfupTF" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="Bc197hDl8hcdNO4WUYUgUK" Comment="Box SW lon" Bounds="-1500,310,80,15" ShowValueBox="true" isIOBox="true" Value="139.762">
+          <Pad Id="Bc197hDl8hcdNO4WUYUgUK" Comment="Box SW lon" Bounds="569,-126,80,15" ShowValueBox="true" isIOBox="true" Value="139.762">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="QavL1jzCQPs60fS5xsz6aL" Comment="Box SW lat" Bounds="-1500,328,80,15" ShowValueBox="true" isIOBox="true" Value="35.532">
+          <Pad Id="QavL1jzCQPs60fS5xsz6aL" Comment="Box SW lat" Bounds="569,-108,80,15" ShowValueBox="true" isIOBox="true" Value="35.532">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,310,80,19" Id="RwRtLxYUub1vHY1hhuBU2c">
+          <Node Bounds="759,-126,80,19" Id="RwRtLxYUub1vHY1hhuBU2c">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -296,17 +271,17 @@
             <Pin Id="H5jGkgYxBiKFar4x6flGcr" Name="Y" Kind="InputPin" />
             <Pin Id="PnOwCH7IId4MaM1ZrihQXV" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="HMUEaxwVWHKXxywyguIcgP" Comment="Box SE lon" Bounds="-1500,356,80,15" ShowValueBox="true" isIOBox="true" Value="139.812">
+          <Pad Id="HMUEaxwVWHKXxywyguIcgP" Comment="Box SE lon" Bounds="569,-80,80,15" ShowValueBox="true" isIOBox="true" Value="139.812">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="SO28hzOXi8alRKkkH9eylO" Comment="Box SE lat" Bounds="-1500,374,80,15" ShowValueBox="true" isIOBox="true" Value="35.532">
+          <Pad Id="SO28hzOXi8alRKkkH9eylO" Comment="Box SE lat" Bounds="569,-62,80,15" ShowValueBox="true" isIOBox="true" Value="35.532">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,356,80,19" Id="NX7i8ccgNIIKyFk9v4QZh8">
+          <Node Bounds="759,-80,80,19" Id="NX7i8ccgNIIKyFk9v4QZh8">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -315,17 +290,17 @@
             <Pin Id="Ke1ivaYRmqCBPtGKHJGyVj" Name="Y" Kind="InputPin" />
             <Pin Id="NfDykeI5ZWVH9SeS0tA681" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="HpIONJuZ5mVYnlKpdQjDG1" Comment="Box NE lon" Bounds="-1500,402,80,15" ShowValueBox="true" isIOBox="true" Value="139.812">
+          <Pad Id="HpIONJuZ5mVYnlKpdQjDG1" Comment="Box NE lon" Bounds="569,-34,80,15" ShowValueBox="true" isIOBox="true" Value="139.812">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="RQBy8NjDn4y7D6Hweq9BQg" Comment="Box NE lat" Bounds="-1500,420,80,15" ShowValueBox="true" isIOBox="true" Value="35.57">
+          <Pad Id="RQBy8NjDn4y7D6Hweq9BQg" Comment="Box NE lat" Bounds="569,-16,80,15" ShowValueBox="true" isIOBox="true" Value="35.57">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,402,80,19" Id="QGSrmH9kt70rdPonGqRLBV">
+          <Node Bounds="759,-34,80,19" Id="QGSrmH9kt70rdPonGqRLBV">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -334,17 +309,17 @@
             <Pin Id="SpLcU3MxJsoy1I7brfdZMK" Name="Y" Kind="InputPin" />
             <Pin Id="O9ohQzhibn2nxUurgBIgkx" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="GroS1PaKvzb4Q95If2s0wO" Comment="Box NW lon" Bounds="-1500,448,80,15" ShowValueBox="true" isIOBox="true" Value="139.762">
+          <Pad Id="GroS1PaKvzb4Q95If2s0wO" Comment="Box NW lon" Bounds="569,12,80,15" ShowValueBox="true" isIOBox="true" Value="139.762">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="VPTQt4dXPc4fy7vRSbHq9k" Comment="Box NW lat" Bounds="-1500,466,80,15" ShowValueBox="true" isIOBox="true" Value="35.57">
+          <Pad Id="VPTQt4dXPc4fy7vRSbHq9k" Comment="Box NW lat" Bounds="569,30,80,15" ShowValueBox="true" isIOBox="true" Value="35.57">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="-1310,448,80,19" Id="MDgacpX9Q94V7uAc06jZBQ">
+          <Node Bounds="759,20,80,19" Id="MDgacpX9Q94V7uAc06jZBQ">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Coordinate" />
@@ -353,7 +328,7 @@
             <Pin Id="LBlOxvZl3KnmDVI5ICr3PG" Name="Y" Kind="InputPin" />
             <Pin Id="IguGV5Z4RYFz2gkser5Y8E" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1240,374,39,19" Id="R4UXy9WOwcjs0UQkrqa0oL">
+          <Node Bounds="829,-62,65,19" Id="R4UXy9WOwcjs0UQkrqa0oL">
             <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Cons" />
@@ -365,7 +340,7 @@
             <Pin Id="QdE75KJQk4umYtXpicItQ6" Name="Input 4" Kind="InputPin" />
             <Pin Id="HSWYqDFyW9SrSeirN9ffOI" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1150,374,80,19" Id="O4PFY72hADJE9pBAQR8Bjk">
+          <Node Bounds="919,-62,80,19" Id="O4PFY72hADJE9pBAQR8Bjk">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="LinearRing" />
@@ -374,7 +349,7 @@
             <Pin Id="TiSFHJEMb8nBnsQ0tAj6aY" Name="Factory" Kind="InputPin" />
             <Pin Id="LifxR7FIZ9i0ji4ULug8ER" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-1050,374,80,19" Id="QZzBVJzdz7r6Wmwn6ufmrH">
+          <Node Bounds="919,-26,80,19" Id="QZzBVJzdz7r6Wmwn6ufmrH">
             <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Polygon" />
@@ -384,7 +359,7 @@
             <Pin Id="SA0pvHBiWY1zmINiRno9ch" Name="Factory" Kind="InputPin" />
             <Pin Id="QKbA3ygWDZXwLj65fuaYUA" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-900,200,60,19" Id="J3Mr7cRHtmGYCOHm4TkTpP">
+          <Node Bounds="920,-186,79,19" Id="J3Mr7cRHtmGYCOHm4TkTpP">
             <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
@@ -393,7 +368,7 @@
             <Pin Id="KMMvmZE6hGdfcfTPq7nRuG" Name="Attributes" Kind="InputPin" />
             <Pin Id="CxGNy7j9NbXvYwINc5yq9Q" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-900,340,60,19" Id="KOsylLVpLo3qnpTPiqVDwT">
+          <Node Bounds="919,14,80,19" Id="KOsylLVpLo3qnpTPiqVDwT">
             <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
@@ -402,22 +377,22 @@
             <Pin Id="CeSF1mEzpzdkzSxUrTNr9t" Name="Attributes" Kind="InputPin" />
             <Pin Id="VOSQ059nEcVGYwHN1rvSq6" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-620,470,90,19" Id="FeiqDrEJG7KIquJZVA2jM4">
+          <Node Bounds="656,360,90,19" Id="FeiqDrEJG7KIquJZVA2jM4">
             <p:NodeReference LastCategoryFullName="Mapsui.Styles" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="VectorStyle" />
             </p:NodeReference>
             <Pin Id="KUmfVT8zSXaU5IOQDPFEar" Name="Fill Color" Kind="InputPin" />
             <Pin Id="PGih1UDsayYfU9iVifDoZc" Name="Line Color" Kind="InputPin" />
-            <Pin Id="EOUGk3hFzje9KTuVz8wWsH" Name="Line Width" Kind="InputPin" />
+            <Pin Id="EOUGk3hFzje9KTuVz8wWsH" Name="Line Width" Kind="InputPin" DefaultValue="30" />
             <Pin Id="H8oNObZmqq26ti4BfXr3Cr" Name="Result" Kind="OutputPin" />
           </Node>
-          <Pad Id="JfqoVbrECn8opA627omEfL" Comment="File Path" Bounds="-620,700,250,15" ShowValueBox="true" isIOBox="true" Value="Assets\haneda.geojson">
+          <Pad Id="JfqoVbrECn8opA627omEfL" Comment="File Path" Bounds="187,490,316,15" ShowValueBox="true" isIOBox="true" Value="Assets\haneda.geojson">
             <p:TypeAnnotation LastCategoryFullName="IO" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Path" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="Vl5jOKKmQhMgRjUPvz9IVb" Comment="Show the real airport" Bounds="-620,660,35,35" ShowValueBox="true" isIOBox="true" Value="false">
+          <Pad Id="Vl5jOKKmQhMgRjUPvz9IVb" Comment="Show the real airport" Bounds="301,670,35,35" ShowValueBox="true" isIOBox="true" Value="False">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
@@ -425,26 +400,28 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="LCXaMxlrCjgdGh6ijZmbYA" Comment="Real airport - how many arrived" Bounds="-300,780,300,15" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="-620,740,54,19" Id="Azkepu5SUJuDhvWqsOoRId">
+          <Pad Id="LCXaMxlrCjgdGh6ijZmbYA" Comment="Real airport - how many arrived" Bounds="349,811,78,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="290,540,54,19" Id="Azkepu5SUJuDhvWqsOoRId">
             <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="OnOpen" />
             </p:NodeReference>
+            <Pin Id="L1DIKA7tkH6MwrfAoQ6yFa" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="NimW2nQsiGJbEkzKH0M5z5" Name="Simulate" Kind="InputPin" />
             <Pin Id="VcrCA5CHiFcdnORWQQ2Luq" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-340,700,110,19" Id="T68tu4ryjGgrNmXPVG6z4d">
+          <Node Bounds="185,580,110,19" Id="T68tu4ryjGgrNmXPVG6z4d">
             <p:NodeReference LastCategoryFullName="IO" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FileReader (String)" />
             </p:NodeReference>
+            <Pin Id="VDaWptMYv5lPe8F7UYImZu" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="QsIrKujhEow04T8c2YL8Nj" Name="File Path" Kind="InputPin" />
             <Pin Id="K9s1pJ3qaOzfOX5gm0GkOU" Name="Encoding" Kind="InputPin" />
             <Pin Id="I3dkihO6XylkNDJFa0aKha" Name="Read" Kind="InputPin" />
             <Pin Id="TrzuJEUzZXSP4eAORxyAhz" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-340,740,110,19" Id="GUqOTyUm2t4Yt0EFVwf4AT">
+          <Node Bounds="185,630,110,19" Id="GUqOTyUm2t4Yt0EFVwf4AT">
             <p:NodeReference LastCategoryFullName="GeoJSON" LastDependency="VL.GeoJSON.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Read GeoJSON" />
@@ -456,7 +433,7 @@
             <Pin Id="RwMdl1cmokcdhqQRvwvuo5" Name="Status" Kind="OutputPin" />
             <Pin Id="H6fdwm9y1gVDNqkA4rsxLm" Name="Parses" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-340,780,90,19" Id="BKuL3n6SbwMTXQciUjwu0Y">
+          <Node Bounds="250,720,90,19" Id="BKuL3n6SbwMTXQciUjwu0Y">
             <p:NodeReference LastCategoryFullName="Mapsui.Styles" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="VectorStyle" />
@@ -466,7 +443,7 @@
             <Pin Id="IysvcptjsYqtc9ls5CHvYi" Name="Line Width" Kind="InputPin" />
             <Pin Id="LQLVHfoSMNVGeRoOz9hd08" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-140,740,150,19" Id="NrC9WdcLkgn7bG8M9nrptQ">
+          <Node Bounds="202,770,150,19" Id="NrC9WdcLkgn7bG8M9nrptQ">
             <p:NodeReference LastCategoryFullName="Mapsui.Layers" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FeatureLayer" />
@@ -475,11 +452,11 @@
             <Pin Id="ObsShau7LG2xQ7cpZSIdyK" Name="Style" Kind="InputPin" />
             <Pin Id="Uv1UatvFLr3NLnxOf4z33m" Name="Enabled" Kind="InputPin" />
             <Pin Id="JrCBAzwsSFPAWXAwUuYYHd" Name="Name" Kind="InputPin" />
+            <Pin Id="LlB79N2DyHK7cvkQkDVlsf" Name="Result" Kind="OutputPin" />
             <Pin Id="AzfKfUN6mFogeS6eSS73BL" Name="Layers Built" Kind="OutputPin" />
             <Pin Id="R5RQobnbuI93IQVlvSl49D" Name="Status" Kind="OutputPin" />
-            <Pin Id="LlB79N2DyHK7cvkQkDVlsf" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="67,870,110,19" Id="VSxfKYiIAsS5XBOPB5QYfo">
+          <Node Bounds="67,1357,110,19" Id="VSxfKYiIAsS5XBOPB5QYfo">
             <p:NodeReference LastCategoryFullName="Mapsui.Widgets" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Attribution" />
@@ -487,11 +464,10 @@
             <Pin Id="EjsKoYxCpaQK0xORDNhyEd" Name="Map" Kind="InputPin" />
             <Pin Id="Ep5GaCnTJsUbI1eyjf0mTY" Name="Enabled" Kind="InputPin" />
             <Pin Id="Adb5WcCVHXrQMKuKQvYlSa" Name="Corner" Kind="InputPin" />
-            <Pin Id="KbQ0H5FZgu9cL5oIuxjwzr" Name="Attribution" Kind="OutputPin" />
             <Pin Id="BljkCeCINa9jCMNDEzRvVk" Name="Result" Kind="OutputPin" />
+            <Pin Id="KbQ0H5FZgu9cL5oIuxjwzr" Name="Attribution" Kind="OutputPin" />
           </Node>
-
-          <Node Bounds="300,550,39,19" Id="A4jSu2sjauZP2s8LlxSayy">
+          <Node Bounds="556,110,85,19" Id="A4jSu2sjauZP2s8LlxSayy">
             <p:NodeReference LastCategoryFullName="Collections.Spread" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Cons" />
@@ -504,37 +480,17 @@
             <Pin Id="HEYpfmeWW30UiT4pE5n0Zq" Name="Input 5" Kind="InputPin" />
             <Pin Id="PAwh0bTqOnKYu3GBgYxASP" Name="Result" Kind="OutputPin" />
           </Node>
-
-          <!--
-            ***** one style per geometry type *****
-
-            A SymbolStyle draws POINTS AND NOTHING ELSE. Not a fainter polygon - none of it, zero
-            pixels, no error anywhere. Measured: a polygon covers 14884 px under a VectorStyle,
-            956 under NO STYLE AT ALL, and 0 under a SymbolStyle. Mapsui picks a renderer by the
-            style's runtime type, and it does not help that SymbolStyle derives from VectorStyle.
-
-            So a layer holding more than one kind of geometry needs StyleByGeometry, which hands
-            each feature the style for ITS OWN kind. Every mapping library works this way:
-            OpenLayers takes a style function returning styles[geometry.getType()], Mapbox GL
-            splits circle / line / fill into separate layer types, Leaflet has pointToLayer beside
-            style, a QGIS layer is single-geometry-type with its own renderer.
-
-            DO NOT stack instead. Sending a VectorStyle and a SymbolStyle to one layer together
-            does draw the polygon - and puts a SECOND circle on every point, because a VectorStyle
-            draws its own 32 pixel marker there too. Measured: Scale 0.6 is 22 px across alone and
-            34 px stacked, which is simply the default. Dispatch, do not stack.
-          -->
-          <Pad Id="EsoJaRP1I65f0rJfLdwzWW" Comment="Shape" Bounds="520,420,110,15" ShowValueBox="true" isIOBox="true" Value="Ellipse">
+          <Pad Id="EsoJaRP1I65f0rJfLdwzWW" Comment="Shape" Bounds="591,301,110,15" ShowValueBox="true" isIOBox="true" Value="Ellipse">
             <p:TypeAnnotation LastCategoryFullName="Mapsui.Styles" LastDependency="VL.Mapsui.vl">
               <Choice Kind="TypeFlag" Name="SymbolShape" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="E2tJMBZkwB64ZplxWXqbUf" Comment="Scale - 1 is 32 pixels" Bounds="520,445,150,15" ShowValueBox="true" isIOBox="true" Value="0.8">
+          <Pad Id="E2tJMBZkwB64ZplxWXqbUf" Comment="Scale - 1 is 32 pixels" Bounds="766,301,57,15" ShowValueBox="true" isIOBox="true" Value="0.8">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float32" />
             </p:TypeAnnotation>
           </Pad>
-          <Node Bounds="700,420,130,19" Id="T4PA3iOraHVrJGn6DvQeiR">
+          <Node Bounds="589,330,130,19" Id="T4PA3iOraHVrJGn6DvQeiR">
             <p:NodeReference LastCategoryFullName="Mapsui.Styles" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="SymbolStyle" />
@@ -545,7 +501,7 @@
             <Pin Id="C5ZflBD4w9puJqzqVcE4hc" Name="Outline Color" Kind="InputPin" />
             <Pin Id="VMyWIw2DDLYJnnMn4lhUAv" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="700,490,130,19" Id="OoOGIwa84AzTM5XuXsnNNd">
+          <Node Bounds="824,370,130,19" Id="OoOGIwa84AzTM5XuXsnNNd">
             <p:NodeReference LastCategoryFullName="Mapsui.Styles" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="VectorStyle" />
@@ -555,7 +511,7 @@
             <Pin Id="UumeV5rj8Ly2LZmKZzyjuo" Name="Line Width" Kind="InputPin" />
             <Pin Id="L1aoACb3f4LbGARGqmQ62T" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="880,455,150,19" Id="BGaqvRC4MElrp0JTGZqZS6">
+          <Node Bounds="584,400,150,19" Id="BGaqvRC4MElrp0JTGZqZS6">
             <p:NodeReference LastCategoryFullName="Mapsui.Styles" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="StyleByGeometry" />
@@ -565,21 +521,20 @@
             <Pin Id="GX5IGC2zL2N3MZ96i7FQH7" Name="Polygon" Kind="InputPin" />
             <Pin Id="K8NLNKRTcQvzNPLxdPvIgz" Name="Result" Kind="OutputPin" />
           </Node>
-
-          <Node Bounds="300,590,150,19" Id="RYg4JjkLhluvFy6irExfYD">
+          <Node Bounds="523,700,150,19" Id="RYg4JjkLhluvFy6irExfYD">
             <p:NodeReference LastCategoryFullName="Mapsui.Layers" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FeatureLayer" />
             </p:NodeReference>
             <Pin Id="AMeaHKeDjwSfsDqswpSIBi" Name="Features" Kind="InputPin" />
             <Pin Id="Sb8LY47ypOqKRxpyRAwgiA" Name="Style" Kind="InputPin" />
+            <Pin Id="SAv2vTxPsjfODLoXzraiFN" Name="Enabled" Kind="InputPin" />
             <Pin Id="U7vVs30TfyVg6lNRtRKCvd" Name="Name" Kind="InputPin" />
+            <Pin Id="Ck0b9Fm6W6GxEbNGJgeI05" Name="Result" Kind="OutputPin" />
             <Pin Id="UX2Q4zuDSJ3FicIQjybU4g" Name="Layers Built" Kind="OutputPin" />
             <Pin Id="JmLEV1bgiJBumZ68I8Jh1k" Name="Status" Kind="OutputPin" />
-            <Pin Id="Ck0b9Fm6W6GxEbNGJgeI05" Name="Result" Kind="OutputPin" />
           </Node>
-
-          <Node Bounds="87,643,110,19" Id="Uap6qMPmqPyqpm6OmKwWZU">
+          <Node Bounds="62,980,110,19" Id="Uap6qMPmqPyqpm6OmKwWZU">
             <p:NodeReference LastCategoryFullName="Mapsui.Maps" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Map" />
@@ -590,7 +545,7 @@
             <Pin Id="JXjk0f1EzodWnmeV9gOzZp" Name="Initial Zoom Level" Kind="InputPin" />
             <Pin Id="SHAzWUqXFUmNiPpi2L0l9h" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="-207,850,110,19" Id="BtM6e71LrPauAI1Lu5QMUn">
+          <Node Bounds="107,1204,110,19" Id="BtM6e71LrPauAI1Lu5QMUn">
             <p:NodeReference LastCategoryFullName="Mapsui" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="ViewportInfo" />
@@ -602,39 +557,41 @@
             <Pin Id="NIsTrVwZSBOI2ZxVDBGylo" Name="Width" Kind="OutputPin" />
             <Pin Id="Ai21lXxwGlrZ63Z4TigeFN" Name="Height" Kind="OutputPin" />
           </Node>
-          <Pad Id="FFjk3xX3QUXJDZcekXlKZa" Comment="Actual Longitude" Bounds="-205,898,90,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="IhsKJMIfZsfYF6xUlVucLc" Comment="Actual Latitude" Bounds="-205,927,90,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="C3LbWfwVElJKvc3TxkWobj" Comment="m per pixel" Bounds="-205,958,90,15" ShowValueBox="true" isIOBox="true" />
-          <!--
-            ***** enough mouse to see the point *****
-
-            Drag and ZoomByWheel are gestures, not per-frame commands: they move the map only when
-            you actually drag or scroll, so the view stays yours. That is what lets this patch show
-            the one thing it is about - the shape staying on its ground while the map moves under
-            it. The wiring is copied from HowTo Drive the map with the mouse, which is where the
-            reasoning behind each link lives.
-          -->
-          <Node Bounds="480,700,90,19" Id="FCFHOaQxJF6hICTzgc0kV2">
+          <Pad Id="FFjk3xX3QUXJDZcekXlKZa" Comment="Actual Longitude" Bounds="109,1252,90,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="IhsKJMIfZsfYF6xUlVucLc" Comment="Actual Latitude" Bounds="109,1281,90,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="C3LbWfwVElJKvc3TxkWobj" Comment="m per pixel" Bounds="109,1312,90,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="633,910,90,19" Id="FCFHOaQxJF6hICTzgc0kV2">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Console" />
             </p:NodeReference>
+            <Pin Id="RyWD120SMmvMKU5jESlX2h" Name="State Output" Kind="OutputPin" IsHidden="true" />
             <Pin Id="EkFs6mHHZIMujfdgEOqlk2" Name="Output" Kind="OutputPin" />
             <Pin Id="RO8aBSYCJdhlqHJCEIyLAA" Name="Mouse" Kind="OutputPin" />
             <Pin Id="MwdWPjIgy6Udsm4trupS2X" Name="Keyboard" Kind="OutputPin" />
+            <Pin Id="Ui5HtXHE6p6NnbGfxGwoOh" Name="Touch Device" Kind="OutputPin" />
             <Pin Id="BXefzE2nNAcdukZNFHUU3Y" Name="Notifications" Kind="OutputPin" />
+            <Pin Id="Q4Rx2yuL22WOfARtUw5vNm" Name="Node Context" Kind="InputPin" IsHidden="true" />
           </Node>
-          <Node Bounds="480,740,185,19" Id="SNTO2Jhhli4U4wWW3wUbhZ">
-            <p:NodeReference LastCategoryFullName="IO.Mouse" LastSymbolSource="CoreLibBasics.vl">
+          <Node Bounds="654,950,185,19" Id="SNTO2Jhhli4U4wWW3wUbhZ">
+            <p:NodeReference LastCategoryFullName="IO.Mouse" LastDependency="CoreLibBasics.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="MouseState" />
             </p:NodeReference>
+            <Pin Id="VBTs7tJ7cIUOZRqRG6L4lg" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="CYRfJkATXB3MULFJurXl7J" Name="Mouse Device" Kind="InputPin" />
+            <Pin Id="G0JQ9LbkBspPCMltSzNAnu" Name="Position In World" Kind="OutputPin" />
+            <Pin Id="Hy4suVamVv7PDbrwhL48s9" Name="Position In Projection" Kind="OutputPin" />
             <Pin Id="PzHgZmzlnFRzQmgZ5zVIXX" Name="Position" Kind="OutputPin" />
             <Pin Id="VaHlWDCnWB4hR4qvgBc3TJ" Name="Left Pressed" Kind="OutputPin" />
+            <Pin Id="JEmdtGbWO12MlLDqhhHAHp" Name="Middle Pressed" Kind="OutputPin" />
+            <Pin Id="BgS7zy0kkrnLjzj8JXXPZx" Name="Right Pressed" Kind="OutputPin" />
+            <Pin Id="AUdB7H7LQFbPtSVJ6i6JbS" Name="Normalized Position" Kind="OutputPin" />
             <Pin Id="J0gfkk0GswK2eKFcxk8pcp" Name="Wheel State" Kind="OutputPin" />
+            <Pin Id="PfI4P9S2NjDOawNlii5UeD" Name="Client Area" Kind="OutputPin" />
+            <Pin Id="Qk9KckhlFodOG2e4cAJXo5" Name="Sender" Kind="OutputPin" />
           </Node>
-          <Node Bounds="480,780,46,19" Id="TL0SFaf72g8sO6VrYaRpNi">
+          <Node Bounds="202,1027,46,19" Id="TL0SFaf72g8sO6VrYaRpNi">
             <p:NodeReference LastCategoryFullName="2D.Vector2" LastDependency="VL.CoreLib.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Vector (Split)" />
@@ -644,15 +601,16 @@
             <Pin Id="ICl6Jwe2HfP8e3frWTbgFE" Name="X" Kind="OutputPin" />
             <Pin Id="FkHVEB8lFqL5MmqkqXCmNk" Name="Y" Kind="OutputPin" />
           </Node>
-          <Node Bounds="480,820,91,19" Id="A8qFsyFNdhgTauPVcsAyQS">
+          <Node Bounds="794,1027,91,19" Id="A8qFsyFNdhgTauPVcsAyQS">
             <p:NodeReference LastCategoryFullName="Animation.FrameBased" LastDependency="CoreLibBasics.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="FrameDifference" />
             </p:NodeReference>
+            <Pin Id="O65pJwNF7MSL021AqjNIH2" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="BOEcqqbX9zI4aeoBawrpYz" Name="Value" Kind="InputPin" />
             <Pin Id="Pq6PXhDc30Y73OLApgMjM0" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="67,763,110,19" Id="CNgVHFYfkEkPUuBiYN3M8T">
+          <Node Bounds="67,1097,110,19" Id="CNgVHFYfkEkPUuBiYN3M8T">
             <p:NodeReference LastCategoryFullName="Mapsui.Navigate" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Drag" />
@@ -663,7 +621,7 @@
             <Pin Id="G88um6CokkWEKxBIVZBAaM" Name="Dragging" Kind="InputPin" />
             <Pin Id="GqniStYYxec691wpuoGqOX" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="67,803,150,19" Id="PNvSFuqfxYH1W7SRfNzqsD">
+          <Node Bounds="67,1147,150,19" Id="PNvSFuqfxYH1W7SRfNzqsD">
             <p:NodeReference LastCategoryFullName="Mapsui.Navigate" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="ZoomByWheel" />
@@ -675,29 +633,20 @@
             <Pin Id="T2SknmUw1M4vcmqQsQPFoK" Name="Notch Size" Kind="InputPin" />
             <Pin Id="OKMRQq7ARgCNQ0DguHEGvA" Name="Output" Kind="OutputPin" />
           </Node>
-          <Node Bounds="67,940,105,19" Id="RtnmcH4UMTsIMECMtAlloC">
+          <Node Bounds="67,1427,105,19" Id="RtnmcH4UMTsIMECMtAlloC">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Group" />
               <CategoryReference Kind="Category" Name="Skia" NeedsToBeDirectParent="true" />
             </p:NodeReference>
+            <Pin Id="Hq1DPfn1EppMAsBV999rPG" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="SLeoSJ0mtJwpIBrN3Lo82U" Name="Input" Kind="InputPin" />
             <Pin Id="UYCvpRMOoaQciC5U2bKDca" Name="Input 2" Kind="InputPin" />
             <Pin Id="PTFy7CVaB74mEbW20etmS8" Name="Output" Kind="OutputPin" />
+            <Pin Id="GgWu8eZXGdSNBJTu8o5qcR" Name="Debug" Kind="InputPin" />
+            <Pin Id="MEvvaNVgPWOPlNDSJrDT83" Name="Enabled" Kind="InputPin" />
           </Node>
-
-          <!--
-            No CenterOn and no ZoomToLevel here on purpose, and that is worth a sentence.
-
-            Those two are operations: they run every frame, so a patch holding them pins the view on
-            every frame and the map cannot be dragged - which is exactly what HowTo Show a map is
-            for, where driving the view from IOBoxes is the lesson.
-
-            This patch is about a shape sitting on the map, and you cannot see that unless you can
-            move the map. So the starting view comes from the Map node's Initial pins instead: they
-            are applied once, through Home, and then leave the viewport alone.
-          -->
-          <Pad Id="JXt620dcIwTNKf5ghwhaGp" Comment="Diagnostics" Bounds="236,873,35,15" ShowValueBox="true" isIOBox="true" Value="True">
+          <Pad Id="JXt620dcIwTNKf5ghwhaGp" Comment="Diagnostics" Bounds="236,1360,35,15" ShowValueBox="true" isIOBox="true" Value="True">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
             </p:TypeAnnotation>
@@ -705,7 +654,7 @@
               <p:buttonmode p:Assembly="VL.UI.Forms" p:Type="VL.HDE.PatchEditor.Editors.ButtonModeEnum">Toggle</p:buttonmode>
             </p:ValueBoxSettings>
           </Pad>
-          <Node Bounds="67,903,172,19" Id="BVYQzg89VCAIpTtlnx3tws">
+          <Node Bounds="67,1390,172,19" Id="BVYQzg89VCAIpTtlnx3tws">
             <p:NodeReference LastCategoryFullName="Mapsui.Skia" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="ToSkiaLayer" />
@@ -714,13 +663,13 @@
             <Pin Id="MNVbxnjPDHRRznJSzJnEPX" Name="Diagnostics" Kind="InputPin" />
             <Pin Id="U5emzVQ6EofWagaekCXGH2" Name="Result" Kind="OutputPin" />
           </Node>
-          <Node Bounds="18,970,227,19" Id="DietAlM1nEjoBZVmG0FHgE">
+          <Node Bounds="18,1457,227,19" Id="DietAlM1nEjoBZVmG0FHgE">
             <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Renderer" />
             </p:NodeReference>
             <Pin Id="Sj87CPJKGDWPdR4OW6sDzr" Name="Node Context" Kind="InputPin" IsHidden="true" />
-            <Pin Id="Gdo6UhaomT1XZfvOU56A8c" Name="Bounds" Kind="InputPin" DefaultValue="952, 63, 900, 640">
+            <Pin Id="Gdo6UhaomT1XZfvOU56A8c" Name="Bounds" Kind="InputPin" DefaultValue="1423, -237, 891, 577">
               <p:TypeAnnotation LastCategoryFullName="System.Drawing" LastDependency="System.Drawing.dll">
                 <Choice Kind="TypeFlag" Name="Rectangle" />
               </p:TypeAnnotation>
@@ -750,8 +699,8 @@
             <Pin Id="TF7Alj4tttAAVkY9lW5nHi" Name="ClientBounds" Kind="OutputPin" />
             <Pin Id="QIcTPHhbeLC2apLEctN44C" Name="Render Time" Kind="OutputPin" />
           </Node>
-          <Pad Id="H1yv1JBLijwVmMX34e3Fzf" Comment="Cache Status" Bounds="226,430,300,15" ShowValueBox="true" isIOBox="true" />
-          <Node Bounds="300,282,150,19" Id="LiTqhjEAEzU3PZESW3B35q">
+          <Pad Id="H1yv1JBLijwVmMX34e3Fzf" Comment="Cache Status" Bounds="107,320,30,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="100,172,150,19" Id="LiTqhjEAEzU3PZESW3B35q">
             <p:NodeReference LastCategoryFullName="Mapsui.Layers" LastDependency="VL.Mapsui.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="TileCache" />
@@ -763,8 +712,41 @@
             <Pin Id="Ddqg0xhHjdkgJZ68fhWmTD" Name="Tiles" Kind="OutputPin" />
             <Pin Id="CVRaaziqPOJpNW7u2ror8A" Name="Size MB" Kind="OutputPin" />
           </Node>
-          <Pad Id="Sn0IFyPbF1sneJyHMkVp7A" Comment="Cache Folder" Bounds="560,375,300,15" ShowValueBox="true" isIOBox="true" />
-          <Pad Id="GoA5ugmSeRASmqqlJuk5hE" Comment="Tiles Cached" Bounds="634,400,80,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="Sn0IFyPbF1sneJyHMkVp7A" Comment="Cache Folder" Bounds="150,213,168,15" ShowValueBox="true" isIOBox="true" />
+          <Pad Id="GoA5ugmSeRASmqqlJuk5hE" Comment="Tiles Cached" Bounds="199,243,80,15" ShowValueBox="true" isIOBox="true" />
+          <Node Bounds="1150,-465,53,26" Id="VmbDk98EVSUNM1Zesl73au">
+            <p:NodeReference LastCategoryFullName="Collections.Dictionary" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <CategoryReference Kind="RecordType" Name="Dictionary" />
+              <Choice Kind="OperationCallFlag" Name="Add" />
+            </p:NodeReference>
+            <Pin Id="Ekjm2UrkHS4PV4Cm7zc7yJ" Name="Input" Kind="StateInputPin" />
+            <Pin Id="EsHg0RCQG8sMOhotPdjPI5" Name="Key" Kind="InputPin" />
+            <Pin Id="Q9DG5sXsCSTOGIhI3hUIy6" Name="Value" Kind="InputPin" />
+            <Pin Id="EFRecwMk0HqM9ljMxWTSU4" Name="Output" Kind="StateOutputPin" />
+          </Node>
+          <Pad Id="MNTkyipCOmgLB6JDTaTUoh" Comment="Key" Bounds="1177,-496,35,15" ShowValueBox="true" isIOBox="true" Value="name">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="Au9wHy5rHWgMRD1pYOM0gb" Comment="" Bounds="1268,-495,63,16" ShowValueBox="true" isIOBox="true" Value="Terminal 1">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="ImmutableTypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <ControlPoint Id="OeBeZ8FNEW1Oi4z6ZxJy0I" Bounds="585,620" />
+          <Pad Id="I3740bDjitdNouTAIqqfHc" Comment="Line Color" Bounds="700,211,136,15" ShowValueBox="true" isIOBox="true" Value="0.47600022, 0.7, 0, 1">
+            <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="RGBA" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="D6Jk3ILWGB4QbVJXdi1sRz" Comment="Fill Color" Bounds="826,350,136,15" ShowValueBox="true" isIOBox="true">
+            <p:TypeAnnotation LastCategoryFullName="Color" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="RGBA" />
+            </p:TypeAnnotation>
+            <p:Value r:IsNull="true" />
+          </Pad>
         </Canvas>
         <Patch Id="Qn1Yqox3GN8OqwchBUvODO" Name="Create" />
         <Patch Id="OFfMGxxvZQSpMkYjxF7dnh" Name="Update" />
@@ -826,7 +808,7 @@
         <Link Id="Baf7eVHFobPlz4w9svzMrn" Ids="Obo0KlAOX8uJTLEhkSgG4Y,H1dkptL5CUJAlSE1SJXIiL" />
         <Link Id="DTPQJefyRW74Itu3WTLkG8" Ids="T3xaP10ssIBu1W84JenuLS,Hv9nORTiBeD0FjRJwQP1zt" />
         <Link Id="BoHqfeHAOk4llpsoMSZCZw" Ids="PAwh0bTqOnKYu3GBgYxASP,AMeaHKeDjwSfsDqswpSIBi" />
-        <Link Id="RqjAlj5y7JKAALPXuqGjwi" Ids="K8NLNKRTcQvzNPLxdPvIgz,Sb8LY47ypOqKRxpyRAwgiA" />
+        <Link Id="RqjAlj5y7JKAALPXuqGjwi" Ids="K8NLNKRTcQvzNPLxdPvIgz,OeBeZ8FNEW1Oi4z6ZxJy0I,Sb8LY47ypOqKRxpyRAwgiA" />
         <Link Id="JCMTPZEQESZXquZLw7V11R" Ids="RK2xebiQ2tGJHhTLuKJ4y8,LVp2NShI38PM2uwngTMRoZ" />
         <Link Id="Bxuo3R6F3q8mqRZpjYbeIa" Ids="NeMD0awnyEgF670kEbygzt,GhQqVC0IOJR94Fuop7tZb4" />
         <Link Id="ELRPT33JFidrXKM7enNqAR" Ids="EsoJaRP1I65f0rJfLdwzWW,TyQdZgTtemihQDtdTArRzO" />
@@ -862,6 +844,12 @@
         <Link Id="UZX1mywk6V3MXXAQSglT3i" Ids="PDfAZ7dDcrkFW1pQwiJ9x4,ARy89W2GJw4s60rzwfmBsV" />
         <Link Id="GEqsNpmBuxct8MoUzAqSxR" Ids="FRGL7PazfZpBv73noSDRaO,Sn0IFyPbF1sneJyHMkVp7A" />
         <Link Id="PclhoIhHEmjZvJGPjU662Y" Ids="Ddqg0xhHjdkgJZ68fhWmTD,GoA5ugmSeRASmqqlJuk5hE" />
+        <Link Id="Uk9O80CVEqYQUZTTiw11fQ" Ids="EFRecwMk0HqM9ljMxWTSU4,BF6JDuUAqnKJe6LGjt4p4J" />
+        <Link Id="Gc1pqEzxBpmO5xiifKLSpZ" Ids="MNTkyipCOmgLB6JDTaTUoh,EsHg0RCQG8sMOhotPdjPI5" />
+        <Link Id="UYecjL3FLB2OpIDNkRYW8D" Ids="Au9wHy5rHWgMRD1pYOM0gb,Q9DG5sXsCSTOGIhI3hUIy6" />
+        <Link Id="PTQMbDOIA7BMVMvpQWldtq" Ids="I3740bDjitdNouTAIqqfHc,RCFOdPirbEB8H7XNNlycYR" />
+        <Link Id="CeycfTN8rNsNuTwWP9snlB" Ids="I3740bDjitdNouTAIqqfHc,C5ZflBD4w9puJqzqVcE4hc" />
+        <Link Id="HR6NvWnbAhxP0bsdG8Uv8P" Ids="D6Jk3ILWGB4QbVJXdi1sRz,NWFqDIKalaxaGQVLqfQHBi" />
       </Patch>
     </Node>
   </Patch>
