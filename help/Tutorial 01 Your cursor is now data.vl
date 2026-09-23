@@ -494,6 +494,35 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
+          <Node Bounds="646,370,110,19" Id="ULJQthco8NKpDtsOGYLu1U">
+            <p:NodeReference LastCategoryFullName="Mapsui.Layers" LastDependency="VL.Mapsui.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Graticule" />
+            </p:NodeReference>
+            <Pin Id="TR4A3QeSBSqMoqzCbCXkeX" Name="Degrees Spacing" Kind="InputPin" DefaultValue="10">
+              <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="Float64" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="GhqZ5bNH6QI7AHP5S688Va" Name="Line Color" Kind="InputPin" />
+            <Pin Id="B5PcLsG6iN4i0YvHIjYRxh" Name="Line Width" Kind="InputPin" />
+            <Pin Id="R6DksWw9vhomXGtk1z72fB" Name="Result" Kind="OutputPin" />
+            <Pin Id="DHWCgRVdMZJP4xquV1qsYD" Name="Lines Built" Kind="OutputPin" />
+          </Node>
+          <Pad Id="OXu8eNB1OfzZb0zDSwyrVB" Comment="Degrees Spacing" Bounds="646,335,70,20" ShowValueBox="true" isIOBox="true" Value="10">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Float64" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="A943uFWfbEwCbwSQ3gdms6" Bounds="646,400,290,30" ShowValueBox="true" isIOBox="true" Value="&lt;- the coordinate system, drawn: a GRATICULE, the grid every atlas carries. No tiles needed - the blank map has bearings now.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">11</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
         </Canvas>
         <Patch Id="H4hhMszdF1v1TTq2sQXNUK" Name="Create" />
         <Patch Id="Q6gZgX4SjN1Sb2drFgB4TX" Name="Update" ParticipatingElements="K1fSD7nc3vSMfuLFy44moz,RkOotfmuFMCQN5Qf9QbsbV,RTN7q4X1TqLNH5JaKXWcAi,VsIBffkVCqbPEMdz7R5PKA,RDHu2LslFCAMxAJEUk441E,BC18T6i5pX5MixBQhpo28U,LEXH6DB5jDgNsSfLYaPbW4,FzpjZ6soQlqHEmrb6wGOZd,ClZlgeOcZXBBVpOPu7R4ko" />
@@ -523,7 +552,7 @@
         <Link Id="SxhSMd1oASzjz73m3pnxG3" Ids="SNkbDM83XOIizyv4kqPbnB,G6M1vZGuhU8eYhUjGD679e" />
         <Link Id="LUvPtipGjLdDYOSR8yMxrW" Ids="Hp5MczBSSwlQffsiKzMvwU,Fqa3ESPxc7Vyhb65fJ4Kwf" />
         <Link Id="ClfXkGuC8WZSbGYStXHI9s" Ids="PakmV4349WXMywUEMcaTWD,DeE06TAEb3qkgvCJnkdjzk" />
-        <Link Id="Pdc7tesJD0mNCX69wNaPyj" Ids="GVvEkkLP0oLMI38hdu3paS,FvjIRzHrqPAN8CN1zOpy6g" />
+        <Link Id="Pdc7tesJD0mNCX69wNaPyj" Ids="GVvEkkLP0oLMI38hdu3paS,ViDsMlPWfZcMJsLdsEsQVy" />
         <Link Id="NKvDS1S7Q7YNRvLL26avp4" Ids="AXvkpKBCLdWNvZPUswCCuZ,VVlsj7dM841RyeVkqYwH97" />
         <Link Id="VkoRRkYOKcDQOqpKcOPzjk" Ids="UwO0vog5X1cLjbjWUNBpIa,GnjM2hJ2Rl6IgLErWG8uP0" />
         <Link Id="ThDZQExSALdOOfBwaShf7I" Ids="SNkbDM83XOIizyv4kqPbnB,PXrYLDitJlQLf5OWz1ynpm" />
@@ -539,6 +568,8 @@
         <Link Id="UMh5ZLsfmfIPjCoXzXxCpS" Ids="QhwOcZWzR6MQ9PL1JXeZ8W,NtWMLgEmI7TPhS9H46Iye7" />
         <Link Id="Tx5pER0x8RbOl7DU5Er0mR" Ids="Qgyrz2fGhnVQPPuotMhVIQ,B8paOYJ7ClVMKgHCIJ6JA3" />
         <Link Id="Rh669HBJymgPtYEYdbSFcr" Ids="LFMAKHhaE3JPv0WsP2pmia,P83wtnq8lKkNTp76TN2I1H" />
+        <Link Id="DDM66nWCMpMZNfNOrds5Wy" Ids="OXu8eNB1OfzZb0zDSwyrVB,TR4A3QeSBSqMoqzCbCXkeX" />
+        <Link Id="NdPvYm8OFcnp8lA7lEsayh" Ids="R6DksWw9vhomXGtk1z72fB,FvjIRzHrqPAN8CN1zOpy6g" />
       </Patch>
     </Node>
   </Patch>
