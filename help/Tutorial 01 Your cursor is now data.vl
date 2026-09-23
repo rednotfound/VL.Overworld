@@ -309,7 +309,11 @@
             <Pin Id="IQ6nBEFgLvuP14EMUXX0ak" Name="Node Context" Kind="InputPin" IsHidden="true" />
             <Pin Id="Or7fIhGQOPzOZf35B26XHJ" Name="Bounds" Kind="InputPin" DefaultValue="1287, 581, 616, 439" IsHidden="true" />
             <Pin Id="Q0fEw8KkJArMigdCsTVITJ" Name="Save Bounds" Kind="InputPin" IsHidden="true" />
-            <Pin Id="HRgozdC9nJfO65mr2pceIy" Name="Bound to Document" Kind="InputPin" IsHidden="true" />
+            <Pin Id="HRgozdC9nJfO65mr2pceIy" Name="Bound to Document" Kind="InputPin" DefaultValue="True">
+              <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="Boolean" />
+              </p:TypeAnnotation>
+            </Pin>
             <Pin Id="MrNzVUMIOaLLMwsUpFWAu2" Name="Dialog If Document Changed" Kind="InputPin" IsHidden="true" />
             <Pin Id="JD3mYOrdoTHNykZUtNWYw7" Name="Always On Top" Kind="InputPin" IsHidden="true" />
             <Pin Id="UplJUUtgPqJMbRfribTI7T" Name="Extend Into Title Bar" Kind="InputPin" IsHidden="true" />
