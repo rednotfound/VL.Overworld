@@ -87,6 +87,17 @@ layer, like `<= 0`), three regressions, 252 green, repacked. Rung-4 camera then 
 de-tiled 2.1: Home at Haneda on a feature-only map (defect eight's fix at work), 0.05° grid
 visible with no label crowd, all three typed geometries drawn, vvvv responsive.
 
+**Same day, latest: the graticule became VIEW-DRIVEN — the design answer the user demanded**
+("直接上来创建几千个 feature 那肯定爆炸呀"). vl-mapsui `998b942`: `GraticuleLayer : BaseLayer`
+computes only the lines crossing the view `GetFeatures` asks for (memoised per view/spacing/
+labels); `Degrees Spacing 0` = **automatic** (1/2/5 ladder, ~6 lines across, follows the zoom);
+a positive spacing coarsens up the ladder when a view can't afford it; labels build while the
+view's crossings ≤ 400 — in-view counts, the combinatorial product structurally gone. The
+first-aid caps from the morning are superseded; tests rewritten to ask views, 252 green, both
+pixel tests proving the renderer reaches `GetFeatures`. **2.1's spacing pad is now 0 (auto)** —
+rung-4 camera: at Haneda the grid picked 0.1° and every crossing carries its own label
+("139.8, 35.6"), Home correct, layers healthy, vvvv responsive.
+
 ### Where the work stands — 2026-09-23
 
 **The hand-arranging campaign is under way, and it changed more than layouts.** Tutorials 01/02
