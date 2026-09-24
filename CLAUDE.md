@@ -33,6 +33,20 @@ a range-request reconnaissance), technologies (COG/PMTiles/GeoParquet/STAC) only
 **no Chapter 14 until several prototypes show the same recurring mental-model shift**. Reprojection
 stays a wait-for-consumer gap; any new permanent capability goes through a scope proposal first.
 
+### Where the work stands — 2026-09-24
+
+**The spine will gain chapters — decided, not yet executed.** Seven chapters, one per question
+(geometry 01–05; onto-the-earth 06–09; then one thin chapter each for projections 10, indexing
+11, fields 12, networks 13, data access 14 — thin = a labelled growth slot, QGIS-style), filenames
+becoming `Tutorial 2.3 …` chapter.lesson in a **flat** `help\` (scheme B; subfolders rejected —
+the audit found every serialized asset path document-relative, so B costs zero path edits while C
+costs every wired path, seven narrative mentions and four tools). Prompts/Explanations stay
+unnumbered; Act I's charter becomes *no tiles, no network*, which legalises the redesigned T01.
+Full evidence, change list and rungs: `docs/CHAPTER-STRUCTURE-PROPOSAL.md`. **Nothing renames
+until the hand-arranging campaign's final words batch** — rename and every in-text reference
+rewrite land as ONE batch. Already verified: a dotted filename compiles (real vvvvc, 5 .cs);
+residual rung-4 checks (Help Browser display, Open-Chapter.cmd on a dotted name) run at execution.
+
 ### Where the work stands — 2026-09-23
 
 **The hand-arranging campaign is under way, and it changed more than layouts.** Tutorials 01/02
