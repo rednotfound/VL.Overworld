@@ -235,14 +235,25 @@ third correction), chaptered 2026-09-24 (the fourth).
 | 1.5 | **Grow a shape** | geometry that generates geometry, driven by any signal | VL.NetTopologySuite |
 
 **Chapter 2 — how does my data get onto the earth?** (the former Act II.) The same values, now
-with the planet under them.
+with the planet under them — and since 2026-09-24 it opens the Nature-of-Code way: lesson 1
+re-does what the reader already can (their shapes, typed in), changing exactly one thing (the
+canvas is degrees now; the map is tile-less, its graticule the only bearings). Tiles arrive in
+lesson 2 as one idea: the earth as other people's pictures, fetched piece by piece, with the
+course's first consent gate. The reordering evidence (maptime teaches tiles first because a
+Leaflet map without tiles is broken; ours isn't) is in the 2026-09-24 design discussion.
 
 | | title | what it adds | packages |
 |---|---|---|---|
-| 2.1 | **Change how the world looks** | a map exists, and its appearance is a string you own | VL.Mapsui |
-| 2.2 | **Your own points, lines and polygons** | your geometry drawn on the earth, styled by type | + NTS |
+| 2.1 | **Your own points, lines and polygons** | your geometry drawn on the earth in degrees, styled by type — tile-less, graticule for bearings | VL.Mapsui + NTS |
+| 2.2 | **Change how the world looks** | tiles — and a map whose appearance is a string you own; the first fetch, consented | VL.Mapsui |
 | 2.3 | **The map is just giving you coordinates** | `WorldToScreen` → draw anything you like on top | + NTS |
 | 2.4 | **Real data** | GeoJSON, from a file or from the network | + VL.GeoJSON |
+
+**The reusable principle this reorder set** (candidate for every chapter's future lessons): a
+chapter's first lesson re-does something the reader already can, changing one thing; step size
+is measured in NEW CONCEPTS, not features. Nature of Code states it outright — its vectors
+chapter opens on a bouncing ball *without* vectors: "taking this first step … won't let you do
+anything new."
 
 **Chapters 3–7 — one question, one lesson each so far**: 3.1 projections (former 10), 4.1 the
 spatial index (11), 5.1 fields (12), 6.1 networks (13), 7.1 data access (14). A thin chapter is a
@@ -250,7 +261,7 @@ labelled growth slot: reprojection lands in chapter 3 when it unblocks, raster/D
 network in 6, and chapter 7's lessons are earned by the laboratory (ACT-IV-LAB.md).
 
 **Single-package spine lessons use the exemption written into this pack's rules** — chapter 1 is
-mostly VL.NetTopologySuite, and 2.1 is VL.Mapsui alone. The exemption and its reason are in
+mostly VL.NetTopologySuite, and 2.2 is VL.Mapsui alone. The exemption and its reason are in
 `CLAUDE.md`; briefly, a course with a hole at its door is worse than a duplicated node, and each
 chapter's opener adds exactly one capability on purpose.
 

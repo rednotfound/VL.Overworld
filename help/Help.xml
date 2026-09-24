@@ -33,8 +33,8 @@
 		<VLDocument link="Tutorial 1.5 Grow a shape.vl" tags="nts,netTopologySuite,geometry,buffer,dilate,erode,offset,negative,segments,generative,foreach,loop,isempty,skia,offline,tutorial,spine" />
 	</Topic>
 	<Topic title="Chapter 2 - How does my data get onto the earth?">
-		<VLDocument link="Tutorial 2.1 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine" />
-		<VLDocument link="Tutorial 2.2 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,airport,haneda,runway,tutorial,spine" />
+		<VLDocument link="Tutorial 2.1 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,graticule,tileless,offline,airport,haneda,runway,tutorial,spine" />
+		<VLDocument link="Tutorial 2.2 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine" />
 		<VLDocument link="Tutorial 2.3 The map is just giving you coordinates.vl" tags="map,mapsui,nts,netTopologySuite,screenToWorld,worldToScreen,project,projection,mercator,wgs84,epsg,longitude,latitude,pixel,screen,overlay,marker,draw,skia,pixelspace,withinCommonSpace,cursor,wkt,tutorial,spine" />
 		<VLDocument link="Tutorial 2.4 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
 	</Topic>

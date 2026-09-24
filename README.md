@@ -41,12 +41,14 @@ agree to.
 | **1.4** | The shortest line between | distance as a thing you can draw, not just a number |
 | **1.5** | Grow a shape | geometry that generates geometry, driven by any signal |
 
-**Chapter 2 — how does my data get onto the earth?**
+**Chapter 2 — how does my data get onto the earth?** It opens the way chapter 1 taught: your own
+shapes first, on a tile-less map whose graticule is its only bearings — nothing fetched, nothing
+to agree to. The earth's pictures arrive one lesson later, as exactly one new idea.
 
 | | | you end up with |
 |---|---|---|
-| **2.1** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
-| **2.2** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind — Haneda, typed in as numbers |
+| **2.1** | Your own points, lines and polygons | shapes you made, drawn on the earth in degrees — Haneda, typed in as numbers, on a map that is only a coordinate system |
+| **2.2** | Change how the world looks | tiles: the earth as other people's pictures, fetched piece by piece — and a map whose entire appearance is one string you own |
 | **2.3** | The map is just giving you coordinates | the loop closed: the map says which place is under your cursor, and geometry grown from that answer is drawn back onto the earth, live |
 | **2.4** | Real data | GeoJSON, from a file or straight off the network |
 
@@ -83,7 +85,7 @@ prerequisite and no completion.
 | *Grow a town* | click, and a street network grows until two towns touch | offline |
 | *Paint by numbers* | 177 countries painted by population — and the two lies every choropleth tells | offline |
 
-Anything that can fetch (basemap tiles in 2.1, 2.3, 2.4, *The map is not to scale* and *Sharper is
+Anything that can fetch (basemap tiles in 2.2, 2.3, 2.4, *The map is not to scale* and *Sharper is
 a different question* — which also fetches Terrarium elevation tiles; 7.1's ranged reads;
 the two prompts marked *asks first*) starts with its switch **off**: opening a patch is not
 agreeing to network traffic.

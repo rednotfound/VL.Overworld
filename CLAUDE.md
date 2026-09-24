@@ -71,6 +71,22 @@ A library-gap observation for a future scope question: the 3-node Coordinate↔V
 no Vector2 bridge, deliberately (no Stride dependency) — if that ever changes it goes through a
 scope proposal there.
 
+**Same day, later: chapter 2 learned to ramp, and the ramp found defect nine.** The user's
+critique — 2.1 opened on six concepts at once (Map, tiles, network, consent, URL templates,
+attribution) — matched the third correction's own argument one level down. Decided and executed:
+**chapter 2 now opens tile-less** (the Nature-of-Code move: lesson 1 re-does the reader's own
+shapes, changing only the canvas to degrees; evidence in CURRICULUM, the reusable principle
+recorded there too). The Haneda chapter was de-tiled (OpenStreetMap/TileCache + six pads out,
+Graticule in) and swapped to 2.1; Change-how-the-world-looks became 2.2, tiles as the chapter's
+one new idea. Raster-vs-vector tiles stays a NAMED distinction only (nothing in vl-mapsui draws
+vector tiles) — words-batch material, or a future Explanation. **First open froze vvvv and found
+vl-mapsui defect nine** (NOTES.md 2026-09-24): Graticule's `Show Labels` (default on) builds a
+point feature per CROSSING, and 0.05° is 7,200 × ~3,400 = 24.5 million features — labels multiply
+where lines add. Fixed with two guards (labels only ≤ 10,000 crossings; > 100,000 lines = no
+layer, like `<= 0`), three regressions, 252 green, repacked. Rung-4 camera then passed on the
+de-tiled 2.1: Home at Haneda on a feature-only map (defect eight's fix at work), 0.05° grid
+visible with no label crowd, all three typed geometries drawn, vvvv responsive.
+
 ### Where the work stands — 2026-09-23
 
 **The hand-arranging campaign is under way, and it changed more than layouts.** Tutorials 01/02
@@ -251,8 +267,8 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 | `Tutorial 1.3 In or out` (geometry act) | done — **rung 4 passed 2026-08-22**. **Hand-reworked by the user 2026-09-23** (335 lines removed: one vertex-spread IOBox feeds NTS and Skia alike; `Contains`' bool drives a `Switch` between two paints; narrative condensed by half) — edit in place only from here |
 | `Tutorial 1.4 The shortest line between` (geometry act) | done — **rung 4 passed 2026-08-22**. First consumer of `Nearest Points`. **Hand-reworked by the user 2026-09-23: point-to-shape became SHAPE-to-shape** — a seeded generative polygon vs a `RandomSpread (2d)` point-cloud polygon riding the cursor, both anchors of the shortest line sliding; one Count pad drives both shapes; narrative/labels rewritten to match — edit in place only from here |
 | `Tutorial 1.5 Grow a shape` (geometry act) | done — **rung 4 passed 2026-08-22**. First ForEach region in the pack. Layout still machine-generated |
-| `Tutorial 2.1 Change how the world looks` | done, **arranged by hand** (was 01) |
-| `Tutorial 2.2 Your own points, lines and polygons` | done, layout still machine-generated (was 02) |
+| `Tutorial 2.1 Your own points, lines and polygons` | **de-tiled and moved to the chapter's door 2026-09-24** (was 07, then briefly 2.2): OpenStreetMap + TileCache out, Graticule (0.05°) in at the stack bottom — your typed shapes on a map that is only a coordinate system. The user's rework continues on it (their arrangement untouched by the surgery). Rung-4 camera passed: Home at Haneda on a feature-only map, grid visible, all three typed geometries drawn |
+| `Tutorial 2.2 Change how the world looks` | done, **arranged by hand** (was 01, then briefly 2.1; swapped behind the tile-less lesson 2026-09-24 — tiles are now the chapter's ONE new idea in lesson 2, not its door) |
 | `Tutorial 2.3 The map is just giving you coordinates` | **rebuilt 2026-08-23** after the first draft reproduced the recorded `WithinCommonSpace` disappearance (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23): now `ScreenToWorld` → live Buffer circle → `Feature`/`FeatureLayer`, with a `FrameDelay` breaking the map↔geometry cycle. **Rung 4 passed 2026-08-23** — circle renders and follows, interaction normal, no flicker (a per-frame layer rebuild would flicker, per the 2026-08-14 measurement). Layout machine-generated |
 | `Tutorial 2.4 Real data` | done (was 04, and 05 before that) |
 | `Tutorial 3.1 Same place, different numbers` | built 2026-08-23, **rung 4 passed the same day** (north up, world in frame, and Greenland changing size as the knob turns — watched by a person). **Rebuilt three times**, and the two discarded versions are the valuable part of the record: see `docs/ACT-III-DESIGN.md`, "the design above was wrong about the subject". No map — a basemap can draw only ONE projection. 17 parallels plus Natural Earth's coastlines, one `PROJECTION` knob, three cylindrical formulas differing only in what they do to a latitude. First chapter to read a GeoJSON file for its geometry rather than for a map layer |
