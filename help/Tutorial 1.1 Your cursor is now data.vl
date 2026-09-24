@@ -397,7 +397,7 @@
             <Pin Id="R6DksWw9vhomXGtk1z72fB" Name="Result" Kind="OutputPin" />
             <Pin Id="DHWCgRVdMZJP4xquV1qsYD" Name="Lines Built" Kind="OutputPin" />
           </Node>
-          <Pad Id="OXu8eNB1OfzZb0zDSwyrVB" Comment="Degrees Spacing" Bounds="677,205,70,20" ShowValueBox="true" isIOBox="true" Value="5">
+          <Pad Id="OXu8eNB1OfzZb0zDSwyrVB" Comment="Degrees Spacing" Bounds="677,205,70,20" ShowValueBox="true" isIOBox="true" Value="0">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="Float64" />
             </p:TypeAnnotation>
