@@ -1,8 +1,11 @@
 # Chapter Structure Proposal — the spine gains chapters
 
-**Status: DECIDED 2026-09-24 — seven chapters, scheme B.** Executes as the first step of the
-end-of-campaign words batch; nothing renames until then (see Timing). The one verification that
-could have sunk the scheme has already run: a dotted filename compiles (below).
+**Status: DECIDED and RENAMED 2026-09-24 — seven chapters, scheme B.** The user pulled the rename
+forward from the words batch (seeing the structure gives the remaining patch work direction):
+files, Help.xml, validator, README and CURRICULUM moved the same day. **In-patch texts still name
+the flat numbers** — narrative openers and NEXT pointers are the words batch's job, unchanged.
+Rung-4 residuals (Help Browser display of a dotted name, Open-Chapter.cmd) run next time vvvv
+opens.
 
 ## The problem — three observations, 2026-09-23/24
 

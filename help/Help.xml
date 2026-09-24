@@ -3,8 +3,11 @@
 	<!--
 		TWO TIERS, AND THE FILENAME SAYS WHICH.
 
-		`Tutorial NN ` is the spine: ordered, numbered, each unit adding exactly one capability.
-		Numbering is a CLAIM that order matters, so it is spent only here.
+		`Tutorial C.L ` is the spine: ordered, CHAPTERED (decided 2026-09-24, see
+		docs/CHAPTER-STRUCTURE-PROPOSAL.md). The chapter number names the question a unit answers;
+		the lesson number orders the answers. Numbering is a CLAIM that order matters, so it is
+		spent only here - and chapter.lesson makes the claim twice, locally: inserting a geometry
+		lesson renumbers chapter 1 and nothing else.
 
 		`Prompt ` is the library: unordered, unnumbered, skippable, no prerequisites. Numbering
 		these would make the numbers noise and make a reader arriving in the middle feel late -
@@ -15,27 +18,44 @@
 
 		The prefixes extend vvvv's existing Explanation / HowTo / Example convention, which is
 		already three-quarters of Diataxis. `Tutorial` is the genre those three are missing.
-		tools\Test-VLPackage.ps1 checks the prefix, and checks this file against the disk in both
-		directions.
+		tools\Test-VLPackage.ps1 checks the prefix and the chapter.lesson contiguity, and checks
+		this file against the disk in both directions.
+
+		A THIN CHAPTER IS A LABELLED GROWTH SLOT, not a mistake: reprojection lands in chapter 3
+		when it unblocks, raster/DEM in chapter 5, more network in chapter 6, the Act IV lab's
+		output in chapter 7. QGIS's training manual ships one-lesson modules for the same reason.
 	-->
-	<Topic title="The course, Act I - space as computation">
-		<VLDocument link="Tutorial 01 Your cursor is now data.vl" tags="nts,netTopologySuite,geometry,coordinate,point,wkt,mouse,cursor,vector2,skia,offline,tutorial,spine,start,first" />
-		<VLDocument link="Tutorial 02 A dot, a path, a plot of ground.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,vertex,length,area,wkt,vector2,skia,offline,tutorial,spine" />
-		<VLDocument link="Tutorial 03 In or out.vl" tags="nts,netTopologySuite,geometry,polygon,point,contains,within,predicate,spatial,relation,hittest,collision,mouse,concave,boundary,skia,offline,tutorial,spine" />
-		<VLDocument link="Tutorial 04 The shortest line between.vl" tags="nts,netTopologySuite,geometry,polygon,point,distance,nearest,nearestPoints,proximity,sdf,distancefield,line,mouse,skia,offline,tutorial,spine" />
-		<VLDocument link="Tutorial 05 Grow a shape.vl" tags="nts,netTopologySuite,geometry,buffer,dilate,erode,offset,negative,segments,generative,foreach,loop,isempty,skia,offline,tutorial,spine" />
+	<Topic title="Chapter 1 - How does a shape become data?">
+		<VLDocument link="Tutorial 1.1 Your cursor is now data.vl" tags="nts,netTopologySuite,geometry,coordinate,point,wkt,mouse,cursor,vector2,skia,map,mapsui,graticule,offline,tutorial,spine,start,first" />
+		<VLDocument link="Tutorial 1.2 A dot, a path, a plot of ground.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,vertex,length,area,wkt,vector2,skia,offline,tutorial,spine" />
+		<VLDocument link="Tutorial 1.3 In or out.vl" tags="nts,netTopologySuite,geometry,polygon,point,contains,within,predicate,spatial,relation,hittest,collision,mouse,concave,boundary,skia,offline,tutorial,spine" />
+		<VLDocument link="Tutorial 1.4 The shortest line between.vl" tags="nts,netTopologySuite,geometry,polygon,point,distance,nearest,nearestPoints,proximity,sdf,distancefield,line,mouse,skia,offline,tutorial,spine" />
+		<VLDocument link="Tutorial 1.5 Grow a shape.vl" tags="nts,netTopologySuite,geometry,buffer,dilate,erode,offset,negative,segments,generative,foreach,loop,isempty,skia,offline,tutorial,spine" />
 	</Topic>
-	<Topic title="The course, Act II - the earth arrives">
-		<VLDocument link="Tutorial 06 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine" />
-		<VLDocument link="Tutorial 07 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,airport,haneda,runway,tutorial,spine" />
-		<VLDocument link="Tutorial 08 The map is just giving you coordinates.vl" tags="map,mapsui,nts,netTopologySuite,screenToWorld,worldToScreen,project,projection,mercator,wgs84,epsg,longitude,latitude,pixel,screen,overlay,marker,draw,skia,pixelspace,withinCommonSpace,cursor,wkt,tutorial,spine" />
-		<VLDocument link="Tutorial 09 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
+	<Topic title="Chapter 2 - How does my data get onto the earth?">
+		<VLDocument link="Tutorial 2.1 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine" />
+		<VLDocument link="Tutorial 2.2 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,airport,haneda,runway,tutorial,spine" />
+		<VLDocument link="Tutorial 2.3 The map is just giving you coordinates.vl" tags="map,mapsui,nts,netTopologySuite,screenToWorld,worldToScreen,project,projection,mercator,wgs84,epsg,longitude,latitude,pixel,screen,overlay,marker,draw,skia,pixelspace,withinCommonSpace,cursor,wkt,tutorial,spine" />
+		<VLDocument link="Tutorial 2.4 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
 	</Topic>
-	<Topic title="The course, Act III - beyond the basemap">
-		<VLDocument link="Tutorial 10 Same place, different numbers.vl" tags="crs,coordinateSystem,projection,graticule,parallel,latitude,longitude,webMercator,mercator,equirectangular,plateCarree,lambert,equalArea,conformal,distortion,greenland,africa,epsg,3857,4326,wgs84,wkt,readWkt,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
-		<VLDocument link="Tutorial 11 Do you really want to ask 100,000 points one by one.vl" tags="index,spatialIndex,strtree,rtree,query,candidates,candidate,envelope,boundingBox,broadPhase,narrowPhase,contains,bruteForce,performance,cache,keep,foreach,randomSpread,points,skia,offline,nts,netTopologySuite,tutorial,spine" />
-		<VLDocument link="Tutorial 12 What if space is not an object.vl" tags="field,raster,grid,cell,pixel,resolution,sampling,noise,simplexNoise,gridSpread,dem,elevation,georeferencing,nodata,vector,object,foreach,skia,offline,nts,netTopologySuite,point,wkt,tutorial,spine" />
-		<VLDocument link="Tutorial 13 Close does not mean reachable.vl" tags="network,graph,node,edge,connectivity,topology,shortestPath,dijkstra,routing,distance,networkDistance,bridge,river,noding,union,ntsNetwork,wkt,multiLineString,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
+	<Topic title="Chapter 3 - Why does the same place have different numbers?">
+		<VLDocument link="Tutorial 3.1 Same place, different numbers.vl" tags="crs,coordinateSystem,projection,graticule,parallel,latitude,longitude,webMercator,mercator,equirectangular,plateCarree,lambert,equalArea,conformal,distortion,greenland,africa,epsg,3857,4326,wgs84,wkt,readWkt,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
+	</Topic>
+	<Topic title="Chapter 4 - How do you ask 100,000 things quickly?">
+		<VLDocument link="Tutorial 4.1 Do you really want to ask 100,000 points one by one.vl" tags="index,spatialIndex,strtree,rtree,query,candidates,candidate,envelope,boundingBox,broadPhase,narrowPhase,contains,bruteForce,performance,cache,keep,foreach,randomSpread,points,skia,offline,nts,netTopologySuite,tutorial,spine" />
+	</Topic>
+	<Topic title="Chapter 5 - What if space is not an object?">
+		<VLDocument link="Tutorial 5.1 What if space is not an object.vl" tags="field,raster,grid,cell,pixel,resolution,sampling,noise,simplexNoise,gridSpread,dem,elevation,georeferencing,nodata,vector,object,foreach,skia,offline,nts,netTopologySuite,point,wkt,tutorial,spine" />
+	</Topic>
+	<Topic title="Chapter 6 - When is close not reachable?">
+		<VLDocument link="Tutorial 6.1 Close does not mean reachable.vl" tags="network,graph,node,edge,connectivity,topology,shortestPath,dijkstra,routing,distance,networkDistance,bridge,river,noding,union,ntsNetwork,wkt,multiLineString,switch,foreach,skia,offline,nts,netTopologySuite,tutorial,spine" />
+	</Topic>
+	<!--
+		Chapter 7 is the former Act IV - the world as something you address. One lesson so far,
+		and that is deliberate: the lab (docs/ACT-IV-LAB.md) earns lessons one at a time.
+	-->
+	<Topic title="Chapter 7 - What if the world does not fit in memory?">
+		<VLDocument link="Tutorial 7.1 What if the world does not fit in memory.vl" tags="range,byteRange,partialContent,206,httpGet,headers,http,network,fetch,remote,archive,pmtiles,cloudOptimized,cog,geoparquet,index,directory,offset,address,partition,contains,keep,tryGetValue,feature,attribute,geojson,readGeoJSON,bbox,grid,watercolor,stamen,imageDecoder,drawImage,skia,consent,nts,netTopologySuite,tutorial" />
 	</Topic>
 	<!--
 		A third genre, and the second tier gains a second shape. `Explanation` is vvvv's own
@@ -43,13 +63,6 @@
 		handing over a permission (Prompt). Unordered and skippable like a Prompt; its title is
 		the assertion it proves.
 	-->
-	<!--
-		Act IV - the world as something you address. One chapter so far, and that is
-		deliberate: the lab (docs/ACT-IV-LAB.md) earns numbered chapters one at a time.
-	-->
-	<Topic title="Act IV - Ask, then read">
-		<VLDocument link="Tutorial 14 What if the world does not fit in memory.vl" tags="range,byteRange,partialContent,206,httpGet,headers,http,network,fetch,remote,archive,pmtiles,cloudOptimized,cog,geoparquet,index,directory,offset,address,partition,contains,keep,tryGetValue,feature,attribute,geojson,readGeoJSON,bbox,grid,watercolor,stamen,imageDecoder,drawImage,skia,consent,nts,netTopologySuite,tutorial" />
-	</Topic>
 	<Topic title="Explanations">
 		<VLDocument link="Explanation Sharper is a different question.vl" tags="resolution,pyramid,overview,zoom,sharpness,levelOfDetail,mipmap,ladder,terrarium,elevation,dem,terrain,raster,tile,pixel,pipet,imageDecoder,httpGet,http,network,fetch,bytes,cost,query,mercator,fuji,map,mapsui,osm,screenToWorld,wkt,point,coordinate,skia,nts,netTopologySuite,explanation" />
 		<VLDocument link="Explanation You do not have to read everything.vl" tags="partition,tiling,tilingScheme,spatialSubsetting,fullScan,layout,file,fileReader,geojson,readGeoJSON,feature,centroid,contains,grid,cell,bytes,read,parse,cost,query,cloudNative,cloudOptimized,geoparquet,pmtiles,cog,haneda,osm,openstreetmap,foreach,keep,skia,offline,nts,netTopologySuite,explanation" />

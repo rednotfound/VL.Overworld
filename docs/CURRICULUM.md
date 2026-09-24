@@ -1,7 +1,7 @@
 # What this course is based on
 
-This document has now been wrong twice — three times, counting the one below — in the same way
-each time, and the corrections are the reason it is worth reading.
+This document has now been wrong three times — four, counting the ones below — and the
+corrections are the reason it is worth reading.
 
 **First version.** The outline was *invented* — assembled from whatever the libraries had just run
 into. Asked what it was based on, the honest answer was "nothing". So the field was searched, and
@@ -37,6 +37,19 @@ coding*) and mirrors how the field's own libraries layer: JTS, Shapely and NetTo
 computation below and rendering above. What did **not** change: every door still renders in the
 first screenful, still has one obvious knob, and outcome-naming still rules — the corrections
 compound, they do not replace each other.
+
+**Fourth version — 2026-09-24.** The first three corrections were about the door and the subject;
+this one is about the *skeleton*. The knowledge architecture (geometry → data onto the earth →
+projections / indexing / fields / networks / data access) existed in three places a reader never
+looks — Help.xml's topics, this document, README — while the filenames carried a flat serial
+number that made every insertion global and said nothing about what a unit belongs to. The spine
+now runs in **seven chapters, one per question, numbered `chapter.lesson`** (`Tutorial 2.3 …`);
+a thin chapter is a labelled growth slot, QGIS-style. Chapter 1's charter is corrected from "no
+basemap" to **no tiles, no network** — the redesigned 1.1 opens on two coordinate systems, one of
+them a tile-less map, and the promise the reader actually gets (nothing is fetched) is now stated
+exactly. Evidence, the rejected subfolder scheme and the change list:
+[CHAPTER-STRUCTURE-PROPOSAL.md](CHAPTER-STRUCTURE-PROPOSAL.md). Prompts and Explanations remain
+unnumbered — the two-tier rule is untouched.
 
 ---
 
@@ -206,36 +219,42 @@ Two observations from the original reading, both still load bearing:
 
 ## The chapters
 
-### The spine — ordered, each unit adding exactly one capability (two acts at first; Act III arrived 2026-08-23, Act IV 2026-09-07)
+### The spine — ordered, each unit adding exactly one capability (two acts at first; Act III arrived 2026-08-23, Act IV 2026-09-07; seven chapters 2026-09-24, the fourth correction)
 
-**Act I — space as computation.** No basemap, no network, no files. Geometry lives in a small
-local space and is rendered directly; every chapter runs offline the moment it opens. Renumbered
-2026-08-22 (see the third correction above); titles of the unwritten chapters are working titles
-from the design review and may change as they are built.
-
-| | title | what it adds | packages |
-|---|---|---|---|
-| 01 | **Your cursor is now data** | a position becomes a value: Coordinate → Point → WKT | VL.NetTopologySuite |
-| 02 | **A dot, a path, a plot of ground** | three geometries, and the measure only each can answer | VL.NetTopologySuite |
-| 03 | **In or out** | a question asked of two geometries, answered every frame | VL.NetTopologySuite |
-| 04 | **The shortest line between** | distance as a drawable thing — `Nearest Points` | VL.NetTopologySuite |
-| 05 | **Grow a shape** | geometry that generates geometry, driven by any signal | VL.NetTopologySuite |
-
-**Act II — the earth arrives.** The same values, now with the planet under them.
+**Chapter 1 — how does a shape become data?** (the former Act I.) **No tiles, no network.**
+Geometry lives in a small local space and is rendered directly; every lesson runs offline the
+moment it opens — 1.1's right-hand map is tile-less on purpose. First numbered 2026-08-22 (the
+third correction), chaptered 2026-09-24 (the fourth).
 
 | | title | what it adds | packages |
 |---|---|---|---|
-| 06 | **Change how the world looks** | a map exists, and its appearance is a string you own | VL.Mapsui |
-| 07 | **Your own points, lines and polygons** | your geometry drawn on the earth, styled by type | + NTS |
-| 08 | **The map is just giving you coordinates** | `WorldToScreen` → draw anything you like on top | + NTS |
-| 09 | **Real data** | GeoJSON, from a file or from the network | + VL.GeoJSON |
+| 1.1 | **Your cursor is now data** | a position becomes a value, read by two coordinate systems at once: Coordinate → Point → WKT, on a canvas and a tile-less map | VL.NetTopologySuite + VL.Mapsui |
+| 1.2 | **A dot, a path, a plot of ground** | three geometries, and the measure only each can answer | VL.NetTopologySuite |
+| 1.3 | **In or out** | a question asked of two geometries, answered every frame | VL.NetTopologySuite |
+| 1.4 | **The shortest line between** | distance as a drawable thing — `Nearest Points` | VL.NetTopologySuite |
+| 1.5 | **Grow a shape** | geometry that generates geometry, driven by any signal | VL.NetTopologySuite |
 
-**Single-package spine chapters use the exemption written into this pack's rules** — Act I is
-VL.NetTopologySuite throughout, and 06 is VL.Mapsui alone. The exemption and its reason are in
+**Chapter 2 — how does my data get onto the earth?** (the former Act II.) The same values, now
+with the planet under them.
+
+| | title | what it adds | packages |
+|---|---|---|---|
+| 2.1 | **Change how the world looks** | a map exists, and its appearance is a string you own | VL.Mapsui |
+| 2.2 | **Your own points, lines and polygons** | your geometry drawn on the earth, styled by type | + NTS |
+| 2.3 | **The map is just giving you coordinates** | `WorldToScreen` → draw anything you like on top | + NTS |
+| 2.4 | **Real data** | GeoJSON, from a file or from the network | + VL.GeoJSON |
+
+**Chapters 3–7 — one question, one lesson each so far**: 3.1 projections (former 10), 4.1 the
+spatial index (11), 5.1 fields (12), 6.1 networks (13), 7.1 data access (14). A thin chapter is a
+labelled growth slot: reprojection lands in chapter 3 when it unblocks, raster/DEM in 5, more
+network in 6, and chapter 7's lessons are earned by the laboratory (ACT-IV-LAB.md).
+
+**Single-package spine lessons use the exemption written into this pack's rules** — chapter 1 is
+mostly VL.NetTopologySuite, and 2.1 is VL.Mapsui alone. The exemption and its reason are in
 `CLAUDE.md`; briefly, a course with a hole at its door is worse than a duplicated node, and each
-act's opener adds exactly one capability on purpose.
+chapter's opener adds exactly one capability on purpose.
 
-**08 comes before 09 deliberately.** Unfolding puts `getScreenPosition` *before* its GeoJSON
+**2.3 comes before 2.4 deliberately.** Unfolding puts `getScreenPosition` *before* its GeoJSON
 tutorial and says why: *"the easiest method to create a custom style is to draw the marker
 yourself."* That is the moment the map stops being a map and becomes a coordinate provider, and the
 reader returns to the visual language they already have. It is the strongest thing this stack can
@@ -308,7 +327,7 @@ inert — 763 px with and without).
 The first volume (01–13) was frozen 2026-09-06; Act IV chapters are not designed from a syllabus
 but **earned by the laboratory** (`docs/ACT-IV-LAB.md`): a numbered chapter requires several
 independent experiments converging on one recurring mental-model shift, plus a decided proposal.
-`Tutorial 14 What if the world does not fit in memory` is the first — four experiments (the tile
+`Tutorial 7.1 What if the world does not fit in memory` is the first — four experiments (the tile
 ledger, the resolution ladder, the two layouts, the ranged read), two shipped Explanations, and
 the user's pipeline diagram (question → where/how much/how detailed → decides what to read → data
 access → answer) stand behind it; its design brief and decision record are in ACT-IV-LAB. There is

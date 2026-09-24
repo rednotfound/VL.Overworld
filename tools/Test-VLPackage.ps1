@@ -201,6 +201,37 @@ elseif ($chapterProblems -eq 0) {
     Ok "$($chapters.Count) unit(s), $spine in the spine: genre prefixes valid, cross-package rule met, all pinned 0.0.0"
 }
 
+# 7b. The spine numbers as chapter.lesson, and both runs are contiguous from 1. A gap is a silent
+# hole in the spine; a flat number is the pre-2026-09-24 scheme sneaking back
+# (docs/CHAPTER-STRUCTURE-PROPOSAL.md carries the decision).
+$spineFiles = @($chapters | Where-Object { $_.Name.StartsWith('Tutorial ', [StringComparison]::Ordinal) })
+$spineParsed = @()
+foreach ($s in $spineFiles) {
+    if ($s.Name -match '^Tutorial (\d+)\.(\d+) \S') {
+        $spineParsed += [pscustomobject]@{ Chapter = [int]$Matches[1]; Lesson = [int]$Matches[2]; Name = $s.Name }
+    } else {
+        Fail "help\$($s.Name): a spine filename is 'Tutorial <chapter>.<lesson> <title>.vl'."
+    }
+}
+if ($spineParsed.Count -eq $spineFiles.Count -and $spineFiles.Count -gt 0) {
+    $chapterNumbers = @($spineParsed | ForEach-Object { $_.Chapter } | Sort-Object -Unique)
+    $expectedChapters = @(1..$chapterNumbers.Count)
+    if (Compare-Object $chapterNumbers $expectedChapters) {
+        Fail "spine chapters are [$($chapterNumbers -join ', ')] - they must run 1..$($chapterNumbers.Count) with no gaps."
+    }
+    $lessonProblems = 0
+    foreach ($ch in $chapterNumbers) {
+        $lessons = @($spineParsed | Where-Object { $_.Chapter -eq $ch } | ForEach-Object { $_.Lesson } | Sort-Object)
+        if (Compare-Object $lessons @(1..$lessons.Count)) {
+            Fail "chapter $ch lessons are [$($lessons -join ', ')] - they must run 1..$($lessons.Count) with no gaps."
+            $lessonProblems++
+        }
+    }
+    if ($lessonProblems -eq 0 -and -not (Compare-Object $chapterNumbers $expectedChapters)) {
+        Ok "spine numbering: $($chapterNumbers.Count) chapter(s), lessons contiguous in each"
+    }
+}
+
 # 8. Help.xml agrees with what is on disk, in both directions -----------------
 $helpXmlPath = Join-Path $HelpDir 'Help.xml'
 if (-not (Test-Path $helpXmlPath)) {

@@ -24,47 +24,45 @@ Install this one and all three arrive. Everything appears in vvvv's Help Browser
 
 ## Two tiers
 
-**The spine** is short, ordered, and each unit adds exactly one capability. Numbering is a claim
-that order matters, so it is spent only here. It opens with **two acts: geometry first, maps second**
-— because GIS is spatial *computation* before it is cartography, and a polygon answering questions
-under your cursor renders instantly, offline, with nothing to agree to.
+**The spine** is short, ordered, and each unit adds exactly one capability. It runs in **seven
+chapters, one per question** — a lesson is numbered `chapter.lesson`, so a new lesson renumbers
+its own chapter and nothing else. Numbering is a claim that order matters, and it is spent only
+here. Geometry comes before maps because GIS is spatial *computation* before it is cartography,
+and a polygon answering questions under your cursor renders instantly, offline, with nothing to
+agree to.
 
-**Act I — space as computation.** No basemap, no network, no files.
-
-| | | you end up with |
-|---|---|---|
-| **Tutorial 01** | Your cursor is now data | the dot you see and a line of WKT — two spellings of one position |
-| **Tutorial 02** | A dot, a path, a plot of ground | three geometries, and the measure only each can answer |
-| **Tutorial 03** | In or out | a spatial question whose answer flips as you move |
-| **Tutorial 04** | The shortest line between | distance as a thing you can draw, not just a number |
-| **Tutorial 05** | Grow a shape | geometry that generates geometry, driven by any signal |
-
-**Act II — the earth arrives.**
+**Chapter 1 — how does a shape become data?** No tiles, no network.
 
 | | | you end up with |
 |---|---|---|
-| **Tutorial 06** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
-| **Tutorial 07** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind — Haneda, typed in as numbers |
-| **Tutorial 08** | The map is just giving you coordinates | the loop closed: the map says which place is under your cursor, and geometry grown from that answer is drawn back onto the earth, live |
-| **Tutorial 09** | Real data | GeoJSON, from a file or straight off the network |
+| **1.1** | Your cursor is now data | one cursor read by two coordinate systems — a canvas and a tile-less map — and a line of WKT naming the position both are spelling |
+| **1.2** | A dot, a path, a plot of ground | three geometries, and the measure only each can answer |
+| **1.3** | In or out | a spatial question whose answer flips as you move |
+| **1.4** | The shortest line between | distance as a thing you can draw, not just a number |
+| **1.5** | Grow a shape | geometry that generates geometry, driven by any signal |
 
-**Act III — beyond the basemap.** Projections, indexes, fields, networks. Two of these chapters
-are map-free on purpose — a basemap can only draw one projection, and it would put an object
-underneath a field.
-
-| | | you end up with |
-|---|---|---|
-| **Tutorial 10** | Same place, different numbers | three projections on one knob — and the discovery that your lon/lat scatterplots were already projected maps |
-| **Tutorial 11** | Do you really want to ask 100,000 points one by one | a spatial index — and the contract that a candidate is not a result |
-| **Tutorial 12** | What if space is not an object | the field worldview: every place has a value, and a raster is a field that was sampled |
-| **Tutorial 13** | Close does not mean reachable | a street network where distance, topology and routing come apart — close the bridge and watch |
-
-**Act IV — ask, then read.** One chapter so far, earned by four laboratory experiments
-(`docs/ACT-IV-LAB.md`); the next ones must earn themselves the same way.
+**Chapter 2 — how does my data get onto the earth?**
 
 | | | you end up with |
 |---|---|---|
-| **Tutorial 14** | What if the world does not fit in memory | a remote 18.6 MB file answering your question after 0.07% of it was read — the question computed the byte address |
+| **2.1** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
+| **2.2** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind — Haneda, typed in as numbers |
+| **2.3** | The map is just giving you coordinates | the loop closed: the map says which place is under your cursor, and geometry grown from that answer is drawn back onto the earth, live |
+| **2.4** | Real data | GeoJSON, from a file or straight off the network |
+
+**Chapters 3–7 — one question each, one lesson so far.** A thin chapter is a labelled growth
+slot, not a stub: reprojection lands in 3 when the family can build it, raster in 5, more network
+in 6, and chapter 7's lessons are earned one at a time by the laboratory (`docs/ACT-IV-LAB.md`).
+Two of these lessons are map-free on purpose — a basemap can draw only one projection, and it
+would put an object underneath a field.
+
+| | | you end up with |
+|---|---|---|
+| **3.1** — *why does the same place have different numbers?* | Same place, different numbers | three projections on one knob — and the discovery that your lon/lat scatterplots were already projected maps |
+| **4.1** — *how do you ask 100,000 things quickly?* | Do you really want to ask 100,000 points one by one | a spatial index — and the contract that a candidate is not a result |
+| **5.1** — *what if space is not an object?* | What if space is not an object | the field worldview: every place has a value, and a raster is a field that was sampled |
+| **6.1** — *when is close not reachable?* | Close does not mean reachable | a street network where distance, topology and routing come apart — close the bridge and watch |
+| **7.1** — *what if the world does not fit in memory?* | What if the world does not fit in memory | a remote 18.6 MB file answering your question after 0.07% of it was read — the question computed the byte address |
 
 **Three Explanations** — each proves a fact on screen; skippable; the title is the assertion:
 *The map is not to scale* — the cross under your cursor is 200 km each way, and it swells as you
@@ -85,18 +83,20 @@ prerequisite and no completion.
 | *Grow a town* | click, and a street network grows until two towns touch | offline |
 | *Paint by numbers* | 177 countries painted by population — and the two lies every choropleth tells | offline |
 
-Anything that can fetch (basemap tiles in 06, 08, 09, *The map is not to scale* and *Sharper is
-a different question* — which also fetches Terrarium elevation tiles; Tutorial 14's ranged reads;
+Anything that can fetch (basemap tiles in 2.1, 2.3, 2.4, *The map is not to scale* and *Sharper is
+a different question* — which also fetches Terrarium elevation tiles; 7.1's ranged reads;
 the two prompts marked *asks first*) starts with its switch **off**: opening a patch is not
 agreeing to network traffic.
 
-**All fourteen spine chapters, all three Explanations and all six prompts exist and pass all
-four verification rungs.** The map act was numbered 01, 02 and 04 until 2026-08-22 — the geometry act
-took the front numbers; see
-[CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md)'s third
-correction for why.
+**All fourteen spine lessons, all three Explanations and all six prompts exist and pass all
+four verification rungs.** The spine was flat-numbered 01–14 until 2026-09-24, when it gained its
+chapters; see
+[CHAPTER-STRUCTURE-PROPOSAL.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CHAPTER-STRUCTURE-PROPOSAL.md)
+for the decision and
+[CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md) for the
+corrections that came before it.
 
-### Why 08 comes before 09
+### Why 2.3 comes before 2.4
 
 Because that is the moment the map stops being a picture and becomes a question you can ask every
 frame — *which place on the earth is under this pixel?* — with geometry grown live from the answer

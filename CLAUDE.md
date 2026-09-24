@@ -35,17 +35,20 @@ stays a wait-for-consumer gap; any new permanent capability goes through a scope
 
 ### Where the work stands — 2026-09-24
 
-**The spine will gain chapters — decided, not yet executed.** Seven chapters, one per question
-(geometry 01–05; onto-the-earth 06–09; then one thin chapter each for projections 10, indexing
-11, fields 12, networks 13, data access 14 — thin = a labelled growth slot, QGIS-style), filenames
-becoming `Tutorial 2.3 …` chapter.lesson in a **flat** `help\` (scheme B; subfolders rejected —
-the audit found every serialized asset path document-relative, so B costs zero path edits while C
-costs every wired path, seven narrative mentions and four tools). Prompts/Explanations stay
-unnumbered; Act I's charter becomes *no tiles, no network*, which legalises the redesigned T01.
-Full evidence, change list and rungs: `docs/CHAPTER-STRUCTURE-PROPOSAL.md`. **Nothing renames
-until the hand-arranging campaign's final words batch** — rename and every in-text reference
-rewrite land as ONE batch. Already verified: a dotted filename compiles (real vvvvc, 5 .cs);
-residual rung-4 checks (Help Browser display, Open-Chapter.cmd on a dotted name) run at execution.
+**The spine has its seven chapters — decided AND renamed the same day** (the user pulled the
+rename forward: seeing the structure is what gives the remaining work direction). One chapter per
+question: 1 geometry (1.1–1.5), 2 onto-the-earth (2.1–2.4), then one thin chapter each — 3
+projections, 4 indexing, 5 fields, 6 networks, 7 data access (thin = a labelled growth slot,
+QGIS-style). Filenames are `Tutorial <chapter>.<lesson> <title>.vl` in a **flat** `help\` (scheme
+B; subfolders rejected — every serialized asset path is document-relative, so B cost zero path
+edits). Prompts/Explanations stay unnumbered; chapter 1's charter is *no tiles, no network*,
+which legalises the redesigned 1.1. Done with the rename: Help.xml (seven chapter Topics named by
+their questions), Test-VLPackage (chapter.lesson format + contiguity check, green), README and
+CURRICULUM (fourth correction) retabled, 1.1 recompiled through the real harness. Evidence and
+the rejected scheme: `docs/CHAPTER-STRUCTURE-PROPOSAL.md`. **Still owed to the words batch**:
+in-PATCH texts (narrative openers still say "09 - Real data", NEXT pointers still name flat
+numbers) and the eight single-package description warnings; rung-4 residuals (Help Browser
+display of dotted names, Open-Chapter.cmd) land next time vvvv opens.
 
 ### Where the work stands — 2026-09-23
 
@@ -74,7 +77,7 @@ narrative rewrite of 01 awaits the user's read (their rung 4).
 
 ### Where the work stands — 2026-09-07
 
-**2026-09-07, latest: `Tutorial 14 What if the world does not fit in memory` — built and all four
+**2026-09-07, latest: `Tutorial 7.1 What if the world does not fit in memory` — built and all four
 rungs passed the same day.** Act IV's first numbered chapter (23 units, 14 in the spine), decided
 by the user with a binding design brief (in ACT-IV-LAB): ONE capability — the question determines
 what gets read. Point at a local 5×5 index grid (`Assets\watercolor-directory.geojson`, derived by
@@ -222,20 +225,20 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 
 | unit | state |
 |---|---|
-| `Tutorial 01 Your cursor is now data` (geometry act) | **redesigned by the user 2026-09-23: two windows, two coordinate systems, one cursor** — left the Skia canvas (original chain), right a tile-less map (Mapsui + NTS, zero network) where the cursor's lon/lat point draws on the map it was read from (FrameDelay on the data). Behaviour user-verified the same day; the rewritten narrative still awaits their read. Edit in place only |
-| `Tutorial 02 A dot, a path, a plot of ground` (geometry act) | done — **rung 4 passed 2026-08-22**. **Layout hand-arranged by the user 2026-09-23** — edit in place only from here |
-| `Tutorial 03 In or out` (geometry act) | done — **rung 4 passed 2026-08-22**. **Hand-reworked by the user 2026-09-23** (335 lines removed: one vertex-spread IOBox feeds NTS and Skia alike; `Contains`' bool drives a `Switch` between two paints; narrative condensed by half) — edit in place only from here |
-| `Tutorial 04 The shortest line between` (geometry act) | done — **rung 4 passed 2026-08-22**. First consumer of `Nearest Points`. **Hand-reworked by the user 2026-09-23: point-to-shape became SHAPE-to-shape** — a seeded generative polygon vs a `RandomSpread (2d)` point-cloud polygon riding the cursor, both anchors of the shortest line sliding; one Count pad drives both shapes; narrative/labels rewritten to match — edit in place only from here |
-| `Tutorial 05 Grow a shape` (geometry act) | done — **rung 4 passed 2026-08-22**. First ForEach region in the pack. Layout still machine-generated |
-| `Tutorial 06 Change how the world looks` | done, **arranged by hand** (was 01) |
-| `Tutorial 07 Your own points, lines and polygons` | done, layout still machine-generated (was 02) |
-| `Tutorial 08 The map is just giving you coordinates` | **rebuilt 2026-08-23** after the first draft reproduced the recorded `WithinCommonSpace` disappearance (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23): now `ScreenToWorld` → live Buffer circle → `Feature`/`FeatureLayer`, with a `FrameDelay` breaking the map↔geometry cycle. **Rung 4 passed 2026-08-23** — circle renders and follows, interaction normal, no flicker (a per-frame layer rebuild would flicker, per the 2026-08-14 measurement). Layout machine-generated |
-| `Tutorial 09 Real data` | done (was 04, and 05 before that) |
-| `Tutorial 10 Same place, different numbers` | built 2026-08-23, **rung 4 passed the same day** (north up, world in frame, and Greenland changing size as the knob turns — watched by a person). **Rebuilt three times**, and the two discarded versions are the valuable part of the record: see `docs/ACT-III-DESIGN.md`, "the design above was wrong about the subject". No map — a basemap can draw only ONE projection. 17 parallels plus Natural Earth's coastlines, one `PROJECTION` knob, three cylindrical formulas differing only in what they do to a latitude. First chapter to read a GeoJSON file for its geometry rather than for a map layer |
-| `Tutorial 11 Do you really want to ask 100,000 points one by one` | built 2026-08-23, **rung 4 passed the same day** — and it was `NTS.Index`'s rung 4 too: `Indexes Built` stayed at 1 while the mouse moved, the two `Accepted` counts stayed equal, `Candidates` hugged them from above. **8 fps, measured, by design**: the brute-force half really runs 100,000 `Contains` per frame and the comparison IS the chapter. First `Cache` region in the pack (with a ForEach nested inside), first `Keep`-filtered loops, first `Points` layer. Layout machine-generated |
-| `Tutorial 12 What if space is not an object` | built 2026-08-23, **rung 4 passed the same day** (cells tile seamlessly, grid centred, and at Resolution 8 the `Field Here` number slides while the block underfoot stays flat — the chapter's whole argument, watched by a person). Act III's first chapter, and the pack's first with NO map and no geospatial computation: `SimplexNoise` over a `GridSpread (2D)`, one ForEach making one Skia `Rectangle` per cell, one knob (`Resolution`). Three NTS nodes (`Coordinate`/`Point`/`Write WKT`) stand the object model beside a field that has none — that is the chapter, and the single-package exemption is spent on it. Layout machine-generated |
+| `Tutorial 1.1 Your cursor is now data` (geometry act) | **redesigned by the user 2026-09-23: two windows, two coordinate systems, one cursor** — left the Skia canvas (original chain), right a tile-less map (Mapsui + NTS, zero network) where the cursor's lon/lat point draws on the map it was read from (FrameDelay on the data). Behaviour user-verified the same day; the rewritten narrative still awaits their read. Edit in place only |
+| `Tutorial 1.2 A dot, a path, a plot of ground` (geometry act) | done — **rung 4 passed 2026-08-22**. **Layout hand-arranged by the user 2026-09-23** — edit in place only from here |
+| `Tutorial 1.3 In or out` (geometry act) | done — **rung 4 passed 2026-08-22**. **Hand-reworked by the user 2026-09-23** (335 lines removed: one vertex-spread IOBox feeds NTS and Skia alike; `Contains`' bool drives a `Switch` between two paints; narrative condensed by half) — edit in place only from here |
+| `Tutorial 1.4 The shortest line between` (geometry act) | done — **rung 4 passed 2026-08-22**. First consumer of `Nearest Points`. **Hand-reworked by the user 2026-09-23: point-to-shape became SHAPE-to-shape** — a seeded generative polygon vs a `RandomSpread (2d)` point-cloud polygon riding the cursor, both anchors of the shortest line sliding; one Count pad drives both shapes; narrative/labels rewritten to match — edit in place only from here |
+| `Tutorial 1.5 Grow a shape` (geometry act) | done — **rung 4 passed 2026-08-22**. First ForEach region in the pack. Layout still machine-generated |
+| `Tutorial 2.1 Change how the world looks` | done, **arranged by hand** (was 01) |
+| `Tutorial 2.2 Your own points, lines and polygons` | done, layout still machine-generated (was 02) |
+| `Tutorial 2.3 The map is just giving you coordinates` | **rebuilt 2026-08-23** after the first draft reproduced the recorded `WithinCommonSpace` disappearance (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23): now `ScreenToWorld` → live Buffer circle → `Feature`/`FeatureLayer`, with a `FrameDelay` breaking the map↔geometry cycle. **Rung 4 passed 2026-08-23** — circle renders and follows, interaction normal, no flicker (a per-frame layer rebuild would flicker, per the 2026-08-14 measurement). Layout machine-generated |
+| `Tutorial 2.4 Real data` | done (was 04, and 05 before that) |
+| `Tutorial 3.1 Same place, different numbers` | built 2026-08-23, **rung 4 passed the same day** (north up, world in frame, and Greenland changing size as the knob turns — watched by a person). **Rebuilt three times**, and the two discarded versions are the valuable part of the record: see `docs/ACT-III-DESIGN.md`, "the design above was wrong about the subject". No map — a basemap can draw only ONE projection. 17 parallels plus Natural Earth's coastlines, one `PROJECTION` knob, three cylindrical formulas differing only in what they do to a latitude. First chapter to read a GeoJSON file for its geometry rather than for a map layer |
+| `Tutorial 4.1 Do you really want to ask 100,000 points one by one` | built 2026-08-23, **rung 4 passed the same day** — and it was `NTS.Index`'s rung 4 too: `Indexes Built` stayed at 1 while the mouse moved, the two `Accepted` counts stayed equal, `Candidates` hugged them from above. **8 fps, measured, by design**: the brute-force half really runs 100,000 `Contains` per frame and the comparison IS the chapter. First `Cache` region in the pack (with a ForEach nested inside), first `Keep`-filtered loops, first `Points` layer. Layout machine-generated |
+| `Tutorial 5.1 What if space is not an object` | built 2026-08-23, **rung 4 passed the same day** (cells tile seamlessly, grid centred, and at Resolution 8 the `Field Here` number slides while the block underfoot stays flat — the chapter's whole argument, watched by a person). Act III's first chapter, and the pack's first with NO map and no geospatial computation: `SimplexNoise` over a `GridSpread (2D)`, one ForEach making one Skia `Rectangle` per cell, one knob (`Resolution`). Three NTS nodes (`Coordinate`/`Point`/`Write WKT`) stand the object model beside a field that has none — that is the chapter, and the single-package exemption is spent on it. Layout machine-generated |
 | `Explanation The map is not to scale` | built 2026-08-23, **rung 4 passed the same day**, after the user fixed the text paint in the GUI. The pack's first `Explanation`, and the split half of Tutorial 10: local distortion on a **real OSM basemap**, which is the one place in this topic tiles belong. A cross follows the cursor, 200 km on the ground each way; hold the right mouse button and it becomes 2 degrees each way, arms visibly unequal. `STRETCH = 1/cos(latitude)`. Closes the loop Tutorial 08 left open about buffering in degrees. **Hand-edited in the GUI** for the text paint — see the `FontAndParagraph` row in PATCH-GRAMMAR.md — so it is edit-in-place only from here |
-| `Tutorial 13 Close does not mean reachable` | built 2026-08-23, **rung 4 passed the same day** (200 m straight vs 800 m by the streets; closing the bridge makes `Found` False and the teal path vanish while the grey line does not move; `Networks Built` 1→2→3). First consumer of the network nodes (then `NTS.Experimental.Network`, **promoted to `NTS.Network` 2026-08-28** — an algorithm of ours; the decision is `vl-nettopologysuite/docs/NETWORK-SCOPE-PROPOSAL.md`). Local Cartesian town, one unit = one metre, by declaration. Layout machine-generated |
+| `Tutorial 6.1 Close does not mean reachable` | built 2026-08-23, **rung 4 passed the same day** (200 m straight vs 800 m by the streets; closing the bridge makes `Found` False and the teal path vanish while the grey line does not move; `Networks Built` 1→2→3). First consumer of the network nodes (then `NTS.Experimental.Network`, **promoted to `NTS.Network` 2026-08-28** — an algorithm of ours; the decision is `vl-nettopologysuite/docs/NETWORK-SCOPE-PROPOSAL.md`). Local Cartesian town, one unit = one metre, by declaration. Layout machine-generated |
 | `Prompt A mountain` | done, layout still machine-generated |
 | `Prompt Live earthquakes` | built 2026-08-23, **rung 4 passed the same day** (dots sized/coloured by magnitude, hover-Pick reads title/mag/time, null-mag quakes counted by Status). The family's first network fetch — `HTTPGet` fires only on its Refresh pin, zero requests on open. First prompt consumer of `StyleByValue` and `Pick`. Layout machine-generated |
 | `Prompt How high is here` | built 2026-08-28, **renamed the same day from `Walk across a mountain`**: the patch does not make anyone walk — the cursor goes anywhere — and a prompt title is a permission, not a promise of an action the patch cannot ask for; **rung 4 passed the same day** (39 m on Tokyo Bay's shore, the fetched Terrarium tile drawn bottom-right with an orange dot on the pixel being read). Real elevation under the cursor from **Terrarium PNG tiles** (AWS Open Data, Mapzen encoding `(R*256+G+B/256)-32768`) at fixed z=11 — reads a **pixel colour** and translates it to metres by a published convention; the field of chapter 12, with real data. Fetches only when the tile number or the `Elevation` toggle changes; **first-frame empty body guarded by an `If` region**, the pack's first. Not a raster library: nearest pixel, no interpolation, ~60 m cells at this latitude. Layout machine-generated |
