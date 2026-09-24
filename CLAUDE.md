@@ -50,6 +50,27 @@ in-PATCH texts (narrative openers still say "09 - Real data", NEXT pointers stil
 numbers) and the eight single-package description warnings; rung-4 residuals (Help Browser
 display of dotted names, Open-Chapter.cmd) land next time vvvv opens.
 
+**Same day, the repetition cleanup pass — the user's composition grammar, learned and applied.**
+The grammar read out of their 1.3/1.4 reworks is now a PATCH-GRAMMAR section (one source fans
+out to both worlds; one pad, many consumers; bool→Switch.Index; generated vertices; CPs as wire
+elbows; data-repetition stays, structure-repetition loops). Applied through rungs 1–3, rung 4
+falling to the user's arranging pass: **1.2** (7 vertex pads + 18 nodes → two Spread<Vector2>
+pads + two ForEach, the region XML transplanted from the user's own 232168c serialization),
+**1.5** (same surgery; the three Buffer→outline columns kept parallel on purpose — three actors),
+**Explanation You do not…** (16 hand-laid grid Rectangles → two Int2→GridSpread→ForEach[Rectangle]
+→Group (Spectral) loops, 5.1's own idiom). Deliberately NOT touched: **2.2** (the user's rework
+in progress), **A mountain** (nine named peaks are typed data, and Vector2 would demote Float64
+degrees), **3.1** (three projection formulas side by side ARE the chapter), **Grow a town**
+(already subpatched). **The one remaining offender is `Explanation Sharper…` (369 nodes, six
+~55-node fetch columns in a 3×2 layout)** — measured 2026-09-24: the six columns are NOT
+mechanically isomorphic (top row ~59 nodes each, bottom ~40), so folding them into one ForEach
+is a mechanism rebuild of a working rung-4-verified chapter, not a mechanical cleanup; parked
+for the user's decision (script it with camera verification / they hand-rework it / leave it).
+A library-gap observation for a future scope question: the 3-node Coordinate↔Vector2 motif
+(Split→ToFloat32×2→Join and its inverse) recurs in nearly every patch; vl-nettopologysuite has
+no Vector2 bridge, deliberately (no Stride dependency) — if that ever changes it goes through a
+scope proposal there.
+
 ### Where the work stands — 2026-09-23
 
 **The hand-arranging campaign is under way, and it changed more than layouts.** Tutorials 01/02

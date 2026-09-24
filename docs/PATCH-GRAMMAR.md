@@ -57,6 +57,29 @@ Hard rules, in force across chapters 01–05:
 - **Readouts**: the number or bool that IS the lesson gets fontsize 14 and a label; WKT boxes are
   plain String IOBoxes wide enough to read.
 
+## The user's composition grammar — read out of their hand-reworks of 1.1/1.3/1.4, 2026-09-24
+
+Every future patch is written in this grammar, and the 2026-09-24 cleanup pass rewired 1.2, 1.5
+and an Explanation into it. The six rules, each visible in a patch of theirs:
+
+1. **One data source fans out to both worlds.** A single `Spread<Vector2>` IOBox (or one mouse
+   position) feeds the NTS chain (`ForEach` → `Coordinate` → ring) AND the Skia drawing
+   (`Polygon.Points`, `Circle.Position`) at once. Parallel per-vertex chains are the disease;
+   1.3's rework deleted 335 lines of them.
+2. **One parameter pad drives every consumer that shares its meaning.** 1.4's one `COUNT` feeds
+   three spreads across two shapes; 1.5's `Distance`/`Segments` feed all three Buffers.
+3. **A bool goes straight into `Switch.Index`** to pick between two paints — never a duplicated
+   draw path (false→Input, true→Input 2).
+4. **Vertices are generated, not typed**, when the shape itself is not the data:
+   `LinearSpread` (angles) zipped with a seeded `RandomSpread` (radii) through `FromPolar`,
+   SEED as a play knob. *Typed* coordinates remain right when the values ARE the lesson
+   (A mountain's nine named peaks — and their pads carry names and stay Float64).
+5. **ControlPoints are wire elbows.** Long links get a CP pair so the line reads.
+6. **The canvas holds play knobs and result readouts, nothing else.** Repetition that is DATA
+   (2.1's six URLs beside six credits) stays visible in columns; repetition that is STRUCTURE
+   (sixteen grid rectangles, seven vertex chains) becomes a loop —
+   `GridSpread`/`LinearSpread` → `ForEach` → `Group (Spectral)`, the idiom 5.1 teaches.
+
 ## A document filename must not contain an apostrophe
 
 vvvvc crashes on it — unhandled exception `0xE0434352` in `ProjectBuilder.BuildAsync`, with a bare
