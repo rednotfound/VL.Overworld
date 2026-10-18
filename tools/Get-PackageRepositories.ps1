@@ -23,7 +23,7 @@
 param(
     [hashtable]$Siblings = @{
         'VL.Mapsui'           = 'D:\2026_Projects\vl-mapsui'
-        'VL.GeoJSON'          = 'D:\2026_Projects\vl-geojson'
+        'VL.NetTopologySuite.GeoJSON' = 'D:\2026_Projects\vl-geojson'
         'VL.NetTopologySuite' = 'D:\2026_Projects\vl-nettopologysuite'
     }
 )

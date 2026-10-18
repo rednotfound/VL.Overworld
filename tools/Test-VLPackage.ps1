@@ -47,7 +47,7 @@ $Nuspec   = Join-Path $RepoRoot "$PackName.nuspec"
 $HelpDir  = Join-Path $RepoRoot 'help'
 
 # The libraries this pack teaches. A unit naming two or more of these is what belongs here.
-$Family = @('VL.Mapsui', 'VL.GeoJSON', 'VL.NetTopologySuite')
+$Family = @('VL.Mapsui', 'VL.NetTopologySuite.GeoJSON', 'VL.NetTopologySuite')
 
 # The filename tells a reader which tier a unit is in before they open it, so it is validated.
 # `Tutorial ` is the ordered spine; `Prompt ` is the unordered library. The other three are vvvv's

@@ -9,7 +9,7 @@ show them working together:
 |---|---|
 | [VL.Mapsui](https://github.com/rednotfound/VL.Mapsui) | draws a real map — tiles, layers, styles, picking |
 | [VL.NetTopologySuite](https://github.com/rednotfound/VL.NetTopologySuite) | geometry: points, lines, polygons, and operations on them |
-| [VL.GeoJSON](https://github.com/rednotfound/VL.GeoJSON) | reads and writes the format the data actually arrives in |
+| [VL.NetTopologySuite.GeoJSON](https://github.com/rednotfound/VL.NetTopologySuite.GeoJSON) | reads and writes the format the data actually arrives in |
 
 Install this one and all three arrive. Everything appears in vvvv's Help Browser.
 
@@ -175,7 +175,7 @@ it — which is what this section is for.
 `BruTile 6`, while `Mapsui.Tiling` requires `BruTile [5.0.6, 6.0.0)`, and the two are not
 compatible — `BruTile.Attribution` changed layout between them, so loading both throws
 `TypeLoadException`. It also drags in `NetTopologySuite.IO.GeoJSON 3.0.0`, which pins
-`NetTopologySuite.Features` to the **floor** of its range, 2.0.0, where VL.GeoJSON needs 2.1.0.
+`NetTopologySuite.Features` to the **floor** of its range, 2.0.0, where VL.NetTopologySuite.GeoJSON needs 2.1.0.
 
 vvvv keeps every package's dependencies in one flat, machine-wide folder, and **uninstalling a
 package does not remove them** — nor does reinstalling vvvv, because the folder lives in your user

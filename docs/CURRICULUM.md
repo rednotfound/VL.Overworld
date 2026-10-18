@@ -79,7 +79,7 @@ These say what is *true* rather than how to teach it, and the libraries already 
 | | |
 |---|---|
 | **OGC Simple Features** | the geometry model — Point, LineString, Polygon and their multi- forms. What NetTopologySuite implements, and therefore what a `Geometry` in a patch actually is |
-| **RFC 7946 (GeoJSON)** | including §4, which mandates WGS84 longitude and latitude. Why VL.GeoJSON and VL.Mapsui agree about coordinates without an adapter |
+| **RFC 7946 (GeoJSON)** | including §4, which mandates WGS84 longitude and latitude. Why VL.NetTopologySuite.GeoJSON and VL.Mapsui agree about coordinates without an adapter |
 | **EPSG registry** | the coordinate reference system codes. 4326 and 3857 are the two a web map lives between |
 
 ---
@@ -247,7 +247,7 @@ Leaflet map without tiles is broken; ours isn't) is in the 2026-09-24 design dis
 | 2.1 | **Your own points, lines and polygons** | your geometry drawn on the earth in degrees, styled by type — tile-less, graticule for bearings | VL.Mapsui + NTS |
 | 2.2 | **Change how the world looks** | tiles — and a map whose appearance is a string you own; the first fetch, consented | VL.Mapsui |
 | 2.3 | **The map is just giving you coordinates** | `WorldToScreen` → draw anything you like on top | + NTS |
-| 2.4 | **Real data** | GeoJSON, from a file or from the network | + VL.GeoJSON |
+| 2.4 | **Real data** | GeoJSON, from a file or from the network | + VL.NetTopologySuite.GeoJSON |
 
 **The reusable principle this reorder set** (candidate for every chapter's future lessons): a
 chapter's first lesson re-does something the reader already can, changing one thing; step size

@@ -302,7 +302,7 @@ Nothing is published anywhere. Everything runs off the siblings' `dist\` folders
 |---|---|---|---|
 | `D:\2026_Projects\vl-mapsui` | drawing maps: tiles, layers, styles, picking, widgets | **225** xunit | 30 |
 | `D:\2026_Projects\vl-nettopologysuite` | geometry **and the feature model**: create, inspect, operate — and since 2026-08-23 **index** (`NTS.Index`, its first `[ProcessNode]`) plus **`NTS.Network`** (`Network` + `ShortestPath`, an algorithm of ours, promoted from experimental 2026-08-28 by that repo's `docs/NETWORK-SCOPE-PROPOSAL.md`). Category `NTS` | **126** xunit | 13 |
-| `D:\2026_Projects\vl-geojson` | reading and writing GeoJSON. Category `GeoJSON` | **69** (+4 skipped) | 9 |
+| `D:\2026_Projects\vl-geojson` | **`VL.NetTopologySuite.GeoJSON`** (was `VL.GeoJSON` until 2026-10-18): reading and writing GeoJSON — `Read GeoJSON`, `Write GeoJSON`, in `NetTopologySuite.IO`. Depends on VL.NetTopologySuite; opening a feature (`Split`, `GetAttribute`) is that package's | **60** (+4 skipped) | 8 |
 | **here** | the course. **No nodes, no assembly, no `src\`** | none, and none is wanted | 0 |
 
 **The division that matters: a missing or broken NODE is never fixed here.** If a chapter cannot be
@@ -312,7 +312,11 @@ would hide the finding, which is the one thing this pack exists to prevent. Five
 that route in two days; see the section below.
 
 They compose through **NetTopologySuite**, a library they share rather than an agreement they made.
-None references another, deliberately.
+**Every dependency arrow points at VL.NetTopologySuite** — VL.Mapsui and VL.NetTopologySuite.GeoJSON each depend
+on it (so their help patches open working), neither depends on the other, and VL.NetTopologySuite
+references nothing of ours. Until 2026-10-18 this line said "none references another", which the
+published VL.Mapsui had already made untrue; the GeoJSON package was renamed and joined
+`NetTopologySuite.IO` the same day (its ARCHITECTURE.md has why).
 
 **2026-08-22: the `Feature`/`Split` nodes moved from VL.Mapsui to VL.NetTopologySuite**
 (`NTS.Feature`), because a feature — geometry + attributes — is a data-model object that must be
@@ -329,7 +333,7 @@ live circle runs through `NTS.Feature`'s `Feature` node in the GUI, watched by a
 # the libraries - fast, no network, no vvvv. Close vvvv first: it holds the assemblies.
 dotnet test D:\2026_Projects\vl-mapsui\test\VL.Mapsui.Tests\VL.Mapsui.Tests.csproj
 dotnet test D:\2026_Projects\vl-nettopologysuite\test\VL.NetTopologySuite.Tests\VL.NetTopologySuite.Tests.csproj
-dotnet test D:\2026_Projects\vl-geojson\test\VL.GeoJSON.Tests\VL.GeoJSON.Tests.csproj
+dotnet test D:\2026_Projects\vl-geojson\test\VL.NetTopologySuite.GeoJSON.Tests\VL.NetTopologySuite.GeoJSON.Tests.csproj
 
 # here - there is no unit suite, and there should not be. A course is tested by compiling it.
 .\tools\Test-VLPackage.ps1                              # static: BOM, ids, links, the rules
@@ -384,7 +388,7 @@ libraries it teaches, and holds every patch that needs more than one of them.
 |---|---|
 | `D:\2026_Projects\vl-mapsui` | draws maps: tiles, layers, styles, picking |
 | `D:\2026_Projects\vl-nettopologysuite` | geometry — points, lines, polygons, operations |
-| `D:\2026_Projects\vl-geojson` | reads and writes the format data arrives in |
+| `D:\2026_Projects\vl-geojson` | `VL.NetTopologySuite.GeoJSON` — reads and writes the format data arrives in |
 | **here** | the chapters that use two or more of them |
 
 The shape is copied from [VL.ExtendedTutorials](https://www.nuget.org/packages/VL.ExtendedTutorials)
@@ -555,8 +559,9 @@ A library's API cannot move without a chapter telling you.
 
 ### When to publish
 
-`VL.NetTopologySuite` and `VL.GeoJSON` depend on nothing of ours; `VL.Mapsui` depends on
-VL.NetTopologySuite; this pack depends on all three. **Publish in that order or an install fails.**
+`VL.NetTopologySuite` depends on nothing of ours; `VL.Mapsui` and `VL.NetTopologySuite.GeoJSON` depend on
+VL.NetTopologySuite (VL.NetTopologySuite.GeoJSON on 0.0.3-alpha, the first with `GetAttribute`); this pack depends on
+all three. **Publish in that order or an install fails.**
 
 **But not yet.** A published version is permanent — nuget.org cannot delete, only unlist, and this
 family already spent a day on the consequences of one published alpha (`VL.GIS 0.2.0-alpha`, which

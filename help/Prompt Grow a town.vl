@@ -4,7 +4,7 @@
   <NugetDependency Id="Ru8RKtQuRStnpGVJD7wHcN" Location="VL.Skia" Version="2025.7.4" />
   <NugetDependency Id="VN0ifebHtySSFknYNLloEM" Location="NetTopologySuite" Version="2.6.0" />
   <NugetDependency Id="DCzZIYyLznNfJECkAdhyLK" Location="VL.NetTopologySuite" Version="0.0.0" />
-  <NugetDependency Id="C7WDFhBpmrJgvn2oM7uKEK" Location="VL.GeoJSON" Version="0.0.0" />
+  <NugetDependency Id="C7WDFhBpmrJgvn2oM7uKEK" Location="VL.NetTopologySuite.GeoJSON" Version="0.0.0" />
   <Patch Id="AqTuLzQf5wr9nkoD3U3lmx">
     <Canvas Id="VSYeyiWauUcQdGkkMPweAA" DefaultCategory="Main" CanvasType="FullCategory">
       <!--
@@ -1506,7 +1506,7 @@
                   <ControlPoint Id="KecJuTSY0G7HLPJIO3hRQ2" Bounds="450,413" Alignment="Bottom" />
                 </Node>
                 <Node Bounds="420,440,120,19" Id="HtskoNxaFhbMiuuzufVe0d">
-                  <p:NodeReference LastCategoryFullName="GeoJSON" LastDependency="VL.GeoJSON.vl">
+                  <p:NodeReference LastCategoryFullName="NetTopologySuite.IO" LastDependency="VL.NetTopologySuite.GeoJSON.vl">
                     <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
                     <Choice Kind="OperationCallFlag" Name="Write GeoJSON" />
                   </p:NodeReference>

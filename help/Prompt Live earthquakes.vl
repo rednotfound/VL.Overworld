@@ -3,7 +3,7 @@
   <NugetDependency Id="QOLEg5AQ4KkIC3asNONgOM" Location="VL.CoreLib" Version="2025.7.4" />
   <NugetDependency Id="KXWHav8F0Cm0xqUVu1msYO" Location="VL.Skia" Version="2025.7.4" />
   <NugetDependency Id="KmjkroI5bZJr9pPJPLVzk1" Location="VL.Mapsui" Version="0.0.0" />
-  <NugetDependency Id="DjBNhUr9fKFNVtI7A76yEQ" Location="VL.GeoJSON" Version="0.0.0" />
+  <NugetDependency Id="DjBNhUr9fKFNVtI7A76yEQ" Location="VL.NetTopologySuite.GeoJSON" Version="0.0.0" />
   <!--
     NetTopologySuite is declared HERE, by this document - a package declaring it is not the same
     as this document declaring it. Nothing below calls an NTS node, but the moment you extend the
@@ -138,7 +138,7 @@
             </p:ValueBoxSettings>
           </Pad>
           <Node Bounds="-50,350,120,19" Id="KkWrkHX2otd7sjYwTIVRJX">
-            <p:NodeReference LastCategoryFullName="GeoJSON" LastDependency="VL.GeoJSON.vl">
+            <p:NodeReference LastCategoryFullName="NetTopologySuite.IO" LastDependency="VL.NetTopologySuite.GeoJSON.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Read GeoJSON" />
             </p:NodeReference>

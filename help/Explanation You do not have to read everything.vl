@@ -4,7 +4,7 @@
   <NugetDependency Id="UO9gRroPhMCEl1pQduMOzc" Location="VL.Skia" Version="2025.7.4" />
   <NugetDependency Id="JYtR0IycwjWgEqLPT7ZSaK" Location="NetTopologySuite" Version="2.6.0" />
   <NugetDependency Id="Oo3oTYrxKX6zWTLm78Veln" Location="VL.NetTopologySuite" Version="0.0.0" />
-  <NugetDependency Id="SETbpDBWSqFMC4iH7cNGai" Location="VL.GeoJSON" Version="0.0.0" />
+  <NugetDependency Id="SETbpDBWSqFMC4iH7cNGai" Location="VL.NetTopologySuite.GeoJSON" Version="0.0.0" />
   <Patch Id="QQ26jKaFA1r4SWPs6EYAZi">
     <Canvas Id="AKGzKuh010ejqDzVgkFE4B" DefaultCategory="Main" CanvasType="FullCategory" />
     <Node Name="Application" Bounds="100,100" Id="FyUWPxl3ZcUs9ev8CpoeWW">
@@ -327,7 +327,7 @@
             <Pin Id="AQw3RdyS5hpIWEin4r3vXD" Name="Length" Kind="OutputPin" />
           </Node>
           <Node Bounds="60,500,120,19" Id="Eant5lbjtEOmdgiTSvcaq4">
-            <p:NodeReference LastCategoryFullName="GeoJSON" LastDependency="VL.GeoJSON.vl">
+            <p:NodeReference LastCategoryFullName="NetTopologySuite.IO" LastDependency="VL.NetTopologySuite.GeoJSON.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Read GeoJSON" />
             </p:NodeReference>
@@ -393,7 +393,7 @@
             <Pin Id="GlplAaSuLpz5O4MWfIWbEe" Name="Length" Kind="OutputPin" />
           </Node>
           <Node Bounds="60,630,120,19" Id="Eq98p8g8d9ZdOWCFlewUEx">
-            <p:NodeReference LastCategoryFullName="GeoJSON" LastDependency="VL.GeoJSON.vl">
+            <p:NodeReference LastCategoryFullName="NetTopologySuite.IO" LastDependency="VL.NetTopologySuite.GeoJSON.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Read GeoJSON" />
             </p:NodeReference>

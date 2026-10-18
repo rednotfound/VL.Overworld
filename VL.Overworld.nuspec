@@ -14,7 +14,7 @@
 
       Spatial thinking for vvvv gamma, taught from the ground up in two acts: geometry first - points, paths and polygons answering questions under your cursor, offline - then the earth, with real maps and real data. This package contains no
       nodes of its own. It installs the libraries that do — VL.Mapsui to draw maps,
-      VL.NetTopologySuite for geometry, VL.GeoJSON to read and write it — and adds the chapters
+      VL.NetTopologySuite for geometry, VL.NetTopologySuite.GeoJSON to read and write it — and adds the chapters
       that show them working together.
 
       That is why it exists at all: a worthwhile spatial example needs several libraries at once, and
@@ -45,7 +45,7 @@
 
       Measured 2026-08-16: a nuspec <dependency> really is installed transitively, so one install
       of this brings the whole family. That is the thing a cross-library course can offer and an
-      individual library cannot - VL.Mapsui must not depend on VL.GeoJSON, because a map engine has
+      individual library cannot - VL.Mapsui must not depend on VL.NetTopologySuite.GeoJSON, because a map engine has
       no business requiring a GeoJSON reader, and the reverse is just as wrong.
 
       Versions are floors, not pins. A chapter that breaks against a newer library is a finding
@@ -55,7 +55,7 @@
     <dependencies>
       <group targetFramework="net8.0">
         <dependency id="VL.Mapsui" version="0.0.1-alpha" />
-        <dependency id="VL.GeoJSON" version="0.0.1-alpha" />
+        <dependency id="VL.NetTopologySuite.GeoJSON" version="0.0.1-alpha" />
         <dependency id="VL.NetTopologySuite" version="0.0.1-alpha" />
       </group>
     </dependencies>

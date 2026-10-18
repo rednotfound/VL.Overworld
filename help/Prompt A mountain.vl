@@ -17,7 +17,7 @@
     rightclick.
   -->
   <NugetDependency Id="QVnZMbPyNO4lv6YFocyiqT" Location="VL.NetTopologySuite" Version="0.0.0" />
-  <NugetDependency Id="UJ4lOiV4ddMRDp3IepvNro" Location="VL.GeoJSON" Version="0.0.0" />
+  <NugetDependency Id="UJ4lOiV4ddMRDp3IepvNro" Location="VL.NetTopologySuite.GeoJSON" Version="0.0.0" />
   <Patch Id="FJzZkKqVfW12i9kQk6L0hz">
     <Canvas Id="N0E8bKG5vqG1aLaGsfcogC" DefaultCategory="Main" CanvasType="FullCategory" />
     <!--
@@ -404,7 +404,7 @@
             <Pin Id="TZmEpKxN7bbIQFW9gFOm4x" Name="Output" Kind="OutputPin" />
           </Node>
           <Node Bounds="-340,740,110,19" Id="VmoDUVDKjxaKtSQPZTyqL3">
-            <p:NodeReference LastCategoryFullName="GeoJSON" LastDependency="VL.GeoJSON.vl">
+            <p:NodeReference LastCategoryFullName="NetTopologySuite.IO" LastDependency="VL.NetTopologySuite.GeoJSON.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="Read GeoJSON" />
             </p:NodeReference>

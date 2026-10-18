@@ -59,7 +59,7 @@ $Pinned  = '0.0.0'
 #
 # Same list as the validator, for the same reason: a chapter that pins an exact version of a
 # sibling asks every future user for that exact version forever.
-$LocalPackages = @('VL.Mapsui', 'VL.GeoJSON', 'VL.NetTopologySuite')
+$LocalPackages = @('VL.Mapsui', 'VL.NetTopologySuite.GeoJSON', 'VL.NetTopologySuite')
 # Three groups so the current version can be reported, not just replaced.
 $Pattern = '(<NugetDependency\b[^>]*\bLocation="(?:' +
            (($LocalPackages | ForEach-Object { [regex]::Escape($_) }) -join '|') +
