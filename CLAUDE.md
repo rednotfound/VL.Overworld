@@ -12,9 +12,10 @@ and every patch-engineering fact Act I paid for.
 name wrong: a course that no longer starts with maps cannot be called cartography). The rename is
 complete — folder, repo, nuspec, memory junction — and the smoke test passed the same day.
 
-**The memory directory for this project is a junction onto the shared one** — literally the same
-files a session in `vl-mapsui` or `vvvv-gis` sees, so everything learned in any of the four
-repositories is already loaded. Keep it that way. Do not write a second copy of something a
+**The memory directory for this project is a junction onto the shared one**, which lives in
+vl-nettopologysuite's project folder (`~\.claude\projects\D--2026-Projects-vl-nettopologysuite\memory`;
+until 2026-10-18 it was vvvv-gis's, retired). vl-mapsui and vl-geojson are junctions onto the same
+files, so everything learned in any of the four repositories is already loaded. Keep it that way. Do not write a second copy of something a
 repository already records: a memory that drifts out of date is worse than no memory, and this
 family has been bitten by exactly that (a memory saying "Mapsui is blocked" survived months after
 VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked).
