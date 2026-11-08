@@ -54,9 +54,9 @@
     -->
     <dependencies>
       <group targetFramework="net8.0">
-        <dependency id="VL.Mapsui" version="0.0.1-alpha" />
-        <dependency id="VL.NetTopologySuite.GeoJSON" version="0.0.1-alpha" />
-        <dependency id="VL.NetTopologySuite" version="0.0.1-alpha" />
+        <dependency id="VL.Mapsui" version="0.0.2-alpha" />
+        <dependency id="VL.NetTopologySuite.GeoJSON" version="0.0.2-alpha" />
+        <dependency id="VL.NetTopologySuite" version="0.0.6-alpha" />
       </group>
     </dependencies>
   </metadata>

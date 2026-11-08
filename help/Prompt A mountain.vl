@@ -102,7 +102,7 @@
             draws geometry, it does not create it. In a real patch the geometry comes from VL.NetTopologySuite,
             from a file, or from a service. Here it is a fixture so the example stands on its own.
 
-            Read WKT is one way in and the shortest one to read on a page. VL.NetTopologySuite also
+            FromWKT is one way in and the shortest one to read on a page. VL.NetTopologySuite also
             builds geometry coordinate by coordinate - Coordinate, LinearRing, Polygon - and its own
             HowTo Create a polygon shows that. Either way what arrives here is the same type, which
             is the point: geometry is a TYPE, not a format.
@@ -406,7 +406,7 @@
           <Node Bounds="-340,740,110,19" Id="VmoDUVDKjxaKtSQPZTyqL3">
             <p:NodeReference LastCategoryFullName="NetTopologySuite.IO" LastDependency="VL.NetTopologySuite.GeoJSON.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="Read GeoJSON" />
+              <Choice Kind="ProcessAppFlag" Name="FromGeoJSON" />
             </p:NodeReference>
             <Pin Id="V1sxsEJAgPm2mL8ICLhcMk" Name="GeoJSON" Kind="InputPin" />
             <Pin Id="K9ccggkPobgqiIeyV2CP5O" Name="Factory" Kind="InputPin" />
@@ -437,17 +437,6 @@
             <Pin Id="ANzvSRxTW3StRAOPAVgnhe" Name="Layers Built" Kind="OutputPin" />
             <Pin Id="AePAqigy3adWrDY0OHbNrG" Name="Status" Kind="OutputPin" />
             <Pin Id="KRFvIQEoZkhBXIq2DfBMq2" Name="Result" Kind="OutputPin" />
-          </Node>
-          <Node Bounds="67,870,110,19" Id="SO0xxpd1zkuTzilMvqcTwu">
-            <p:NodeReference LastCategoryFullName="Mapsui.Widgets" LastDependency="VL.Mapsui.vl">
-              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="ProcessAppFlag" Name="Attribution" />
-            </p:NodeReference>
-            <Pin Id="V3owIMTgOxjOkJUxxAIOqP" Name="Map" Kind="InputPin" />
-            <Pin Id="Mey9FqrKOtcCDieb3BgKdb" Name="Enabled" Kind="InputPin" />
-            <Pin Id="BBmzQ6NeFu3PDCdItI3TA9" Name="Corner" Kind="InputPin" />
-            <Pin Id="KYEICNDsfPjIYbJvsgnbXC" Name="Attribution" Kind="OutputPin" />
-            <Pin Id="Q8SftXuVIdgxTQunwshHuy" Name="Result" Kind="OutputPin" />
           </Node>
 
           <Node Bounds="300,550,39,19" Id="A4jSu2sjauZP2s8LlxSayy">
@@ -737,7 +726,7 @@
         <Link Id="E6Rc1mwrwsdsjYUC8HaFbq" Ids="BVxorM77jK0BLNviE12TUT,N9g0HQqAqpj2SyfIMfwQ0s" />
         <Link Id="EgzI6zxLeL33AfR7jVZYz3" Ids="AePAqigy3adWrDY0OHbNrG,T3kq3jmjAaosPwfKZXeOPi" />
         <Link Id="QtSJKLOL932hgUjwuGsx4X" Ids="KRFvIQEoZkhBXIq2DfBMq2,Udad8igNKGlXkj4SIfvVV8" />
-        <Link Id="LK22cHOgQhyaaEDGZf01Kk" Ids="Q8SftXuVIdgxTQunwshHuy,DQROUBK64s5ONRgS27ZRF9" />
+        <Link Id="LK22cHOgQhyaaEDGZf01Kk" Ids="OKMRQq7ARgCNQ0DguHEGvA,DQROUBK64s5ONRgS27ZRF9" />
         <Link Id="BmUrteEAggB9j3437LW9Ep" Ids="OWikAR58KN1tQgR4PAI7Ri,ElLqXrkQdtdT70lcsK7v4T" />
         <Link Id="KutnJU87G0RT6a5nQSF2BQ" Ids="VvoUkHmChXpAz4SKD0yMOS,T5EpKe6JFi9qYhJmvrZF9s" />
         <Link Id="EEGXt7eKf7wGo96FQ0ALVj" Ids="K6lbsnfZZffTDPnIuH7wkp,DBlN5Vgyk58hyGqBVGbtqW" />
@@ -799,7 +788,6 @@
         <Link Id="EC4EEDHPTaRQnGAQEVWjbK" Ids="U5emzVQ6EofWagaekCXGH2,SLeoSJ0mtJwpIBrN3Lo82U" />
         <Link Id="IrHtYs9a44S8uM588h6Trg" Ids="EkFs6mHHZIMujfdgEOqlk2,UYCvpRMOoaQciC5U2bKDca" />
         <Link Id="Abenbrk69WBMxtGtcfkJ26" Ids="PTFy7CVaB74mEbW20etmS8,D8REAWAkQaAbVGkxlquS0L" />
-        <Link Id="PDcZPUTzHkiOBO68bBuBb7" Ids="OKMRQq7ARgCNQ0DguHEGvA,V3owIMTgOxjOkJUxxAIOqP" />
         <Link Id="N816ccdxMED1kPJyrIDNBP" Ids="SHAzWUqXFUmNiPpi2L0l9h,ORtzkXwQGw7OVYDzpI5bZ9" />
         <Link Id="JbPqeKlMdgwB5oJRJK9eKF" Ids="GqniStYYxec691wpuoGqOX,O44OyRhtxJ6Z4CIvpXlQh1" />
         <Link Id="RNnxLmBfW2OMg4RuO8W2CA" Ids="RO8aBSYCJdhlqHJCEIyLAA,CYRfJkATXB3MULFJurXl7J" />

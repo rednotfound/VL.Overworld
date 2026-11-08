@@ -20,6 +20,31 @@ repository already records: a memory that drifts out of date is worse than no me
 family has been bitten by exactly that (a memory saying "Mapsui is blocked" survived months after
 VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked).
 
+### 2026-11-08 — the family renamed its conversions, and the course followed
+
+VL.NetTopologySuite **0.0.6-alpha** renamed `Read WKT` / `Write WKT` to `FromWKT` / `ToWKT`, and
+VL.NetTopologySuite.GeoJSON **0.0.2-alpha** renamed `Read GeoJSON` / `Write GeoJSON` to `FromGeoJSON` /
+`ToGeoJSON` - no alias, named after what you get, as VL names `FromHSL` or `ToString`; *Read* stays
+for a file or a stream (`GeoJSONReader (Reactive)` kept its name). VL.Mapsui **0.0.2-alpha** follows;
+all three are on nuget.org. Every chapter here was edited in place (names only - node references
+and the notes that name them), the nuspec now asks for those versions, and the four rungs were
+re-run. VL.NetTopologySuite 0.0.6-alpha also brought shape nodes (`Rectangle`, `Circle` …) and
+`Coordinate (FromVector2)` - the Coordinate<-Vector2 bridge the 2026-09-24 note below says did not
+exist; the reverse direction was deliberately left out (a Float32 map coordinate is about a metre
+coarse). `World City Population.vl` is the maintainer's, uncommitted; it got the new names and
+nothing else. Dated sections below keep the names of their day.
+
+**The same round found three chapters that had not compiled for weeks, and fixed them in place.**
+`Prompt A mountain` and `Tutorial 2.1` still used `Attribution [Mapsui.Widgets]`, removed from
+VL.Mapsui on 2026-09-26 (Mapsui's renderer draws every layer's credit itself): it was a pass-through
+between `ZoomByWheel` and `ToSkiaLayer`, so the node went and the link joins them. `Tutorial 1.1`
+carried hard `<CategoryReference>`s to `NTS`, the category renamed `NetTopologySuite` on 2026-10-17
+("Not found: Point"). All 24 chapters compile again; the generated C# shows `ToSkiaLayer` fed by
+`ZoomByWheel` and `ToWKT` called in 1.1; 1.1 and 2.1 were opened in vvvv 7.4 and drawn. Nothing
+caught this earlier because no one compiled the course after those library changes: **compile
+the course after every library change that renames or removes a node** - that is what this pack
+is for.
+
 ### The current phase — set 2026-09-06
 
 **The first volume (Tutorials 01–13) is frozen as a coherent whole.** The project now runs on three
@@ -303,7 +328,7 @@ Nothing is published anywhere. Everything runs off the siblings' `dist\` folders
 |---|---|---|---|
 | `D:\2026_Projects\vl-mapsui` | drawing maps: tiles, layers, styles, picking, widgets | **225** xunit | 30 |
 | `D:\2026_Projects\vl-nettopologysuite` | geometry **and the feature model**: create, inspect, operate — and since 2026-08-23 **index** (`NTS.Index`, its first `[ProcessNode]`) plus **`NTS.Network`** (`Network` + `ShortestPath`, an algorithm of ours, promoted from experimental 2026-08-28 by that repo's `docs/NETWORK-SCOPE-PROPOSAL.md`). Category `NTS` | **126** xunit | 13 |
-| `D:\2026_Projects\vl-geojson` | **`VL.NetTopologySuite.GeoJSON`** (was `VL.GeoJSON` until 2026-10-18): reading and writing GeoJSON — `Read GeoJSON`, `Write GeoJSON`, in `NetTopologySuite.IO`. Depends on VL.NetTopologySuite; opening a feature (`Split`, `GetAttribute`) is that package's | **60** (+4 skipped) | 8 |
+| `D:\2026_Projects\vl-geojson` | **`VL.NetTopologySuite.GeoJSON`** (was `VL.GeoJSON` until 2026-10-18): reading and writing GeoJSON — `FromGeoJSON`, `ToGeoJSON` (`Read GeoJSON` / `Write GeoJSON` until 2026-11-08), in `NetTopologySuite.IO`. Depends on VL.NetTopologySuite; opening a feature (`Split`, `GetAttribute`) is that package's | **60** (+4 skipped) | 8 |
 | **here** | the course. **No nodes, no assembly, no `src\`** | none, and none is wanted | 0 |
 
 **The division that matters: a missing or broken NODE is never fixed here.** If a chapter cannot be

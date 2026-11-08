@@ -67,7 +67,7 @@
           <Node Bounds="60,120,80,19" Id="R9IxC5H1IdkfNNmSCfEOE3">
             <p:NodeReference LastCategoryFullName="NTS.IO" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="OperationCallFlag" Name="Read WKT" />
+              <Choice Kind="OperationCallFlag" Name="FromWKT" />
             </p:NodeReference>
             <Pin Id="OyhQZroY2UKU3j2ljBONnI" Name="WKT" Kind="InputPin" />
             <Pin Id="EBhq7LnaFTS9qa6rSJuh9X" Name="Factory" Kind="InputPin" />
@@ -76,7 +76,7 @@
           <Node Bounds="200,120,80,19" Id="HR0uUOw5FvGWEB8R9ExaOw">
             <p:NodeReference LastCategoryFullName="NTS.IO" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
-              <Choice Kind="OperationCallFlag" Name="Read WKT" />
+              <Choice Kind="OperationCallFlag" Name="FromWKT" />
             </p:NodeReference>
             <Pin Id="FtmqP4h1NqjMjPxCOy5x05" Name="WKT" Kind="InputPin" />
             <Pin Id="GkYPWIBtZcIepcm3znKudV" Name="Factory" Kind="InputPin" />
