@@ -160,6 +160,48 @@ layout**, documented in both.
 | meshes | CPU, 9 × 9 per tile, tested | the lab's vertex shader, kept |
 | first consumer | `lab\Experiment globe view.vl`, rebuilt on the node | a new chapter first |
 
-Decided: ___ (date, by the user). Then: create `vl-globe` from the siblings' tooling, write
+Decided: **2026-11-09, by the user** — `D:6_Projectsl-globe` created (empty, not yet
+`git init`), name `VL.Globe` accepted by the folder name; the other ⊙ rows stand as proposed until
+the first build contradicts one.
+
+## 8. What the first build needs — verified 2026-11-09, before the usage limit cut the session
+
+Facts gathered for the build so the next session starts at the keyboard, not at the research:
+
+- **Reaching the Stride device from a C# node**: `VL.Stride.Runtime`'s own `SkiaTexture.cs` does
+  `game = nodeContext.AppHost.Services.GetRequiredService<VLGame>()` (`VL.Stride.Games.VLGame`) in
+  the constructor and `game.GraphicsDevice` at use. Copy that; no other handle is needed.
+- **Project shape** (measured on `VL.Stride.glTF`, the closest community precedent): net8.0 here
+  (vvvv 7.4 → Stride **4.2.1.2487**; glTF's net10/4.3 is gamma 8), `PackageReference` to
+  `Stride.Engine`, `Stride.Games`, `Stride.Graphics`, `Stride.Rendering`, `Stride.Core.Mathematics`
+  at 4.2.1.2487 and `VL.Core` 2025.7.4 with `ExcludeAssets="runtime"` as vl-mapsui does; plus
+  `BruTile` **5.0.6** (VL.Mapsui's version — one assembly per process). The root `VL.Globe.vl`
+  declares `NugetDependency` `VL.CoreLib`, `VL.Stride`, `BruTile`, `VL.NetTopologySuite`, and
+  `PlatformDependency Location="./lib/net8.0/VL.Globe.dll" IsForward="true"`. The nuspec lists
+  only BruTile and VL.NetTopologySuite as dependencies: VL.Stride ships inside vvvv.
+- **Skeleton**: copy vl-mapsui's `build.ps1`, `pack.ps1`, `NuGet.config`, `.gitignore`, `LICENSE`,
+  `tools\` and the test csproj shape, renaming the package; `Compile-HelpPatches.ps1` carries a
+  per-package node table (15 Mapsui mentions) that must be rewritten for the five nodes;
+  `Open-HelpPatch.ps1` names dist\ and deps\ (5 mentions). build.ps1 installs every non-`VL.*`
+  `NugetDependency` of the root .vl into `deps\` — for this package that is BruTile only.
+- **Tile sources, as VL.Mapsui builds them**: `new HttpTileSource(new GlobalSphericalMercator(),
+  url, name:, attribution: new Attribution(text), userAgent: UserAgent)`; one source instance kept
+  per URL (an `HttpTileSource` owns an `HttpClient` and is not disposable); `PersistentCache` set on
+  every build. Fetch with `GetTileAsync(TileInfo)` → `byte[]`.
+- **Disk cache convention to share with VL.Mapsui**: `%LOCALAPPDATA%\VL.Mapsui	iles\<host>-<sha256
+  of the lowercased URL, first 8 hex>` as a BruTile `FileCache(folder, "png", 7 days)`. VL.Globe
+  reads and writes the same folders, so a tile either package fetched serves both; the user-agent
+  string is its own (`VL.Globe/0.0.1-alpha (+repo url)`).
+- **Stride API for the tile mesh**, present in 4.2.1: `Buffer.Vertex.New<T>(device, T[])`,
+  `Buffer.Index.New(device, int[]/short[])`, `MeshDraw` + `Mesh` + `Model` + `ModelComponent`;
+  `Material.New(device, new MaterialDescriptor { Attributes = { Emissive = new
+  MaterialEmissiveMapFeature(new ComputeTextureColor(texture)) } })`; `Texture.Load(device,
+  stream)` for PNG/JPEG. Camera: `entity.Get<CameraComponent>()` → `ViewMatrix`,
+  `ProjectionMatrix`, `Frustum`, `VerticalFieldOfView`; position from
+  `entity.Transform.WorldMatrix.TranslationVector`.
+- **Order of work**: `git init` + skeleton → `ToGlobe`/`FromGlobe` + tests (an afternoon, proves
+  the pipeline end to end through pack.ps1 and a one-node help patch) → tile mesh generator + seam
+  tests → `Globe` selection + cache + requests → rebuild `lab\Experiment globe view.vl` on it and
+  compare with `lab\Assets\globe-view-zoom5.png` / `-zoom9.png`. Then: create `vl-globe` from the siblings' tooling, write
 ARCHITECTURE.md with this document's §3–§5 as its first version, build `Globe` against the two
 camera poses of experiment 7 until the pictures match, and only then look at a chapter.
