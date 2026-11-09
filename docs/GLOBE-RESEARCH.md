@@ -192,6 +192,9 @@ bridge for `Coordinate`, which the 2026-11-08 shape work deliberately left at Ve
   `VL.Stride.glTF` / SharpGLTF to turn the glb payloads into Stride models. .NET 10 and a native
   dll — a different family member, and only after a consumer asks.
 
+**The scope proposal for stage 2's library is `GLOBE-SCOPE-PROPOSAL.md` (2026-11-09): a fifth
+repository, proposed name `VL.Globe`, five nodes, non-scope stated; the decision is the user's.**
+
 ## 5. Traps, recorded before anyone pays for them
 
 | trap | source | the move |

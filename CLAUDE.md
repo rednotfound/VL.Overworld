@@ -69,6 +69,10 @@ zoom 5 over the Gulf of Guinea and zoom 9 over Gabon photographed (ACT-IV-LAB ex
 user's "fetch what the view sees" is proven in a patch; frustum selection, a tile-keyed cache and
 LOD are the engine — a library, by scope proposal. One PATCH-GRAMMAR trap: `OrbitCamera`'s
 distance is negative.
+**The proposal is written: `docs/GLOBE-SCOPE-PROPOSAL.md`** — a fifth repository `vl-globe`, ⊙ name
+`VL.Globe` (alternatives `VL.Stride.Globe`, `VL.Earth`; nuget survey in §2), five phase-1 nodes
+(`Globe`, `OpenStreetMap`, `XyzTiles`, `ToGlobe`, `FromGlobe`), CPU tile meshes, BruTile pinned to
+VL.Mapsui's version, non-scope stated. Awaiting the user's decision.
 
 ### The current phase — set 2026-09-06
 
