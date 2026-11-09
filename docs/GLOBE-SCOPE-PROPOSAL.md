@@ -125,7 +125,8 @@ here" already decodes Terrarium tiles; on a tile mesh that is vertex displacemen
 - **No vector tiles, no labels, no styling.** The globe draws pictures someone else drew.
 - **No 2D.** The flat map is VL.Mapsui; Mapbox's own move is to hand over from the globe to the
   flat map above zoom 6, and the course can teach that handover with two packages it has.
-- **No camera.** `OrbitCamera` is vvvv's; the globe reads a camera, it does not provide one.
+- ~~**No camera.** `OrbitCamera` is vvvv's; the globe reads a camera, it does not provide one.~~
+  **Withdrawn 2026-11-09 by the user, after using the built globe** — see §9.
 
 ## 6. What the proposal touches, and ⊙ two sharing questions
 
@@ -207,3 +208,39 @@ Facts gathered for the build so the next session starts at the keyboard, not at 
   compare with `lab\Assets\globe-view-zoom5.png` / `-zoom9.png`. Then: create `vl-globe` from the siblings' tooling, write
 ARCHITECTURE.md with this document's §3–§5 as its first version, build `Globe` against the two
 camera poses of experiment 7 until the pictures match, and only then look at a chapter.
+
+## 9. Revision — 2026-11-09: the globe needs a geographic camera (decided by the user)
+
+**The evidence.** The user opened `HowTo Put OpenStreetMap on a globe` and drove it with vvvv's
+`OrbitCamera`. In GIS, people drag the *map*, not the camera. OrbitCamera rotates by fixed angles
+and approaches by fixed distances and does not know where the ground is: once close, a small drag
+moves the view across a continent, and a little more wheel goes through the surface. Every web
+globe (Cesium's `ScreenSpaceCameraController`, MapLibre/Mapbox globe, Google Earth) spends most
+of its interaction code on exactly this: the camera cannot go underground, and the speed of zoom
+and pan follows the height. §5's "no camera" was written before anyone had used the globe; using
+it is the evidence that withdraws it. The user decided the same day: amend, then build.
+
+**The design follows the family's own 2D precedent.** VL.Mapsui keeps interaction in the patch:
+`Map` holds the state, `Drag` and `ZoomByWheel` take pixel positions the patch wires from a mouse
+node, and nothing reads the mouse behind the reader's back. The globe mirrors it one-to-one:
+
+| node | pins | rule |
+|---|---|---|
+| **`GlobeCamera [Globe]`** `[ProcessNode]` | in: `Initial Longitude`, `Initial Latitude`, `Initial Height` (metres), `Min Height` (default 100 m), `Max Height` (default 4 earth radii), `Radius`, `Viewport Size`, `Field Of View`; out: `Camera` (a Stride entity for SceneWindow and Globe), `View` (the state, for Drag/ZoomByWheel), `Longitude`, `Latitude`, `Height` | the state is **geographic** — the point looked at, the height above it, heading, tilt — never a free 3D pose, so going underground is impossible by construction rather than corrected afterwards. **Near and far planes follow the height**, which also removes the depth-precision failure in vl-globe's NOTES.md (a fixed 0.0001 near plane resolving only ~0.0025 at globe distance) |
+| **`Drag [Globe]`** | in: `View`, `X`, `Y` (pixels), `Dragging`; out: `View` | **grab the globe**: the point under the cursor at press stays under the cursor — a ray from the pixel hits the sphere, and the camera rig is rotated about the globe's centre by the rotation that brings the current hit back to the grabbed one. Pan speed follows the height by itself |
+| **`ZoomByWheel [Globe]`** | in: `View`, `X`, `Y`, `Wheel Delta`, `Notch Size`; out: `View` | **zoom toward the cursor, by a factor**: each notch multiplies the height (about one zoom level), clamped to Min/Max Height, and the point under the cursor is kept there by the same rotation as Drag — VL.Mapsui's `ZoomByWheel`, on a sphere |
+| `Tilt [Globe]`, `Rotate [Globe]` | phase 2 | heading and tilt as separate gestures, tilt limited and reduced at altitude — after the two above are right |
+
+**Invariants the tests pin**, all pure maths with no GPU: after a Drag frame the geographic point
+under the cursor is the grabbed one; after a zoom the point under the cursor has not moved; no
+input sequence takes the height below Min Height or above Max Height; a cursor off the globe does
+not move the camera; the near plane is a fixed fraction of the height.
+
+**The scope sentence gains one clause:** *…and moves a camera around it the way a map is moved —
+grabbed, and zoomed toward the cursor.* Non-scope stays otherwise: no inertia, no keyboard, no
+fly-to animation until a consumer asks.
+
+**Touches:** vl-globe gains the four nodes and their tests; both help patches swap `OrbitCamera`
+for `GlobeCamera` + `Drag` + `ZoomByWheel`, wired from a mouse node as VL.Mapsui's help patches
+are. Formulas are checked against Cesium's and MapLibre's source before they are written
+(research running 2026-11-09).
