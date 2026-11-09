@@ -74,6 +74,7 @@ distance is negative.
 (`Globe`, `OpenStreetMap`, `XyzTiles`, `ToGlobe`, `FromGlobe`), CPU tile meshes, BruTile pinned to
 VL.Mapsui's version, non-scope stated. Awaiting the user's decision.
 **Decided and built the same day** in `D:\2026_Projects\vl-globe`: `Globe`, `OpenStreetMap`, `XyzTiles`, `ToGlobe`, `FromGlobe`; zoom 9-10 OSM over Gabon seen in vvvv through the library. The course does not use it yet - the nuspec gains the package when a chapter does.
+**Later the same day** the user found OrbitCamera unusable for GIS (proposal §9: `GlobeCamera`, `Drag`, `ZoomByWheel` - built, confirmed working by the user) and set the standard: street level. **Globe work continues in `D:\2026_Projects\vl-globe` — start at its CLAUDE.md, then `docs/ROADMAP.md`; item 1 (camera-relative rendering) is decided and next.**
 
 ### The current phase — set 2026-09-06
 
