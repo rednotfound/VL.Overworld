@@ -197,6 +197,46 @@ with a shipped unit behind every box. Proposing it is a separate decision, not a
 
 ---
 
+## Experiment 5 — the globe, stage 0 (built and seen 2026-11-09)
+
+**Contradiction:** the course draws a flat Web Mercator map; the world is a sphere, and the
+user wants the map on it (the direction research is `docs/GLOBE-RESEARCH.md`).
+
+**Prototype:** `lab\Experiment globe.vl` + `lab\shaders\MercatorUV_ShaderFX.sdsl`. The map is
+Prompt Paint by numbers' (177 countries by log10 population, a 15° `Graticule` on top, no tiles,
+no network), parked at zoom 4, centre 0,0, and drawn by vvvv's own `SkiaTexture` into a
+4096 × 4096 Stride texture — at that size zoom 4 IS the Web Mercator square, edge to edge
+(9783.94 m/px × 4096 px = 40,075,016 m). A ten-line ShaderFX node remaps Stride's
+equirectangular `Sphere` texture coordinate v → latitude → Mercator y, so the Mercator picture
+reads undistorted; the sample goes out as Emissive (no light). **Zero new nodes; one text file.**
+
+**Seen (rung 4, `Capture-Renderer -Title 'Experiment globe'`, `lab\Assets\globe-stage0.png`):**
+Africa, Arabia, India, Madagascar, Europe in their places and the right way round; the
+graticule's parallels evenly spaced in latitude on the sphere (the remap running — on an
+unmapped equirectangular sphere they would bunch toward the poles); India deep teal, the
+heavy-tail lesson intact on a ball. Cost while running, measured on the process: **0.4 cores,
+GPU 3D engine 8 %, 851 MB working set** — re-drawing a 4096² Mapsui map into a texture every
+frame is cheap, so a render-once node is not needed for stage 0.
+
+**One defect, mine, caught by the first picture:** the globe came up with the graticule and no
+countries — `FileReader (String)` had no `OnOpen` on its `Read` pin, the exact row PATCH-GRAMMAR
+already carries from Tutorial 7.1. A grey sphere with a grid was the whole report; the Status
+pad would have said the same in the editor. Second open: countries.
+
+**Findings for PATCH-GRAMMAR:** `SkiaTexture`'s size pin is `Size` (Int2) in 7.4 while both
+shipped help patches still say `Width`/`Height`; a `_ShaderFX.sdsl` beside the document with
+`compose ComputeFloat2 TexCoord` becomes a node whose pin is `Tex Coord`, wired as
+`Inputs[0]` in the C#; the Emissive-only material chain
+(`SampleTexture → Emissive → ShadingAttributes → Material`) draws a texture unlit; vvvvc
+compiles a `lab\` document directly with the same `--package-repositories` list.
+
+**Verdict:** stage 0 of GLOBE-RESEARCH holds — the bridge exists and costs nothing. What the
+picture also shows is the ceiling it was built to show: the texture is zoom 4, ~10 km per
+pixel; any camera closer than "the whole globe" is looking at blur. Stage 1 (tiles, consent on)
+and the stage-2 question (one patch per tile = a new library) are the user's decisions.
+
+---
+
 ## Chapter 14 proposal — 2026-09-07 (the lab's second output; decision is the user's)
 
 The 2026-09-06 decision set the bar: Chapter 14 becomes proposable when every box of the pipeline

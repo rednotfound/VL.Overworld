@@ -45,6 +45,18 @@ caught this earlier because no one compiled the course after those library chang
 the course after every library change that renames or removes a node** - that is what this pack
 is for.
 
+### 2026-11-09 — the globe question, researched and its first rung built
+
+The user asked whether the 2D map can go onto a sphere in Stride, and what exists. The answer is
+`docs/GLOBE-RESEARCH.md`: nothing in .NET ships tiles-on-a-globe as a component (Mapsui will stay
+2D; vvvv never had one); the first globe costs zero new nodes (`SkiaTexture` + a ShaderFX UV
+remap on Stride's `Sphere`); its ceiling is one texture ≈ 10 km/px, and past it the architecture
+is one patch per tile (MapLibre's), a **new library** decided by scope proposal, not a patch; the
+pure-3D future's one reuse candidate is Evergine's MIT bindings to cesium-native (.NET 10). **Stage
+0 was built the same afternoon** — `lab\Experiment globe.vl` + `lab\shaders\`, ACT-IV-LAB
+experiment 5, picture in `lab\Assets\globe-stage0.png`: countries and graticule on a sphere,
+0.4 cores. Stages 1–3 are the user's call.
+
 ### The current phase — set 2026-09-06
 
 **The first volume (Tutorials 01–13) is frozen as a coherent whole.** The project now runs on three

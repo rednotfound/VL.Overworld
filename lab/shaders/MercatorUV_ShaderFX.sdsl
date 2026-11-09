@@ -1,0 +1,17 @@
+// Stage 0 of docs/GLOBE-RESEARCH.md: Stride's Sphere carries equirectangular texture
+// coordinates (u = longitude, v = latitude, v = 0 at the north pole); the texture is a Web
+// Mercator picture. Remap v so that the sphere reads the picture without distortion.
+// Web Mercator ends at +-85.0511 degrees; beyond that the sampler's Clamp paints the edge row.
+shader MercatorUV_ShaderFX : ComputeFloat2
+{
+    compose ComputeFloat2 TexCoord;
+
+    override float2 Compute()
+    {
+        float2 uv = TexCoord.Compute();
+        float lat = (0.5 - uv.y) * 3.14159265;                 // radians, +pi/2 at v = 0
+        lat = clamp(lat, -1.4844222, 1.4844222);                // +-85.0511 degrees
+        float y = 0.5 - log(tan(0.78539816 + lat * 0.5)) / 6.2831853;
+        return float2(uv.x, y);
+    }
+};
