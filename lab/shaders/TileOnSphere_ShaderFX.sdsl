@@ -1,0 +1,33 @@
+// Stage 2, step 1 of docs/GLOBE-RESEARCH.md. A Stride Plane is one Web Mercator tile; this
+// extension moves its vertices onto the unit sphere in the vertex stage, MapLibre's layout:
+// vertices linear in tile space (the plane's own texture coordinate), inverse Mercator per vertex,
+// so the tile image maps with no distortion and no per-tile mesh is built on the CPU.
+shader TileOnSphere_ShaderFX : MaterialExtension
+{
+    cbuffer PerMaterial
+    {
+        stage float TileX = 0;
+        stage float TileY = 0;
+        stage float Zoom = 3;
+    }
+
+    // TransformPosition runs between Stride's PreTransformPosition (object -> world) and
+    // PostTransformPosition (world -> clip), and nothing else in a plain material overrides it,
+    // so writing PositionWS here cannot be shadowed by another mixin. (A PreTransformPosition
+    // override left the planes flat: TransformationWAndVP's own override won.)
+    stage override void TransformPosition()
+    {
+        base.TransformPosition();
+        // the plane is Size 1, Normal UpZ: its vertices run -0.5..0.5 in x (east) and y (north).
+        // Its TexCoord stream is NOT used for the geometry - it did not span 0..1 (tiles ~80 %).
+        float2 uv = float2(streams.Position.x + 0.5, 0.5 - streams.Position.y);
+        float n = exp2(Zoom);                               // tiles per side
+        float mx = (TileX + uv.x) / n;                      // Mercator x, 0..1 west to east
+        float my = (TileY + uv.y) / n;                      // Mercator y, 0..1 north to south
+        float lon = mx * 6.2831853 - 3.14159265;
+        float lat = 2.0 * atan(exp(3.14159265 * (1.0 - 2.0 * my))) - 1.57079633;
+        float3 p = float3(cos(lat) * sin(lon), sin(lat), cos(lat) * cos(lon));
+        streams.PositionWS = mul(float4(p, 1), World);
+        streams.normalWS = normalize(mul(p, (float3x3)World));
+    }
+};

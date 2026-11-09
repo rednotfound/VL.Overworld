@@ -56,6 +56,13 @@ pure-3D future's one reuse candidate is Evergine's MIT bindings to cesium-native
 0 was built the same afternoon** — `lab\Experiment globe.vl` + `lab\shaders\`, ACT-IV-LAB
 experiment 5, picture in `lab\Assets\globe-stage0.png`: countries and graticule on a sphere,
 0.4 cores. Stages 1–3 are the user's call.
+**Stage 2 step 1 followed the same evening**, stage 1 skipped by decision: `lab\Experiment globe
+tiles.vl` — 64 zoom-3 OSM tiles as 64 Stride Planes projected onto the sphere by a material-
+extension shader, seamless, 1.0 core; ACT-IV-LAB experiment 6, with the five PATCH-GRAMMAR rows it
+cost (a `Keep` loop disposes dropped slices' state; the vertex hook is `TransformPosition`;
+`GridSpread` is not integers; `HoldLatest` after `HTTPGet`; probe by drawing the number). Mapsui
+is not in that patch: the globe is a new library's territory. Next is the algorithm — view-driven
+tile selection and LOD — which is a scope proposal.
 
 ### The current phase — set 2026-09-06
 

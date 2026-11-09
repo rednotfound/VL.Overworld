@@ -149,6 +149,15 @@ reason stage 2 is not "a bigger texture".
 
 ### Stage 2 — one patch per tile (the real globe)
 
+**Step 1 built and seen the same day (2026-11-09):** `lab\Experiment globe tiles.vl` +
+`lab\shaders\TileOnSphere_ShaderFX.sdsl`, picture in `lab\Assets\globe-stage2-step1.png`,
+record in `ACT-IV-LAB.md` experiment 6. All 64 zoom-3 OSM tiles as separate Stride Planes whose
+vertices a material-extension shader puts on the sphere; seamless; 1.0 core / 5.5 % GPU. Stage 1
+was skipped on purpose: the user's model (fetch what the view sees) is stage 2, and stage 1 could
+only have shown the ceiling again. Mapsui is absent from this patch — the globe is a new
+library's territory, as the paragraph below says. Not yet done: view-driven tile selection and
+LOD, i.e. the algorithm.
+
 MapLibre's architecture in VL: a quadtree over z/x/y; for each visible tile, a small mesh
 (grid linear in tile space, inverse Mercator on the CPU, UV = local tile coordinates) and its
 own texture from BruTile's bytes (`ImageToTexture`); LOD by screen-space error (Cesium's

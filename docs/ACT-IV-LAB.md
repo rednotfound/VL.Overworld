@@ -237,6 +237,70 @@ and the stage-2 question (one patch per tile = a new library) are the user's dec
 
 ---
 
+## Experiment 6 — the globe, stage 2 step 1: one patch per tile (built and seen 2026-11-09)
+
+**Contradiction:** stage 0's single texture ends at ~10 km/px. Every real globe is made of
+tiles, each its own mesh and texture, chosen per view. Before any view selection: can 64 tile
+patches even be made to meet on a sphere in VL.Stride?
+
+**Prototype:** `lab\Experiment globe tiles.vl` + `lab\shaders\TileOnSphere_ShaderFX.sdsl`,
+zoom fixed at 3, all 64 OpenStreetMap tiles, no LOD. One `HTTPGet` per tile in a ForEach (64
+of them, each with its own state; `Refresh` from the FETCH toggle's edge, so one request per
+flip, never per frame; a User-Agent header as OSM's policy asks). Each body: `GetInternalArray`
+→ `ImageDecoder` → `ToImage` → `ImageToTexture` → `SampleTexture` → `Emissive` → `Material` →
+**`MaterialExtension`** with a ten-line ShaderFX extension → a Stride `Plane` of 8 × 8 cells.
+The extension overrides `TransformPosition()`: the plane's own vertex position (−0.5..0.5) is
+the position inside the tile; tile number + position → Mercator x,y → inverse Mercator →
+longitude, latitude → a point on the unit sphere, written to `PositionWS`. MapLibre's layout:
+vertices linear in tile space, projection in the vertex stage, no mesh built on the CPU.
+**Zero new nodes; one text file.** Mapsui is not in this patch at all — the tile path is
+HTTP + Skia decode + Stride, which is the point of the question the user asked.
+
+**Seen** (`lab\Assets\globe-stage2-step1.png`): 64 tiles closing without a visible seam —
+Africa, Europe, Arabia with their OSM labels, the polar cap open above 85° as Web Mercator
+demands. Cost while running: **1.0 core, GPU 3D 5.5 %, 1.27 GB** (64 live HTTPGet/HoldLatest/
+material instances; the fetch loop runs every frame).
+
+**It took eight rung-4 rounds, and four of the findings are permanent:**
+
+1. **A `Keep` loop disposes the state of every slice it drops.** The generated C# says it
+   plainly: `if (Result) builder.Add(item); else iterator.Remove();` — and `Remove()` is the
+   slice's process nodes. `HTTPGet` + `HoldLatest` inside a Keep loop whose condition was
+   "body has bytes" were therefore disposed every frame until the body arrived, which it never
+   could. TILES READ stayed 0 through three probes. Fix: fetch in a plain ForEach, filter in a
+   second, stateless Keep loop. Nothing that must live across frames may stand inside a Keep.
+2. **The vertex hook that works in a material extension is `TransformPosition()`.** A
+   `PreTransformPosition()` override compiled, attached (a tint in `Shading()` proved it) and
+   did nothing: Stride's `TransformationWAndVP` overrides the same method and wins. Between its
+   object→world and world→clip steps nothing in a plain material touches `TransformPosition`,
+   so `PositionWS` written there sticks. The ShaderFX node goes into the `MaterialExtension`
+   node's `Material Extension` pin (the shipped tessellation example uses `Tessellation
+   Extension`, a different pin). Its `cbuffer PerMaterial` floats become pins (`TileX` →
+   `Tile X`), written as `Inputs[1..3]` in the C#.
+3. **`GridSpread (2D)` with `Block` alignment does not hand out integers.** Painting
+   `frac(TileX)` as colour lit every tile. Tiles placed at non-integer numbers leave a gap along
+   every seam, widest face-on, which three probes chased as a UV problem (it was not: TexCoord
+   and position-derived coordinates gave pixel-identical pictures). Indices for anything
+   addressed by number go through `Round`; the number that built the URL is the number the
+   geometry gets.
+4. **The camera can read a number if the number is drawn.** With the toggle out of the
+   camera's reach, the probe copy pre-sets FETCH, fires the request from one gated `LFO` cycle,
+   and encodes TILES READ as the radius of the core sphere (0.1 + 0.01 × n). A red core made
+   gaps unmistakable; a UV-coloured shader made the tile grid readable. The probe lives in the
+   scratchpad; the lab file keeps FETCH off and the dark core.
+
+Also learned: `HTTPGet.Result` is an `Observable<HTTPResult>` and wants `HoldLatest` before
+`Split` (the ladder's idiom); `ImageToTexture`'s pins are `Image` / `Is SRgb`, not `Input`;
+a `Spread<Entity>` enters the scene through `Group (Spectral) [Stride]`'s `Children` pin
+(plain `Group` has only numbered `Child` pins at the call site); `Generate Back Face` on the
+Plane spares the winding question after the projection.
+
+**Verdict:** the architecture holds — a tiled globe in VL.Stride with no library change. What
+remains is the algorithm, not wiring: which tiles the camera sees, at which zoom, and when to
+fetch them. That is a C# node and a new library, which is a scope proposal — the user's call.
+
+---
+
 ## Chapter 14 proposal — 2026-09-07 (the lab's second output; decision is the user's)
 
 The 2026-09-06 decision set the bar: Chapter 14 becomes proposable when every box of the pipeline
