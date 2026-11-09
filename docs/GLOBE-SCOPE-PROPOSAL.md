@@ -164,6 +164,8 @@ Decided: **2026-11-09, by the user** — `D:6_Projectsl-globe` created (empty
 `git init`), name `VL.Globe` accepted by the folder name; the other ⊙ rows stand as proposed until
 the first build contradicts one.
 
+**Built the same day (2026-11-09), commits c5bb63c..a07e9ec in vl-globe:** all five phase-1 nodes; 37 tests; two help patches through all four rungs (`ToGlobe` puts Tokyo at the centre of a camera aimed there; `Globe` draws zoom 9-10 OSM over Gabon and the whole face of Africa, 0.27 cores). Three failures, recorded in vl-globe's NOTES.md: Stride's module initializer in the test assembly; OrbitCamera's pose lives in its custom view matrix, not its transform; coarse facets sagging plus a tiny near plane making a background sphere z-fight. Not yet: `XyzTiles` help, `Pick`, polar caps, the lab's `Experiment globe view.vl` rebuilt on the node.
+
 ## 8. What the first build needs — verified 2026-11-09, before the usage limit cut the session
 
 Facts gathered for the build so the next session starts at the keyboard, not at the research:

@@ -73,6 +73,7 @@ distance is negative.
 `VL.Globe` (alternatives `VL.Stride.Globe`, `VL.Earth`; nuget survey in §2), five phase-1 nodes
 (`Globe`, `OpenStreetMap`, `XyzTiles`, `ToGlobe`, `FromGlobe`), CPU tile meshes, BruTile pinned to
 VL.Mapsui's version, non-scope stated. Awaiting the user's decision.
+**Decided and built the same day** in `D:\2026_Projects\vl-globe`: `Globe`, `OpenStreetMap`, `XyzTiles`, `ToGlobe`, `FromGlobe`; zoom 9-10 OSM over Gabon seen in vvvv through the library. The course does not use it yet - the nuspec gains the package when a chapter does.
 
 ### The current phase — set 2026-09-06
 
