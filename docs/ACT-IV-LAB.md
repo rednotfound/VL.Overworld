@@ -301,6 +301,48 @@ fetch them. That is a C# node and a new library, which is a scope proposal — t
 
 ---
 
+## Experiment 7 — the globe, stage 2 step 2: the view picks the tiles (built and seen 2026-11-09)
+
+**Contradiction:** step 1 put 64 fixed tiles on the globe. The user's model of every map engine
+— *only fetch the tiles the view can see* — says the camera should decide which tiles, at which
+zoom, are requested. Is that wiring or a library?
+
+**Prototype:** `lab\Experiment globe view.vl` (shader shared with step 1, now with a `Radius`).
+The camera is vvvv's `OrbitCamera`; its `Position` output is the only input of the selection:
+distance from the centre → height above the surface → **zoom = clamp(floor(ln(16/h)/ln 2), 3, 11)**
+(height 2 is zoom 3, 0.5 is 5, 0.03 is 9, 0.005 is 11); the direction of the position → `Atan2`
+/ `Asin` → the longitude and latitude under the camera → forward Web Mercator (Tutorial 3.1's
+formula) → the tile number at that zoom. A **5 × 5 window** of tiles around that number is
+requested — `Changed(URL)` is the trigger, gated by FETCH; a slot whose tile changed drops its
+old picture (`HoldLatest.Reset`) — and drawn 3 mm above the step-1 base layer, which stays as
+the fallback so the globe is never empty. The build loop is step 1's, twice.
+
+**Seen:** at distance −1.3 (height 0.3) the camera over 0°/0° got **zoom 5**: Ghana, Côte
+d'Ivoire, Accra, Lomé, São Tomé in OSM's z5 detail, seamless, filling the window
+(`lab\Assets\globe-view-zoom5.png`). At −1.03 over Gabon (height 0.03): **zoom 9**, Fougamou,
+Sindara, Mandji, the roads and rivers (`lab\Assets\globe-view-zoom9.png`). 1.35 cores, GPU 7 %,
+1.16 GB with 64 + 25 live tile slots.
+
+**Two rounds, one finding:** `OrbitCamera`'s `Initial Distance` is **negative** in every shipped
+use (−2, −3.52): the camera sits on its own −Z. +1.3 put it behind the globe looking away — a
+black window with no error, twice, until the shipped help was grepped for the pin. The yaw/pitch
+signs came out of the pictures: yaw −0.0278 cycles looks at 10°E, pitch +0.004 at 1.5°S.
+
+**Honest edges, written on the patch:** no frustum culling (the window is around the point
+under the camera, not what the frustum sees — at a grazing view the picture's edges stay at
+zoom 3); **no cache** (a tile that scrolls to a neighbouring slot is requested again — this is
+precisely the job a library's TileCache has, and why the prototype stays in the lab); no
+hysteresis at zoom boundaries; no wrap at the date line. Fetch only on the toggle; a
+User-Agent is sent.
+
+**Verdict:** the user's model holds on a sphere and costs no library to demonstrate. What the
+prototype cannot do — frustum selection, a cache keyed by tile number, LOD by screen-space error
+with parents kept until children arrive — is the engine, and the family already knows where
+engines live: a `[ProcessNode]` in a library, with tests, after a scope proposal. The research
+doc's stage 2 is now fully evidenced; the proposal is the user's decision.
+
+---
+
 ## Chapter 14 proposal — 2026-09-07 (the lab's second output; decision is the user's)
 
 The 2026-09-06 decision set the bar: Chapter 14 becomes proposable when every box of the pipeline

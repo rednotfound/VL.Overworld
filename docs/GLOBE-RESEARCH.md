@@ -158,6 +158,13 @@ only have shown the ceiling again. Mapsui is absent from this patch — the glob
 library's territory, as the paragraph below says. Not yet done: view-driven tile selection and
 LOD, i.e. the algorithm.
 
+**Step 2 followed the same evening:** `lab\Experiment globe view.vl` — `OrbitCamera`'s position
+→ height → zoom (3..11), direction → the tile under the camera, a 5 × 5 window requested at that
+zoom above the step-1 base; zoom 5 over the Gulf of Guinea and zoom 9 over Gabon seen
+(`lab\Assets\globe-view-zoom5.png`, `globe-view-zoom9.png`), ACT-IV-LAB experiment 7. The idea is
+proven in a patch; what is missing (frustum selection, a cache keyed by tile, LOD by screen-space
+error) is the engine and belongs in a library.
+
 MapLibre's architecture in VL: a quadtree over z/x/y; for each visible tile, a small mesh
 (grid linear in tile space, inverse Mercator on the CPU, UV = local tile coordinates) and its
 own texture from BruTile's bytes (`ImageToTexture`); LOD by screen-space error (Cesium's

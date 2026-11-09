@@ -63,6 +63,12 @@ cost (a `Keep` loop disposes dropped slices' state; the vertex hook is `Transfor
 `GridSpread` is not integers; `HoldLatest` after `HTTPGet`; probe by drawing the number). Mapsui
 is not in that patch: the globe is a new library's territory. Next is the algorithm — view-driven
 tile selection and LOD — which is a scope proposal.
+**Step 2 the same evening**: `lab\Experiment globe view.vl` — the camera's height picks the zoom
+(3..11), its direction the tile under it, a 5 × 5 window is fetched at that zoom above the base;
+zoom 5 over the Gulf of Guinea and zoom 9 over Gabon photographed (ACT-IV-LAB experiment 7). The
+user's "fetch what the view sees" is proven in a patch; frustum selection, a tile-keyed cache and
+LOD are the engine — a library, by scope proposal. One PATCH-GRAMMAR trap: `OrbitCamera`'s
+distance is negative.
 
 ### The current phase — set 2026-09-06
 
