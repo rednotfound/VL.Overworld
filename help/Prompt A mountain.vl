@@ -104,7 +104,7 @@
 
             FromWKT is one way in and the shortest one to read on a page. VL.NetTopologySuite also
             builds geometry coordinate by coordinate - Coordinate, LinearRing, Polygon - and its own
-            HowTo Create a polygon shows that. Either way what arrives here is the same type, which
+            HowTo Create points, lines and polygons shows that. Either way what arrives here is the same type, which
             is the point: geometry is a TYPE, not a format.
           -->
           <Pad Id="VpQK4wm9zJ4rIVcw56Y1Kc" Comment="Layer Status - what will NOT be drawn" Bounds="300,760,440,15" ShowValueBox="true" isIOBox="true" />
