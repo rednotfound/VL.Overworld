@@ -4,8 +4,8 @@
     <id>VL.Overworld</id>
     <version>0.0.1-alpha</version>
     <title>VL.Overworld — spatial thinking for vvvv gamma, from geometry to maps</title>
-    <authors>VL.Overworld Contributors</authors>
-    <owners>VL.Overworld Contributors</owners>
+    <authors>red</authors>
+    <owners>red</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/rednotfound/VL.Overworld</projectUrl>
