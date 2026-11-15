@@ -31,4 +31,4 @@ For use with vvvv, the visual live-programming environment for .NET: http://vvvv
 The patches teach [VL.NetTopologySuite](https://github.com/rednotfound/VL.NetTopologySuite), [VL.NetTopologySuite.GeoJSON](https://github.com/rednotfound/VL.NetTopologySuite.GeoJSON) and [VL.Mapsui](https://github.com/rednotfound/VL.Mapsui). Sample data and tile services keep their own terms: see [THIRD-PARTY-NOTICES](https://github.com/rednotfound/VL.Overworld/blob/main/THIRD-PARTY-NOTICES.md).
 
 ## License
-MIT for the patches, as declared in the package metadata.
+[MIT](https://github.com/rednotfound/VL.Overworld/blob/main/LICENSE) for the patches. The sample data keeps its own terms (OpenStreetMap data is ODbL): see [THIRD-PARTY-NOTICES](https://github.com/rednotfound/VL.Overworld/blob/main/THIRD-PARTY-NOTICES.md).
