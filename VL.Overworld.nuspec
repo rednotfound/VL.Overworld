@@ -9,23 +9,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/rednotfound/VL.Overworld</projectUrl>
-    <description>
-      EARLY - a course, not a library.
-
-      Spatial thinking for vvvv gamma, taught from the ground up in two acts: geometry first - points, paths and polygons answering questions under your cursor, offline - then the earth, with real maps and real data. This package contains no
-      nodes of its own. It installs the libraries that do — VL.Mapsui to draw maps,
-      VL.NetTopologySuite for geometry, VL.NetTopologySuite.GeoJSON to read and write it — and adds the chapters
-      that show them working together.
-
-      That is why it exists at all: a worthwhile spatial example needs several libraries at once, and
-      no single library can declare the others without pretending to be something it is not.
-
-      Starts from a dot under your cursor, and ends at thousands of features on a live map.
-      No GIS background assumed; a working knowledge of vvvv gamma is.
-
-      Requires vvvv gamma 7.4 or newer.
-    </description>
-    <summary>A course in spatial thinking for vvvv gamma, from geometry to maps. Installs the libraries it teaches.</summary>
+    <description>A course in spatial thinking for VL, from geometry under your cursor to your data on a real map.</description>
+    <summary>A course in spatial thinking for VL, from geometry under your cursor to your data on a real map.</summary>
     <releaseNotes>
       0.0.1-alpha - First package. Not published.
     </releaseNotes>
